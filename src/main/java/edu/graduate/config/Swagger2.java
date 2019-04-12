@@ -1,6 +1,7 @@
 package edu.graduate.config;
 
 import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
 
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -29,6 +30,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
                  .description("郑州轻工业大学2019毕业设计")
                  .termsOfServiceUrl("https://blog.csdn.net/Abby_lxf")
                  .version("1.0")
-                .build();
+                 .build();
      }
  }
