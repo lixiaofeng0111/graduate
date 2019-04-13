@@ -1,16 +1,17 @@
 package edu.graduate.bean.extend;
 
+import java.util.Date;
 import java.util.List;
 
-import edu.graduate.bean.Nutrition;
+import edu.graduate.bean.Comment;
 
-public class FruitVM {
+public class ArticleVM {
 	private Long id;
-	private String name;
 	private String picture;
 	private String desc;
+	private Date date;
 	
-	private List<Nutrition> nutritions;
+	private List<Comment> comments;
 
 	public Long getId() {
 		return id;
@@ -18,14 +19,6 @@ public class FruitVM {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getPicture() {
@@ -44,12 +37,20 @@ public class FruitVM {
 		this.desc = desc;
 	}
 
-	public List<Nutrition> getNutritions() {
-		return nutritions;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setNutritions(List<Nutrition> nutritions) {
-		this.nutritions = nutritions;
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 	
 

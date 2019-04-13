@@ -1,13 +1,14 @@
 package edu.graduate.bean.extend;
 
-import edu.graduate.bean.LoginRegister;
+import java.util.List;
+
 
 public class PreganInfoVM{
 	private int id;
 	private String name;
 	private int pregantWeek;
 	
-	private LoginRegister loginRegister;
+	private List<FruitVM> fruitVMs;
 	
 	public int getId() {
 		return id;
@@ -27,10 +28,11 @@ public class PreganInfoVM{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public LoginRegister getLoginRegister() {
-		return loginRegister;
+	public List<FruitVM> getFruitVMs() {
+		return fruitVMs;
 	}
-	public void setLoginRegister(LoginRegister loginRegister) {
-		this.loginRegister = loginRegister;
+	public void setFruitVMs(List<FruitVM> fruitVMs) {
+		this.fruitVMs = fruitVMs;
 	}
+	
 }
