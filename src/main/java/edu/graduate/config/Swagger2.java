@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
           return new Docket(DocumentationType.SWAGGER_2)
                  .apiInfo(apiInfo())
                  .select()
-                 .apis(RequestHandlerSelectors.basePackage("edu.graduate"))
+                 .apis(RequestHandlerSelectors.basePackage("edu.graduate.web"))
                  .paths(PathSelectors.any())
                  .build();
      }
