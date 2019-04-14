@@ -2,24 +2,26 @@ package edu.graduate.dao.extend;
 
 import java.util.List;
 
-import edu.graduate.bean.extend.PreganInfoVM;
 
-public interface PreganInfoVMMapper {
+import edu.graduate.bean.extend.PregnantInfoVM;
+
+public interface PregnantInfoVMMapper {
+	
 	//查询操作	
 		/*
 		 * 查询所有信息
 		 */
-		List<PreganInfoVM> findAll();
+		List<PregnantInfoVM> findAll();
 		
 		/*
 		 * 根据id查询信息
 		 */
-		PreganInfoVM findByPreganInfoVMId(Long id);
+		PregnantInfoVM findByPreganInfoVMId(Long id);
 		
 		/*
 		 * 根据关键字查询信息
 		 */
-		List<PreganInfoVM> findLikeKeyword(String keyword);
+		List<PregnantInfoVM> findLikeKeyword(String keyword);
 		
 		
 
@@ -38,7 +40,7 @@ public interface PreganInfoVMMapper {
 		/*
 		 * 增加信息
 		 */
-		void insert(PreganInfoVM preganInfoVM);
+		void insert(PregnantInfoVM preganInfoVM);
 		
 	//修改操作
 		/*

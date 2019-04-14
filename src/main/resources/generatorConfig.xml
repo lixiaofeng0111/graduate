@@ -35,7 +35,7 @@
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
-	<!-- 7个映射配置 -->
+	<!-- 8个映射配置 -->
 	 
 	<table tableName="graduate_article" domainObjectName="Article" ></table>
     <table tableName="graduate_comment" domainObjectName="Comment" ></table>
@@ -43,6 +43,7 @@
     <table tableName="graduate_loginregister" domainObjectName="LoginRegister" ></table>
     <table tableName="graduate_nutrition" domainObjectName="Nutrition" ></table>
     <table tableName="graduate_nutritionfruit" domainObjectName="NutritionFruit" ></table>
-    <table tableName="graduate_preganInfo" domainObjectName="PreganInfo" ></table>
+    <table tableName="graduate_pregnantinfo" domainObjectName="PregnantInfo" ></table>
+    
   </context>
 </generatorConfiguration>

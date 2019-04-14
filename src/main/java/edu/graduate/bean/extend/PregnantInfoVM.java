@@ -3,10 +3,10 @@ package edu.graduate.bean.extend;
 import java.util.List;
 
 
-public class PreganInfoVM{
+public class PregnantInfoVM{
 	private int id;
 	private String name;
-	private int pregantWeek;
+	private int pregnantWeek;
 	
 	private List<FruitVM> fruitVMs;
 	
@@ -16,11 +16,12 @@ public class PreganInfoVM{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getPregantWeek() {
-		return pregantWeek;
+	
+	public int getPregnantWeek() {
+		return pregnantWeek;
 	}
-	public void setPregantWeek(int pregantWeek) {
-		this.pregantWeek = pregantWeek;
+	public void setPregnantWeek(int pregnantWeek) {
+		this.pregnantWeek = pregnantWeek;
 	}
 	public String getName() {
 		return name;

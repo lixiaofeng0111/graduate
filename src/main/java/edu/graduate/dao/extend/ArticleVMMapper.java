@@ -21,25 +21,15 @@ public interface ArticleVMMapper {
 	 * 根据关键字查询信息
 	 */
 	List<ArticleVM> findLikeKeyword(String keyword);
-	
-	
+
 
 //删除操作
-	/*
-	 * 删除所有文章及用户评论内容
-	 */
-	void deleteAll();
 	
 	/*
 	 * 根据Id删除内容
 	 */
 	void deleteById(Long id);
-
-//添加操作
-	/*
-	 * 增加内容
-	 */
-	void insert(ArticleVM articleVM);
+	
 	
 //修改操作
 	/*
