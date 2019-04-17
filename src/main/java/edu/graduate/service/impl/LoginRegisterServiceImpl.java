@@ -17,6 +17,14 @@ public class LoginRegisterServiceImpl implements ILoginRegisterService{
 	
 	
 /*
+ * 根据Id查询用户信息
+ */
+	@Override
+	public LoginRegister findLoginRegisterById(Long id) throws Exception {
+		return loginRegisterMapper.selectByPrimaryKey(id);
+	}
+	
+/*
  * 查询所有用户信息
  */
 	@Override
@@ -58,11 +66,5 @@ public class LoginRegisterServiceImpl implements ILoginRegisterService{
 		}
 		
 	}
-
-	@Override
-	public LoginRegister findLoginRegisterById(Long id) throws Exception {
-		return loginRegisterMapper.selectByPrimaryKey(id);
-	}
-	
 
 }

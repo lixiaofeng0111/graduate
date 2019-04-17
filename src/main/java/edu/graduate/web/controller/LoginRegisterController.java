@@ -14,7 +14,7 @@ import edu.graduate.util.MsgResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(description = "登录注册相关接口")
+@Api(description = "登录注册相关接口---单表")
 @RestController
 @RequestMapping("/loginRegister")
 public class LoginRegisterController {
