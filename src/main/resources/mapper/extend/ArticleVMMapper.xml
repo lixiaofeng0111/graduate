@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.graduate.dao.extend.ArticleVMMapper">
+
+	<resultMap type="edu.graduate.bean.extend.ArticleVM" id="ArticleVM">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="picture" column="picture"  />
+		<result property="description" column="description"/>
+		<result property="date" column="date"/>
+		<collection property="comment" column="id" select="deleteByPrimaryKey" ofType="edu.graduate.bean.Comment"></collection>
+	</resultMap>
+	
+	<resultMap type="edu.graduate.bean.Comment" id="ArticleVM">
+		<result property="ArticleId" column="article_id" />
+	</resultMap>
+
+	<select id="selectAllArticleVM" resultMap="ArticleVM">
+		select * from poll_Article
+	</select>
+	
+	<select id="selectArticleVMById" parameterType="long" resultMap="ArticleVM">
+		select * from poll_Article where id = #{id}
+	</select>
+	
+	<select id="selectOptionsByQid" parameterType="long" resultMap="optionsVM">
+		select * from poll_options where Article_id = #{id}
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="edu.graduate.bean.extend.ArticleVM">
+		insert into  poll_Article (name, ArticleType) values (#{name}, #{ArticleType})
+	</insert>
+	
+	<update id="update" parameterType="edu.graduate.bean.extend.ArticleVM">
+		update poll_Article set
+		name = #{name},
+		ArticleType = #{ArticleType}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="long">
+		delete from poll_Article where id = #{id}
+	</delete>
+	
+	<select id="selectLikeKeyword" parameterType="String" resultMap="ArticleVM">
+		select * from poll_Article where name like concat('%',#{keyword},'%') union
+		select q.* from poll_Article as q left join poll_options as o on q.id = o.Article_id where o.name like concat('%',#{keyword},'%')
+	</select>
+	
+	<select id="selectArticleVMByArticlenaireId" parameterType="long" resultMap="ArticleVM">
+		select * from poll_Article as qu
+		join poll_Articlenaire_Article as qq on qu.id = qq.Article_id
+		where qq.Articlenaire_id = #{ArticlenaireId};
+	</select>
+
+</mapper>
