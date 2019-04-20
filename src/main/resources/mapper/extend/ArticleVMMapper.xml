@@ -2,55 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.graduate.dao.extend.ArticleVMMapper">
 
-	<resultMap type="edu.graduate.bean.extend.ArticleVM" id="ArticleVM">
-		<id property="id" column="id" />
-		<result property="name" column="name" />
-		<result property="picture" column="picture"  />
-		<result property="description" column="description"/>
-		<result property="date" column="date"/>
-		<collection property="comment" column="id" select="deleteByPrimaryKey" ofType="edu.graduate.bean.Comment"></collection>
+<!-- 定义结果集==ArticleVM -->
+	<resultMap type="edu.graduate.bean.extend.ArticleVM" id="articleVM">
+		<!-- 基础属性映射和数据库之间的映射 -->
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="picture" property="picture" />
+		<result column="description" property="description" />
+		<!-- 一对多中的关联属性 -->
+		<collection property="comment" column="id" select="selectCommentVMByArticleId" ofType="edu.graduate.bean.Comment"></collection>
 	</resultMap>
 	
-	<resultMap type="edu.graduate.bean.Comment" id="ArticleVM">
-		<result property="ArticleId" column="article_id" />
+<!-- 定义结果集==Comment -->
+	<resultMap type="edu.graduate.bean.Comment" id="commentVM">
+		<result property="articleId" column="article_id" />
 	</resultMap>
-
-	<select id="selectAllArticleVM" resultMap="ArticleVM">
-		select * from poll_Article
+	
+	<!-- 查询所有推文信息及其评价 -->
+	<select id="selectAllArticleVMs" resultMap="articleVM">
+		select * from graduate_article
 	</select>
 	
-	<select id="selectArticleVMById" parameterType="long" resultMap="ArticleVM">
-		select * from poll_Article where id = #{id}
+	<!-- 根据Id查询推文信息及其评价 -->
+	<select id="findArticleVMById" parameterType="long" resultMap="articleVM">
+		select * from graduate_article where id = #{id}
 	</select>
 	
-	<select id="selectOptionsByQid" parameterType="long" resultMap="optionsVM">
-		select * from poll_options where Article_id = #{id}
+	<!-- 根据关键字查询推文信息及其评价 -->
+	<select id="findArticleVMByKeyword" parameterType="String" resultMap="articleVM">
+		select * from graduate_article where name like concat('%',#{keyword},'%') union
+		select q.* from graduate_article as q left join poll_comment as o on q.id = o.article_id where o.name like concat('%',#{keyword},'%')
 	</select>
 	
-	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="edu.graduate.bean.extend.ArticleVM">
-		insert into  poll_Article (name, ArticleType) values (#{name}, #{ArticleType})
-	</insert>
+	<!-- 根据Id查找推文下的所有评价 -->
+	<select id="selectCommentVMByArticleId" parameterType="long" resultMap="articleVM">
+		select * from graduate_article as qu
+		join graduate_comment as qq on qu.id = qq.article_id
+		where qq.article_id = #{id};
+	</select>
 	
-	<update id="update" parameterType="edu.graduate.bean.extend.ArticleVM">
-		update poll_Article set
-		name = #{name},
-		ArticleType = #{ArticleType}
-		where id = #{id}
-	</update>
-	
-	<delete id="deleteById" parameterType="long">
-		delete from poll_Article where id = #{id}
+	<!-- 根据Id删除推文及其评价的信息 -->
+	<delete id="deleteArticleVMById" parameterType="long" >
+		delete from poll_article where id = #{id}
 	</delete>
 	
-	<select id="selectLikeKeyword" parameterType="String" resultMap="ArticleVM">
-		select * from poll_Article where name like concat('%',#{keyword},'%') union
-		select q.* from poll_Article as q left join poll_options as o on q.id = o.Article_id where o.name like concat('%',#{keyword},'%')
-	</select>
-	
-	<select id="selectArticleVMByArticlenaireId" parameterType="long" resultMap="ArticleVM">
-		select * from poll_Article as qu
-		join poll_Articlenaire_Article as qq on qu.id = qq.Article_id
-		where qq.Articlenaire_id = #{ArticlenaireId};
-	</select>
-
 </mapper>

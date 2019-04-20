@@ -10,7 +10,7 @@ spring:
       suffix: .html
 mybatis:
   mapper-locations:
-  - classpath:mapper/*Mapper.xml
+  - classpath:mapper/**/*Mapper.xml
 pagehelper:
   helperDialect: mysql
   reasonable: true

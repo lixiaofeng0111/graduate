@@ -1,7 +1,10 @@
 package edu.graduate.bean;
 
 import java.util.ArrayList;
+
 import java.util.List;
+
+
 
 public class ArticleExample {
     /**
@@ -193,6 +196,8 @@ public class ArticleExample {
             }
             criteria.add(new Criterion(condition, value1, value2));
         }
+        
+        
 
         public Criteria andIdIsNull() {
             addCriterion("id is null");
@@ -295,7 +300,7 @@ public class ArticleExample {
         }
 
         public Criteria andNameLike(String value) {
-            addCriterion("name like", value, "name");
+            addCriterion("name like", "%"+value+"%", "name");
             return (Criteria) this;
         }
 

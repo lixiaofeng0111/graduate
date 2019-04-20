@@ -1,17 +1,17 @@
 package edu.graduate.bean.extend;
 
-import java.util.Date;
+
 import java.util.List;
 
 import edu.graduate.bean.Comment;
 
 public class ArticleVM {
 	private Long id;
+	private String name;
 	private String picture;
-	private String desc;
-	private Date date;
+	private String description;
 	
-	private List<Comment> comments;
+	private List<Comment> comment;
 
 	public Long getId() {
 		return id;
@@ -21,6 +21,15 @@ public class ArticleVM {
 		this.id = id;
 	}
 
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getPicture() {
 		return picture;
 	}
@@ -28,29 +37,22 @@ public class ArticleVM {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+	
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Date getDate() {
-		return date;
+	public List<Comment> getComment() {
+		return comment;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
 	}
 	
 

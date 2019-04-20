@@ -2,6 +2,7 @@ package edu.graduate.service;
 
 import java.util.List;
 
+
 import edu.graduate.bean.Article;
 import edu.graduate.bean.extend.ArticleVM;
 
@@ -22,14 +23,12 @@ public interface IArticleService {
 	 * @throws Exception
 	 */
 	ArticleVM findByArticleVMId(Long id) throws Exception;
-
 	/**
-	 * 根据关键字查询推文及其评价，关键字的索引列有 ArticleVM.name（问题的标题）和 Comment.name（选项的内容）
-	 * @param keyword
+	 * 根据推文Id查询推文下的所有评论信息
+	 * @param articleId
 	 * @return
-	 * @throws Exception
 	 */
-	List<ArticleVM> findArticleVMByKeyword(String keyword) throws Exception;
+	List<ArticleVM> selectCommentVMByArticleId(long articleId) throws Exception;
 
 	/**
 	 * 根据Id删除评价及其评论
@@ -39,18 +38,20 @@ public interface IArticleService {
 	void deleteArticleVMById(Long id) throws Exception;
 	
 	/**
+	 * 通过关键字查询文件信息
+	 * @param keyword
+	 * @return
+	 * @throws Exception
+	 */
+	List<ArticleVM> findArticleVMByKeyword(String keyword) throws Exception;
+	/**
 	 * 批量删除推文及其评论
 	 * @param ids
 	 * @throws Exception
 	 */
 	void batchDeleteArticleVM(Long[] ids) throws Exception;
 	
-	/**
-	 * 保存和修改推文信息及其评价信息
-	 * @param ArticleVM
-	 * @throws Exception
-	 */
-	void saveOrUpdataArticleVM(ArticleVM articleVM) throws Exception;
+	
 
 //Article
 	/**
@@ -68,13 +69,14 @@ public interface IArticleService {
 	 */
 	Article findArticleById(Long id) throws Exception;
 	
-	 /**
-	  * 根据关键字查询推文信息
-	  * @param keyword
-	  * @return
-	  * @throws Exception
-	  */
-	List<Article> findArticleByKeyword(String keyword) throws Exception;
+	/**
+	 * 根据关键字查询文件信息
+	 * @param keywords
+	 * @return
+	 * @throws Exception
+	 */
+	List<Article> findArticleByKeyword(String keywords) throws Exception;
+
 	
 	/**
 	 * 保存和修改推文信息

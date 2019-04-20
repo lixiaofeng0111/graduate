@@ -3,11 +3,13 @@ package edu.graduate.web.controller;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import edu.graduate.bean.Article;
 import edu.graduate.bean.extend.ArticleVM;
@@ -49,19 +51,31 @@ public class ArticleController {
 		}
 	}
 	
-	
-	
-	@ApiOperation(value = "保存或者更新推文信息及其评价", notes = "执行插入操作时不需要输入id，输入id时执行更新操作")
-	@PostMapping("saveOrUpdateArticleVM")
-	public MsgResponse saveOrUpdateArticle(ArticleVM articleVM) {
+	@ApiOperation(value = "根据Id查询一个推文下的所有评价")
+	@GetMapping("selectCommentVMByArticleId")
+	public MsgResponse selectCommentVMByArticleId(long articleId) {
+		List<ArticleVM> list;
 		try {
-			articleService.saveOrUpdataArticleVM(articleVM);
-			return MsgResponse.success("Success", articleVM);
+			list = articleService.selectCommentVMByArticleId(articleId);
+			return MsgResponse.success("Success", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	
+	@ApiOperation(value = "根据关键字查询一个推文及其评价")
+	@GetMapping("findArticleVMByKeyword")
+	public MsgResponse findArticleVMByKeyword(String keyword) {
+		try {
+			List<ArticleVM> list = articleService.findArticleVMByKeyword(keyword);
+			return MsgResponse.success("Success", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
 	
 	
 	@ApiOperation(value = "根据Id删除推文信息及其评价", notes = "执行操作时直接输入id值进行修改")
@@ -113,19 +127,7 @@ public class ArticleController {
 		}
 	}
 	
-	@ApiOperation(value = "查询全部推文信息", notes = "之间点击查询即可")
-	@PostMapping("findArticleByKeyword")
-	public MsgResponse findArticleByKeyword(String keyword) {
-		try {
-			List<Article> list = articleService.findArticleByKeyword(keyword);
-			return MsgResponse.success("Success", list);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return MsgResponse.error(e.getMessage());
-		}
-	}
-	
-	@ApiOperation(value = "保存和修改推文信息")
+	@ApiOperation(value = "保存和修改推文信息",notes = "当输入id时为更新，不输入id时为插入保存数据")
 	@PostMapping("saveOrUpdateArticle")
 	public MsgResponse saveOrUpdateArticle(Article article) {
 		try {
@@ -162,6 +164,17 @@ public class ArticleController {
 		
 	}
 	
+	@ApiOperation(value = "通过关键字查询推文信息")
+	@PostMapping("findArticleByKeyword")
+	public MsgResponse findArticleByKeyword(String keyword) {
+		try {
+			List<Article> list  = articleService.findArticleByKeyword(keyword);
+			return MsgResponse.success("Success",list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
 	
 	
 }

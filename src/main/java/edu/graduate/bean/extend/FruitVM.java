@@ -8,7 +8,7 @@ public class FruitVM {
 	private Long id;
 	private String name;
 	private String picture;
-	private String desc;
+	private String description;
 	
 	private List<Nutrition> nutritions;
 
@@ -36,12 +36,12 @@ public class FruitVM {
 		this.picture = picture;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<Nutrition> getNutritions() {
