@@ -30,20 +30,42 @@
 	
 	<!-- 根据关键字查询推文信息及其评价 -->
 	<select id="findArticleVMByKeyword" parameterType="String" resultMap="articleVM">
-		select * from graduate_article where name like concat('%',#{keyword},'%') union
-		select q.* from graduate_article as q left join poll_comment as o on q.id = o.article_id where o.name like concat('%',#{keyword},'%')
+	select * from graduate_article where name like concat('%',#{keyword},'%')
 	</select>
 	
 	<!-- 根据Id查找推文下的所有评价 -->
+	<select id="selectCommentVMByArticleId" parameterType="long" resultMap="commentVM">
+		select * from graduate_comment where article_id = #{id}
+	</select>
+	
+	<!-- 
 	<select id="selectCommentVMByArticleId" parameterType="long" resultMap="articleVM">
 		select * from graduate_article as qu
 		join graduate_comment as qq on qu.id = qq.article_id
 		where qq.article_id = #{id};
 	</select>
 	
+	 -->
+	
 	<!-- 根据Id删除推文及其评价的信息 -->
 	<delete id="deleteArticleVMById" parameterType="long" >
-		delete from poll_article where id = #{id}
+		delete from graduate_article where id = #{id}
 	</delete>
 	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

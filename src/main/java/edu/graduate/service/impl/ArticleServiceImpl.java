@@ -2,24 +2,27 @@ package edu.graduate.service.impl;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.graduate.bean.Article;
 import edu.graduate.bean.ArticleExample;
 import edu.graduate.bean.extend.ArticleVM;
 import edu.graduate.dao.ArticleMapper;
+import edu.graduate.dao.CommentMapper;
 import edu.graduate.dao.extend.ArticleVMMapper;
 import edu.graduate.service.IArticleService;
+
 @Service
-public class ArticleServiceImpl implements IArticleService{
-	@Autowired 
+public class ArticleServiceImpl implements IArticleService {
+	@Autowired
 	private ArticleVMMapper articleVMMapper;
-	@Autowired 
+	@Autowired
 	private ArticleMapper articleMapper;
-	/*
-	 * @Autowired private CommentMapper commentMapper;
-	 */
-	
+
+	@Autowired
+	private CommentMapper commentMapper;
+
 //ArticleVM
 	@Override
 	public List<ArticleVM> findAll() throws Exception {
@@ -30,12 +33,12 @@ public class ArticleServiceImpl implements IArticleService{
 	public ArticleVM findByArticleVMId(Long id) throws Exception {
 		return articleVMMapper.findArticleVMById(id);
 	}
-	
+
 	@Override
 	public List<ArticleVM> findArticleVMByKeyword(String keyword) throws Exception {
 		return articleVMMapper.findArticleVMByKeyword(keyword);
 	}
-	
+
 	@Override
 	public List<ArticleVM> selectCommentVMByArticleId(long articleId) throws Exception {
 		return articleVMMapper.selectCommentVMByArticleId(articleId);
@@ -44,18 +47,18 @@ public class ArticleServiceImpl implements IArticleService{
 	@Override
 	public void deleteArticleVMById(Long id) throws Exception {
 		articleVMMapper.deleteArticleVMById(id);
+		commentMapper.deleteByPrimaryKey(id);
 	}
 
 	@Override
 	public void batchDeleteArticleVM(Long[] ids) throws Exception {
-		for(Long id : ids) {
-		articleVMMapper.deleteArticleVMById(id);
+		for (Long id : ids) {
+			articleVMMapper.deleteArticleVMById(id);
 		}
 	}
 
-	
 //Article
-	
+
 	/**
 	 * 查询所有推文信息
 	 */
@@ -78,9 +81,9 @@ public class ArticleServiceImpl implements IArticleService{
 	 */
 	@Override
 	public void saveOrUpdateArticle(Article article) throws Exception {
-		if(article.getId() != null) {
+		if (article.getId() != null) {
 			articleMapper.updateByPrimaryKeyWithBLOBs(article);
-		}else {
+		} else {
 			articleMapper.insert(article);
 		}
 	}
@@ -98,7 +101,7 @@ public class ArticleServiceImpl implements IArticleService{
 	 */
 	@Override
 	public void batchDeleteArticle(Long[] ids) throws Exception {
-		for(Long id : ids) {
+		for (Long id : ids) {
 			articleMapper.deleteByPrimaryKey(id);
 		}
 	}
@@ -113,7 +116,4 @@ public class ArticleServiceImpl implements IArticleService{
 		return articleMapper.selectByExampleWithBLOBs(example);
 	}
 
-	
-
-	
 }
