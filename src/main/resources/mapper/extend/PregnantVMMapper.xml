@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.graduate.dao.extend.PregnantInfoVMMapper">
+
+<!-- 定义结果集==PregnantInfoVM -->
+	<resultMap type="edu.graduate.bean.extend.PregnantInfoVM" id="pregnantInfoVM">
+		<!-- 基础属性映射和数据库之间的映射 -->
+		<id column="id" property="id" />
+		<result column="pregnantweek" property="pregnantweek" />
+		<!-- 一对多中的关联属性 -->
+		<collection property="fruit" column="id" select="selectFruitVMByPregnantInfoId" ofType="edu.graduate.bean.Fruit"></collection>
+	</resultMap>
+	
+<!-- 定义结果集==FruitVM -->
+	<resultMap type="edu.graduate.bean.Fruit" id="fruitVM">
+		<result property="pregnantinfoId" column="pregnantinfo_id" />
+	</resultMap>
+	
+	<!-- 查询所有孕妈信息及其各阶段需要的水果 -->
+	<select id="selectAllPregnantInfoVMs" resultMap="pregnantInfoVM">
+		select * from graduate_pregnantinfo
+	</select>
+	
+	<!-- 根据Id查询孕妈信息及其各阶段需要的水果 -->
+	<select id="findByPreganInfoVMId" parameterType="long" resultMap="pregnantInfoVM">
+		select * from graduate_pregnantinfo where id = #{id}
+	</select>
+	
+	<!-- 根据Id查找孕妈各个阶段下所有的水果 -->
+	<select id="selectFruitVMByPregnantInfoId" parameterType="long" resultMap="fruitVM">
+		select * from graduate_fruit where pregnantinfo_id = #{id}
+	</select>
+	
+	<!-- 添加孕妈及其各个阶段下的水果信息 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="edu.graduate.bean.extend.PregnantInfoVM">
+		insert into  graduate_pregnantinfo (pregnantweek) values (#{pregnantweek})
+	</insert>
+	
+	<!-- 修改孕妈及其各个阶段下的水果信息 -->
+	<update id="updatePregnantInfoVM" parameterType="edu.graduate.bean.extend.PregnantInfoVM">
+		update graduate_pregnantinfo set
+		pregnantweek = #{pregnantweek}
+		where id = #{id}
+	</update>
+	
+	<!-- 根据Id删除推文及其评价的信息 -->
+	<delete id="deletePregnantInfoVMById" parameterType="long" >
+		delete from graduate_pregnantinfo where id = #{id}
+	</delete>
+	
+</mapper>
+
+
+
+
+

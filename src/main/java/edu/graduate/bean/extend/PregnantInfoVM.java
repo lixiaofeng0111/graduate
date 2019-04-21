@@ -2,38 +2,37 @@ package edu.graduate.bean.extend;
 
 import java.util.List;
 
+import edu.graduate.bean.Fruit;
+
 
 public class PregnantInfoVM{
-	private int id;
-	private String name;
-	private int pregnantWeek;
+	private Long id;
+	private int pregnantweek;
 	
-	private List<FruitVM> fruitVMs;
+	private List<Fruit> fruit;
 	
-	public int getId() {
+	
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	public int getPregnantWeek() {
-		return pregnantWeek;
+	
+	public List<Fruit> getFruit() {
+		return fruit;
 	}
-	public void setPregnantWeek(int pregnantWeek) {
-		this.pregnantWeek = pregnantWeek;
+	public void setFruit(List<Fruit> fruit) {
+		this.fruit = fruit;
 	}
-	public String getName() {
-		return name;
+	public int getPregnantweek() {
+		return pregnantweek;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPregnantweek(int pregnantweek) {
+		this.pregnantweek = pregnantweek;
 	}
-	public List<FruitVM> getFruitVMs() {
-		return fruitVMs;
-	}
-	public void setFruitVMs(List<FruitVM> fruitVMs) {
-		this.fruitVMs = fruitVMs;
-	}
+	
 	
 }

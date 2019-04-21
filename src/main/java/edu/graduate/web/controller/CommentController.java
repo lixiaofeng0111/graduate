@@ -14,7 +14,7 @@ import edu.graduate.util.MsgResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(description = "推文评价相关接口---单表")
+@Api(description = "评价相关接口(推文)")
 @Controller
 @RestController("/Comment")
 public class CommentController {

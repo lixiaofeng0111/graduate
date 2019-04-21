@@ -11,7 +11,7 @@ public interface PregnantInfoVMMapper {
 		/*
 		 * 查询所有信息
 		 */
-		List<PregnantInfoVM> findAll();
+		List<PregnantInfoVM> selectAllPregnantInfoVMs();
 		
 		/*
 		 * 根据id查询信息
@@ -19,33 +19,24 @@ public interface PregnantInfoVMMapper {
 		PregnantInfoVM findByPreganInfoVMId(Long id);
 		
 		/*
-		 * 根据关键字查询信息
+		 * 根据孕妈Id查询水果的信息
 		 */
-		List<PregnantInfoVM> findLikeKeyword(String keyword);
-		
-		
-
-	//删除操作
-		/*
-		 * 删除所有信息
-		 */
-		void deleteAll();
-		
-		/*
-		 * 根据Id删除信息
-		 */
-		void deleteById(Long id);
+		List<PregnantInfoVM> selectFruitVMByPregnantInfoId(Long pregnantInfoId);
 
 	//添加操作
 		/*
 		 * 增加信息
 		 */
 		void insert(PregnantInfoVM preganInfoVM);
-		
 	//修改操作
 		/*
-		 * 根据id修改信息
+		 * 修改孕妈信息及每阶段所需要水果
 		 */
-		void updateById(Long id);
+		void updatePregnantInfoVM(PregnantInfoVM preganInfoVM);
 
+	//删除操作
+		/*
+		 * 根据Id删除信息
+		 */
+		void deletePregnantInfoVMById(Long id);
 }

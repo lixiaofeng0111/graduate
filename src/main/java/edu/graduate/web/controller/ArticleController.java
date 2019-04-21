@@ -18,7 +18,7 @@ import edu.graduate.util.MsgResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(description = "推文相关接口---与评论构成一对多关系")
+@Api(description = "推文相关接口")
 @RestController
 @RequestMapping("/article")
 
@@ -27,7 +27,7 @@ public class ArticleController {
 	private IArticleService articleService;
 
 //ArticleVM
-	@ApiOperation(value = "查询所有推文信息及其评价")
+	@ApiOperation(value = "(VM)查询所有推文信息及其评价")
 	@GetMapping("findAllArticleVM")
 	public MsgResponse findAllServiceVM() {
 		try {
@@ -39,7 +39,7 @@ public class ArticleController {
 		}
 	}
 	
-	@ApiOperation(value = "根据Id查询一个推文信息及其评价")
+	@ApiOperation(value = "(VM)根据Id查询一个推文信息及其评价")
 	@GetMapping("findArticleVMById")
 	public MsgResponse findServiceVMById(Long id) {
 		try {
@@ -51,7 +51,7 @@ public class ArticleController {
 		}
 	}
 	
-	@ApiOperation(value = "根据Id查询一个推文下的所有评价")
+	@ApiOperation(value = "(VM)根据Id查询一个推文下的所有评价")
 	@GetMapping("selectCommentVMByArticleId")
 	public MsgResponse selectCommentVMByArticleId(long articleId) {
 		List<ArticleVM> list;
@@ -64,7 +64,7 @@ public class ArticleController {
 		}
 	}
 	
-	@ApiOperation(value = "根据关键字查询一个推文及其评价")
+	@ApiOperation(value = "(VM)根据关键字查询一个推文及其评价")
 	@GetMapping("findArticleVMByKeyword")
 	public MsgResponse findArticleVMByKeyword(String keyword) {
 		try {
@@ -78,7 +78,7 @@ public class ArticleController {
 	
 	
 	
-	@ApiOperation(value = "根据Id删除推文信息及其评价", notes = "执行操作时直接输入id值进行修改")
+	@ApiOperation(value = "(VM)根据Id删除推文信息及其评价", notes = "执行操作时直接输入id值进行修改")
 	@PostMapping("deleteArticleVMById")
 	public MsgResponse deleteArticleVMById(Long id) {
 		try {
@@ -90,7 +90,7 @@ public class ArticleController {
 		}
 	}
 	
-	@ApiOperation(value = "批量删除推文信息及其评价", notes = "删除多个推文信息时以回车键隔开")
+	@ApiOperation(value = "(VM)批量删除推文信息及其评价", notes = "删除多个推文信息时以回车键隔开")
 	@PostMapping("batchDeleteArticleVMById")
 	public MsgResponse batchDeleteArticleVMById(Long[] ids) {
 		try {

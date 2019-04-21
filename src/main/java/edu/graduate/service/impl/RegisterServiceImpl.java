@@ -7,7 +7,7 @@ import edu.graduate.bean.LoginRegister;
 import edu.graduate.dao.LoginRegisterMapper;
 import edu.graduate.service.IRegisterService;
 @Service
-public class RegisterService implements IRegisterService{
+public class RegisterServiceImpl implements IRegisterService{
 	@Autowired
 	private LoginRegisterMapper loginRegisterMapper;
 	/*
