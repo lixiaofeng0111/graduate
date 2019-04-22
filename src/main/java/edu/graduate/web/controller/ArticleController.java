@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +22,25 @@ import io.swagger.annotations.ApiOperation;
 @Api(description = "推文相关接口")
 @RestController
 @RequestMapping("/article")
-
+@EnableAutoConfiguration
 public class ArticleController {
 	@Autowired
 	private IArticleService articleService;
 
 //ArticleVM
+	@ApiOperation(value = "(VM) 保存和修改推文信息及其评价")
+	@PostMapping("saveOrUpdate")
+	public MsgResponse saveOrUpdate(ArticleVM articleVM) {
+		try {
+			articleService.saveOrUpdate(articleVM);
+			return MsgResponse.success("success", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
+	
 	@ApiOperation(value = "(VM)查询所有推文信息及其评价")
 	@GetMapping("findAllArticleVM")
 	public MsgResponse findAllServiceVM() {

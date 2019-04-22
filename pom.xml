@@ -17,10 +17,13 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>1.8</java.version>	 
 	</properties>
 
 	<dependencies>
+	<!-- SpringBoot修改内置版本 -->
+		
+		
 	<!-- swagger api文档 -->
 		<dependency>
 			<groupId>io.springfox</groupId>

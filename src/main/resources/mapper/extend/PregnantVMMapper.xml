@@ -33,7 +33,7 @@
 	
 	<!-- 添加孕妈及其各个阶段下的水果信息 -->
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="edu.graduate.bean.extend.PregnantInfoVM">
-		insert into  graduate_pregnantinfo (pregnantweek) values (#{pregnantweek})
+		insert into graduate_pregnantinfo(pregnantweek) values  (#{pregnantweek})
 	</insert>
 	
 	<!-- 修改孕妈及其各个阶段下的水果信息 -->

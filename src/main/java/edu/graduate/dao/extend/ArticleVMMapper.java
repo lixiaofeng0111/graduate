@@ -33,6 +33,8 @@ public interface ArticleVMMapper {
 	 * @return
 	 */
 	List<ArticleVM> selectCommentVMByArticleId(long articleId);
+	
+	
 
 //删除操作
 	
@@ -41,6 +43,6 @@ public interface ArticleVMMapper {
 	 * @param id(根据Id删除)
 	 */
 	void deleteArticleVMById(Long id);
-
+	
 
 }

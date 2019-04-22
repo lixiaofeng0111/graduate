@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.graduate.bean.Article;
 import edu.graduate.bean.ArticleExample;
+import edu.graduate.bean.Comment;
+import edu.graduate.bean.CommentExample;
 import edu.graduate.bean.extend.ArticleVM;
 import edu.graduate.dao.ArticleMapper;
 import edu.graduate.dao.CommentMapper;
@@ -114,6 +116,35 @@ public class ArticleServiceImpl implements IArticleService {
 		ArticleExample example = new ArticleExample();
 		example.createCriteria().andNameLike(keywords);
 		return articleMapper.selectByExampleWithBLOBs(example);
+	}
+
+	@Override
+	public void saveOrUpdate(ArticleVM articleVM) throws Exception {
+		List<Comment> comments = articleVM.getComment();
+		
+		Article article = new Article();
+		article.setId(articleVM.getId());
+		article.setName(articleVM.getName());
+		article.setPicture(articleVM.getPicture());
+		article.setDescription(articleVM.getDescription());
+		
+		if(article.getId() != null) {
+			
+			articleMapper.updateByPrimaryKey(article);
+			
+			CommentExample example = new CommentExample();
+			example.createCriteria().andArticleIdEqualTo(article.getId());
+			commentMapper.deleteByExample(example);
+			
+			Long articleId = article.getId();
+			for(Comment comment : comments) {
+				comment.setArticleId(articleId);
+				commentMapper.insert(comment);
+			}
+			
+			
+		}
+		
 	}
 
 }

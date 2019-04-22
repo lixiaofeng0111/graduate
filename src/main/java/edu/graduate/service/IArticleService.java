@@ -52,6 +52,7 @@ public interface IArticleService {
 	void batchDeleteArticleVM(Long[] ids) throws Exception;
 	
 	
+	void saveOrUpdate(ArticleVM articleVM) throws Exception;
 
 //Article
 	/**
