@@ -2,8 +2,8 @@ package edu.graduate.web.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +18,6 @@ import io.swagger.annotations.ApiOperation;
 @Api(description = "评价相关接口(推文)")
 @Controller
 @RestController("/Comment")
-@EnableAutoConfiguration
 public class CommentController {
 	
 	@Autowired

@@ -1,7 +1,6 @@
 package edu.graduate.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +14,6 @@ import io.swagger.annotations.ApiOperation;
 @Api(description = "注册相关接口")
 @Controller
 @RestController("/Register")
-@EnableAutoConfiguration
 public class RegisterController {
 	@Autowired 
 	private IRegisterService registerService;

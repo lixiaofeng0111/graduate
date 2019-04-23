@@ -6,44 +6,39 @@ import edu.graduate.bean.extend.FruitVM;
 
 public interface FruitVMMapper {
 	//查询操作	
-		/*
-		 * 查询所有信息
+		/**
+		 * 查询所有水果及其包含的营养信息
+		 * @return
 		 */
-		List<FruitVM> findAll();
+		List<FruitVM> selectAllFruitVM();
 		
-		/*
-		 * 根据id查询信息
+		/**
+		 * 根据Id查询信息
+		 * @param id
+		 * @return
 		 */
-		FruitVM findByFruitVMId(Long id);
+		FruitVM selectFruitVMById(Long id);
 		
-		/*
+		/**
 		 * 根据关键字查询信息
+		 * @param keyword
+		 * @return
 		 */
-		List<FruitVM> findLikeKeyword(String keyword);
+		List<FruitVM> selectFruitVMLikeKeyword(String keyword);
+		
+		/**
+		 * 根据桥表中的Id查询信息
+		 * @param fruitId
+		 * @return
+		 */
+		List<FruitVM> selectNutritionsBynfId(Long fruitId);
 		
 		
-
 	//删除操作
-		/*
-		 * 删除所有信息
+		/**
+		 * 根据FruitId删除水果中的信息
+		 * @param id
 		 */
-		void deleteAll();
-		
-		/*
-		 * 根据Id删除内容
-		 */
-		void deleteById(Long id);
-
-	//添加操作
-		/*
-		 * 增加信息
-		 */
-		void insert(FruitVM fruitVM);
-		
-	//修改操作
-		/*
-		 * 根据id修改信息
-		 */
-		void updateById(Long id);
+		void deleteFruitVMById(Long id);
 
 }

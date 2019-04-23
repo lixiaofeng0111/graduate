@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.graduate.dao.extend.NutritionVMMapper">
+
+<!-- 定义结果集==FruitVM  nutrition  Nutrition-->
+	<resultMap type="edu.graduate.bean.extend.NutritionVM" id="nutritionVM">
+		<!-- 基础属性映射和数据库之间的映射 -->
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="description" property="description" />
+		
+		<!-- 多对多中的(多对多拆分为一对多)关联属性
+		select="selectFruitsBynfId" :通过营养成分下的信息
+		 -->
+		<collection 
+			property="fruits" 
+			column="id" 
+			select="selectFruitsBynfId" 
+			ofType="edu.graduate.bean.Fruit"></collection>
+	</resultMap>
+	
+	<!-- 查询所有营养及包含此营养的水果 -->
+	<select id="selectAllNutritionVM" resultMap="nutritionVM">
+		select * from graduate_nutrition
+	</select>
+	
+	<!-- 根据Id查询营养及包含此营养的水果 -->
+	<select id="selectNutritionVMById" parameterType="long" resultMap="nutritionVM">
+		select * from graduate_nutrition where id = #{id}
+	</select>
+	
+	<!-- 根据关键字查询营养及包含此营养的水果-->
+	<select id="selectNutritionVMByKeyword" parameterType="String" resultMap="nutritionVM">
+	select * from graduate_nutrition where name like concat('%',#{keyword},'%')
+	</select>
+	
+	<!-- 根据Id查找包含此营养的所有水果 -->
+	<select id="selectFruitsBynfId" parameterType="long" resultMap="nutritionVM">
+		select * from graduate_nutritionfruit nf RIGHT JOIN 
+		graduate_fruit f on nf.fruit_id = f.id where nf.nutrition_id = #{nutrition_id}
+	</select>
+	
+	<!-- 根据Id删除营养及包含此营养的水果 -->
+	<delete id="deleteNutritionVMById" parameterType="long" >
+		delete from graduate_nutrition where id = #{id}
+	</delete>
+	
+</mapper>
