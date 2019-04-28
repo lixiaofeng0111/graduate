@@ -59,10 +59,10 @@ public class NutritionController {
 	}
 	
 	@ApiOperation(value = "(VM)查询此水果所包含的营养信息")
-	@PostMapping("selectFruitsBynfId")
-	public MsgResponse selectFruitsBynfId(Long nutritionId) {
+	@PostMapping("selectNutritionByFruitId")
+	public MsgResponse selectNutritionByFruitId(Long fruitId) {
 		try {
-			List<NutritionVM> list = nutritionService.selectFruitsBynfId(nutritionId);
+			List<NutritionVM> list = nutritionService.selectNutritionByFruitId(fruitId);
 			return MsgResponse.success("查询成功", list);
 		} catch (Exception e) {
 			e.printStackTrace();

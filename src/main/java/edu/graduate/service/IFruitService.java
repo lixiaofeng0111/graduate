@@ -12,10 +12,7 @@ public interface IFruitService {
 	
 	List<FruitVM> selectFruitVMLikeKeyword(String keyword)  throws Exception;
 	
-	List<FruitVM> selectNutritionsBynfId(Long fruitId)  throws Exception;
-
-//保存和修改操作
-	void saveOrUpdateFruitVM(FruitVM fruitVM) throws Exception;
+	List<FruitVM> selectFruitByNutritionId(Long fruitId)  throws Exception;
 	
 //删除操作
 	void deleteFruitVMById(Long id)  throws Exception;

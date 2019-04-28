@@ -29,8 +29,8 @@ public class NutritionServiceImpl implements INutritionService{
 	}
 
 	@Override
-	public List<NutritionVM> selectFruitsBynfId(Long nutritionId) throws Exception {
-		return nutritionVMMapper.selectFruitsBynfId(nutritionId);
+	public List<NutritionVM> selectNutritionByFruitId(Long fruitId)throws Exception {
+		return nutritionVMMapper.selectNutritionByFruitId(fruitId);
 	}
 
 //删除操作

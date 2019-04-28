@@ -14,10 +14,22 @@
 		<collection 
 			property="nutritions" 
 			column="id" 
-			select="selectNutritionsBynfId" 
+			javaType="ArrayList"
+			select="edu.graduate.dao.extend.NutritionVMMapper.selectNutritionByFruitId" 
 			ofType="edu.graduate.bean.Nutrition">
 		</collection>
 	</resultMap>
+	
+	
+	
+	<!-- 根据营养成分Id查询水果信息 -->
+	<select id="selectFruitByNutritionId" parameterType="long" resultMap="fruitVM">
+		select * from graduate_fruit where id in (
+			select fruit_id 
+			from graduate_nutritionfruit
+			where nutrition_id = #{id}	
+		)
+	</select>
 	
 	<!-- 查询所有水果及其包含的营养信息 -->
 	<select id="selectAllFruitVM" resultMap="fruitVM">
@@ -34,11 +46,6 @@
 	select * from graduate_fruit where name like concat('%',#{keyword},'%')
 	</select>
 	
-	<!-- 根据Id查找水果中包含的营养信息 -->
-	<select id="selectNutritionsBynfId" parameterType="long" resultMap="fruitVM">
-		select * from graduate_nutritionfruit nf RIGHT JOIN 
-		graduate_nutrition n on nf.nutrition_id = n.id where nf.fruit_id = #{fruit_id}
-	</select>
 	
 	<!-- 根据Id删除水果及其包含的营养信息 -->
 	<delete id="deleteFruitVMById" parameterType="long" >

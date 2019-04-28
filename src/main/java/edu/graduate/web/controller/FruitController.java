@@ -2,6 +2,7 @@ package edu.graduate.web.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,10 +58,10 @@ public class FruitController {
 	}
 	
 	@ApiOperation(value = "(VM)查询此水果所包含的营养信息")
-	@PostMapping("selectNutritionsBynfId")
-	public MsgResponse selectNutritionsBynfId(Long fruitId) {
+	@PostMapping("selectFruitByNutritionId")
+	public MsgResponse selectFruitByNutritionId(Long NutritionId) {
 		try {
-			List<FruitVM> list = fruitService.selectNutritionsBynfId(fruitId);
+			List<FruitVM> list = fruitService.selectFruitByNutritionId(NutritionId);
 			return MsgResponse.success("查询成功", list);
 		} catch (Exception e) {
 			e.printStackTrace();

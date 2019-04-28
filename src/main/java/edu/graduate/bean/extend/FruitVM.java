@@ -3,6 +3,7 @@ package edu.graduate.bean.extend;
 import java.util.List;
 
 import edu.graduate.bean.Nutrition;
+import edu.graduate.bean.PregnantInfo;
 
 public class FruitVM {
 	private Long id;
@@ -10,6 +11,7 @@ public class FruitVM {
 	private String picture;
 	private String description;
 	
+	private PregnantInfo pregnantInfo;
 	private List<Nutrition> nutritions;
 
 	public Long getId() {
@@ -30,6 +32,15 @@ public class FruitVM {
 
 	public String getPicture() {
 		return picture;
+	}
+
+	
+	public PregnantInfo getPregnantInfo() {
+		return pregnantInfo;
+	}
+
+	public void setPregnantInfo(PregnantInfo pregnantInfo) {
+		this.pregnantInfo = pregnantInfo;
 	}
 
 	public void setPicture(String picture) {

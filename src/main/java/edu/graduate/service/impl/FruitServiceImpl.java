@@ -2,6 +2,8 @@ package edu.graduate.service.impl;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,15 +32,8 @@ public class FruitServiceImpl implements IFruitService{
 	}
 
 	@Override
-	public List<FruitVM> selectNutritionsBynfId(Long fruitId) throws Exception {
-		return fruitVMMapper.selectNutritionsBynfId(fruitId);
-	}
-
-//保存和修改操作
-	@Override
-	public void saveOrUpdateFruitVM(FruitVM fruitVM) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public List<FruitVM> selectFruitByNutritionId(Long NutritionId) throws Exception {
+		return fruitVMMapper.selectFruitByNutritionId(NutritionId);
 	}
 
 //删除操作

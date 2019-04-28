@@ -31,7 +31,7 @@ public interface NutritionVMMapper {
 	 * @param nutritionId
 	 * @return
 	 */
-	List<NutritionVM> selectFruitsBynfId(Long nutritionId);
+	List<NutritionVM> selectNutritionByFruitId(Long fruitId);
 
 //删除操作
 	/**

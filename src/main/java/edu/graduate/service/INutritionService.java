@@ -12,7 +12,7 @@ public interface INutritionService {
 	
 	List<NutritionVM> selectNutritionVMByKeyword(String keyword) throws Exception;
 	
-	List<NutritionVM> selectFruitsBynfId(Long nutritionId) throws Exception;
+	List<NutritionVM> selectNutritionByFruitId(Long nutritionId) throws Exception;
 	
 //删除操作
 	void deleteNutritionVMById(Long id) throws Exception;
