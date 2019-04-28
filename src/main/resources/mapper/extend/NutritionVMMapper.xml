@@ -23,7 +23,7 @@
 	
 	
 	<!-- 根据水果Id查询营养成分 -->
-	<select id="selectNutritionByFruitId" parameterType="long" resultMap="nutritionVM">
+	<select id="selectNutritionByFruitId" parameterType="long" resultType="edu.graduate.bean.Nutrition">
 		select * from graduate_nutrition where id in (
 			select nutrition_id 
 			from graduate_nutritionfruit

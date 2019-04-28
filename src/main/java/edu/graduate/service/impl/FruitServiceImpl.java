@@ -4,6 +4,8 @@ import java.util.List;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,6 @@ public class FruitServiceImpl implements IFruitService{
 	@Autowired
 	private FruitVMMapper fruitVMMapper;
 
-//查询操作
 	@Override
 	public List<FruitVM> selectAllFruitVM() throws Exception {
 		return fruitVMMapper.selectAllFruitVM();
@@ -32,11 +33,9 @@ public class FruitServiceImpl implements IFruitService{
 	}
 
 	@Override
-	public List<FruitVM> selectFruitByNutritionId(Long NutritionId) throws Exception {
-		return fruitVMMapper.selectFruitByNutritionId(NutritionId);
+	public List<FruitVM> selectFruitByNutritionId(Long fruitId) throws Exception {
+		return fruitVMMapper.selectFruitByNutritionId(fruitId);
 	}
-
-//删除操作
 	@Override
 	public void deleteFruitVMById(Long id) throws Exception {
 		fruitVMMapper.deleteFruitVMById(id);
@@ -48,5 +47,11 @@ public class FruitServiceImpl implements IFruitService{
 			fruitVMMapper.deleteFruitVMById(id);
 		}
 	}
+
+
+//查询操作
+	
+
+	
 
 }
