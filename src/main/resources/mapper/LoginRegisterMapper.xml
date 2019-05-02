@@ -120,6 +120,9 @@
     from graduate_loginregister
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id = "findLoginByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select username,password from graduate_loginregister where username = #{username}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--
       WARNING - @mbg.generated

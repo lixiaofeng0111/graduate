@@ -1,60 +1,52 @@
 package edu.graduate.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.graduate.bean.LoginRegister;
 import edu.graduate.service.IRegisterService;
-import edu.graduate.util.MsgResponse;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
-@Api(description = "注册相关接口")
-@Controller
-@RestController("/Register")
+@RestController
 public class RegisterController {
 	@Autowired 
 	private IRegisterService registerService;
-	
-	
-	
-	@ApiOperation(value = "保存或者更新用户信息", notes = "执行插入操作时不需要输入id，输入id时执行更新操作")
-	@PostMapping("saveOrUpdateRegister")
-	public MsgResponse saveOrUpdateRegister(LoginRegister loginRegister) {
-		try {
-			registerService.saveOrUpdateLoginRegister(loginRegister);
-			return MsgResponse.success("Success", loginRegister);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return MsgResponse.error(e.getMessage());
-		}		
-	}
-	
-	
-	@ApiOperation(value = "根据Id删除用户信息", notes = "执行操作时直接输入id值进行修改")
-	@PostMapping("deleteRegisterById")
-	public MsgResponse deleteRegisterById(Long id) {
-		try {
-			registerService.deleteLoginRegisterById(id);
-			return MsgResponse.success("Success", "删除成功");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return MsgResponse.error(e.getMessage());
-		}
-	}
-	
-	@ApiOperation(value = "批量删除用户信息", notes = "删除多个用户信息时以回车键隔开")
-	@PostMapping("batchDeleteRegister")
-	public MsgResponse batchDeleteRegister(Long[] ids) {
-		try {
-			registerService.batchDeleteLoginRegister(ids);
-			return MsgResponse.success("Success", "批量删除成功");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return MsgResponse.error(e.getMessage());
-		}
-	}
 
+	@PostMapping("/register")
+	public void saveRegister(HttpServletRequest request , HttpServletResponse response) throws Exception {
+		
+		String result = "";
+		String username = request.getParameter("username");
+		LoginRegister register = registerService.findByName(username);
+		if(register!=null) {
+			result = "该用户已经被注册，请重新输入用户名！";
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(result);
+		}
+		else {
+		String password = request.getParameter("password");
+	    String age1 = request.getParameter("age"); 
+	    Integer age=Integer.parseInt(age1);
+		String sex = request.getParameter("sex");
+		String address = request.getParameter("address");
+		
+		LoginRegister loginRegister = new LoginRegister();
+		loginRegister.setUsername(username);
+		loginRegister.setPassword(password);
+		loginRegister.setAge(age);
+		loginRegister.setSex(sex);
+		loginRegister.setAddress(address);
+		
+		registerService.saveRegister(loginRegister);
+
+		result = "ok";
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(result);
+		}
+	}
 }

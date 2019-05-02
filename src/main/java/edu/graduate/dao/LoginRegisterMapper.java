@@ -93,4 +93,6 @@ public interface LoginRegisterMapper {
      * @mbg.generated Thu Apr 18 09:50:43 CST 2019
      */
     int updateByPrimaryKey(LoginRegister record);
+
+	LoginRegister findLoginByName(String username);
 }

@@ -7,7 +7,7 @@ spring:
   mvc:
     view:
       prefix: /
-      suffix: .html
+      suffix: .jsp
 mybatis:
   mapper-locations:
   - classpath:mapper/**/*Mapper.xml
@@ -16,3 +16,5 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+  

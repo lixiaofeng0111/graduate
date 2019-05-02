@@ -14,33 +14,13 @@ public class RegisterServiceImpl implements IRegisterService{
 	 * 保存或修改用户信息
 	 */
 		@Override
-		public void saveOrUpdateLoginRegister(LoginRegister loginRegister) throws Exception {
-			if(loginRegister.getId() != null) {
-				loginRegisterMapper.updateByPrimaryKey(loginRegister);
-			}else {
+		public void saveRegister(LoginRegister loginRegister) throws Exception {	
 				loginRegisterMapper.insert(loginRegister);
-			}
-			
+		}
+		@Override
+		public LoginRegister findByName(String username) {
+			return loginRegisterMapper.findLoginByName(username);
 		}
 
-	/*
-	 * 删除用户信息
-	 */
-		@Override
-		public void deleteLoginRegisterById(Long id) throws Exception {
-			loginRegisterMapper.deleteByPrimaryKey(id);
-			
-		}
-
-	/*
-	 * 批量删除用户信息
-	 */
-		@Override
-		public void batchDeleteLoginRegister(Long[] ids) throws Exception {
-			for(Long id : ids) {
-				loginRegisterMapper.deleteByPrimaryKey(id);
-			}
-			
-		}
 
 }

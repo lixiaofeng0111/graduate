@@ -1,62 +1,61 @@
 package edu.graduate.web.controller;
 
-import java.util.List;
 
+
+import java.util.Map;
+
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import edu.graduate.bean.LoginRegister;
-import edu.graduate.service.ILoginRegisterService;
-import edu.graduate.util.MsgResponse;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import edu.graduate.service.ILoginService;
 
-@Api(description = "登录相关接口")
 @RestController
-@RequestMapping("/login")
 public class LoginController {
-	@Autowired
-	/*
-	 * 多态的使用：
-	 * 面向接口编程的思想
-	 * ILoginRegisterService loginRegisterService = new LoginRegisterService();
-	 */
-	private ILoginRegisterService loginRegisterService;   //注入对象
 	
-	@ApiOperation(value = "查询所有用户信息")
-	@GetMapping("findAllLogin")
-	public MsgResponse findAllLogin() {
-		try {
-			List<LoginRegister> list = loginRegisterService.findAllLoginRegister();
-			return MsgResponse.success("success", list);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return MsgResponse.error(e.getMessage());
-		}
+	@Autowired
+	private ILoginService loginService;
+	
+	@GetMapping("/login")
+	public ModelAndView login(Map<String, Object> map) {
+		return new ModelAndView("login");
 	}
 	
-	@ApiOperation(value = "根据Id查询一个用户信息")
-	@GetMapping("findLoginById")
-	public MsgResponse findLoginById(Long id) {
+	@PostMapping("/checkLogin")
+	public void checkLogin(HttpServletRequest request,HttpServletResponse response)  {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String result;
 		try {
-			LoginRegister loginRegister = loginRegisterService.findLoginRegisterById(id);
-			return MsgResponse.success("Success", loginRegister);
+			LoginRegister loginUsername = loginService.findLoginByName(username);
+			if(loginUsername == null) {
+				result = "请重新输入！";
+			}else if(password.equals(loginUsername.getPassword())) {
+				result = "ok";
+			}else {
+				result = "密码错误!";
+			}
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(result);
+			
+			System.out.println(result);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return MsgResponse.error(e.getMessage());
 		}
+		
+	}
+	
+	@GetMapping("/pageIndex")
+	public ModelAndView pageindex() {
+		return new ModelAndView("index");
 	}
 }
-
-
-
-
-
-
-
-
-
-
