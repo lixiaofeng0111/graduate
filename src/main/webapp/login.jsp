@@ -32,6 +32,7 @@
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/login.css">
 <script src="js/modernizr-2.6.2.min.js"></script>
+
 </head>
 <body class="style-3">
 

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.topic-today{
+	float:left;
+	height:300px;
+	width:600px;
+}
+.topic-yesterday{
+	float:right;
+	height:300px;
+	width:400px
+}

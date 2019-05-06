@@ -36,14 +36,7 @@
     </javaClientGenerator>
 
 	<!-- 8个映射配置 -->
-	 
-	<table tableName="graduate_article" domainObjectName="Article" ></table>
-    <table tableName="graduate_comment" domainObjectName="Comment" ></table>
-    <table tableName="graduate_fruit" domainObjectName="Fruit" ></table>
-    <table tableName="graduate_loginregister" domainObjectName="LoginRegister" ></table>
-    <table tableName="graduate_nutrition" domainObjectName="Nutrition" ></table>
-    <table tableName="graduate_nutritionfruit" domainObjectName="NutritionFruit" ></table>
-    <table tableName="graduate_pregnantinfo" domainObjectName="PregnantInfo" ></table>
+    <table tableName="graduate_professor" domainObjectName="Professor" ></table>
     
   </context>
 </generatorConfiguration>
