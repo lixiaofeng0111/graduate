@@ -116,8 +116,12 @@ button {
 </style>
 
 <script type="application/x-javascript">
+	
+	
 
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
+
+
 
 </script>
 <meta name="keywords"
@@ -262,151 +266,171 @@ button {
 			<div class="wedo-main">
 				<div class="col-md-4 wedo-grid">
 					<span class="glyphicon glyphicon-leaf" aria-hidden="true"> </span>
-					
+
 					<div class="active">
-						<a style="color: #956295; font-size: 25px; padding:0px 35px;" > 今日话题 </a>
+						<a style="color: #956295; font-size: 25px; padding: 0px 35px;">
+							今日话题 </a>
 					</div>
 					<div>
-								<c:forEach items="${topictoday}" var="today">
-										<a href="topic1.jsp">${today.name}</a>
-										<div>${today.datetime}</div>
-								</c:forEach>
+						<c:forEach items="${topictoday}" var="today">
+							<fmt:formatDate var="datetime" value="${today.datetime}"
+								pattern="yyyy-MM-dd" />
+							<table>
+								<tr>
+									<td><li><a href="topic1.jsp">${datetime} |
+												${today.name }</a></li></td>
+								</tr>
+							</table>
+						</c:forEach>
+
 					</div>
-							
-					
+
+
 					<a href="topic.jsp"
 						style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 						class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 					</span></a>
 				</div>
-				
-				
+
+
 				<div class="col-md-4 wedo-grid">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"> </span>
-					
+
 					<div class="active">
-						<a style="color: #956295; font-size: 25px; padding:0px 45px;" 
+						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
 							data-toggle="tab"> 往期话题 </a>
 					</div>
-								<%-- <c:forEach items="${topictoday}" var="notoday">
-									<fmt:formatDate var="datetime" value="${notoday.datetime}"
-										pattern="yyyy-MM-dd" />
-										<a href="topic1.jsp">${today.name}</a>
-										<div>${today.datetime}</div>
-								</c:forEach> --%>
-	
+					<fmt:formatDate var="nowDate" value="<%=new Date()%>"
+						pattern="yyyy-MM-dd" />
+					<c:forEach items="${notoday}" var="yesterday">
+						<fmt:formatDate var="datetime" value="${yesterday.datetime}"
+							pattern="yyyy-MM-dd" />
+						<c:if test="${datetime != nowDate}">
+							<table>
+								<tr>
+									<td><li><a href="topic1.jsp">${datetime} | ${yesterday.name }</a></li></td>
+								</tr>
+							</table>
+						</c:if>
+					</c:forEach>
+
 					<a href="topic.jsp"
 						style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 						class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 					</span></a>
 				</div>
-				
+
 				<div class="col-md-4 wedo-grid">
 					<span class="glyphicon glyphicon-eye-open" aria-hidden="true">
 					</span>
 					<div>
-						<a style="color: #956295; font-size: 25px; padding:0px 45px;" href="#home"
-							data-toggle="tab"> 专家栏目 </a>
+						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
+							href="#home" data-toggle="tab"> 专家栏目 </a>
 					</div>
-					<c:forEach items="${professor}" var="professor1">
-					<fmt:formatDate var="datetime" value="${professor1.datetime}"
-										pattern="yyyy-MM-dd" />
-					<div>
-					${professor1.name}
-					</div>
-					<div>
-					${professor1.datetime}
-					</div>
+					<fmt:formatDate var="nowDate" value="<%=new Date()%>"
+						pattern="yyyy-MM-dd" />
+					<c:forEach items="${professors}" var="professor">
+						<fmt:formatDate var="datetime" value="${professor.datetime}"
+							pattern="yyyy-MM-dd" />
+						<c:if test="${datetime != nowDate}">
+							<table>
+								<tr>
+									<td><li><a href="topic1.jsp">${nowDate} | ${professor.name }</a></li></td>
+								</tr>
+							</table>
+						</c:if>
 					</c:forEach>
-				<div>
-					<a href="single.jsp"
-						style="font-family: 'Viga', sans-serif; color: #956295">More...<span
-						class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
-					</span></a>
+					<div>
+						<a href="single.jsp"
+							style="font-family: 'Viga', sans-serif; color: #956295">More...<span
+							class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
+						</span></a>
+					</div>
+					<div class="clearfix"></div>
 				</div>
-				<div class="clearfix"></div>
 			</div>
 		</div>
-	</div>
-	<!--we do end here-->
-	<!--agrom strip start here-->
-	<div class="agro-strip">
-		<div class="container">
-			<div class="agro-strip-main">
-				<h3>Nam libero tempore, cum soluta nobis est eligendi</h3>
-				<p>But I must explain to you how all this mistaken idea of
-					denouncing pleasure and praising pain was born and I will give you
-					a complete account of the system</p>
-				<a href="topic2" class="hvr-wobble-bottom">Read More</a>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<!--agrom strip end here-->
-	<!--latest-news start here-->
-	<div class="latest-new">
-		<div class="container">
-			<div class="latest-news-main">
-				<div class="col-md-3 latest-grid">
-					<img src="images/l1.jpg" alt="" class="img-responsive">
-					<p>Temporibus autem quibusdam et aut offic</p>
-				</div>
-				<div class="col-md-3 latest-grid">
-					<img src="images/l2.jpg" alt="" class="img-responsive">
-					<p>Temporibus autem quibusdam et aut offic</p>
-				</div>
-				<div class="col-md-3 latest-grid">
-					<img src="images/l.jpg" alt="" class="img-responsive">
-					<p>Temporibus autem quibusdam et aut offic</p>
-				</div>
-				<div class="col-md-3 latest-grid">
-					<img src="images/l4.jpg" alt="" class="img-responsive">
-					<p>Temporibus autem quibusdam et aut offic</p>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<!--latest news end here-->
-	<!--footer start here-->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-main">
-				<div class="col-md-4 ftr-grd">
-					<h3>Get in Touch</h3>
-					<p>8901 ibero Road</p>
-					<p>Nam libero tempore</p>
-					<p>Phone: +148 5746 415</p>
-				</div>
-				<div class="col-md-4 ftr-grd">
-					<h3>Follow Us</h3>
-					<ul>
-						<li><a href="#"><span class="fa"> </span></a></li>
-						<li><a href="#"><span class="tw"> </span></a></li>
-						<li><a href="#"><span class="g"> </span></a></li>
-						<li><a href="#"><span class="in"> </span></a></li>
-					</ul>
-				</div>
-				<div class="col-md-4 ftr-grd">
-					<h3>Join Our Newsletter</h3>
-					<p>Temporibus autem quibusdam et aut officiis debitis aut rerum
-						necessitatibus</p>
-					<label class="hvr-wobble-bottom"> <input type="submit"
-						value="Send"></label>
-				</div>
-				<div class="clearfix"></div>
-				<div class="copy-right">
-					<p>
-						Copyright &copy; 2015.Company name All rights reserved.More
-						Templates <a href="http://www.cssmoban.com/" target="_blank"
-							title="模板之家">模板之家</a> - Collect from <a
-							href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+		<!--we do end here-->
+		<!--agrom strip start here-->
+		<div class="agro-strip">
+			<div class="container">
+				<div class="agro-strip-main">
+					<h3>妊娠女性     & 水果营养</h3>
+					<p>水果营养丰富，口味酸甜，怀孕后的准妈妈要适量吃水果孕期应势应该遵循：
+					全面原则，均衡原则，自然原则，植物性食物功效非凡。水果中许多成分均是水溶性的，
+					饭前吃有利于身体必需营养素的吸收孕妈妈的营养牵动着妈咪和宝宝的身体发育在这个特殊
+					的时期水果就是最好的补品
 					</p>
+					<a href="topic2.jsp" class="hvr-wobble-bottom">更多...</a>
+					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!--//footer-->
+		<!--agrom strip end here-->
+		<!--latest-news start here-->
+		<div class="latest-new">
+			<div class="container">
+				<div class="latest-news-main">
+					<div class="col-md-3 latest-grid">
+						<img src="images/l1.jpg" alt="" class="img-responsive">
+						<p>Temporibus autem quibusdam et aut offic</p>
+					</div>
+					<div class="col-md-3 latest-grid">
+						<img src="images/l2.jpg" alt="" class="img-responsive">
+						<p>Temporibus autem quibusdam et aut offic</p>
+					</div>
+					<div class="col-md-3 latest-grid">
+						<img src="images/l.jpg" alt="" class="img-responsive">
+						<p>Temporibus autem quibusdam et aut offic</p>
+					</div>
+					<div class="col-md-3 latest-grid">
+						<img src="images/l4.jpg" alt="" class="img-responsive">
+						<p>Temporibus autem quibusdam et aut offic</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<!--latest news end here-->
+		<!--footer start here-->
+		<div class="footer">
+			<div class="container">
+				<div class="footer-main">
+					<div class="col-md-4 ftr-grd">
+						<h3>Get in Touch</h3>
+						<p>8901 ibero Road</p>
+						<p>Nam libero tempore</p>
+						<p>Phone: +148 5746 415</p>
+					</div>
+					<div class="col-md-4 ftr-grd">
+						<h3>Follow Us</h3>
+						<ul>
+							<li><a href="#"><span class="fa"> </span></a></li>
+							<li><a href="#"><span class="tw"> </span></a></li>
+							<li><a href="#"><span class="g"> </span></a></li>
+							<li><a href="#"><span class="in"> </span></a></li>
+						</ul>
+					</div>
+					<div class="col-md-4 ftr-grd">
+						<h3>Join Our Newsletter</h3>
+						<p>Temporibus autem quibusdam et aut officiis debitis aut
+							rerum necessitatibus</p>
+						<label class="hvr-wobble-bottom"> <input type="submit"
+							value="Send"></label>
+					</div>
+					<div class="clearfix"></div>
+					<div class="copy-right">
+						<p>
+							Copyright &copy; 2015.Company name All rights reserved.More
+							Templates <a href="http://www.cssmoban.com/" target="_blank"
+								title="模板之家">模板之家</a> - Collect from <a
+								href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--//footer-->
 	</div>
 	<script type="text/javascript">
 		$(function() {

@@ -78,15 +78,23 @@ public class LoginController {
 		SimpleDateFormat sdf =   new SimpleDateFormat( "yyyyMMdd" );
 		String str = sdf.format(new Date());
 		List<Topic> findAllTopic = iTopicService.findTopicByDate(str);
+
 		
-		PageHelper.startPage(1, 8);
+		PageHelper.startPage(1, 6);
+		List<Topic> findAllTopic1 = iTopicService.findAllTopic();
+		PageInfo<Topic> pageInfoTopic = new PageInfo<>(findAllTopic1);
+		List<Topic> pageListTopic = pageInfoTopic.getList();
+		
+		
+		PageHelper.startPage(1, 6);
 		List<Professor> findAllProcesse = iProfessorService.findAllProfessor();
 		PageInfo<Professor> pageInfoProfessor = new PageInfo<>(findAllProcesse);
 		List<Professor> pageListProfessor = pageInfoProfessor.getList();
 		
  		map.put("imgPath", findAllIngIndex);
+ 		map.put("notoday",pageListTopic);
  		map.put("topictoday",findAllTopic);
- 		map.put("professor",pageListProfessor);
+ 		map.put("professors",pageListProfessor);
 		return new ModelAndView("index",map);
 	}
 }

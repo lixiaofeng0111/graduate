@@ -148,7 +148,7 @@
   select * from graduate_topic where name = #{name}
   </select>
   <select id  = "findTopicByDate" parameterType="java.lang.String" resultMap="BaseResultMap">
-  select * from graduate_topic  where date_format(datetime,'%Y%m%d') = #{datetime}  limit 8
+  select * from graduate_topic  where date_format(datetime,'%Y%m%d') = #{datetime}  limit 6
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
     <!--

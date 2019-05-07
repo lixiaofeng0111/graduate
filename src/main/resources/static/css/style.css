@@ -603,6 +603,7 @@ span.glyphicon.glyphicon-circle-arrow-right:hover {
   background: url(../images/strip.jpg)no-repeat;
   background-size: cover;
   min-height: 300px;
+  margin-top:1em;
 }
 .agro-strip-main {
   text-align: center;
