@@ -36,7 +36,10 @@
     </javaClientGenerator>
 
 	<!-- 8个映射配置 -->
-    <table tableName="graduate_professor" domainObjectName="Professor" ></table>
+    <table tableName="graduate_fruit" domainObjectName="Fruit" >
+    	<columnOverride column="brief" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	<columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </table>
     
   </context>
 </generatorConfiguration>

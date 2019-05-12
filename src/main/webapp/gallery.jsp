@@ -93,10 +93,7 @@
 	 </div>
 </div>
 <!--top nav end here-->
-<!--banner start here-->
-<div class="banner-two">
-</div>
-<!--banner end here-->
+
 <!--gallery start here-->
 <div class="gallery">
 	<div class="container">

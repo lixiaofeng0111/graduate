@@ -1,27 +1,46 @@
 package edu.graduate.web.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+import edu.graduate.bean.Fruit;
 import edu.graduate.bean.extend.FruitVM;
 import edu.graduate.service.IFruitService;
 import edu.graduate.util.MsgResponse;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
-@Api(description = "水果相关接口")
 @RestController
-@RequestMapping("/Fruit")
 public class FruitController {
 	@Autowired
 	private IFruitService fruitService;
+	
+	
+	@GetMapping("/fruit")		
+		public ModelAndView pageFruit(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map) throws Exception {
+			PageHelper.startPage(page, 9);
+			List<Fruit> findAllFruits = fruitService.findAllFruit();
+			PageInfo<Fruit> pageInfoFruit = new PageInfo<>(findAllFruits);
+			List<Fruit> pageListFruit = pageInfoFruit.getList();
+	
+			List<FruitVM> findAllFruitVM = fruitService.selectAllFruitVM();
 
-	@ApiOperation(value = "(VM)查询所有水果及其所包含的营养信息")
+			map.put("fruitVMInfo", findAllFruitVM);
+			map.put("fruit", pageListFruit);
+			return new ModelAndView("services",map);
+	}
+
 	@PostMapping("selectAllFruitVM")
 	public MsgResponse selectAllFruitVM() {
 		try {
@@ -33,7 +52,6 @@ public class FruitController {
 		}
 	}
 
-	@ApiOperation(value = "(VM)根据Id查询所有水果及其所包含的营养信息")
 
 	@PostMapping("selectFruitVMById")
 	public MsgResponse selectFruitVMById(Long id) {
@@ -46,7 +64,6 @@ public class FruitController {
 		}
 	}
 
-	@ApiOperation(value = "(VM)根据关键字查询所有水果及其所包含的营养信息")
 
 	@PostMapping("selectFruitVMLikeKeyword")
 	public MsgResponse selectFruitVMLikeKeyword(String keyword) {
@@ -59,7 +76,6 @@ public class FruitController {
 		}
 	}
 
-	@ApiOperation(value = "(VM)查询此水果所包含的营养信息")
 
 	@PostMapping("selectFruitByNutritionId")
 	public MsgResponse selectFruitByNutritionId(Long NutritionId) {
@@ -72,7 +88,6 @@ public class FruitController {
 		}
 	}
 
-	@ApiOperation(value = "(VM)保存和修改水果及其所包含的营养信息")
 
 	@PostMapping("saveOrUpdateFruitVM")
 	public MsgResponse saveOrUpdateFruitVM(FruitVM fruitVM) {
@@ -84,7 +99,6 @@ public class FruitController {
 		}
 	}
 
-	@ApiOperation(value = "(VM)根据Id删除水果及其所包含的营养信息")
 
 	@GetMapping("deleteFruitVMById")
 	public MsgResponse deleteFruitVMById(Long id) {
@@ -97,7 +111,6 @@ public class FruitController {
 		}
 	}
 
-	@ApiOperation(value = "(VM)根据Id批量删除水果及其所包含的营养信息")
 
 	@GetMapping("batchDeleteFruitVMById")
 	public MsgResponse batchDeleteFruitVMById(Long[] ids) {

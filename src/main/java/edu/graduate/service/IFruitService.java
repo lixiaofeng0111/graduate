@@ -2,12 +2,15 @@ package edu.graduate.service;
 
 import java.util.List;
 
-
+import edu.graduate.bean.Fruit;
 import edu.graduate.bean.extend.FruitVM;
 
 public interface IFruitService {
 	
 	  //查询操作
+	List<Fruit> findAllFruit() throws Exception;
+	
+	
 	  List<FruitVM> selectAllFruitVM() throws Exception;
 	  
 	  FruitVM selectFruitVMById(Long id) throws Exception;

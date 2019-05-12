@@ -74,7 +74,7 @@
 	    <div class="top-navg">
 	    	           <span class="menu"> <img src="images/icon.png" alt=""/></span>
 				<ul class="res">
-				    <li><a href="index.jsp" class="active hvr-sweep-to-bottom">主页</a></li>
+				    <li><a href="/pageIndex" class="active hvr-sweep-to-bottom">主页</a></li>
 					<li><a class="hvr-sweep-to-bottom" href="about.jsp">孕期阶段分析</a></li>
 					<li><a class="hvr-sweep-to-bottom" href="services.jsp">水果分析</a></li>
 					<li><a class="hvr-sweep-to-bottom" href="typo.jsp">水果及营养分析</a></li>

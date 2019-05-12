@@ -7,7 +7,8 @@
 <html>
 <head>
 <title>孕期营养早知道</title>
-
+<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="js/anchorHoverEffect.js"></script>
 <link rel="stylesheet" href="css/topic.css">
 <link rel="stylesheet" href="css/element.min-xuan.css">
 <script type="text/javascript" src="js/vue.min-xuan.js"></script>
@@ -46,6 +47,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
+
 a:hover {
 	color: red;
 }
@@ -118,8 +120,14 @@ button {
 <script type="application/x-javascript">
 	
 	
+	
+	
+	
 
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
+
+
+
 
 
 
@@ -174,7 +182,7 @@ button {
 				<div class="header-main">
 					<div class="header-right">
 						<div class="logo">
-							<h1 style="font-family: 'Viga', sans-serif; color: #956295">面向妊娠女性的水果及营养推荐系统</h1>
+							<h1 style="font-family: 'Viga', sans-serif; color: #956295;">面向妊娠女性的水果及营养推荐系统</h1>
 						</div>
 
 						<div class="clearfix"></div>
@@ -204,11 +212,10 @@ button {
 					<span class="menu"> <img src="images/icon.png" alt="" /></span>
 					<ul class="res"
 						style="font-family: 'Viga', sans-serif; color: #956295">
-						<li><a href="index.jsp" class="active hvr-sweep-to-bottom">主页</a></li>
+						<li><a href="/pageIndex" class="active hvr-sweep-to-bottom">主页</a></li>
 						<li><a class="hvr-sweep-to-bottom" href="about.jsp">孕期阶段分析</a></li>
 						<li><a class="hvr-sweep-to-bottom" href="services.jsp">水果分析</a></li>
-						<li><a class="hvr-sweep-to-bottom" href="typo.jsp">水果及营养分析</a></li>
-						<li><a class="hvr-sweep-to-bottom" href="gallery.jsp">美文推荐</a></li>
+						<li><a class="hvr-sweep-to-bottom" href="typo.jsp">孕期水果及营养推荐</a></li>
 						<li><a class="hvr-sweep-to-bottom" href="login.jsp">登录</a></li>
 					</ul>
 					<!-- script-for-menu -->
@@ -308,7 +315,8 @@ button {
 						<c:if test="${datetime != nowDate}">
 							<table>
 								<tr>
-									<td><li><a href="topic1.jsp">${datetime} | ${yesterday.name }</a></li></td>
+									<td><li><a href="topic1.jsp">${datetime} |
+												${yesterday.name }</a></li></td>
 								</tr>
 							</table>
 						</c:if>
@@ -335,7 +343,8 @@ button {
 						<c:if test="${datetime != nowDate}">
 							<table>
 								<tr>
-									<td><li><a href="topic1.jsp">${nowDate} | ${professor.name }</a></li></td>
+									<td><li><a href="topic1.jsp">${nowDate} |
+												${professor.name }</a></li></td>
 								</tr>
 							</table>
 						</c:if>
@@ -355,90 +364,139 @@ button {
 		<div class="agro-strip">
 			<div class="container">
 				<div class="agro-strip-main">
-					<h3>妊娠女性     & 水果营养</h3>
-					<p>水果营养丰富，口味酸甜，怀孕后的准妈妈要适量吃水果孕期应势应该遵循：
-					全面原则，均衡原则，自然原则，植物性食物功效非凡。水果中许多成分均是水溶性的，
-					饭前吃有利于身体必需营养素的吸收孕妈妈的营养牵动着妈咪和宝宝的身体发育在这个特殊
-					的时期水果就是最好的补品
-					</p>
-					<a href="topic2.jsp" class="hvr-wobble-bottom">更多...</a>
+					<h3>妊娠女性 & 水果营养</h3>
+					<p style="font-size: 15px;">水果营养丰富，口味酸甜，怀孕后的准妈妈要适量吃水果孕期应势应该遵循：
+						全面原则，均衡原则，自然原则，植物性食物功效非凡。水果中许多成分均是水溶性的，
+						饭前吃有利于身体必需营养素的吸收孕妈妈的营养牵动着妈咪和宝宝的身体发育在这个特殊 的时期水果就是最好的补品</p>
+					<a href="typo.jsp" class="hvr-wobble-bottom">更多...</a>
 					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>
-		<!--agrom strip end here-->
-		<!--latest-news start here-->
-		<div class="latest-new">
-			<div class="container">
-				<div class="latest-news-main">
-					<div class="col-md-3 latest-grid">
-						<img src="images/l1.jpg" alt="" class="img-responsive">
-						<p>Temporibus autem quibusdam et aut offic</p>
+		<div>
+
+
+			<div style = "font-size:30px;color: #956295;padding:10px;">孕期周刊 </div>
+			<div class="pregnantweek">
+				<div style = "font-size:20px;">孕早期</div>
+			<ul><table>
+				<tr>
+			    	<td width = "100px;" height = "50px;"><a href="#">第一周</a></td>
+			    	<td width = "100px;"><a href="#">第二周</a></td>
+			    	<td width = "100px;"><a href="#">第三周</a></td>
+			    	<td width = "100px;"><a href="#">第四周</a></td>
+			    	<td width = "100px;"><a href="#">第五周</a></td>
+			    	<td width = "100px;"><a href="#">第六周</a></td>
+			    	<td width = "100px;"><a href="#">第七周</a></td>
+			    	<td width = "100px;"><a href="#">第八周</a></td>
+			    	<td width = "100px;"><a href="#">第九周</a></td>
+			    	<td width = "100px;"><a href="#">第十周</a></td>
+			    	<td width = "100px;"><a href="#">第十一周</a></td>
+			    	<td width = "100px;"><a href="#">第十二周</a></td>
+				</tr>
+				</table>
+			</ul>
+			<div style = "font-size:20px;">孕中期</div>
+			<ul><table>
+				<tr>
+			    	<td width = "100px;" height = "50px;"><a href="#">第十一周</a></td>
+			    	<td width = "100px;"><a href="#">第十二周</a></td>
+			    	<td width = "100px;"><a href="#">第十三周</a></td>
+			    	<td width = "100px;"><a href="#">第十四周</a></td>
+			    	<td width = "100px;"><a href="#">第十五周</a></td>
+			    	<td width = "100px;"><a href="#">第十六周</a></td>
+			    	<td width = "100px;"><a href="#">第十七周</a></td>
+			    	<td width = "100px;"><a href="#">第十八周</a></td>
+			    	<td width = "100px;"><a href="#">第十九周</a></td>
+			    	<td width = "100px;"><a href="#">第二十周</a></td>
+			    	<td width = "100px;"><a href="#">第二十一周</a></td>
+			    	<td width = "100px;"><a href="#">第二十二周</a></td>
+			    </tr>
+			    <tr>
+			    	<td width = "100px;" height = "50px;"><a href="#">第二十三周</a></td>
+			    	<td width = "100px;"><a href="#">第二十四周</a></td>
+			    	<td width = "100px;"><a href="#">第二十五周</a></td>
+			    	<td width = "100px;"><a href="#">第二十六周</a></td>
+			    	<td width = "100px;"><a href="#">第二十七周</a></td>
+			    	<td width = "100px;"><a href="#">第二十八周</a></td>
+				</tr>
+				</table>
+			</ul>
+			<div style = "font-size:20px;">孕晚期</div>
+			<ul><table>
+				<tr>
+			    	<td width = "100px;" height = "50px;"><a href="#">第二十九周</a></td>
+			    	<td width = "100px;"><a href="#">第三十周</a></td>
+			    	<td width = "100px;"><a href="#">第三十一周</a></td>
+			    	<td width = "100px;"><a href="#">第三十二周</a></td>
+			    	<td width = "100px;"><a href="#">第三十三周</a></td>
+			    	<td width = "100px;"><a href="#">第三十四周</a></td>
+			    	<td width = "100px;"><a href="#">第三十五周</a></td>
+			    	<td width = "100px;"><a href="#">第三十六周</a></td>
+			    	<td width = "100px;"><a href="#">第三十七周</a></td>
+			    	<td width = "100px;"><a href="#">第三十八周</a></td>
+			    	<td width = "100px;"><a href="#">第三十九周</a></td>
+			    	<td width = "100px;"><a href="#">第四十周</a></td>
+				</tr>
+				</table>
+			</ul>
+			</div>
+
+<div style = "font-size:30px;color: #956295;padding:10px;">水果相关信息</div>
+			<div class="latest-new">
+				<div class="container">
+					<div class="latest-news-main">
+
+						<c:forEach items="${imgPathButtom}" var="imagepathbuttom">
+							<div class="col-md-3 latest-grid"
+								style="width: 400px; height: 240px;">
+								<img src="${imagepathbuttom.imgpath}" alt=""
+									class="img-responsive">
+								<p>${imagepathbuttom.content}<a href = "services.jsp">|更多</a></p>
+							</div>
+						</c:forEach>
+
+						<div class="clearfix"></div>
 					</div>
-					<div class="col-md-3 latest-grid">
-						<img src="images/l2.jpg" alt="" class="img-responsive">
-						<p>Temporibus autem quibusdam et aut offic</p>
-					</div>
-					<div class="col-md-3 latest-grid">
-						<img src="images/l.jpg" alt="" class="img-responsive">
-						<p>Temporibus autem quibusdam et aut offic</p>
-					</div>
-					<div class="col-md-3 latest-grid">
-						<img src="images/l4.jpg" alt="" class="img-responsive">
-						<p>Temporibus autem quibusdam et aut offic</p>
-					</div>
-					<div class="clearfix"></div>
 				</div>
 			</div>
-		</div>
-		<!--latest news end here-->
-		<!--footer start here-->
-		<div class="footer">
-			<div class="container">
-				<div class="footer-main">
-					<div class="col-md-4 ftr-grd">
-						<h3>Get in Touch</h3>
-						<p>8901 ibero Road</p>
-						<p>Nam libero tempore</p>
-						<p>Phone: +148 5746 415</p>
-					</div>
-					<div class="col-md-4 ftr-grd">
-						<h3>Follow Us</h3>
-						<ul>
-							<li><a href="#"><span class="fa"> </span></a></li>
-							<li><a href="#"><span class="tw"> </span></a></li>
-							<li><a href="#"><span class="g"> </span></a></li>
-							<li><a href="#"><span class="in"> </span></a></li>
-						</ul>
-					</div>
-					<div class="col-md-4 ftr-grd">
-						<h3>Join Our Newsletter</h3>
-						<p>Temporibus autem quibusdam et aut officiis debitis aut
-							rerum necessitatibus</p>
-						<label class="hvr-wobble-bottom"> <input type="submit"
-							value="Send"></label>
-					</div>
-					<div class="clearfix"></div>
-					<div class="copy-right">
-						<p>
-							Copyright &copy; 2015.Company name All rights reserved.More
-							Templates <a href="http://www.cssmoban.com/" target="_blank"
-								title="模板之家">模板之家</a> - Collect from <a
-								href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-						</p>
-					</div>
+			<!--latest news end here-->
+			<!--footer start here-->
+			<div class="footer">
+				<div class="container" style = "text-align:center;">
+							<div style = "color:#FFFFFF;font-size:18px;padding:0px 0px 0px 30px;">友情链接:
+								<a href="http://baby.39.net/">39育儿网|</a>
+								<a href="http://www.baby-trees.cn/">宝宝树亲子网|</a>
+								<a href="http://www.ci123.com/">育儿网|</a>
+								<a href="http://yuer.ibabyzone.cn/">宝宝地带|</a>
+								<a href="http://www.yaolan.com/">摇篮网|</a>
+								<a href="https://www.mmbang.com/">妈妈帮</a>
+							</div>
+							<div style = "color:#FFFFFF;">@CopyRight Lxf 郑州轻工业大学2015届毕业设计</div>
+						<div class="clearfix"></div>
 				</div>
 			</div>
+			<!--//footer-->
 		</div>
-		<!--//footer-->
-	</div>
-	<script type="text/javascript">
-		$(function() {
-			var aDiv = document.getElementById("lunbo").getElementsByTagName(
-					"div");
-			aDiv[1].classList.remove("active");
-			aDiv[2].classList.remove("active");
-		})
-	</script>
+		<script>
+			$(".demo-1 a").anchorHoverEffect();
+			$(".demo-2 a").anchorHoverEffect({
+				type : 'brackets'
+			});
+			$(".demo-3 a").anchorHoverEffect({
+				type : 'flip'
+			});
+			$(".demo-4 a").anchorHoverEffect({
+				type : 'borderBottom'
+			});
+		</script>
+		<script type="text/javascript">
+			$(function() {
+				var aDiv = document.getElementById("lunbo")
+						.getElementsByTagName("div");
+				aDiv[1].classList.remove("active");
+				aDiv[2].classList.remove("active");
+			})
+		</script>
 </body>
 </html>

@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>孕期营养早知道</title>
+<script type="text/javascript" src="js/pc.js"></script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.0.min.js"></script>
@@ -77,11 +78,10 @@
 	    <div class="top-navg">
 	    	           <span class="menu"> <img src="images/icon.png" alt=""/></span>
 				<ul class="res">
-				    <li><a href="index.jsp" class="active hvr-sweep-to-bottom">主页</a></li>
+				    <li><a href="/pageIndex" class="active hvr-sweep-to-bottom">主页</a></li>
 					<li><a class="hvr-sweep-to-bottom" href="about.jsp">孕期阶段分析</a></li>
 					<li><a class="hvr-sweep-to-bottom" href="services.jsp">水果分析</a></li>
 					<li><a class="hvr-sweep-to-bottom" href="typo.jsp">水果及营养分析</a></li>
-					<li><a class="hvr-sweep-to-bottom" href="gallery.jsp">美文推荐</a></li>
 					<li><a class="hvr-sweep-to-bottom" href="login.jsp">登录</a></li>
 				 </ul>
 					<!-- script-for-menu -->
@@ -96,39 +96,57 @@
 		   </div>
 	 </div>
 </div>
-<!--top nav end here-->
-<!--banner start here-->
-<div class="banner-two">
-</div>
-<!--banner end here-->
-<!--start-about-->
+
 <div class="about">
 	<div class="container">
 		<div class="about-main">
 			<div class="col-md-4 about-left">
-				<h3>About us</h3>
-				<a href="single.html"><img src="images/ab.jpg" alt=""></a>
+				<img style = "width:300px;height:310px;" src="imgs/indexbottom1.jpg">
 			</div>
-			<div class="col-md-4 about-left">
-				<h3>Why choose us</h3>
-				<h4>scrambled it to make a type specimen</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
-				<h4>scrambled it to make a type specimen</h4>
-				<p>Since the 1500s, when an unknown printer a galley of type and scrambled specimen book.</p>
-			    <h4>scrambled it to make a type specimen</h4>
-			    <p> It has survivednot only five centuries, but also the leap into electronic typesetting.</p>
+			<div class="col-md-4 about-left" style = "padding: 0px 0px 0px 10px;">
+				<h2>孕期阶段</h2>
+					<table style = " text-align:center;">
+						<tr height = "35px;">
+							<td width = "60px;">1周</td>
+							<td width = "60px;">2周</td>
+							<td width = "60px;">3周</td>
+							<td width = "60px;">4周</td>
+							<td width = "60px;">5周</td>
+						</tr>
+						<tr height = "35px;">
+							<td>6周</td><td>7周</td><td>8周</td><td>9周</td><td>10周</td>
+						</tr>
+						<tr height = "35px;">
+							<td>11周</td><td>12周</td><td>13周</td><td>14周</td><td>15周</td>
+						</tr>
+						<tr height = "35px;">
+							<td>16周</td><td>17周</td><td>18周</td><td>19周</td><td>20周</td>
+						</tr>
+						<tr height = "35px;">
+							<td>21周</td><td>22周</td><td>23周</td><td>24周</td><td>25周</td>
+						</tr>
+						<tr height = "35px;">
+							<td>26周</td><td>27周</td><td>28周</td><td>29周</td><td>30周</td>
+						</tr>
+						<tr height = "35px;">
+							<td>31周</td><td>32周</td><td>33周</td><td>34周</td><td>35周</td>
+						</tr>
+						<tr height = "35px;">
+							<td>36周</td><td>37周</td><td>38周</td><td>39周</td><td>40周</td>
+						</tr>
+					</table>
 			</div>
-			<div class="col-md-4 about-left">
-				<h3>Job opportunities</h3>
-				<h4>Typi non habent claritatem</h4>
-				<p>On the other hand, we denounce with righteous indignation and dislike men.</p>
+			<div class="col-md-4 about-left" style = "padding: 0px 0px 0px 10px;">
+				<h2 style = "color:#363636">孕期必备知识</h2>
+				<p>欢迎进入孕期阶段！这是一段令人难以置信的美妙旅程，一个健康活泼的宝宝，需要你我共同努力。</p>
 				<ul>
-					<li><a href="#">Sed ut perspiciatis unde omnis iste </a></li>
-					<li><a href="#">veritatis quasi architecto beatae vitae</a></li>
-					<li><a href="#">Nemo enim ipsam voluptatem quia voluptas</a></li>
-					<li><a href="#">Neque porro quisquam est, qui dolorem</a></li>
-					<li><a href="#">Ut enim ad minima veniam, quis nostrum</a></li>
-					<li><a href="#">Duis aute irure dolor reprehenderit velit</a></li>
+					<li style = "width:200px;"><a href="#">孕期营养|孕期营养的重要性 </a></li>
+					<li><a href="#">孕期营养|孕期各阶段营养饮食攻略</a></li>
+					<li><a href="#">孕期健康|孕期家居环境</a></li>
+					<li><a href="#">孕期健康|孕期不宜吃的一些食物</a></li>
+					<li><a href="#">孕期知识|你需要了解的激素变化</a></li>
+					<li><a href="#">孕期知识|孕期宝宝都在做什么</a></li>
+					
 				</ul>
 			</div>
 		  <div class="clearfix"> </div>
@@ -138,9 +156,9 @@
 <div class="histort">
 	<div class="container">
 		<div class="history-main">
-			<h3>Our History</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione</p>
-		    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto</p>
+			这里写一个标签
+			
+			
 		</div>
 	</div>
 </div>
@@ -168,35 +186,20 @@
 
 <!--footer start here-->
 <div class="footer">
-	<div class="container">
-		<div class="footer-main">
-			  <div class="col-md-4 ftr-grd">
-			  	 <h3>Get in Touch</h3>
-			  	 <p>8901 ibero  Road</p>
-			  	 <p>Nam libero tempore</p>
-			  	 <p>Phone: +148 5746 415</p>
-			  </div>
-			  <div class="col-md-4 ftr-grd">
-			  	 <h3>Follow Us</h3>
-			  	 <ul>
-			  	 	<li><a href="#"><span class="fa"> </span></a></li>
-			  	 	<li><a href="#"><span class="tw"> </span></a></li>
-			  	 	<li><a href="#"><span class="g"> </span></a></li>
-			  	 	<li><a href="#"><span class="in"> </span></a></li>
-			  	 </ul>
-			  </div>
-			  <div class="col-md-4 ftr-grd">
-			  	 <h3>Join Our Newsletter</h3>
-			  	 <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus </p>
-			  	 <label class="hvr-wobble-bottom"> <input type="submit" value="Send"></label>
-			  </div>
-			<div class="clearfix"> </div>
-			<div class="copy-right">
-			   <p>Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-		   </div>
-		</div>
-	</div>
-</div>
+				<div class="container" style = "text-align:center;">
+							<div style = "font-size:18px;padding:0px 0px 0px 150px;">友情链接:
+								<a href="http://baby.39.net/">39育儿网|</a>
+								<a href="http://www.baby-trees.cn/">宝宝树亲子网|</a>
+								<a href="http://www.ci123.com/">育儿网|</a>
+								<a href="http://yuer.ibabyzone.cn/">宝宝地带|</a>
+								<a href="http://www.yaolan.com/">摇篮网|</a>
+								<a href="https://www.mmbang.com/">妈妈帮|</a>
+								<a href="http://www.lamabang.com/yunqi">辣妈帮</a>
+							</div>
+							<div style = "color:#FFFFFF;">@CopyRight Lxf 郑州轻工业大学2015届毕业设计</div>
+						<div class="clearfix"></div>
+				</div>
+			</div>
 <!--//footer--> 
 </body>
 </html>

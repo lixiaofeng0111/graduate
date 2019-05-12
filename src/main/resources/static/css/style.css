@@ -5,7 +5,6 @@ p {margin: 0;}
 html, body{
  font-family: 'Oxygen-Regular';
    font-size: 100%;
-   background:url(../images/geometry2.png); 
 }
 @font-face {
     font-family: 'Viga-Regular';
@@ -18,6 +17,9 @@ html, body{
 a {
   text-decoration: none;
 }
+.pregnantweek{
+	padding:10px 30px 20px;
+}
 a:hover {
   transition: 0.5s all;
   -webkit-transition: 0.5s all;
@@ -28,6 +30,7 @@ a:hover {
 .head-left {
   float: right;
   width: 31%;
+  background-color:#DDECFB
 }
 .header-right {
   float: right;
@@ -600,7 +603,7 @@ span.glyphicon.glyphicon-circle-arrow-right:hover {
 /*--//wedo--*/
 /*--agro strip start here--*/
 .agro-strip {
-  background: url(../images/strip.jpg)no-repeat;
+  background: url(../images/middle.jpg)no-repeat;
   background-size: cover;
   min-height: 300px;
   margin-top:1em;
@@ -640,7 +643,7 @@ span.glyphicon.glyphicon-circle-arrow-right:hover {
 /*--agro strip end here--*/
 /*--latest news start here--*/
 .latest-new {
-  padding: 3em 0em 3em 0em;
+  padding: 1em 0em 3em 0em;
 }
 .latest-grid p {
   background: #f4d638;
@@ -654,7 +657,7 @@ span.glyphicon.glyphicon-circle-arrow-right:hover {
 /*--//latest-news--*/
 /*--footer start here--*/
 .footer {
-  padding: 3em 0em ;
+  padding: 1em 0em ;
   background:#202020;
 }
 .ftr-grd h3 {
@@ -742,7 +745,7 @@ span.glyphicon.glyphicon-circle-arrow-right:hover {
 /*--//footer--*/
 /*--about start here--*/
 .about {
-	padding:4em 0em 3em 0em;
+	padding:1em 0em 0em 0em;
 	background: url(../images/banner.jpg);
 }
 .about-left img {
@@ -793,6 +796,7 @@ span.glyphicon.glyphicon-circle-arrow-right:hover {
 	color: #000;
 	background: url(../images/dot.png)no-repeat;
 	padding: 0px 0px 0px 20px;
+	width:700px;
 }
 .about-left ul li a:hover{
 	text-decoration:none;
@@ -808,7 +812,7 @@ span.glyphicon.glyphicon-circle-arrow-right:hover {
 .histort h3 {
   font-size: 2.5em;
   font-weight: 400;
-  color: #f4d638;
+  color: #363636;
   margin: 0px 0px 15px 0px;
   font-family:'Viga-Regular';
 }
@@ -923,7 +927,7 @@ i.glyphicon.glyphicon-comment {
 /*--single--*/
 /*--services start here--*/
 .services {
-  padding: 4em 0em 2em 0em;
+  padding: 0em 0em 2em 0em;
 }
 .services-top {
   text-align: center;
@@ -1366,7 +1370,7 @@ span.glyphicon.glyphicon-grain {
   margin: 0em 0em 2em 0em;
 }
 .latest-new {
-  padding: 3em 0em 1em 0em;
+  padding: 1em 0em 1em 0em;
 }
 .ftr-grd {
   float: left;
@@ -1719,7 +1723,7 @@ span.glyphicon.glyphicon-grain {
   font-size: 0.85em;
 }
 .latest-new {
-  padding: 2em 0em 0em 0em;
+  padding: 1em 0em 0em 0em;
 }
 .banner-two {
   min-height: 110px;
@@ -1972,7 +1976,7 @@ span.glyphicon.glyphicon-eye-open {
   font-size: 0.8em;
 }
 .latest-new {
-  padding: 1.5em 0em 0.5em 0em;
+  padding: 1em 0em 0.5em 0em;
 }
 .ftr-grd {
   padding: 0px;

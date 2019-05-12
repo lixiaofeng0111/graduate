@@ -9,13 +9,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.graduate.bean.Fruit;
+import edu.graduate.bean.FruitExample;
 import edu.graduate.bean.extend.FruitVM;
+import edu.graduate.dao.FruitMapper;
 import edu.graduate.dao.extend.FruitVMMapper;
 import edu.graduate.service.IFruitService;
 @Service
 public class FruitServiceImpl implements IFruitService{
 	@Autowired
 	private FruitVMMapper fruitVMMapper;
+	
+	@Autowired
+	private FruitMapper FruitMapper;
 
 	@Override
 	public List<FruitVM> selectAllFruitVM() throws Exception {
@@ -46,6 +52,13 @@ public class FruitServiceImpl implements IFruitService{
 		for(Long id : ids) {
 			fruitVMMapper.deleteFruitVMById(id);
 		}
+	}
+
+	@Override
+	public List<Fruit> findAllFruit() throws Exception {
+		FruitExample example = new FruitExample();
+		// TODO Auto-generated method stub
+		return FruitMapper.selectByExample(example);
 	}
 
 

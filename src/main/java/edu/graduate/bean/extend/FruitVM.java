@@ -8,9 +8,10 @@ import edu.graduate.bean.Nutrition;
 public class FruitVM {
 	private Long id;
 	private String name;
+	private String brief;
+
 	private String picture;
 	private String description;
-	private Long pregnantInfo_id;
 	
 	private List<Nutrition> nutritions;
 
@@ -53,16 +54,19 @@ public class FruitVM {
 	public void setNutritions(List<Nutrition> nutritions) {
 		this.nutritions = nutritions;
 	}
-
-	public Long getPregnantInfo_id() {
-		return pregnantInfo_id;
+	public String getBrief() {
+		return brief;
+	}
+	
+	public void setBrief(String brief) {
+		this.brief = brief;
 	}
 
-	public void setPregnantInfo_id(Long pregnantInfo_id) {
-		this.pregnantInfo_id = pregnantInfo_id;
+	@Override
+	public String toString() {
+		return "FruitVM [id=" + id + ", name=" + name + ", brief=" + brief + ", picture=" + picture + ", description="
+				+ description + ", nutritions=" + nutritions + "]";
 	}
 
-	
-	
 
 }

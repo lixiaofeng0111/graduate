@@ -20,9 +20,11 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import edu.graduate.bean.ImgIndex;
+import edu.graduate.bean.ImgIndexButtom;
 import edu.graduate.bean.LoginRegister;
 import edu.graduate.bean.Professor;
 import edu.graduate.bean.Topic;
+import edu.graduate.service.IImgIndexButtomService;
 import edu.graduate.service.IImgIndexService;
 import edu.graduate.service.ILoginService;
 import edu.graduate.service.IProfessorService;
@@ -35,6 +37,8 @@ public class LoginController {
 	private ILoginService loginService;
 	@Autowired
 	private IImgIndexService iImgIndexService;
+	@Autowired
+	private IImgIndexButtomService iImgIndexButtomService;
 	@Autowired
 	private ITopicService iTopicService;
 	@Autowired
@@ -73,7 +77,7 @@ public class LoginController {
 	
 	@GetMapping("/pageIndex")
 	public ModelAndView pageindex(Map<String, Object> map) {
-		List<ImgIndex> findAllIngIndex = iImgIndexService.findAllIngIndex();
+		List<ImgIndex> findAllImgIndex = iImgIndexService.findAllIngIndex();
 		
 		SimpleDateFormat sdf =   new SimpleDateFormat( "yyyyMMdd" );
 		String str = sdf.format(new Date());
@@ -91,7 +95,14 @@ public class LoginController {
 		PageInfo<Professor> pageInfoProfessor = new PageInfo<>(findAllProcesse);
 		List<Professor> pageListProfessor = pageInfoProfessor.getList();
 		
- 		map.put("imgPath", findAllIngIndex);
+		
+		PageHelper.startPage(1, 8);
+		List<ImgIndexButtom> findAllImgIndexButtom = iImgIndexButtomService.findAllImgIndexButtom();
+		PageInfo<ImgIndexButtom> pageInfoIndexButtom = new PageInfo<>(findAllImgIndexButtom);
+		List<ImgIndexButtom> pageListIndexButtom = pageInfoIndexButtom.getList();
+		
+ 		map.put("imgPath", findAllImgIndex);
+ 		map.put("imgPathButtom", pageListIndexButtom);
  		map.put("notoday",pageListTopic);
  		map.put("topictoday",findAllTopic);
  		map.put("professors",pageListProfessor);
