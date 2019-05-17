@@ -47,7 +47,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
-
 a:hover {
 	color: red;
 }
@@ -94,19 +93,19 @@ button {
 	background: transparent;
 	transition: .3s linear;
 	position: absolute;
-	top: 25px;
+	top: 5px;
 	right: 0;
 	z-index: 2;
 }
 
 .bar8 input:focus {
-	width: 300px;
+	width: 200px;
 	z-index: 1;
 	border-bottom: 2px solid #F9F0DA;
 }
 
 .bar8 button {
-	top: 20px;
+	top: 5px;
 	right: 0;
 }
 
@@ -123,8 +122,10 @@ button {
 	
 	
 	
+	
 
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
+
 
 
 
@@ -148,7 +149,7 @@ button {
 		});
 	});
 </script>
-<!-- //end-smoth-scrolling -->
+
 <script src="js/menu_jquery.js"></script>
 
 <!---pop-up-box---->
@@ -199,7 +200,6 @@ button {
 						<!---->
 						<div class="clearfix"></div>
 					</div>
-
 					<div class="clearfix"></div>
 				</div>
 			</div>
@@ -212,11 +212,12 @@ button {
 					<span class="menu"> <img src="images/icon.png" alt="" /></span>
 					<ul class="res"
 						style="font-family: 'Viga', sans-serif; color: #956295">
-						<li><a href="/pageIndex" class="active hvr-sweep-to-bottom">主页</a></li>
-						<li><a class="hvr-sweep-to-bottom" href="about.jsp">孕期阶段分析</a></li>
-						<li><a class="hvr-sweep-to-bottom" href="services.jsp">水果分析</a></li>
-						<li><a class="hvr-sweep-to-bottom" href="typo.jsp">孕期水果及营养推荐</a></li>
-						<li><a class="hvr-sweep-to-bottom" href="login.jsp">登录</a></li>
+						<li><a href="/pageIndex" class="active "
+							style="background-color: #956295; color: #fff;">主页</a></li>
+						<li><a href="about.jsp">孕期阶段分析</a></li>
+						<li><a href="/fruit">水果分析</a></li>
+						<li><a href="typo.jsp">孕期水果及营养推荐</a></li>
+						<li><a href="login.jsp">登录</a></li>
 					</ul>
 					<!-- script-for-menu -->
 					<script>
@@ -359,8 +360,6 @@ button {
 				</div>
 			</div>
 		</div>
-		<!--we do end here-->
-		<!--agrom strip start here-->
 		<div class="agro-strip">
 			<div class="container">
 				<div class="agro-strip-main">
@@ -375,84 +374,18 @@ button {
 		</div>
 		<div>
 
-
-			<div style = "font-size:30px;color: #956295;padding:10px;">孕期周刊 </div>
-			<div class="pregnantweek">
-				<div style = "font-size:20px;">孕早期</div>
-			<ul><table>
-				<tr>
-			    	<td width = "100px;" height = "50px;"><a href="#">第一周</a></td>
-			    	<td width = "100px;"><a href="#">第二周</a></td>
-			    	<td width = "100px;"><a href="#">第三周</a></td>
-			    	<td width = "100px;"><a href="#">第四周</a></td>
-			    	<td width = "100px;"><a href="#">第五周</a></td>
-			    	<td width = "100px;"><a href="#">第六周</a></td>
-			    	<td width = "100px;"><a href="#">第七周</a></td>
-			    	<td width = "100px;"><a href="#">第八周</a></td>
-			    	<td width = "100px;"><a href="#">第九周</a></td>
-			    	<td width = "100px;"><a href="#">第十周</a></td>
-			    	<td width = "100px;"><a href="#">第十一周</a></td>
-			    	<td width = "100px;"><a href="#">第十二周</a></td>
-				</tr>
-				</table>
-			</ul>
-			<div style = "font-size:20px;">孕中期</div>
-			<ul><table>
-				<tr>
-			    	<td width = "100px;" height = "50px;"><a href="#">第十一周</a></td>
-			    	<td width = "100px;"><a href="#">第十二周</a></td>
-			    	<td width = "100px;"><a href="#">第十三周</a></td>
-			    	<td width = "100px;"><a href="#">第十四周</a></td>
-			    	<td width = "100px;"><a href="#">第十五周</a></td>
-			    	<td width = "100px;"><a href="#">第十六周</a></td>
-			    	<td width = "100px;"><a href="#">第十七周</a></td>
-			    	<td width = "100px;"><a href="#">第十八周</a></td>
-			    	<td width = "100px;"><a href="#">第十九周</a></td>
-			    	<td width = "100px;"><a href="#">第二十周</a></td>
-			    	<td width = "100px;"><a href="#">第二十一周</a></td>
-			    	<td width = "100px;"><a href="#">第二十二周</a></td>
-			    </tr>
-			    <tr>
-			    	<td width = "100px;" height = "50px;"><a href="#">第二十三周</a></td>
-			    	<td width = "100px;"><a href="#">第二十四周</a></td>
-			    	<td width = "100px;"><a href="#">第二十五周</a></td>
-			    	<td width = "100px;"><a href="#">第二十六周</a></td>
-			    	<td width = "100px;"><a href="#">第二十七周</a></td>
-			    	<td width = "100px;"><a href="#">第二十八周</a></td>
-				</tr>
-				</table>
-			</ul>
-			<div style = "font-size:20px;">孕晚期</div>
-			<ul><table>
-				<tr>
-			    	<td width = "100px;" height = "50px;"><a href="#">第二十九周</a></td>
-			    	<td width = "100px;"><a href="#">第三十周</a></td>
-			    	<td width = "100px;"><a href="#">第三十一周</a></td>
-			    	<td width = "100px;"><a href="#">第三十二周</a></td>
-			    	<td width = "100px;"><a href="#">第三十三周</a></td>
-			    	<td width = "100px;"><a href="#">第三十四周</a></td>
-			    	<td width = "100px;"><a href="#">第三十五周</a></td>
-			    	<td width = "100px;"><a href="#">第三十六周</a></td>
-			    	<td width = "100px;"><a href="#">第三十七周</a></td>
-			    	<td width = "100px;"><a href="#">第三十八周</a></td>
-			    	<td width = "100px;"><a href="#">第三十九周</a></td>
-			    	<td width = "100px;"><a href="#">第四十周</a></td>
-				</tr>
-				</table>
-			</ul>
-			</div>
-
-<div style = "font-size:30px;color: #956295;padding:10px;">水果相关信息</div>
+			<div style="font-size: 30px; color: #956295; padding: 10px;">水果相关信息</div>
 			<div class="latest-new">
 				<div class="container">
 					<div class="latest-news-main">
 
 						<c:forEach items="${imgPathButtom}" var="imagepathbuttom">
 							<div class="col-md-3 latest-grid"
-								style="width: 400px; height: 240px;">
+								style="width: 280px; height: 240px;">
 								<img src="${imagepathbuttom.imgpath}" alt=""
 									class="img-responsive">
-								<p>${imagepathbuttom.content}<a href = "services.jsp">|更多</a></p>
+								<p>${imagepathbuttom.content}<a href="services.jsp">|更多</a>
+								</p>
 							</div>
 						</c:forEach>
 
@@ -463,17 +396,18 @@ button {
 			<!--latest news end here-->
 			<!--footer start here-->
 			<div class="footer">
-				<div class="container" style = "text-align:center;">
-							<div style = "color:#FFFFFF;font-size:18px;padding:0px 0px 0px 30px;">友情链接:
-								<a href="http://baby.39.net/">39育儿网|</a>
-								<a href="http://www.baby-trees.cn/">宝宝树亲子网|</a>
-								<a href="http://www.ci123.com/">育儿网|</a>
-								<a href="http://yuer.ibabyzone.cn/">宝宝地带|</a>
-								<a href="http://www.yaolan.com/">摇篮网|</a>
-								<a href="https://www.mmbang.com/">妈妈帮</a>
-							</div>
-							<div style = "color:#FFFFFF;">@CopyRight Lxf 郑州轻工业大学2015届毕业设计</div>
-						<div class="clearfix"></div>
+				<div class="container" style="text-align: center;">
+					<div
+						style="color: #FFFFFF; font-size: 18px; padding: 0px 0px 0px 30px;">
+						友情链接: <a href="http://baby.39.net/">39育儿网|</a> <a
+							href="http://www.baby-trees.cn/">宝宝树亲子网|</a> <a
+							href="http://www.ci123.com/">育儿网|</a> <a
+							href="http://yuer.ibabyzone.cn/">宝宝地带|</a> <a
+							href="http://www.yaolan.com/">摇篮网|</a> <a
+							href="https://www.mmbang.com/">妈妈帮</a>
+					</div>
+					<div style="color: #FFFFFF;">@CopyRight Lxf 郑州轻工业大学2015届毕业设计</div>
+					<div class="clearfix"></div>
 				</div>
 			</div>
 			<!--//footer-->

@@ -33,13 +33,20 @@ public class FruitController {
 			List<Fruit> findAllFruits = fruitService.findAllFruit();
 			PageInfo<Fruit> pageInfoFruit = new PageInfo<>(findAllFruits);
 			List<Fruit> pageListFruit = pageInfoFruit.getList();
-	
-			List<FruitVM> findAllFruitVM = fruitService.selectAllFruitVM();
-
-			map.put("fruitVMInfo", findAllFruitVM);
+			
+			map.put("currentPage",page);
+			map.put("totalPage", pageInfoFruit.getPages());   //获取总页面
 			map.put("fruit", pageListFruit);
 			return new ModelAndView("services",map);
 	}
+	
+	@GetMapping("/fruitVM")
+	public ModelAndView pageFruitVM(Map<String, Object> map) throws Exception {
+		List<FruitVM> findAllFruitVM = fruitService.selectAllFruitVM();
+		map.put("fruitVMInfo", findAllFruitVM);
+		return new ModelAndView("pagefruit",map);
+	}
+	
 
 	@PostMapping("selectAllFruitVM")
 	public MsgResponse selectAllFruitVM() {

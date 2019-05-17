@@ -12,6 +12,9 @@ public class FruitVM {
 
 	private String picture;
 	private String description;
+	private String pregnantEat;
+	private String momEat;
+	private String babyEat;
 	
 	private List<Nutrition> nutritions;
 
@@ -62,11 +65,38 @@ public class FruitVM {
 		this.brief = brief;
 	}
 
+	public String getPregnantEat() {
+		return pregnantEat;
+	}
+
+	public void setPregnantEat(String pregnantEat) {
+		this.pregnantEat = pregnantEat;
+	}
+
+	public String getMomEat() {
+		return momEat;
+	}
+
+	public void setMomEat(String momEat) {
+		this.momEat = momEat;
+	}
+
+	public String getBabyEat() {
+		return babyEat;
+	}
+
+	public void setBabyEat(String babyEat) {
+		this.babyEat = babyEat;
+	}
+
 	@Override
 	public String toString() {
 		return "FruitVM [id=" + id + ", name=" + name + ", brief=" + brief + ", picture=" + picture + ", description="
-				+ description + ", nutritions=" + nutritions + "]";
+				+ description + ", pregnantEat=" + pregnantEat + ", momEat=" + momEat + ", babyEat=" + babyEat
+				+ ", nutritions=" + nutritions + "]";
 	}
+
+	
 
 
 }

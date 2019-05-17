@@ -95,7 +95,7 @@ span.menu {
   text-decoration: none;
 }
 .header-main {
-  padding: 1em 0em 1em 0em;
+  padding: 0em 0em 0em 0em;
   border-bottom: 1px solid #ccc;
 }
 /*----*/
@@ -108,7 +108,6 @@ span.menu {
 }
 #loginContainer a span{
 	display: block;
-  color: #fff;
   background: #f4d638;
   border-radius: 10px;
   -webkit-border-radius: 4px;
@@ -211,7 +210,7 @@ fieldset#body {
 	width: auto;
 	float: left;
 	background: #351136;
-	color: #fff;
+
 	font-size: 0.8725em;
 	padding: 8px 20px;
 	border-radius: 4px;
@@ -256,7 +255,7 @@ input:focus {
 	text-align: center;
 }
 .top-nav-left ul li a{
-	color:#fff;
+
 }
 .top-nav-left ul li a:hover{
 	color:#000;
@@ -297,7 +296,7 @@ input:focus {
   color: #000;
 }
 .top-navg ul.res li a:hover {
-	color:#fff;
+	color:#956295;
 	text-decoration:none;
 }
 /* Sweep To Bottom */
@@ -348,7 +347,7 @@ input:focus {
 .banner {
   background-size: cover;
   min-height: 500px;
-  padding: 2em 0em 0em 0em;
+  padding: 0em 0em 0em 0em;
 }
 .banner-two {
   background-size: cover;
@@ -806,8 +805,9 @@ span.glyphicon.glyphicon-circle-arrow-right:hover {
 	width: 100%;
 }
 .histort {
-  padding: 2em 0em 4em 0em;
+  padding: 1em 0em 4em 0em;
   text-align:center;
+  padding: 30px 0px 0px 92px;
 }
 .histort h3 {
   font-size: 2.5em;
@@ -1188,7 +1188,7 @@ h3.typo1 {
 @media(max-width:1366px){
 .banner {
   min-height: 0px;
-  padding: 2em 0em 0em 0em;
+  padding: 0em 0em 0em 0em;
 }
 }
 @media(max-width:1280px){

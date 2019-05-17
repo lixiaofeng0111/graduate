@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -8,20 +10,21 @@
 <script src="js/jquery.transit.min.js"></script>
 <script src="js/es6-shim.min.js"></script>
 <script src="js/easyhelper.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/easyhelper.min.css">
+
 <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 <script
 	src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.0.min.js"></script>
-<!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
+	
 	
 	
 	
@@ -101,18 +104,17 @@
 	<div class="avatar-holder">
 		<div class="avatar-container">
 
-			<div class="top-navg-main">
+			<div class="top-navg-main" style = "background-color:#956295">
 				<div class="container">
 					<div class="top-navg">
 						<span class="menu"> <img src="images/icon.png" alt="" /></span>
 						<ul class="res">
-							<li style="font-size: 20px;"><a href="/pageIndex"
-								class="active hvr-sweep-to-bottom">主页</a></li>
-							<li><a class="hvr-sweep-to-bottom" href="about.jsp">孕期阶段分析</a></li>
-							<li><a class="hvr-sweep-to-bottom" href="services.jsp">水果分析</a></li>
-							<li><a class="hvr-sweep-to-bottom" href="typo.jsp">水果及营养分析</a></li>
-							<li><a class="hvr-sweep-to-bottom" href="gallery.jsp">美文推荐</a></li>
-							<li><a class="hvr-sweep-to-bottom" href="login.jsp">登录</a></li>
+							<li style = "height:60px;">
+							<a href="/pageIndex" style = "color:#fff;">主页</a></li>
+							<li><a  href="about.jsp" style = "color:#fff;">孕期阶段分析</a></li>
+							<li><a  href="/fruit" style = "background-color:#fff;border-radius:100px;" >水果分析</a></li>
+							<li><a  href="typo.jsp" style = "color:#fff;">孕期水果及营养推荐</a></li>
+							<li><a  href="login.jsp" style = "color:#fff;">登录</a></li>
 						</ul>
 
 					</div>
@@ -141,25 +143,56 @@
 			</div>
 		</div>
 
-		<div class="content">
-			<div class="container">
-				<div class="row clearfix">
-
-					<c:forEach items="${fruit}" var="fruits">
-					<div>111111111</div>
-						<div class="col-md-4 column">${fruits.picture}</div>
-						<div>${fruits.name}</div>
-						<div>${fruits.brief}</div>
-					</c:forEach>
-
-
-
-
-				</div>
+		<div class="container">
+			<div class="row clearfix">
+				<c:forEach items="${fruit}" var="fruits">
+					<div class="col-md-4 column">
+						<a href=pagefruit.jsp> <img height="200px" width="260px"
+							src=${fruits.picture }></a>
+						<h3>${fruits.name}</h3>
+						<p>${fruits.brief}
+							<a href="pagefruit.jsp">详情>></a>
+						</p>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
-		<div class="page" id="page-1"></div>
 
+
+
+
+		<div style="text-align:center;">
+			<ul class="pagination">
+  		<c:choose>
+				<c:when test = "${currentPage<=1}">
+					<li class="disabled"><a>上一页</a></li> 
+				</c:when>
+				
+				<c:otherwise>
+					<li><a href="/fruit?page = ${currentPage - 1} ">上一页</a></li> 
+				</c:otherwise>
+		</c:choose>
+				<c:forEach begin = "1" end = "${totalPage}" var = "index">
+					<c:choose>
+						<c:when test = "${currentPage==index}">
+							<li class="disabled"><a>${index}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="/fruit?page=${index}">${index}</a></li>
+						</c:otherwise> 
+					</c:choose>
+				</c:forEach >
+		<c:choose>
+				<c:when  test = "${currentPage>=totalPage}">
+					<li class="disabled"><a>下一页</a></li> 
+				</c:when>
+				
+				<c:otherwise>
+					<li><a href="/fruit?page = ${currentPage + 1} ">下一页</a></li> 
+				</c:otherwise>
+		</c:choose>
+			</ul>
+		</div>
 
 
 		<div class="footer">
@@ -178,31 +211,6 @@
 			</div>
 		</div>
 	</div>
-	<!--//footer-->
-	<!-- script-for-menu -->
-	<script>
-		$("span.menu").click(function() {
-			$("ul.res").slideToggle(300, function() {
-				// Animation complete.
-			});
-		});
-	</script>
-	<script>
-		// 本地模拟的内容生成函数
-		var $content = $(".content");
-		function createContent(i, index) {
-			$content.eq(index).empty().html(('<li>' + i + '</li>').repeat(8));
-		}
 
-		// 调用分页功能 [ 基础版 ]
-		Helper.ui.page("#page-1", {
-			total : 65,
-			pageSize : 9,
-			change : function(i) {
-				createContent(i, 0);
-			}
-		});
-	</script>
-	<!-- /script-for-menu -->
 </body>
 </html>
