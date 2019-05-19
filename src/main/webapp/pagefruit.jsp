@@ -29,7 +29,9 @@
 	
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
+
 
 
 
@@ -104,17 +106,18 @@
 	<div class="avatar-holder">
 		<div class="avatar-container">
 
-			<div class="top-navg-main" style = "background-color:#956295">
+			<div class="top-navg-main" style="background-color: #956295">
 				<div class="container">
 					<div class="top-navg">
 						<span class="menu"> <img src="images/icon.png" alt="" /></span>
 						<ul class="res">
-							<li style = "height:60px;">
-							<a href="/pageIndex" style = "color:#fff;">主页</a></li>
-							<li><a  href="about.jsp" style = "color:#fff;">孕期阶段分析</a></li>
-							<li><a  href="/fruit" style = "background-color:#fff;border-radius:100px;" >水果分析</a></li>
-							<li><a  href="typo.jsp" style = "color:#fff;">孕期水果及营养推荐</a></li>
-							<li><a  href="login.jsp" style = "color:#fff;">登录</a></li>
+							<li style="height: 60px;"><a href="/pageIndex"
+								style="color: #fff;">主页</a></li>
+							<li><a href="about.jsp" style="color: #fff;">孕期阶段分析</a></li>
+							<li><a href="/fruit"
+								style="background-color: #fff; border-radius: 100px;">水果分析</a></li>
+							<li><a href="typo.jsp" style="color: #fff;">孕期水果及营养推荐</a></li>
+							<li><a href="login.jsp" style="color: #fff;">登录</a></li>
 						</ul>
 
 					</div>
@@ -142,23 +145,125 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		<div class="container" style = "padding:0px 0px 0px 110px;">
-			<div style = "width:1000px;padding:20px 0px 0px 50px;border:1px solid #C5C1AA">
-		<h3>雪莲果</h3>
-		<img width = "250px" height = "200px" src = "images/fruit/1/3306.jpg">
-		<div>jsdsnvjjd</div>
-		
+
+
+		<div class="container" style="padding: 0px 0px 0px 110px;">
+			<div style="width: 1000px; padding: 20px 0px 0px 50px; border: 1px solid #C5C1AA">
+				<div>
+				<!-- 下面是图片和文字的内容 -->
+				
+				
+					<div style = "padding:0px 0px 0px 50px;"><h3>${fruitVMInfo.name }</h3></div>
+					<hr>
+					<div style = "float:left;"><img width="200px" height="150px" src="${fruitVMInfo.picture }"></div>
+					<div style = "height:150px;padding:0px 0px 0px 220px;">
+						<table text-align = "center"  width="730px">
+						<tr>
+						<c:choose>
+							<c:when test="${fruitVMInfo.pregnantEat=='Y'}">
+								<td><img src = "imgs/ico2.png">孕妇能吃</td>
+							</c:when>
+							<c:otherwise>
+								<td><img src = "imgs/ico1.png">孕妇慎吃</td>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${fruitVMInfo.momEat=='Y'}">
+								<td><img src = "imgs/ico2.png">产妇能吃</td>
+							</c:when>
+							<c:otherwise>
+								<td><img src = "imgs/ico1.png">产妇慎吃</td>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${fruitVMInfo.babyEat=='Y'}">
+								<td><img src = "imgs/ico2.png">婴儿能吃</td>
+							</c:when>
+							<c:otherwise>
+								<td><img src = "imgs/ico1.png">婴儿慎吃</td>
+							</c:otherwise>
+						</c:choose>
+							
+						</tr>
+						<tr>
+							<td colspan = "3">
+							<p>${fruitVMInfo.description }</p>
+							</td>
+						</tr>
+						</table>
+					</div>
+					<hr>
+					<!-- 下面是孕妇产妇能吃不能吃的原因 -->
+						<div>
+						 	<div>
+							 	<c:choose>
+								<c:when test="${fruitVMInfo.pregnantEat=='Y'}">
+									<img src = "imgs/ico2.png">孕妇能吃原因
+								</c:when>
+								<c:otherwise>
+									<img src = "imgs/ico1.png">孕妇慎吃原因
+								</c:otherwise>
+								</c:choose>
+								
+							<p>${fruitVMInfo.reason.pregnanteat}</p>
+						 	</div>
+						</div>
+						<hr>
+						<div>
+						 		<c:choose>
+								<c:when test="${fruitVMInfo.momEat=='Y'}">
+									<img src = "imgs/ico2.png">产妇能吃原因
+								</c:when>
+								<c:otherwise>
+									<img src = "imgs/ico1.png">产妇慎吃原因
+								</c:otherwise>
+								</c:choose>
+						 	<p> ${fruitVMInfo.reason.momeat}</p>
+						</div>
+						<hr>
+						<div>
+						 		<c:choose>
+								<c:when test="${fruitVMInfo.babyEat=='Y'}">
+									<img src = "imgs/ico2.png">婴儿能吃原因
+								</c:when>
+								<c:otherwise>
+									<img src = "imgs/ico1.png">婴儿慎吃原因
+								</c:otherwise>
+								</c:choose>
+						 	<p> ${fruitVMInfo.reason.babyeat}</p>
+						</div>
+						<hr>
+					<!-- 下面是营养成分 -->
+					
+	<div class="row clearfix">
+			<table class="table table-bordered" style = "width:950px;">
+			<thead>
+					<tr>
+						<th  width = "100px;">成分</th>
+						<th  width = "400px;">功效</th>						
+					</tr>
+			</thead>
+				<c:forEach items="${fruitVMInfo.nutritions}" var="nutritions">
+					<tr>
+						<td>${nutritions.name}</td>
+						<td>${nutritions.description}</td>
+					</tr>
+				</c:forEach>
+					
+			</table>
+	</div>
+					
+					<!-- 到此结束 -->
+				</div>
 			</div>
 		</div>
 
-		
 
 
 
 
-		
+
+
 
 
 		<div class="footer">

@@ -8,6 +8,8 @@ public interface ITopicService {
 	
 	List<Topic> findAllTopic();
 	
+	Topic selectById(Long id);
+	
 	Topic findTopicByName(Topic topic);
 	
 	List<Topic> findTopicByDate(String topic);

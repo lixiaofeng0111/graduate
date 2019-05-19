@@ -40,9 +40,9 @@ public class FruitController {
 			return new ModelAndView("services",map);
 	}
 	
-	@GetMapping("/fruitVM")
-	public ModelAndView pageFruitVM(Map<String, Object> map) throws Exception {
-		List<FruitVM> findAllFruitVM = fruitService.selectAllFruitVM();
+	@GetMapping("/selectById")
+	public ModelAndView pageFruitVM(Map<String, Object> map,@RequestParam Long id) throws Exception {
+		FruitVM findAllFruitVM = fruitService.selectFruitVMById(id);
 		map.put("fruitVMInfo", findAllFruitVM);
 		return new ModelAndView("pagefruit",map);
 	}

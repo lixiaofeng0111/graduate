@@ -111,7 +111,7 @@
 						<ul class="res">
 							<li style = "height:60px;">
 							<a href="/pageIndex" style = "color:#fff;">主页</a></li>
-							<li><a  href="about.jsp" style = "color:#fff;">孕期阶段分析</a></li>
+							<li><a  href="/pregnant" style = "color:#fff;">孕期阶段分析</a></li>
 							<li><a  href="/fruit" style = "background-color:#fff;border-radius:100px;" >水果分析</a></li>
 							<li><a  href="typo.jsp" style = "color:#fff;">孕期水果及营养推荐</a></li>
 							<li><a  href="login.jsp" style = "color:#fff;">登录</a></li>
@@ -147,11 +147,11 @@
 			<div class="row clearfix">
 				<c:forEach items="${fruit}" var="fruits">
 					<div class="col-md-4 column">
-						<a href=pagefruit.jsp> <img height="200px" width="260px"
+						<a href="/selectById?id=${fruits.id}"> <img height="200px" width="260px"
 							src=${fruits.picture }></a>
 						<h3>${fruits.name}</h3>
 						<p>${fruits.brief}
-							<a href="pagefruit.jsp">详情>></a>
+							<a href="/selectById">详情>></a>
 						</p>
 					</div>
 				</c:forEach>

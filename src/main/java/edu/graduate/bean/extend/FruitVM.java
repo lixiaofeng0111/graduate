@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import edu.graduate.bean.Nutrition;
+import edu.graduate.bean.Reason;
 
 public class FruitVM {
 	private Long id;
@@ -17,6 +18,7 @@ public class FruitVM {
 	private String babyEat;
 	
 	private List<Nutrition> nutritions;
+	private Reason reason;
 
 	public Long getId() {
 		return id;
@@ -88,15 +90,20 @@ public class FruitVM {
 	public void setBabyEat(String babyEat) {
 		this.babyEat = babyEat;
 	}
+	
+
+	public Reason getReason() {
+		return reason;
+	}
+
+	public void setReason(Reason reason) {
+		this.reason = reason;
+	}
 
 	@Override
 	public String toString() {
 		return "FruitVM [id=" + id + ", name=" + name + ", brief=" + brief + ", picture=" + picture + ", description="
 				+ description + ", pregnantEat=" + pregnantEat + ", momEat=" + momEat + ", babyEat=" + babyEat
-				+ ", nutritions=" + nutritions + "]";
+				+ ", nutritions=" + nutritions + ", reason=" + reason + "]";
 	}
-
-	
-
-
 }

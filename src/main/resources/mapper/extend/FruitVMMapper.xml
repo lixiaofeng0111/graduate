@@ -9,7 +9,17 @@
 		<result column="name" property="name" />
 		<result column="picture" property="picture" />
 		<result column="description" property="description" />
+		<result column="brief" property="brief" />
+		<result column="pregnantEat" property="pregnantEat" />
+		<result column="momEat" property="momEat" />
+		<result column="babyEat" property="babyEat" />
 		
+		<association 
+			property="reason" 
+			column="id" 
+			javaType="edu.graduate.bean.Reason"
+			select="edu.graduate.dao.ReasonMapper.selectByPrimaryKey" >
+		</association>
 		<!-- 多对多中的关联属性 -->
 		<collection 
 			property="nutritions" 
@@ -18,6 +28,7 @@
 			select="edu.graduate.dao.extend.NutritionVMMapper.selectNutritionByFruitId" 
 			ofType="edu.graduate.bean.Nutrition">
 		</collection>
+
 	</resultMap>
 	
 	

@@ -36,10 +36,19 @@
     </javaClientGenerator>
 
 	<!-- 8个映射配置 -->
-    <table tableName="graduate_fruit" domainObjectName="Fruit" >
-    	<columnOverride column="brief" javaType="java.lang.String" jdbcType="VARCHAR" />
-    	<columnOverride column="detail" javaType="java.lang.String" jdbcType="VARCHAR" />
-    	<columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR" />
+    <table tableName="graduate_kind" domainObjectName="Kind" >
+   		<!-- <columnOverride column="yqts" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	<columnOverride column="bbfy" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	<columnOverride column="yyts" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	<columnOverride column="bmxz" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	<columnOverride column="mmbh" javaType="java.lang.String" jdbcType="VARCHAR" />  -->
+    </table>
+    <table tableName="graduate_pregnantAnalysis" domainObjectName="PregnantAnalysis" >
+   		<!-- <columnOverride column="yqts" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	<columnOverride column="bbfy" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	<columnOverride column="yyts" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	<columnOverride column="bmxz" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	<columnOverride column="mmbh" javaType="java.lang.String" jdbcType="VARCHAR" />  -->
     </table>
     
   </context>

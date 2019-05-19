@@ -29,6 +29,11 @@ public class TopicServiceImpl implements ITopicService{
 	public List<Topic> findTopicByDate(String topic) {
 		return topicMapper.findTopicByDate(topic);
 	}
+
+	@Override
+	public Topic selectById(Long id) {
+		return topicMapper.selectByPrimaryKey(id);
+	}
 	
 
 }

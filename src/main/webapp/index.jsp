@@ -214,7 +214,7 @@ button {
 						style="font-family: 'Viga', sans-serif; color: #956295">
 						<li><a href="/pageIndex" class="active "
 							style="background-color: #956295; color: #fff;">主页</a></li>
-						<li><a href="about.jsp">孕期阶段分析</a></li>
+						<li><a href="/pregnant">孕期阶段分析</a></li>
 						<li><a href="/fruit">水果分析</a></li>
 						<li><a href="typo.jsp">孕期水果及营养推荐</a></li>
 						<li><a href="login.jsp">登录</a></li>

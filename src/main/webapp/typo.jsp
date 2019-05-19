@@ -55,7 +55,7 @@
 				<ul class="res" style="font-size: 16px;">
 					<li style="height: 60px;"><a href="/pageIndex"
 						style="color: #fff;">主页</a></li>
-					<li><a href="about.jsp" style="color: #fff;"
+					<li><a href="/pregnant" style="color: #fff;"
 						style=>孕期阶段分析</a></li>
 					<li><a href="/fruit" style="color: #fff;">水果分析</a></li>
 					<li><a href="typo.jsp" style="background-color: #fff; border-radius: 100px;">孕期水果及营养推荐</a></li>
