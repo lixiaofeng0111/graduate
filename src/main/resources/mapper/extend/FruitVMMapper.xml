@@ -34,12 +34,19 @@
 	
 	
 	<!-- 根据营养成分Id查询水果信息 -->
-	<select id="selectFruitByNutritionId" parameterType="long" resultType="edu.graduate.bean.Fruit">
+	<select id="selectFruitByNutritionId" parameterType="long" resultMap="fruitVM">
 		select * from graduate_fruit where id in (
 			select fruit_id 
 			from graduate_nutritionfruit
 			where nutrition_id = #{id}	
 		)
+	</select>
+	
+	
+	
+	<!-- 查询所有水果及其包含的营养信息和孕妇能吃不能吃的信息 -->
+	<select id="selectFruitVMByName" parameterType="String" resultMap="fruitVM">
+		select * from graduate_fruit where name like '%${fruitName}%'
 	</select>
 	
 	<!-- 查询所有水果及其包含的营养信息 -->

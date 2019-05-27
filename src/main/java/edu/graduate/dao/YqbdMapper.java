@@ -117,4 +117,6 @@ public interface YqbdMapper {
      * @mbg.generated Sat May 18 22:51:34 CST 2019
      */
     int updateByPrimaryKey(Yqbd record);
+    
+    Yqbd selectByName(String name);
 }

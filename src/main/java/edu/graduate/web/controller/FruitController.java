@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -128,6 +129,15 @@ public class FruitController {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
 		}
+	}
+	
+	@PostMapping("/searchFruitByName")
+	public ModelAndView searchFruitByName(Map<String, Object> map,@RequestParam String fruitName) throws Exception {
+		List<FruitVM> selectFruitVMByName = fruitService.selectFruitVMByName(fruitName);
+		System.out.println(selectFruitVMByName);
+		map.put("searchFruitByName", selectFruitVMByName);
+		return new  ModelAndView("searchFruit",map);
+		
 	}
 
 }

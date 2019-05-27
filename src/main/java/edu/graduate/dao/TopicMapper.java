@@ -121,5 +121,7 @@ public interface TopicMapper {
 
 	List<Topic> findTopicByDate(String topic);
 
-	Topic findTopicByName(Topic topic);
+	Topic findTopicByName(String topicname);
+	
+	List<Topic> findTopicByNameDim(@Param("topString")String topString);
 }

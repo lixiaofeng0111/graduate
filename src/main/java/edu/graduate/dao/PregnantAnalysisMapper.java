@@ -117,4 +117,10 @@ public interface PregnantAnalysisMapper {
      * @mbg.generated Sun May 19 10:30:56 CST 2019
      */
     int updateByPrimaryKey(PregnantAnalysis record);
+    
+    List<PregnantAnalysis> selectPregnantAnalysisByKindId(Long id);
+    
+    PregnantAnalysis selectByName(String name);
+    
+    PregnantAnalysis selectKindBykindId(Long id);
 }

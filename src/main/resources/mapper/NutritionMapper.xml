@@ -102,6 +102,9 @@
     -->
     description
   </sql>
+  <select id = "selectByName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  	select * from graduate_nutrition where name = #{name}
+  </select>
   <select id="selectByExampleWithBLOBs" parameterType="edu.graduate.bean.NutritionExample" resultMap="ResultMapWithBLOBs">
     <!--
       WARNING - @mbg.generated

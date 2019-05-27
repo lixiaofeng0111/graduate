@@ -21,8 +21,8 @@ public class TopicServiceImpl implements ITopicService{
 	}
 
 	@Override
-	public Topic findTopicByName(Topic topic) {
-		return topicMapper.findTopicByName(topic);
+	public Topic findTopicByName(String topicname) {
+		return topicMapper.findTopicByName(topicname);
 	}
 
 	@Override
@@ -33,6 +33,30 @@ public class TopicServiceImpl implements ITopicService{
 	@Override
 	public Topic selectById(Long id) {
 		return topicMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public void update(Topic topic) throws Exception {
+		// TODO Auto-generated method stub
+		topicMapper.updateByPrimaryKey(topic);
+	}
+
+	@Override
+	public void delete(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		topicMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public void savaTopic(Topic topic) throws Exception {
+		// TODO Auto-generated method stub
+		topicMapper.insert(topic);
+	}
+
+	@Override
+	public List<Topic> findTopicByNameDim(String topString) throws Exception {
+		// TODO Auto-generated method stub
+		return topicMapper.findTopicByNameDim(topString);
 	}
 	
 

@@ -13,9 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import edu.graduate.bean.Kind;
+import edu.graduate.bean.MeituShow;
+import edu.graduate.bean.PregnantAnalysis;
 import edu.graduate.bean.PregnantWeek;
 import edu.graduate.bean.Topic;
 import edu.graduate.bean.Yqbd;
+import edu.graduate.service.IKindService;
+import edu.graduate.service.IMeituShowService;
+import edu.graduate.service.IPregnantAnalysisService;
 import edu.graduate.service.IPregnantWeekService;
 import edu.graduate.service.ITopicService;
 import edu.graduate.service.IYqbdService;
@@ -31,16 +37,32 @@ public class YqbdController {
 	@Autowired 
 	private IPregnantWeekService pregnantWeekService ;
 	
+	@Autowired
+	private IKindService kingService;
+	
+	@Autowired 
+	private IPregnantAnalysisService pregnantAnalysisService;
+	
+	@Autowired
+	private IMeituShowService meituShowService;
+	
 	@GetMapping("/pregnant")
 	public ModelAndView pageYqbd(Map<String, Object> map) throws Exception{
 		List<Yqbd> selectYqbd = yqbdService.selectAllYqbd();
 		
+		List<Kind> selectKinds = kingService.selectAllKind();
+		
+		List<PregnantAnalysis> selectPregnantAnalysis = pregnantAnalysisService.selectAllPregnantAnalysis();
+		
+		List<MeituShow> selectMeituShows = meituShowService.selectAllMeituShow();
 		PageHelper.startPage(1, 6);
 		List<Topic> findAllTopic1 = iTopicService.findAllTopic();
 		PageInfo<Topic> pageInfoTopic = new PageInfo<>(findAllTopic1);
 		List<Topic> pageListTopic = pageInfoTopic.getList();
 		
-		
+		map.put("selectKind", selectKinds);
+		map.put("selectPregnantAnalysis", selectPregnantAnalysis);
+		map.put("selectMeituShows", selectMeituShows);
 		map.put("selectEarly", selectYqbd);
 		map.put("pregnantKonwledge",pageListTopic);
 		return new ModelAndView("about",map);
@@ -65,7 +87,7 @@ public class YqbdController {
 	public ModelAndView pageTopicdById(Map<String, Object> map,@RequestParam Long id) throws Exception{
 		Topic selectTopicById = iTopicService.selectById(id);
 		map.put("selectTopic", selectTopicById);
-		return new ModelAndView("pageTopic",map);
+		return new ModelAndView("pagePregnantAnalysisTopic",map);
 	}
 	
 	

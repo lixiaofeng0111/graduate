@@ -25,9 +25,7 @@
 			<div class="row">
 				<div class="col-md-4 col-md-push-13">
 					<div  class="fh5co-form animate-box" data-animate-effect="fadeInRight">
-						<center>
-						<h2>注册页面</h2>
-						</center>
+						<div style = "text-align:center;"><h2>注册页面</h2></div>
 						<div class="form-group">
 							<label for="name" class="sr-only">用户名</label>
 							<input name = "username" type="text" class="form-control" id="username" placeholder="请输入你的用户名" autocomplete="off">
@@ -53,11 +51,9 @@
 						<div class="form-group">
 							<p>已经注册了？ <a href="login.jsp"><font color = "#33CCCC">登录</font></a></p>
 						</div>
-						<center>
-						<div class="form-group">
+						<div class="form-group" style = "text-align:center;">
 							<input id = "register_btn" type="submit" value="注册" class="btn btn-primary">
 						</div>
-						</center>
 					</div>
 				</div>
 			</div>

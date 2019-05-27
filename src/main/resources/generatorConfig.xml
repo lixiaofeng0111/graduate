@@ -36,20 +36,12 @@
     </javaClientGenerator>
 
 	<!-- 8个映射配置 -->
-    <table tableName="graduate_kind" domainObjectName="Kind" >
+    <table tableName="graduate_imgindex_buttom" domainObjectName="ImgIndexButtom" ></table>
    		<!-- <columnOverride column="yqts" javaType="java.lang.String" jdbcType="VARCHAR" />
     	<columnOverride column="bbfy" javaType="java.lang.String" jdbcType="VARCHAR" />
     	<columnOverride column="yyts" javaType="java.lang.String" jdbcType="VARCHAR" />
     	<columnOverride column="bmxz" javaType="java.lang.String" jdbcType="VARCHAR" />
     	<columnOverride column="mmbh" javaType="java.lang.String" jdbcType="VARCHAR" />  -->
-    </table>
-    <table tableName="graduate_pregnantAnalysis" domainObjectName="PregnantAnalysis" >
-   		<!-- <columnOverride column="yqts" javaType="java.lang.String" jdbcType="VARCHAR" />
-    	<columnOverride column="bbfy" javaType="java.lang.String" jdbcType="VARCHAR" />
-    	<columnOverride column="yyts" javaType="java.lang.String" jdbcType="VARCHAR" />
-    	<columnOverride column="bmxz" javaType="java.lang.String" jdbcType="VARCHAR" />
-    	<columnOverride column="mmbh" javaType="java.lang.String" jdbcType="VARCHAR" />  -->
-    </table>
     
   </context>
 </generatorConfiguration>

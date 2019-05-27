@@ -13,12 +13,13 @@ import edu.graduate.service.ILoginService;
 
 @Service
 public class LoginServiceImpl implements ILoginService{
+	
 	@Autowired
 	private LoginRegisterMapper loginRegisterMapper;
 	
-/*
- * 查询所有用户信息
- */
+	/*
+                  查询所有用户信息
+	 */
 	@Override
 	public List<LoginRegister> findAllLogin() throws Exception {
 		LoginRegisterExample example = new LoginRegisterExample();
@@ -31,4 +32,18 @@ public class LoginServiceImpl implements ILoginService{
 		return loginRegisterMapper.findLoginByName(username);
 	}
 
+	@Override
+	public LoginRegister selectById(Long id) throws Exception {
+		return loginRegisterMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public void update(LoginRegister loginRegister) throws Exception {
+		loginRegisterMapper.updateByPrimaryKey(loginRegister);
+	}
+
+	@Override
+	public void deleteUserById(Long id) throws Exception {
+		loginRegisterMapper.deleteByPrimaryKey(id);
+	}
 }

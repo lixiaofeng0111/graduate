@@ -31,7 +31,7 @@ a,area{blr:expression(this.onFocus=this.blur())}
 .o-m .ul-o li.on b{display:block;}
 .o-m .ul-t{background:#fff;width:880px;float:left;height:414px;}
 .o-m .ul-t li{list-style-type:none;position:relative;height:100%;display:none;}
-.o-m .ul-t .li-top{padding:0px 0px 0px 50px;}
+.o-m .ul-t .li-top{padding:0px 0px 0px 0px;}
 .o-m .ul-t h5{color:#666;font-size:24px;line-height:38px;}
 .o-m .ul-t p{color:#000;font-size:14px;line-height:22px;margin-bottom:5px}
 .o-m .ul-t .li-a a{color:#2b91b8;font-size:14px;margin-right:30px;cursor:default;line-height:22px;}

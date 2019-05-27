@@ -93,4 +93,6 @@ public interface KindMapper {
      * @mbg.generated Sun May 19 10:30:56 CST 2019
      */
     int updateByPrimaryKey(Kind record);
+    
+    Kind selectKindByKind(String name);
 }

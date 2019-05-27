@@ -10,9 +10,17 @@ public interface ITopicService {
 	
 	Topic selectById(Long id);
 	
-	Topic findTopicByName(Topic topic);
+	Topic findTopicByName(String topicname);
 	
 	List<Topic> findTopicByDate(String topic);
+	
+	void savaTopic(Topic topic) throws Exception;
+	
+	void update(Topic topic) throws Exception;
+	
+	void delete(Long id) throws Exception;
+	
+	List<Topic> findTopicByNameDim(String topString) throws Exception;
 	
 	
 	

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.graduate.dao.extend.PregnantDescriptionVMMapper">
+
+<!-- 定义结果集==FruitVM  nutrition  Nutrition-->
+	<resultMap type="edu.graduate.bean.extend.PregnantDescriptionVM" id="PregnantDescriptionVM">
+		<!-- 基础属性映射和数据库之间的映射 -->
+		<id column="id" property="id" />
+		<result column="time" property="time" />
+		<result column="effect" property="effect" />
+		<result column="description" property="description" />
+				
+		<collection 
+			property="nutritionVMs" 
+			column="id" 
+			javaType="ArrayList"
+			select="edu.graduate.dao.extend.NutritionVMMapper.selectNutritionByPregnantDescriptionId" >
+		</collection>
+	</resultMap>
+	
+<!-- 查询所有 -->	
+	<select id = "selectAllPregnantDescriptionVM" resultMap="PregnantDescriptionVM">
+		select * from graduate_pregnantdescription
+	</select>
+	
+<!-- 根据Id查询 -->
+	<select id = "selectDescriptionVMById" resultMap="PregnantDescriptionVM">
+		select * from graduate_pregnantdescription where id = #{id}
+	</select>
+	
+	
+</mapper>

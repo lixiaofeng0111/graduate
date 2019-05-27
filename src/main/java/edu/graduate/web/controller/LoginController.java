@@ -3,6 +3,7 @@ package edu.graduate.web.controller;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,12 +45,15 @@ public class LoginController {
 	private ITopicService iTopicService;
 	@Autowired
 	private IProfessorService iProfessorService;
+
 	
+	//进入登陆页面
 	@GetMapping("/login")
 	public ModelAndView login(Map<String, Object> map) {
 		return new ModelAndView("login");
 	}
 	
+	//登录页面的验证
 	@PostMapping("/checkLogin")
 	public void checkLogin(HttpServletRequest request,HttpServletResponse response)  {
 		String username = request.getParameter("username");
@@ -57,11 +62,11 @@ public class LoginController {
 		try {
 			LoginRegister loginUsername = loginService.findLoginByName(username);
 			if(loginUsername == null) {
-				result = "请重新输入！";
+				result = "用户名错误，请重新输入！";
 			}else if(password.equals(loginUsername.getPassword())) {
 				result = "ok";
 			}else {
-				result = "密码错误!";
+				result = "密码错误,请重新输入!";
 			}
 			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
@@ -75,6 +80,7 @@ public class LoginController {
 		
 	}
 	
+//进入主页面
 	@GetMapping("/pageIndex")
 	public ModelAndView pageindex(Map<String, Object> map) {
 		List<ImgIndex> findAllImgIndex = iImgIndexService.findAllIngIndex();
@@ -90,10 +96,12 @@ public class LoginController {
 		List<Topic> pageListTopic = pageInfoTopic.getList();
 		
 		
-		PageHelper.startPage(1, 6);
-		List<Professor> findAllProcesse = iProfessorService.findAllProfessor();
-		PageInfo<Professor> pageInfoProfessor = new PageInfo<>(findAllProcesse);
-		List<Professor> pageListProfessor = pageInfoProfessor.getList();
+		List<Professor> findProfessorsByTopicKindId = iProfessorService.selectProfessorsByTopicKindId();
+		/*
+		 * PageHelper.startPage(1, 6); PageInfo<Professor> pageInfoProfessor = new
+		 * PageInfo<>(findAllProfessor); List<Professor> pageListProfessor =
+		 * pageInfoProfessor.getList();
+		 */
 		
 		
 		PageHelper.startPage(1, 8);
@@ -105,7 +113,62 @@ public class LoginController {
  		map.put("imgPathButtom", pageListIndexButtom);
  		map.put("notoday",pageListTopic);
  		map.put("topictoday",findAllTopic);
- 		map.put("professors",pageListProfessor);
+ 		map.put("professors",findProfessorsByTopicKindId);
 		return new ModelAndView("index",map);
 	}
+	
+//通过Id查询今日或者往期话题
+	@GetMapping("/selectIndexTopicById")
+	public ModelAndView pageTopicdById(Map<String, Object> map,@RequestParam Long id) throws Exception{
+		Topic selectTopicById = iTopicService.selectById(id);
+		map.put("selectIndexTopic", selectTopicById);
+		return new ModelAndView("pageIndexTopic",map);
+	}
+
+//MoreTopic
+	@GetMapping("/pageMoreIndexTopic")
+	public ModelAndView pageMoreIndexTopic(Map<String, Object> map) throws Exception{
+		List<Topic> findAllMoreTopic = iTopicService.findAllTopic();
+		map.put("selectMoreToptic", findAllMoreTopic);
+		return new ModelAndView("pageMoreIndexTopic",map);
+	}
+	@GetMapping("/pageMoreIndexTopic1")
+	public ModelAndView pageMoreIndexTopic1(Map<String, Object> map,@RequestParam Long id) throws Exception{
+		Topic findAllMoreTopicById = iTopicService.selectById(id);
+		map.put("selectMoreToptic1", findAllMoreTopicById);
+		return new ModelAndView("pageModeIndexToptic1",map);
+	}
+
+//根据Id查询专家栏目及其他话题的详细内容
+	@GetMapping("/pageProfessor")
+	public ModelAndView pageProfessor(Map<String, Object> map,@RequestParam Long id) throws Exception{
+		Professor selectByProfessorById = iProfessorService.selectById(id);
+		map.put("selectProfessorId", selectByProfessorById);
+		return new ModelAndView("pageProfessor",map);
+	}
+
+//MorePrefessor
+	@GetMapping("/pageProfessorTopic")
+	public ModelAndView pageProfessorTopic(Map<String, Object> map) throws Exception{
+		List<Professor> findAllProfessor = iProfessorService.findAllProfessor();
+		map.put("selectProfessorToptic", findAllProfessor);
+		return new ModelAndView("pageProfessorTopic",map);
+	}	
+
+//查询今日或者往期,专家及其他话题
+	@PostMapping("/pageSearchTopicAndProfessor")
+	public ModelAndView pageSearchTopic(Map<String, Object> map,@RequestParam String topicString) throws Exception{
+		List<Topic> searchTopic = iTopicService.findTopicByNameDim(topicString);
+		List<Professor> searchProfessor = iProfessorService.selectProfessorByNameDim(topicString);
+		List<Object> pageSearchList = new ArrayList<Object>();
+		pageSearchList.addAll(searchTopic);
+		pageSearchList.addAll(searchProfessor);
+		System.out.println(pageSearchList);
+		map.put("pageSearchTP", pageSearchList);
+		return new ModelAndView("searchIndex",map);
+	}
+	
+
+	
+	
 }

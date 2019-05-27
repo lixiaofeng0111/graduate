@@ -16,11 +16,18 @@
 			property="fruits" 
 			column="id" 
 			javaType="ArrayList"
-			select="edu.graduate.dao.extend.FruitVMMapper.selectFruitByNutritionId" 
-			ofType="edu.graduate.bean.Fruit">
+			select="edu.graduate.dao.extend.FruitVMMapper.selectFruitByNutritionId" >
 		</collection>
 	</resultMap>
 	
+	<!-- 根据孕期的Id查询营养成分 -->
+	<select id="selectNutritionByPregnantDescriptionId" parameterType="int" resultMap="nutritionVM">
+		select * from graduate_nutrition where id in (
+			select nutrition_id 
+			from graduate_npd
+			where pregnantDescription_id = #{id}
+		)
+	</select>
 	
 	<!-- 根据水果Id查询营养成分 -->
 	<select id="selectNutritionByFruitId" parameterType="long" resultType="edu.graduate.bean.Nutrition">

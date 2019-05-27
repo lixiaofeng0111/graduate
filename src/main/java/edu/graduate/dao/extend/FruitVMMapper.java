@@ -2,6 +2,8 @@ package edu.graduate.dao.extend;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import edu.graduate.bean.extend.FruitVM;
 
 public interface FruitVMMapper {
@@ -40,5 +42,9 @@ public interface FruitVMMapper {
 		 * @param id
 		 */
 		void deleteFruitVMById(Long id);
+		
+	//根据名字查询水果及其营养成分和能吃不能吃的原因
+		
+		List<FruitVM> selectFruitVMByName(@Param("fruitName")String fruitName);
 
 }

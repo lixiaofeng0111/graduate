@@ -64,7 +64,7 @@ form {
 	margin: 0 auto;
 }
 
-input, button {
+input,button {
 	border: none;
 	outline: none;
 }
@@ -123,8 +123,10 @@ button {
 	
 	
 	
+	
 
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
+
 
 
 
@@ -190,10 +192,10 @@ button {
 					</div>
 					<div>
 						<div class="search bar8">
-							<form>
-								<input style="cursor: pointer;" type="text"
-									placeholder="输入搜索内容...">
-								<button style="cursor: pointer;" type="submit"></button>
+							<form id="searchTopic" method="post" action="/pageSearchTopicAndProfessor" target="_blank">
+								<input name="topicString" type="text" style="width:176px;margin-right:40px;"
+									placeholder="请输入您的疑问...">
+								<button  style="cursor: pointer" type="submit" ></button>
 							</form>
 						</div>
 
@@ -216,7 +218,7 @@ button {
 							style="background-color: #956295; color: #fff;">主页</a></li>
 						<li><a href="/pregnant">孕期阶段分析</a></li>
 						<li><a href="/fruit">水果分析</a></li>
-						<li><a href="typo.jsp">孕期水果及营养推荐</a></li>
+						<li><a href="/pregnantRecomment">孕期水果及营养推荐</a></li>
 						<li><a href="login.jsp">登录</a></li>
 					</ul>
 					<!-- script-for-menu -->
@@ -270,23 +272,25 @@ button {
 	<!--bann info end here-->
 	<!--wedo start here-->
 	<div class="we-do">
-		<div class="container">
+		<div class="container" style="margin-left: 132px;">
 			<div class="wedo-main">
-				<div class="col-md-4 wedo-grid">
-					<span class="glyphicon glyphicon-leaf" aria-hidden="true"> </span>
+				<!-- 今日话题 -->
+				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
 
 					<div class="active">
 						<a style="color: #956295; font-size: 25px; padding: 0px 35px;">
-							今日话题 </a>
+							<img width="50px" height="50px" src="imgs/topic1.png">今日话题
+						</a>
 					</div>
+					<hr>
 					<div>
 						<c:forEach items="${topictoday}" var="today">
 							<fmt:formatDate var="datetime" value="${today.datetime}"
 								pattern="yyyy-MM-dd" />
 							<table>
 								<tr>
-									<td><li><a href="topic1.jsp">${datetime} |
-												${today.name }</a></li></td>
+									<td><a href="/selectIndexTopicById?id=${today.id}">${datetime}
+											| ${today.name }</a></td>
 								</tr>
 							</table>
 						</c:forEach>
@@ -294,20 +298,21 @@ button {
 					</div>
 
 
-					<a href="topic.jsp"
+					<a href="/pageMoreIndexTopic"
 						style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 						class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 					</span></a>
 				</div>
 
-
-				<div class="col-md-4 wedo-grid">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"> </span>
+				<!-- 往期话题 -->
+				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
 
 					<div class="active">
 						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
-							data-toggle="tab"> 往期话题 </a>
+							data-toggle="tab"><img width="50px" height="50px"
+							src="imgs/topic2.png"> 往期话题 </a>
 					</div>
+					<hr>
 					<fmt:formatDate var="nowDate" value="<%=new Date()%>"
 						pattern="yyyy-MM-dd" />
 					<c:forEach items="${notoday}" var="yesterday">
@@ -316,65 +321,174 @@ button {
 						<c:if test="${datetime != nowDate}">
 							<table>
 								<tr>
-									<td><li><a href="topic1.jsp">${datetime} |
-												${yesterday.name }</a></li></td>
+									<td><a href="/selectIndexTopicById?id=${yesterday.id}">${datetime}
+											| ${yesterday.name }</a></td>
 								</tr>
 							</table>
 						</c:if>
 					</c:forEach>
 
-					<a href="topic.jsp"
+					<a href="/pageMoreIndexTopic"
 						style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 						class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 					</span></a>
 				</div>
-
-				<div class="col-md-4 wedo-grid">
-					<span class="glyphicon glyphicon-eye-open" aria-hidden="true">
-					</span>
+				<!-- 专家栏目 -->
+				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
 					<div>
 						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
-							href="#home" data-toggle="tab"> 专家栏目 </a>
+							href="#home" data-toggle="tab"> <img width="50px"
+							height="50px" src="imgs/topic3.png">专家栏目
+						</a>
 					</div>
+					<hr>
 					<fmt:formatDate var="nowDate" value="<%=new Date()%>"
 						pattern="yyyy-MM-dd" />
 					<c:forEach items="${professors}" var="professor">
 						<fmt:formatDate var="datetime" value="${professor.datetime}"
 							pattern="yyyy-MM-dd" />
-						<c:if test="${datetime != nowDate}">
+						<c:if test="${professor.topickindId == 1}">
 							<table>
-								<tr>
-									<td><li><a href="topic1.jsp">${nowDate} |
-												${professor.name }</a></li></td>
+								<tr width="150px">
+									<td><a href="/pageProfessor?id=${professor.id}">${datetime}
+											| ${professor.name }</a></td>
 								</tr>
 							</table>
 						</c:if>
 					</c:forEach>
 					<div>
-						<a href="single.jsp"
+						<a href="/pageProfessorTopic"
 							style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 							class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 						</span></a>
 					</div>
 					<div class="clearfix"></div>
 				</div>
+				<hr>
+				<!-- 以上专家栏目 -->
+				<!-- 重点关注 -->
+				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
+					<div>
+						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
+							href="#home" data-toggle="tab"> <img width="50px"
+							height="50px" src="imgs/topic4.png">重点关注
+						</a>
+					</div>
+					<hr>
+					<fmt:formatDate var="nowDate" value="<%=new Date()%>"
+						pattern="yyyy-MM-dd" />
+					<c:forEach items="${professors}" var="professor">
+						<fmt:formatDate var="datetime" value="${professor.datetime}"
+							pattern="yyyy-MM-dd" />
+						<c:if test="${professor.topickindId == 2}">
+							<table>
+								<tr width="150px">
+									<td><a href="/pageProfessor?id=${professor.id}">${datetime}
+											| ${professor.name }</a></td>
+								</tr>
+							</table>
+						</c:if>
+					</c:forEach>
+					<div>
+						<a href="/pageMoreIndexTopic"
+							style="font-family: 'Viga', sans-serif; color: #956295">More...<span
+							class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
+						</span></a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<hr>
+				<!-- 水果营养 -->
+				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
+					<div>
+						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
+							href="#home" data-toggle="tab"> <img width="50px"
+							height="50px" src="imgs/topic5.png">水果营养
+						</a>
+					</div>
+					<hr>
+					<fmt:formatDate var="nowDate" value="<%=new Date()%>"
+						pattern="yyyy-MM-dd" />
+					<c:forEach items="${professors}" var="professor">
+						<fmt:formatDate var="datetime" value="${professor.datetime}"
+							pattern="yyyy-MM-dd" />
+						<c:if test="${professor.topickindId == 3}">
+							<table>
+								<tr width="150px">
+									<td><a href="/pageProfessor?id = ${professor.id}">${datetime}
+											| ${professor.name }</a></td>
+								</tr>
+							</table>
+						</c:if>
+					</c:forEach>
+					<div>
+						<a href="/pageMoreIndexTopic"
+							style="font-family: 'Viga', sans-serif; color: #956295">More...<span
+							class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
+						</span></a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<hr>
+				<!--胎儿发育  -->
+				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
+					<div>
+						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
+							href="#home" data-toggle="tab"> <img width="50px"
+							height="50px" src="imgs/topic6.png">胎儿发育
+						</a>
+					</div>
+					<hr>
+					<fmt:formatDate var="nowDate" value="<%=new Date()%>"
+						pattern="yyyy-MM-dd" />
+					<c:forEach items="${professors}" var="professor">
+						<fmt:formatDate var="datetime" value="${professor.datetime}"
+							pattern="yyyy-MM-dd" />
+						<c:if test="${professor.topickindId == 4}">
+							<table>
+								<tr width="150px">
+									<td><a href="/pageProfessor?id = ${professor.id}">${datetime}
+											| ${professor.name }</a></td>
+								</tr>
+							</table>
+						</c:if>
+					</c:forEach>
+					<div>
+						<a href="/pageMoreIndexTopic"
+							style="font-family: 'Viga', sans-serif; color: #956295">More...<span
+							class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
+						</span></a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<hr>
+
+
+
+
+
 			</div>
+
 		</div>
-		<div class="agro-strip">
+		<!-- 以上是话题和轮播图的内容 -->
+		<div class="agro-strip" style="width: 1080px; margin-left: 140px;">
 			<div class="container">
 				<div class="agro-strip-main">
 					<h3>妊娠女性 & 水果营养</h3>
 					<p style="font-size: 15px;">水果营养丰富，口味酸甜，怀孕后的准妈妈要适量吃水果孕期应势应该遵循：
 						全面原则，均衡原则，自然原则，植物性食物功效非凡。水果中许多成分均是水溶性的，
 						饭前吃有利于身体必需营养素的吸收孕妈妈的营养牵动着妈咪和宝宝的身体发育在这个特殊 的时期水果就是最好的补品</p>
-					<a href="typo.jsp" class="hvr-wobble-bottom">更多...</a>
+					<a href="/pregnantRecomment" class="hvr-wobble-bottom">更多...</a>
 					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>
 		<div>
-
-			<div style="font-size: 30px; color: #956295; padding: 10px;">水果相关信息</div>
+			<br>
+			<br>
+			<div style="font-size: 30px; color: green; margin-left: 140px;">
+				<img width="85px" height="75px" src="imgs/fruitlogo.png">水果相关信息
+			</div>
 			<div class="latest-new">
 				<div class="container">
 					<div class="latest-news-main">
@@ -384,7 +498,7 @@ button {
 								style="width: 280px; height: 240px;">
 								<img src="${imagepathbuttom.imgpath}" alt=""
 									class="img-responsive">
-								<p>${imagepathbuttom.content}<a href="services.jsp">|更多</a>
+								<p>${imagepathbuttom.content}<a href="/fruit">|更多</a>
 								</p>
 							</div>
 						</c:forEach>

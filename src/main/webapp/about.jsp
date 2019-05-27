@@ -67,6 +67,10 @@
 </script>
 
 <style type="text/css">
+pre {
+			white-space: pre-wrap;
+			word-wrap: break-word;
+		}
 a:hover {
 	color: red;
 }
@@ -163,7 +167,7 @@ button {
 					<li><a href="/pregnant"
 						style="background-color: #fff;">孕期阶段分析</a></li>
 					<li><a href="/fruit" style="color: #fff;">水果分析</a></li>
-					<li><a href="typo.jsp" style="color: #fff;">孕期水果及营养推荐</a></li>
+					<li><a href="/pregnantRecomment" style="color: #fff;">孕期水果及营养推荐</a></li>
 					<li><a href="login.jsp" style="color: #fff;">登录</a></li>
 				</ul>
 
@@ -190,60 +194,60 @@ button {
 				<div class="col-md-4 about-left" style="padding: 0px 0px 0px 10px;">
 					<table style="text-align: center;">
 						<tr height="35px;">
-							<td width="60px;"><a href = "/selectByWeek?week=1">1周</a></td>
-							<td width="60px;"><a href = "/selectByWeek?week=2">2周</a></td>
-							<td width="60px;"><a href = "/selectByWeek?week=3">3周</a></td>
-							<td width="60px;"><a href = "/selectByWeek?week=4">4周</a></td>
-							<td width="60px;"><a href = "/selectByWeek?week=5">5周</a></td>
+							<td width="60px;"><a href = "/selectByWeek?week=1" target="_blank">1周</a></td>
+							<td width="60px;"><a href = "/selectByWeek?week=2" target="_blank">2周</a></td>
+							<td width="60px;"><a href = "/selectByWeek?week=3" target="_blank">3周</a></td>
+							<td width="60px;"><a href = "/selectByWeek?week=4" target="_blank">4周</a></td>
+							<td width="60px;"><a href = "/selectByWeek?week=5" target="_blank">5周</a></td>
 						</tr>
 						<tr height="35px;">
-							<td><a href = "/selectByWeek?week=6">6周</a></td>
-							<td><a href = "/selectByWeek?week=7">7周</a></td>
-							<td><a href = "/selectByWeek?week=8">8周</a></td>
-							<td><a href = "/selectByWeek?week=9">9周</a></td>
-							<td><a href = "/selectByWeek?week=10">10周</a></td>
+							<td><a href = "/selectByWeek?week=6" target="_blank">6周</a></td>
+							<td><a href = "/selectByWeek?week=7" target="_blank">7周</a></td>
+							<td><a href = "/selectByWeek?week=8" target="_blank">8周</a></td>
+							<td><a href = "/selectByWeek?week=9" target="_blank">9周</a></td>
+							<td><a href = "/selectByWeek?week=10" target="_blank">10周</a></td>
 						</tr>
 						<tr height="35px;">
-							<td><a href = "/selectByWeek?week=11">11周</a></td>
-							<td><a href = "/selectByWeek?week=12">12周</a></td>
-							<td><a href = "/selectByWeek?week=13">13周</a></td>
-							<td><a href = "/selectByWeek?week=14">14周</a></td>
-							<td><a href = "/selectByWeek?week=15">15周</a></td>
+							<td><a href = "/selectByWeek?week=11" target="_blank">11周</a></td>
+							<td><a href = "/selectByWeek?week=12" target="_blank">12周</a></td>
+							<td><a href = "/selectByWeek?week=13" target="_blank">13周</a></td>
+							<td><a href = "/selectByWeek?week=14" target="_blank">14周</a></td>
+							<td><a href = "/selectByWeek?week=15" target="_blank">15周</a></td>
 						</tr>
 						<tr height="35px;">
-							<td><a href = "/selectByWeek?week=16">16周</a></td>
-							<td><a href = "/selectByWeek?week=17">17周</a></td>
-							<td><a href = "/selectByWeek?week=18">18周</a></td>
-							<td><a href = "/selectByWeek?week=19">19周</a></td>
-							<td><a href = "/selectByWeek?week=20">20周</a></td>
+							<td><a href = "/selectByWeek?week=16" target="_blank">16周</a></td>
+							<td><a href = "/selectByWeek?week=17" target="_blank">17周</a></td>
+							<td><a href = "/selectByWeek?week=18" target="_blank">18周</a></td>
+							<td><a href = "/selectByWeek?week=19" target="_blank">19周</a></td>
+							<td><a href = "/selectByWeek?week=20" target="_blank">20周</a></td>
 						</tr>
 						<tr height="35px;">
-							<td><a href = "/selectByWeek?week=21">21周</a></td>
-							<td><a href = "/selectByWeek?week=22">22周</a></td>
-							<td><a href = "/selectByWeek?week=23">23周</a></td>
-							<td><a href = "/selectByWeek?week=24">24周</a></td>
-							<td><a href = "/selectByWeek?week=25">25周</a></td>
+							<td><a href = "/selectByWeek?week=21" target="_blank">21周</a></td>
+							<td><a href = "/selectByWeek?week=22" target="_blank">22周</a></td>
+							<td><a href = "/selectByWeek?week=23" target="_blank">23周</a></td>
+							<td><a href = "/selectByWeek?week=24" target="_blank">24周</a></td>
+							<td><a href = "/selectByWeek?week=25" target="_blank">25周</a></td>
 						</tr>
 						<tr height="35px;">
-							<td><a href = "/selectByWeek?week=26">26周</a></td>
-							<td><a href = "/selectByWeek?week=27">27周</a></td>
-							<td><a href = "/selectByWeek?week=28">28周</a></td>
-							<td><a href = "/selectByWeek?week=28">29周</a></td>
-							<td><a href = "/selectByWeek?week=30">30周</a></td>
+							<td><a href = "/selectByWeek?week=26" target="_blank">26周</a></td>
+							<td><a href = "/selectByWeek?week=27" target="_blank">27周</a></td>
+							<td><a href = "/selectByWeek?week=28" target="_blank">28周</a></td>
+							<td><a href = "/selectByWeek?week=28" target="_blank">29周</a></td>
+							<td><a href = "/selectByWeek?week=30" target="_blank">30周</a></td>
 						</tr>
 						<tr height="35px;">
-							<td><a href = "/selectByWeek?week=31">31周</a></td>
-							<td><a href = "/selectByWeek?week=32">32周</a></td>
-							<td><a href = "/selectByWeek?week=33">33周</a></td>
-							<td><a href = "/selectByWeek?week=34">34周</a></td>
-							<td><a href = "/selectByWeek?week=35">35周</a></td>
+							<td><a href = "/selectByWeek?week=31" target="_blank">31周</a></td>
+							<td><a href = "/selectByWeek?week=32" target="_blank">32周</a></td>
+							<td><a href = "/selectByWeek?week=33" target="_blank">33周</a></td>
+							<td><a href = "/selectByWeek?week=34" target="_blank">34周</a></td>
+							<td><a href = "/selectByWeek?week=35" target="_blank">35周</a></td>
 						</tr>
 						<tr height="35px;">
-							<td><a href = "/selectByWeek?week=36">36周</a></td>
-							<td><a href = "/selectByWeek?week=37">37周</a></td>
-							<td><a href = "/selectByWeek?week=38">38周</a></td>
-							<td><a href = "/selectByWeek?week=39">39周</a></td>
-							<td><a href = "/selectByWeek?week=40">40周</a></td>
+							<td><a href = "/selectByWeek?week=36" target="_blank">36周</a></td>
+							<td><a href = "/selectByWeek?week=37" target="_blank">37周</a></td>
+							<td><a href = "/selectByWeek?week=38" target="_blank">38周</a></td>
+							<td><a href = "/selectByWeek?week=39" target="_blank">39周</a></td>
+							<td><a href = "/selectByWeek?week=40" target="_blank">40周</a></td>
 						</tr>
 					</table>
 					
@@ -289,18 +293,10 @@ button {
 				<div class="o-m">
 					<div class="ul-o">
 						<ul>
-							<li class="li-o"><p style = "color:#000;">孕期营养</p>
+						<c:forEach items="${selectKind}" var="selectAllKind">
+							<li class="li-o"><p style = "color:#000;">${selectAllKind.kind}</p>
 								<div class="clear"></div></li>
-							<li class="li-t"><p style = "color:#000;">孕期饮食</p>
-								<div class="clear"></div></li>
-							<li class="li-s"><p style = "color:#000;">孕期保健</p>
-								<div class="clear"></div></li>
-							<li class="li-f"><p style = "color:#000;">孕期心理</p>
-								<div class="clear"></div></li>
-							<li class="li-w"><p style = "color:#000;">孕期疾病</p>
-								<div class="clear"></div></li>
-							<li class="li-l"><p style = "color:#000;">孕期知识</p>
-								<div class="clear"></div></li>
+						</c:forEach>
 						</ul>
 					</div>
 					<div class="ul-t">
@@ -308,36 +304,17 @@ button {
 							<!-- 这里是滚动条区域 -->
 							<div class="scroll_main">
 								<div class="scroll_wrap">
-									<div class="scroll_cont">
+									<div class="scroll_cont" style = "text-align:left;">
+									
+									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
+										<c:if test="${selectAllPregnantAnalysis.kindId==1}">
 
-										<p>jQuery 是由美国人 John Resig 于 2006 年创建的一个开源项目，随着被人们的熟知，越
-											来越多的程序高手加入其中，完善和壮大其项目内容 ；如今已发展成为集 JavaScript、CSS、 DOM、Ajax
-											于一体的强大框架体系，它的主旨是 ：以更少的代码，实现更多的功能（Write less，do more）。</p>
-										<p>
-											1. 访问和操作 DOM 元素<br /> 使用 jQuery
-											库，可以很方便地获取和修改页面中的某元素，无论是删除、移动、复制某 元素，jQuery
-											都提供了一整套方便、快捷的方法，既减少了代码的编写，又大大提高了用户
-											对页面的体验度。具体示例我们将在后面的章节中陆续展示。
-										</p>
-										<p>
-											2. 控制页面样式<br /> 通过引入 jQuery， 程序开发人员可以很便捷地控制页面的 CSS
-											文件。浏览器对页面文件 的兼容性一直以来都是页面开发者最为头痛的事，而使用 jQuery 操作页面的样式，却可以很
-											好地兼容各种浏览器。
-										</p>
-										<p>jQuery 是由美国人 John Resig 于 2006 年创建的一个开源项目，随着被人们的熟知，越
-											来越多的程序高手加入其中，完善和壮大其项目内容 ；如今已发展成为集 JavaScript、CSS、 DOM、Ajax
-											于一体的强大框架体系，它的主旨是 ：以更少的代码，实现更多的功能（Write less，do more）。</p>
-										<p>
-											1. 访问和操作 DOM 元素<br /> 使用 jQuery
-											库，可以很方便地获取和修改页面中的某元素，无论是删除、移动、复制某 元素，jQuery
-											都提供了一整套方便、快捷的方法，既减少了代码的编写，又大大提高了用户
-											对页面的体验度。具体示例我们将在后面的章节中陆续展示。
-										</p>
-										<p>
-											2. 控制页面样式<br /> 通过引入 jQuery， 程序开发人员可以很便捷地控制页面的 CSS
-											文件。浏览器对页面文件 的兼容性一直以来都是页面开发者最为头痛的事，而使用 jQuery 操作页面的样式，却可以很
-											好地兼容各种浏览器。
-										</p>
+										<h4>${selectAllPregnantAnalysis.name}</h4>
+										<br>
+										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
+										<br>
+										</c:if>
+										</c:forEach>
 
 
 									</div>
@@ -346,62 +323,152 @@ button {
 										<div class="scroll_slider"></div>
 									</div>
 								</div>
-							</div> <!-- 这里是滚动条区域 -->
+							</div> 
+						<!-- 这里是滚动条区域 -->
 
 						</li>
 						<li>
 							<div class="li-top">
-								<h5>更多客户快速找到您</h5>
-								<p>
-									PC端+手机端全网搜索引擎SEO优化，提升网站排名引流量，更多客户找到您，<br />强大推广方式+超强营销工具，扩大客流量、订单量
-								</p>
-								<div class="li-a">
-									<a>PC+手机端</a><a>SEO优化</a><a>一键分享传播</a><a>抢红包</a><a>朋友助力</a><a>众筹</a><a>好友赞助</a><a>一元夺宝</a>
+								<!-- 这里是滚动条区域 -->
+							<div class="scroll_main">
+								<div class="scroll_wrap">
+									<div class="scroll_cont" style = "text-align:left;">
+									
+									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
+										<c:if test="${selectAllPregnantAnalysis.kindId==2}">
+
+										<h4>${selectAllPregnantAnalysis.name}</h4>
+										<br>
+										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
+										<br>
+										</c:if>
+										</c:forEach>
+
+
+									</div>
+
+									<div class="scroll_bar">
+										<div class="scroll_slider"></div>
+									</div>
 								</div>
+							</div> 
+						<!-- 这里是滚动条区域 -->
 								
 							</div>
 						</li>
 						<li>
 							<div class="li-top">
-								<h5>销售网络快速扩张</h5>
-								<p>全新"分销加盟+三级返佣"模式体系，无限发展下游，让您的分销商满天下；</p>
-								<div class="li-a">
-									<a>精美分销店铺</a><a>自选分销产品</a><a>一键分销</a><a>无限下级</a><a>分销商管理</a><a>佣金管理</a><a>推广文案管理</a>
+								<!-- 这里是滚动条区域 -->
+							<div class="scroll_main">
+								<div class="scroll_wrap">
+									<div class="scroll_cont" style = "text-align:left;">
+									
+									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
+										<c:if test="${selectAllPregnantAnalysis.kindId==3}">
+
+										<h4>${selectAllPregnantAnalysis.name}</h4>
+										<br>
+										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
+										<br>
+										</c:if>
+										</c:forEach>
+
+
+									</div>
+
+									<div class="scroll_bar">
+										<div class="scroll_slider"></div>
+									</div>
 								</div>
+							</div> 
+						<!-- 这里是滚动条区域 -->
 								
 							</div>
 						</li>
 						<li>
 							<div class="li-top">
-								<h5>实时互动沟通转化率高</h5>
-								<p>方便的客服沟通工具，实时互动咨询，快速提升询盘率和成交转化率，变流量为销量；</p>
-								<div class="li-a">
-									<a>多种热门客服工具</a><a>微客服</a><a>在线留言板</a>
+								<!-- 这里是滚动条区域 -->
+							<div class="scroll_main">
+								<div class="scroll_wrap">
+									<div class="scroll_cont" style = "text-align:left;">
+									
+									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
+										<c:if test="${selectAllPregnantAnalysis.kindId==4}">
+
+										<h4>${selectAllPregnantAnalysis.name}</h4>
+										<br>
+										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
+										<br>
+										</c:if>
+										</c:forEach>
+
+
+									</div>
+
+									<div class="scroll_bar">
+										<div class="scroll_slider"></div>
+									</div>
 								</div>
+							</div> 
+						<!-- 这里是滚动条区域 -->
 								
 							</div>
 						</li>
 						<li>
 							<div class="li-top">
-								<h5>超强电商管理引爆成交量</h5>
-								<p>强大的商品管理，团购、秒杀等电商功能促进高销量，方便快捷的购物车及支付方式促成交，流量、业绩统计分析尽在掌握中；</p>
-								<div class="li-a">
-									<a>产品管理</a><a>订单管理</a><a>物流配送管理</a><a>数据统计分析</a><a>团购</a><a>秒杀</a><a>砍价</a><br />
-									<a>购物车</a><a>多种在线支付</a><a>扫码支付</a>
+								<!-- 这里是滚动条区域 -->
+							<div class="scroll_main">
+								<div class="scroll_wrap">
+									<div class="scroll_cont" style = "text-align:left;">
+									
+									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
+										<c:if test="${selectAllPregnantAnalysis.kindId==5}">
+
+										<h4>${selectAllPregnantAnalysis.name}</h4>
+										<br>
+										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
+										<br>
+										</c:if>
+										</c:forEach>
+
+
+									</div>
+
+									<div class="scroll_bar">
+										<div class="scroll_slider"></div>
+									</div>
 								</div>
+							</div> 
+						<!-- 这里是滚动条区域 -->
 								
 							</div>
 						</li>
 						<li>
 							<div class="li-top">
-								<h5>强化维系客户，利润持续增长</h5>
-								<p>客户管理、维系、关怀全方位，结合高效互动营销工具，深度挖掘新老客户潜力价值，刺激客户持续消费</p>
-								<div class="li-a">
-									<span>客户管理：</span><a>会员管理</a><a>会员卡</a><a>会员预约</a><a>积分管理</a><a>优惠券</a><br />
-									<span>客户关怀：</span><a>签到</a><a>生日积分</a><a>充值</a><a>开卡</a><a>消费赠送</a><a>贺卡</a><br />
-									<span>抽奖互动：</span><a>大转盘</a><a>刮刮卡</a><a>砸金蛋</a><a>摇一摇</a><a>微现场</a><br />
-									<span>提升服务：</span><a>调研</a><a>投票</a>
+								<!-- 这里是滚动条区域 -->
+							<div class="scroll_main">
+								<div class="scroll_wrap">
+									<div class="scroll_cont" style = "text-align:left;">
+									
+									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
+										<c:if test="${selectAllPregnantAnalysis.kindId==6}">
+
+										<h4>${selectAllPregnantAnalysis.name}</h4>
+										<br>
+										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
+										<br>
+										</c:if>
+										</c:forEach>
+
+
+									</div>
+
+									<div class="scroll_bar">
+										<div class="scroll_slider"></div>
+									</div>
 								</div>
+							</div> 
+						<!-- 这里是滚动条区域 -->
 								
 							</div>
 						</li>
@@ -426,18 +493,12 @@ button {
 		<div class="container">
 			<div class="team-main">
 				<div style = "padding:0px 0px 10px 30px;"><img src="imgs/show.png">美图展示</div>
+				<c:forEach items="${selectMeituShows}" var="meitushow">
 				<div class="col-md-3 team-grids wow bounceIn" data-wow-delay="0.4s">
-					<img src="images/t4.jpg" />
+					<img width = "150px" height = "200px" src="${meitushow.imgpath}" />
 				</div>
-				<div class="col-md-3 team-grids wow bounceIn" data-wow-delay="0.4s">
-					<img src="images/t1.jpg"  />
-				</div>
-				<div class="col-md-3 team-grids wow bounceIn" data-wow-delay="0.4s">
-					<img src="images/t3.jpg"  />
-				</div>
-				<div class="col-md-3 team-grids wow bounceIn" data-wow-delay="0.4s">
-					<img src="images/t2.jpg" />
-				</div>
+				</c:forEach>
+				
 				<div class="clearfix"></div>
 			</div>
 		</div>
@@ -446,20 +507,25 @@ button {
 
 	<!--footer start here-->
 	<div class="footer">
-		<div class="container" style="text-align: center;">
-			<div
-				style="color: #FFFFFF; font-size: 18px; padding: 0px 0px 0px 30px;">
-				友情链接: <a style="color:" href="http://baby.39.net/">39育儿网|</a> <a
-					href="http://www.baby-trees.cn/">宝宝树亲子网|</a> <a
-					href="http://www.ci123.com/">育儿网|</a> <a
-					href="http://yuer.ibabyzone.cn/">宝宝地带|</a> <a
-					href="http://www.yaolan.com/">摇篮网|</a> <a
-					href="https://www.mmbang.com/">妈妈帮</a>
+				<div class="container" style="text-align: center;">
+					<div
+						style="color: #FFFFFF; font-size: 18px; padding: 0px 0px 0px 30px;">
+						友情链接: <a style = "color:RGB(51,122,183);" href="http://baby.39.net/">39育儿网|</a> 
+							<a style = "color:RGB(51,122,183);"
+							href="http://www.baby-trees.cn/">宝宝树亲子网|</a> 
+							<a style = "color:RGB(51,122,183);"
+							href="http://www.ci123.com/">育儿网|</a> 
+							<a style = "color:RGB(51,122,183);"
+							href="http://yuer.ibabyzone.cn/">宝宝地带|</a> 
+							<a style = "color:RGB(51,122,183);"
+							href="http://www.yaolan.com/">摇篮网|</a> 
+							<a style = "color:RGB(51,122,183);"
+							href="https://www.mmbang.com/">妈妈帮</a>
+					</div>
+					<div style="color: #FFFFFF;">@CopyRight Lxf 郑州轻工业大学2015届毕业设计</div>
+					<div class="clearfix"></div>
+				</div>
 			</div>
-			<div style="color: #FFFFFF;">@CopyRight Lxf 郑州轻工业大学2015届毕业设计</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
 	<!--//footer-->
 	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript">

@@ -2,6 +2,7 @@ package edu.graduate.dao.extend;
 
 import java.util.List;
 
+
 import edu.graduate.bean.extend.NutritionVM;
 
 public interface NutritionVMMapper {
@@ -32,6 +33,13 @@ public interface NutritionVMMapper {
 	 * @return
 	 */
 	List<NutritionVM> selectNutritionByFruitId(Long fruitId);
+	
+	/**
+	 * 根据桥表中PregnantDescriptio的Id查询此营养下的水果信息
+	 * @param pregnantDescriptionId
+	 * @return
+	 */
+	List<NutritionVM> selectNutritionByPregnantDescriptionId(Integer pregnantDescriptionId);
 
 //删除操作
 	/**

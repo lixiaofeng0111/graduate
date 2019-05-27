@@ -26,4 +26,28 @@ public class YqbdServiceImpl implements IYqbdService{
 		return yqbdMapper.selectByExampleWithBLOBs(example);
 	}
 
+	@Override
+	public Yqbd selectByName(String name) throws Exception {
+		// TODO Auto-generated method stub
+		return yqbdMapper.selectByName(name);
+	}
+
+	@Override
+	public void update(Yqbd yqbd) throws Exception {
+		// TODO Auto-generated method stub
+		yqbdMapper.updateByPrimaryKey(yqbd);
+	}
+
+	@Override
+	public void saveYqbd(Yqbd yqbd) throws Exception {
+		// TODO Auto-generated method stub
+		yqbdMapper.insert(yqbd);
+	}
+
+	@Override
+	public void delete(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		yqbdMapper.deleteByPrimaryKey(id);
+	}
+
 }

@@ -1,18 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>孕期营养早知道</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+	media="all">
 <script src="js/jquery-1.11.0.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
+
+
 </script>
-<meta name="keywords" content="Agrom Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndriodCompatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<meta name="keywords"
+	content="Agrom Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndriodCompatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
@@ -27,7 +35,8 @@
 </script>
 <script src="js/menu_jquery.js"></script>
 
-<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/popuo-box.css" rel="stylesheet" type="text/css"
+	media="all" />
 <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 <script>
 	$(document).ready(function() {
@@ -45,6 +54,19 @@
 
 	});
 </script>
+<style type="text/css">
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	background-color: #fff;
+	border: none;
+}
+.recomment div{
+float:left;
+margin-left:12px;
+text-align:center;
+}
+</style>
 </head>
 <body>
 
@@ -55,341 +77,79 @@
 				<ul class="res" style="font-size: 16px;">
 					<li style="height: 60px;"><a href="/pageIndex"
 						style="color: #fff;">主页</a></li>
-					<li><a href="/pregnant" style="color: #fff;"
-						style=>孕期阶段分析</a></li>
+					<li><a href="/pregnant" style="color: #fff;" style=>孕期阶段分析</a></li>
 					<li><a href="/fruit" style="color: #fff;">水果分析</a></li>
-					<li><a href="typo.jsp" style="background-color: #fff; border-radius: 100px;">孕期水果及营养推荐</a></li>
+					<li><a href="/pregnantRecomment"
+						style="background-color: #fff;">孕期水果及营养推荐</a></li>
 					<li><a href="login.jsp" style="color: #fff;">登录</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-
-	<!--typo start here-->
-	<div class="typrography">
-		<div class="container">
-			<div class="page">
-				<!--button-->
-				<div class="grid_3 grid_4">
-
-					<div class="bs-example">
-						<table class="table">
-							<tbody>
-								<tr>
-									<td><h1 id="h1-bootstrap-heading">
-											h1. Bootstrap heading<a class="anchorjs-link"
-												href="#h1.-bootstrap-heading"><span
-												class="anchorjs-icon"></span></a>
-										</h1></td>
-									<td class="type-info">Semibold 36px</td>
-								</tr>
-								<tr>
-									<td><h2 id="h2-bootstrap-heading">
-											h2. Bootstrap heading<a class="anchorjs-link"
-												href="#h2.-bootstrap-heading"><span
-												class="anchorjs-icon"></span></a>
-										</h2></td>
-									<td class="type-info">Semibold 30px</td>
-								</tr>
-								<tr>
-									<td><h3 id="h3-bootstrap-heading">
-											h3. Bootstrap heading<a class="anchorjs-link"
-												href="#h3.-bootstrap-heading"><span
-												class="anchorjs-icon"></span></a>
-										</h3></td>
-									<td class="type-info">Semibold 24px</td>
-								</tr>
-								<tr>
-									<td><h4 id="h4.-bootstrap-heading">
-											h4. Bootstrap heading<a class="anchorjs-link"
-												href="#h4.-bootstrap-heading"><span
-												class="anchorjs-icon"></span></a>
-										</h4></td>
-									<td class="type-info">Semibold 18px</td>
-								</tr>
-								<tr>
-									<td><h5 id="h5-bootstrap-heading">
-											h5. Bootstrap heading<a class="anchorjs-link"
-												href="#h5.-bootstrap-heading"><span
-												class="anchorjs-icon"></span></a>
-										</h5></td>
-									<td class="type-info">Semibold 14px</td>
-								</tr>
-								<tr>
-									<td><h6 id="h6-bootstrap-heading">h6. Bootstrap
-											heading</h6></td>
-									<td class="type-info">Semibold 12px</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!--buttons-->
-				<div class="page-header">
-					<h3>Buttons</h3>
-				</div>
-				<p class="grid1">
-					<button type="button" class="btn btn-lg btn-default">Default</button>
-					<button type="button" class="btn btn-lg btn-primary">Primary</button>
-					<button type="button" class="btn btn-lg btn-success">Success</button>
-					<button type="button" class="btn btn-lg btn-info">Info</button>
-					<button type="button" class="btn btn-lg btn-warning">Warning</button>
-					<button type="button" class="btn btn-lg btn-danger">Danger</button>
-					<button type="button" class="btn btn-lg btn-link">Link</button>
-				</p>
-				<p class="grid1 ">
-					<button type="button" class="btn btn-1 btn-default">Default</button>
-					<button type="button" class="btn btn-1 btn-primary">Primary</button>
-					<button type="button" class="btn btn-1 btn-success">Success</button>
-					<button type="button" class="btn btn-1 btn-info">Info</button>
-					<button type="button" class="btn btn-1 btn-warning">Warning</button>
-					<button type="button" class="btn btn-1 btn-danger">Danger</button>
-					<button type="button" class="btn btn-1 btn-link">Link</button>
-				</p>
-				<p class="grid1">
-					<button type="button" class="btn btn-sm btn-default">Default</button>
-					<button type="button" class="btn btn-sm btn-primary">Primary</button>
-					<button type="button" class="btn btn-sm btn-success">Success</button>
-					<button type="button" class="btn btn-sm btn-info">Info</button>
-					<button type="button" class="btn btn-sm btn-warning">Warning</button>
-					<button type="button" class="btn btn-sm btn-danger">Danger</button>
-					<button type="button" class="btn btn-sm btn-link">Link</button>
-				</p>
-				<p class="grid1">
-					<button type="button" class="btn btn-xs btn-default">Default</button>
-					<button type="button" class="btn btn-xs btn-primary">Primary</button>
-					<button type="button" class="btn btn-xs btn-success">Success</button>
-					<button type="button" class="btn btn-xs btn-info">Info</button>
-					<button type="button" class="btn btn-xs btn-warning">Warning</button>
-					<button type="button" class="btn btn-xs btn-danger">Danger</button>
-					<button type="button" class="btn btn-xs btn-link">Link</button>
-				</p>
-				<!--//button-->
-				<!--bages-->
-				<div class="page-header">
-					<h3>Badges</h3>
-				</div>
-				<p>
-					<a href="#">Inbox <span class="badge">42</span></a>
-				</p>
-				<ul class="nav nav-pills" role="tablist">
-					<li role="presentation" class="active"><a href="#">Home <span
-							class="badge">42</span></a></li>
-					<li role="presentation"><a href="#">Profile</a></li>
-					<li role="presentation"><a href="#">Messages <span
-							class="badge">3</span></a></li>
-				</ul>
-				<!--//bages-->
-				<!--alerts-->
-				<div class="page-header">
-					<h1>Alerts</h1>
-				</div>
-				<div class="alert alert-success" role="alert">
-					<strong>Well done!</strong> You successfully read this important
-					alert message.
-				</div>
-				<div class="alert alert-info" role="alert">
-					<strong>Heads up!</strong> This alert needs your attention, but
-					it's not super important.
-				</div>
-				<div class="alert alert-warning" role="alert">
-					<strong>Warning!</strong> Best check yo self, you're not looking
-					too good.
-				</div>
-				<div class="alert alert-danger" role="alert">
-					<strong>Oh snap!</strong> Change a few things up and try submitting
-					again.
-				</div>
-				<!--//alerts-->
-				<!--nav-->
-				<div class="page-header">
-					<h3>Navs</h3>
-					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#">Home</a></li>
-						<li role="presentation"><a href="#">Profile</a></li>
-						<li role="presentation"><a href="#">Messages</a></li>
-					</ul>
-					<ul class="nav nav-pills" role="tablist">
-						<li role="presentation" class="active"><a href="#">Home</a></li>
-						<li role="presentation"><a href="#">Profile</a></li>
-						<li role="presentation"><a href="#">Messages</a></li>
-					</ul>
-				</div>
-				<!--//nav-->
-				<!--Progress bars-->
-				<div class="page-header">
-					<h3>Progress bars</h3>
-				</div>
-				<div class="progress">
-					<div class="progress-bar" role="progressbar" aria-valuenow="60"
-						aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-						<span class="sr-only">60% Complete</span>
-					</div>
-				</div>
-				<div class="progress">
-					<div class="progress-bar progress-bar-success" role="progressbar"
-						aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-						style="width: 40%">
-						<span class="sr-only">40% Complete (success)</span>
-					</div>
-				</div>
-				<div class="progress">
-					<div class="progress-bar progress-bar-info" role="progressbar"
-						aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-						style="width: 20%">
-						<span class="sr-only">20% Complete</span>
-					</div>
-				</div>
-				<div class="progress">
-					<div class="progress-bar progress-bar-warning" role="progressbar"
-						aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-						style="width: 60%">
-						<span class="sr-only">60% Complete (warning)</span>
-					</div>
-				</div>
-				<div class="progress">
-					<div class="progress-bar progress-bar-danger" role="progressbar"
-						aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-						style="width: 80%">
-						<span class="sr-only">80% Complete (danger)</span>
-					</div>
-				</div>
-				<div class="progress">
-					<div class="progress-bar progress-bar-striped" role="progressbar"
-						aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-						style="width: 60%">
-						<span class="sr-only">60% Complete</span>
-					</div>
-				</div>
-				<div class="progress">
-					<div class="progress-bar progress-bar-success" style="width: 35%">
-						<span class="sr-only">35% Complete (success)</span>
-					</div>
-					<div class="progress-bar progress-bar-warning" style="width: 20%">
-						<span class="sr-only">20% Complete (warning)</span>
-					</div>
-					<div class="progress-bar progress-bar-danger" style="width: 10%">
-						<span class="sr-only">10% Complete (danger)</span>
-					</div>
-				</div>
-				<!--//Progress bars-->
-				<!--Panels-->
-				<div class="page-header">
-					<h3>Panels</h3>
-				</div>
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">Panel title</h3>
-							</div>
-							<div class="panel-body">Panel content</div>
-						</div>
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h3 class="panel-title">Panel title</h3>
-							</div>
-							<div class="panel-body">Panel content</div>
-						</div>
-					</div>
-					<!-- /.col-sm-4 -->
-					<div class="col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Panel title</h3>
-							</div>
-							<div class="panel-body">Panel content</div>
-						</div>
-						<div class="panel panel-info">
-							<div class="panel-heading">
-								<h3 class="panel-title">Panel title</h3>
-							</div>
-							<div class="panel-body">Panel content</div>
-						</div>
-					</div>
-					<!-- /.col-sm-4 -->
-					<div class="col-sm-4">
-						<div class="panel panel-warning">
-							<div class="panel-heading">
-								<h3 class="panel-title">Panel title</h3>
-							</div>
-							<div class="panel-body">Panel content</div>
-						</div>
-						<div class="panel panel-danger">
-							<div class="panel-heading">
-								<h3 class="panel-title">Panel title</h3>
-							</div>
-							<div class="panel-body">Panel content</div>
-						</div>
-					</div>
-					<!-- /.col-sm-4 -->
-				</div>
-				<!--//Panels-->
-				<!--labels-->
-				<div class="page-header">
-					<h3>Labels</h3>
-				</div>
-				<h1 class="grid2">
-					<span class="label label-default">Default</span> <span
-						class="label label-primary">Primary</span> <span
-						class="label label-success">Success</span> <span
-						class="label label-info">Info</span> <span
-						class="label label-warning">Warning</span> <span
-						class="label label-danger">Danger</span>
-				</h1>
-				<h2 class="grid2">
-					<span class="label label-default">Default</span> <span
-						class="label label-primary">Primary</span> <span
-						class="label label-success">Success</span> <span
-						class="label label-info">Info</span> <span
-						class="label label-warning">Warning</span> <span
-						class="label label-danger">Danger</span>
-				</h2>
-				<h3 class="grid2">
-					<span class="label label-default">Default</span> <span
-						class="label label-primary">Primary</span> <span
-						class="label label-success">Success</span> <span
-						class="label label-info">Info</span> <span
-						class="label label-warning">Warning</span> <span
-						class="label label-danger">Danger</span>
-				</h3>
-				<h4 class="grid2">
-					<span class="label label-default">Default</span> <span
-						class="label label-primary">Primary</span> <span
-						class="label label-success">Success</span> <span
-						class="label label-info">Info</span> <span
-						class="label label-warning">Warning</span> <span
-						class="label label-danger">Danger</span>
-				</h4>
-				<h5 class="grid2">
-					<span class="label label-default">Default</span> <span
-						class="label label-primary">Primary</span> <span
-						class="label label-success">Success</span> <span
-						class="label label-info">Info</span> <span
-						class="label label-warning">Warning</span> <span
-						class="label label-danger">Danger</span>
-				</h5>
-				<h6 class="grid2">
-					<span class="label label-default">Default</span> <span
-						class="label label-primary">Primary</span> <span
-						class="label label-success">Success</span> <span
-						class="label label-info">Info</span> <span
-						class="label label-warning">Warning</span> <span
-						class="label label-danger">Danger</span>
-				</h6>
-				<p class="grid2">
-					<span class="label label-default">Default</span> <span
-						class="label label-primary">Primary</span> <span
-						class="label label-success">Success</span> <span
-						class="label label-info">Info</span> <span
-						class="label label-warning">Warning</span> <span
-						class="label label-danger">Danger</span>
-				</p>
-				<!--//labels-->
+	<!-- 以下是正文的内容 -->
+	<!-- 以下是搜索框的内容 -->
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-4 column">
+				<img src="imgs/mom.png">
 			</div>
+
+			<div class="col-md-4 column" style="padding: 100px 0px 0px 60px;">
+				<div style="font-size: 40px; padding: 0px 0px 60px 0px;">水果&孕期&营养</div>
+				<input style="width: 230px; height: 35px; border-radius: 40px;"
+					type="text" placeholder="输入搜索内容...">
+				<button type="button" class="btn btn-default"
+					style="background: images/Magi.png">搜索</button>
+			</div>
+
+			<div class="col-md-4 column" style="padding: 210px 0px 0px 120px;">
+				<img src="imgs/son.png; ">
+			</div>
+
 		</div>
 	</div>
-	<!--typo end here-->
+	<!-- 下面是除了搜索框之外的内容 -->
+	<div class="container" style="padding: 0px 0px 0px 110px;">
+		<div
+			style="float:left; width: 1000px; padding: 20px 0px 0px 50px; border: 1px solid #C5C1AA">
+			<!-- 以下是搜索框下面的各部分内容 -->
+			<!-- 孕期 -->
+			
+				<div style="font-size: 20px; color: #EE6AA7;">
+					<img width="75px" height="75px" src="imgs/momlogo.png">孕期水果及营养
+				</div>
+				<div>（本页面主要用于搜索，通过下面内容的介绍孕妈根据自己的具体情况去查询自己所需要的信息）</div>
+				<c:forEach items="${PregnantDescriptionVM}" var="recommend">
+				<hr>
+					<h4 style="color: #EE6AA7;">${recommend.time }</h4>
+					<pre style="font-size: 15px;"><li>主打营养素：<c:forEach items="${recommend.nutritionVMs}" var="nutritionVMName">${nutritionVMName.name} &nbsp;</c:forEach></li><br><li>作用：${recommend.effect}</li><br><li>描述：${recommend.description}</li>
+			<li>相关水果推荐</li></pre>
+					<!-- 以下是显示的表格部分1 -->
+					<div style="margin-top: 0px; width:950px;border:1px solid red;float:left;" class = "recomment" >
+						<c:forEach  items="${recommend.nutritionVMs}" var="nutritionVMList">
+							<c:forEach  items="${nutritionVMList.fruits}" var="fruitsList">
+								<div >
+								 	<img width="180px" height="150px" src="${fruitsList.picture}">
+								 	<p>${fruitsList.name}</p>
+								 		<p>营养元素：<c:forEach items = "${fruitsList.nutritions}" var = "nutritions">
+								 			${nutritions.name}
+								 		</c:forEach></p>
+								</div>
+							</c:forEach>
+						</c:forEach>
+					</div>
+					<hr>
+					<!-- 以上是显示的表格部分 -->
+				</c:forEach>
+			</div>
+			<!-- 以上是搜索框下面的各部分内容 -->
+		</div>
+
+
+	<!-- 以上是正文的内容 -->
+
+
+
 	<!--footer start here-->
 	<div class="footer">
 		<div class="container" style="text-align: center;">

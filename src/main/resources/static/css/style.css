@@ -604,12 +604,12 @@ span.glyphicon.glyphicon-circle-arrow-right:hover {
 .agro-strip {
   background: url(../images/middle.jpg)no-repeat;
   background-size: cover;
-  min-height: 300px;
+  min-height: 266px;
   margin-top:1em;
 }
 .agro-strip-main {
   text-align: center;
-  padding: 5em 0em 0em 0em;
+  padding: 2em 0em 0em 0em;
 }
 .agro-strip-main h3 {
   font-size: 1.5em;

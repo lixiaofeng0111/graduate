@@ -8,7 +8,20 @@ import edu.graduate.bean.extend.FruitVM;
 public interface IFruitService {
 	
 	  //查询操作
-	List<Fruit> findAllFruit() throws Exception;
+	  List<Fruit> findAllFruit() throws Exception;
+	
+	  Fruit  selectByName(String name) throws Exception;
+	
+	  Fruit selectById(Long id) throws Exception;
+	  
+	  void update(Fruit fruit) throws Exception;
+	  
+	  void saveFruit(Fruit fruit) throws Exception;
+	  
+	  void delete(Long id) throws Exception;
+	  
+	  List<FruitVM> selectFruitVMByName(String fruitName) throws Exception;
+	
 	
 	
 	  List<FruitVM> selectAllFruitVM() throws Exception;

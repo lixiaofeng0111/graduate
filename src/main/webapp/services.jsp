@@ -112,8 +112,8 @@
 							<li style = "height:60px;">
 							<a href="/pageIndex" style = "color:#fff;">主页</a></li>
 							<li><a  href="/pregnant" style = "color:#fff;">孕期阶段分析</a></li>
-							<li><a  href="/fruit" style = "background-color:#fff;border-radius:100px;" >水果分析</a></li>
-							<li><a  href="typo.jsp" style = "color:#fff;">孕期水果及营养推荐</a></li>
+							<li><a  href="/fruit" style = "background-color:#fff;" >水果分析</a></li>
+							<li><a  href="/pregnantRecomment" style = "color:#fff;">孕期水果及营养推荐</a></li>
 							<li><a  href="login.jsp" style = "color:#fff;">登录</a></li>
 						</ul>
 
@@ -127,12 +127,14 @@
 					</div>
 
 					<div class="col-md-4 column" style="padding: 100px 0px 0px 60px;">
-						<div style="font-size: 40px; padding: 10px 0px 60px 0px;">水果
-							& 妊娠女性</div>
-						<input style="width: 230px; height: 35px; border-radius: 40px;"
-							type="text" placeholder="输入搜索内容...">
-						<button type="button" class="btn btn-default"
+						<div style="font-size: 40px; padding: 10px 0px 80px 28px;">水果
+							& 营养</div>
+					<form id="searchFruit" method="post" action="/searchFruitByName" target="_blank" >
+						<input name="fruitName" style="width: 230px; height: 35px; border-radius: 40px;"
+							type="text" placeholder="请输入水果名...">
+						<button  type="submit" class="btn btn-default"
 							style="background: images/Magi.png">搜索</button>
+					</form>
 					</div>
 
 					<div class="col-md-4 column" style="padding: 210px 0px 0px 120px;">
@@ -143,8 +145,8 @@
 			</div>
 		</div>
 
-		<div class="container">
-			<div class="row clearfix">
+		<div style="text-align: center; height:663px;">
+			<div style="padding: 0px 0px 0px 150px; height: 200px; width: 1200px;">
 				<c:forEach items="${fruit}" var="fruits">
 					<div class="col-md-4 column">
 						<a href="/selectById?id=${fruits.id}"> <img height="200px" width="260px"
@@ -159,7 +161,7 @@
 		</div>
 
 
-
+<!-- 以下是页码的部分 -->
 
 		<div style="text-align:center;">
 			<ul class="pagination">
@@ -169,7 +171,7 @@
 				</c:when>
 				
 				<c:otherwise>
-					<li><a href="/fruit?page = ${currentPage - 1} ">上一页</a></li> 
+					<li><a href="/fruit?page=${currentPage - 1} ">上一页</a></li> 
 				</c:otherwise>
 		</c:choose>
 				<c:forEach begin = "1" end = "${totalPage}" var = "index">
@@ -188,13 +190,13 @@
 				</c:when>
 				
 				<c:otherwise>
-					<li><a href="/fruit?page = ${currentPage + 1} ">下一页</a></li> 
+					<li><a href="/fruit?page=${currentPage + 1} ">下一页</a></li> 
 				</c:otherwise>
 		</c:choose>
 			</ul>
 		</div>
 
-
+<!-- 以上是页码的部分 -->
 		<div class="footer">
 			<div class="container" style="text-align: center;">
 				<div

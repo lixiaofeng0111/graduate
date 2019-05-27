@@ -12,6 +12,11 @@ public interface IPregnantWeekService {
 	
 	PregnantWeek selectPregnantWeekByweek(Integer week) throws Exception;
 	
+	void savePregnantWeek(PregnantWeek pregnantWeek) throws Exception;
+	
+	void update(PregnantWeek pregnantWeek) throws Exception;
+	
+	void delete(Integer id) throws Exception;
 	
 	
 

@@ -113,10 +113,10 @@
 						<ul class="res">
 							<li style="height: 60px;"><a href="/pageIndex"
 								style="color: #fff;">主页</a></li>
-							<li><a href="about.jsp" style="color: #fff;">孕期阶段分析</a></li>
+							<li><a href="/pregnant" style="color: #fff;">孕期阶段分析</a></li>
 							<li><a href="/fruit"
 								style="background-color: #fff; border-radius: 100px;">水果分析</a></li>
-							<li><a href="typo.jsp" style="color: #fff;">孕期水果及营养推荐</a></li>
+							<li><a href="/pregnantRecomment" style="color: #fff;">孕期水果及营养推荐</a></li>
 							<li><a href="login.jsp" style="color: #fff;">登录</a></li>
 						</ul>
 

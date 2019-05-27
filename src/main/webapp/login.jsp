@@ -40,29 +40,25 @@
 		<div class="col-md-4 col-md-push-8">
 			<!-- Start Sign In Form -->
 			<div class="fh5co-form animate-box" data-animate-effect="fadeInRight">
-				<center>
-					<h2>登录页面</h2>
-				</center>
+					<div style = "text-align:center;"><h2>登录页面</h2></div>
 				<div class="form-group">
-					<label class="sr-only">用户名</label> <input name="username"
+					<label class="sr-only">用户名</label> <input  name="username"
 						type="text" class="form-control" id="username"
 						placeholder="请输入您的用戶名" autocomplete="off">
 				</div>
 				<div class="form-group">
 					<label for="password" class="sr-only">密码</label> <input
 						name="password" type="password" class="form-control" id="password"
-						placeholder="请输入您的密码" autocomplete="off">
+						placeholder="请输入您的密码" autocomplete="new-password">
 				</div>
 				<div class="form-group">
 					<p>
 						还没有注册？ <a href="sign-up.jsp"><font color = "#33CCCC">注册</font></a>
 					</p>
 				</div>
-				<div class="form-group">
-					<center>
+				<div class="form-group" style = "text-align:center;">
 						<input id="login_btn" type="submit" value="登录"
 							class="btn btn-primary">
-					</center>
 				</div>
 			</div>
 		</div>

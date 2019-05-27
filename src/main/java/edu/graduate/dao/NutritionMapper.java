@@ -117,4 +117,6 @@ public interface NutritionMapper {
      * @mbg.generated Thu Apr 18 09:50:43 CST 2019
      */
     int updateByPrimaryKey(Nutrition record);
+    
+    Nutrition selectByName(String name);
 }

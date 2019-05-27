@@ -61,6 +61,42 @@ public class FruitServiceImpl implements IFruitService{
 		return FruitMapper.selectByExample(example);
 	}
 
+	@Override
+	public Fruit selectByName(String name) throws Exception {
+		// TODO Auto-generated method stub
+		return FruitMapper.selectByName(name);
+	}
+
+	@Override
+	public Fruit selectById(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return FruitMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public void update(Fruit fruit) throws Exception {
+		// TODO Auto-generated method stub
+		FruitMapper.updateByPrimaryKey(fruit);
+	}
+
+	@Override
+	public void saveFruit(Fruit fruit) throws Exception {
+		// TODO Auto-generated method stub
+		FruitMapper.insert(fruit);
+	}
+
+	@Override
+	public void delete(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		FruitMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public List<FruitVM> selectFruitVMByName(String fruitName) throws Exception {
+		// TODO Auto-generated method stub
+		return fruitVMMapper.selectFruitVMByName(fruitName);
+	}
+
 
 //查询操作
 	

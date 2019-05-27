@@ -215,10 +215,10 @@ button {
 						<ul class="res">
 							<li style="height: 60px;"><a href="/pageIndex"
 								style="color: #fff;">主页</a></li>
-							<li><a href="about.jsp"
+							<li><a href="/pregnant"
 								style="color: #000; background-color: #fff;">孕期阶段分析</a></li>
 							<li><a href="/fruit" style="color: #fff;">水果分析</a></li>
-							<li><a href="typo.jsp" style="color: #fff;">孕期水果及营养推荐</a></li>
+							<li><a href="/pregnantRecomment" style="color: #fff;">孕期水果及营养推荐</a></li>
 							<li><a href="login.jsp" style="color: #fff;">登录</a></li>
 						</ul>
 
@@ -433,7 +433,7 @@ button {
 				//根据轮播图片数量设定图片位置对应的class
 				if (slideNub == 1) {
 					for (i = 0; i < slideNub; i++) {
-						$(".slide .img:eq(" + i + ")").addClass("img3");
+						$(".slide .img:eq(" + i + ")").addClass("img1");
 					}
 				}
 				if (slideNub == 2) {

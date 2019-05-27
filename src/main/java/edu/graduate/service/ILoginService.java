@@ -12,9 +12,10 @@ public interface ILoginService {
 	
 	LoginRegister findLoginByName(String username) throws Exception;
 	
+	LoginRegister selectById(Long id) throws Exception;
 	
+	void update(LoginRegister loginRegister) throws Exception;
 	
-	
-	
+	void deleteUserById(Long id) throws Exception;
 
 }

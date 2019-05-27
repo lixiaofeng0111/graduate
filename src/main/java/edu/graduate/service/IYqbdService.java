@@ -9,5 +9,13 @@ public interface IYqbdService {
 	List<Yqbd> selectAllYqbd() throws Exception;
 	
 	Yqbd selectById(int id) throws Exception;
+	
+	Yqbd selectByName(String name) throws Exception;
+	
+	void update(Yqbd yqbd) throws Exception;
+	
+	void saveYqbd(Yqbd yqbd) throws Exception;
+	
+	void delete(Integer id) throws Exception;
 
 }

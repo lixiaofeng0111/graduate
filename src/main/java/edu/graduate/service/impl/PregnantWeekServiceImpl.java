@@ -32,4 +32,22 @@ public class PregnantWeekServiceImpl implements IPregnantWeekService{
 		return pregnantWeekMapper.selectByWeek(week);
 	}
 
+	@Override
+	public void savePregnantWeek(PregnantWeek pregnantWeek) throws Exception {
+		// TODO Auto-generated method stub
+		pregnantWeekMapper.insert(pregnantWeek);
+	}
+
+	@Override
+	public void update(PregnantWeek pregnantWeek) throws Exception {
+		// TODO Auto-generated method stub
+		pregnantWeekMapper.updateByPrimaryKey(pregnantWeek);
+	}
+
+	@Override
+	public void delete(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		pregnantWeekMapper.deleteByPrimaryKey(id);
+	}
+
 }

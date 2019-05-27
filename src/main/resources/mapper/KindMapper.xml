@@ -86,6 +86,11 @@
     -->
     id, kind
   </sql>
+  <select id = "selectKindByKind" parameterType="String" resultType="edu.graduate.bean.Kind">
+  	select * from graduate_kind where kind = #{kind}
+  </select>
+  
+  
   <select id="selectByExample" parameterType="edu.graduate.bean.KindExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated

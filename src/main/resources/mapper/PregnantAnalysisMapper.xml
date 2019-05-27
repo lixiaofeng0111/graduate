@@ -103,6 +103,16 @@
     -->
     description
   </sql>
+  <select id = "selectByName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  	select * from graduate_pregnantanalysis where name = #{name}
+  </select>
+  <select id  = "selectPregnantAnalysisByKindId" parameterType="Long" resultType="edu.graduate.bean.PregnantAnalysis">
+  		select * from graduate_pregnantanalysis where kind_id in
+  		(select id from graduate_king 
+  			where kind  = ${kind}
+  		)
+  </select>
+  
   <select id="selectByExampleWithBLOBs" parameterType="edu.graduate.bean.PregnantAnalysisExample" resultMap="ResultMapWithBLOBs">
     <!--
       WARNING - @mbg.generated
@@ -331,4 +341,21 @@
       kind_id = #{kindId,jdbcType=BIGINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <!-- 一对一关联的查询 --> 
+ <resultMap type="edu.graduate.bean.PregnantAnalysis" id="pregnantAnalysisone">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="description" property="description"/>
+    <result column="kind_id" property="kindId"/>
+    
+    <!-- 关联对象 -->
+    <association property="kind" column="kind_id" javaType="edu.graduate.bean.Kind" select="edu.graduate.dao.KindMapper.selectByPrimaryKey">
+        <!-- 关联条件Employee的dept_id对应着Department的id -->
+    </association>
+</resultMap>
+
+<select id="selectKindBykindId" resultMap="pregnantAnalysisone" parameterType="Long">
+    select * from graduate_pregnantanalysis where id = #{id}
+</select>
 </mapper>

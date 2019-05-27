@@ -2,14 +2,12 @@ package edu.graduate.bean.extend;
 
 import java.util.List;
 
-import edu.graduate.bean.Fruit;
-
 public class NutritionVM {
 	private Long id;
 	private String name;
 	private String description;
 	
-	private  List<Fruit> fruits ;
+	private  List<FruitVM> fruits ;
 
 	public Long getId() {
 		return id;
@@ -35,14 +33,17 @@ public class NutritionVM {
 		this.description = description;
 	}
 
-	public List<Fruit> getFruits() {
+	public List<FruitVM> getFruits() {
 		return fruits;
 	}
 
-	public void setFruits(List<Fruit> fruits) {
+	public void setFruits(List<FruitVM> fruits) {
 		this.fruits = fruits;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "NutritionVM [id=" + id + ", name=" + name + ", description=" + description + ", fruits=" + fruits + "]";
+	}
 
 }

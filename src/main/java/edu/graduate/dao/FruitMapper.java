@@ -93,4 +93,6 @@ public interface FruitMapper {
      * @mbg.generated Fri May 17 21:35:09 CST 2019
      */
     int updateByPrimaryKey(Fruit record);
+    
+    Fruit selectByName(String name);
 }
