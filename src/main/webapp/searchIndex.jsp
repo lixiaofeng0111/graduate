@@ -240,20 +240,27 @@ button {
 	<fmt:formatDate var="datetime" value="${topic.datetime}"
 								pattern="yyyy-MM-dd" />
 		<div style="width:950px;height:130px;overflow: hidden;">
-			<table>
-				<tr>
-					<td width="800px"><h3>${topic.name}</h3></td>
-					<td><h4>${datetime}</h4></td>
-				</tr>
-				
-			</table>
 			
 			
 		<c:choose>
 			<c:when test="${fn:contains(topic,'content')}">
+			<table>
+				<tr>
+					<td width="800px"><h3><a href="/selectIndexTopicById?id=${topic.id}">${topic.name}</a></h3></td>
+					<td><h4>${datetime}</h4></td>
+				</tr>
+				
+			</table>
 				<p style="line-height:23px">${topic.content}</p>
 			</c:when>
 			<c:otherwise>
+			<table>
+				<tr>
+					<td width="800px"><h3><a href="/pageProfessor?id=${topic.id}">${topic.name}</a></h3></td>
+					<td><h4>${datetime}</h4></td>
+				</tr>
+				
+			</table>
 				<p style="line-height:23px">${topic.cotent}</p>
 			</c:otherwise>
 		

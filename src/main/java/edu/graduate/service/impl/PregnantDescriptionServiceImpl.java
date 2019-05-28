@@ -68,5 +68,17 @@ public class PregnantDescriptionServiceImpl implements IPregnantDescriptionServi
 		pregnantDescriptionMapper.deleteByPrimaryKey(id);
 	}
 
+	@Override
+	public List<PregnantDescriptionVM> selectDescriptionVMByNutritionId(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return pregnantDescriptionVMMapper.selectDescriptionVMByNutritionId(id);
+	}
+
+	@Override
+	public List<PregnantDescriptionVM> selectDescriptionVMByNutritionName(String nutritionName) throws Exception {
+		// TODO Auto-generated method stub
+		return pregnantDescriptionVMMapper.selectDescriptionVMByNutritionName(nutritionName);
+	}
+
 	
 }

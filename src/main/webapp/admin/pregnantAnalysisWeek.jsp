@@ -144,7 +144,7 @@
 							<tr>
 								<td><input type="checkbox" name="weekCheck" value="${pregantWeek.id}" class="acb" /></td>
 								
-								<td>${pregantWeek.pictrue}</td>
+								<td><img width="150px" height="130px" src="${pregantWeek.pictrue}"></td>
 								<td>${pregantWeek.week}</td>
 								<td><div class = "wrap">${pregantWeek.yqts}</div></td>
 								<td><div class = "wrap">${pregantWeek.bbfy}</div></td>

@@ -32,6 +32,9 @@ public interface IFruitService {
 	  
 	  List<FruitVM> selectFruitByNutritionId(Long fruitId) throws Exception;
 	  
+	  //根据营养的名字查询水果的相关信息
+	  List<FruitVM> selectFruitVMByNutritionName(String nutritionName) throws Exception;
+	  
 	  //删除操作 
 	  void deleteFruitVMById(Long id) throws Exception;
 	  

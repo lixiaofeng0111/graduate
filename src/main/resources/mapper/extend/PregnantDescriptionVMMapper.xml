@@ -9,7 +9,6 @@
 		<result column="time" property="time" />
 		<result column="effect" property="effect" />
 		<result column="description" property="description" />
-				
 		<collection 
 			property="nutritionVMs" 
 			column="id" 
@@ -26,6 +25,25 @@
 <!-- 根据Id查询 -->
 	<select id = "selectDescriptionVMById" resultMap="PregnantDescriptionVM">
 		select * from graduate_pregnantdescription where id = #{id}
+	</select>
+	
+<!-- 根据营养的Id查询孕月的信息 -->
+
+	<select id="selectDescriptionVMByNutritionId" parameterType="long" resultMap="PregnantDescriptionVM">
+		select * from graduate_pregnantdescription where id in (
+			select pregnantDescription_id
+			from graduate_npd
+			where nutrition_id = #{id}	
+		)
+	</select>
+<!-- 根据营养的名字查询孕月的信息 -->
+	<select id="selectDescriptionVMByNutritionName" parameterType="String" resultMap="PregnantDescriptionVM">
+		select * from graduate_pregnantdescription where id in(
+			select pregnantDescription_id 
+			from graduate_npd where nutrition_id in(
+				select id from graduate_nutrition where name like '%${nutritionName}%'
+			)
+		)
 	</select>
 	
 	

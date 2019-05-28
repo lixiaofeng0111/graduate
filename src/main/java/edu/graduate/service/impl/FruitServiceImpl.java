@@ -97,6 +97,12 @@ public class FruitServiceImpl implements IFruitService{
 		return fruitVMMapper.selectFruitVMByName(fruitName);
 	}
 
+	@Override
+	public List<FruitVM> selectFruitVMByNutritionName(String nutritionName) throws Exception {
+		// TODO Auto-generated method stub
+		return fruitVMMapper.selectFruitVMByNutritionName(nutritionName);
+	}
+
 
 //查询操作
 	

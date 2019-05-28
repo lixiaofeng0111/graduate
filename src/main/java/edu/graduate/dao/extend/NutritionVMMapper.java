@@ -2,6 +2,7 @@ package edu.graduate.dao.extend;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 
 import edu.graduate.bean.extend.NutritionVM;
 
@@ -40,6 +41,11 @@ public interface NutritionVMMapper {
 	 * @return
 	 */
 	List<NutritionVM> selectNutritionByPregnantDescriptionId(Integer pregnantDescriptionId);
+	
+	/*
+	 * 根据营养的名字查询水果的信息
+	 */
+	List<NutritionVM> selectNutritionVMByName(@Param("nutritionName")String nutritionName);
 
 //删除操作
 	/**

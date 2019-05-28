@@ -93,6 +93,19 @@ public class YqbdController {
 	
 	
 	
+	/*
+	 * public static String upload(String oldPath, MultipartFile file,
+	 * HttpServletRequest request) throws IllegalStateException, IOException {
+	 * String fileSuffix =
+	 * file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(
+	 * ".")); String dir = null; dir =
+	 * request.getServletContext().getRealPath("/imgs/upload"); File fileDir = new
+	 * File(dir); if (!fileDir.exists()) { fileDir.mkdirs(); } String fileName =
+	 * UUID.randomUUID().toString() + fileSuffix; File files = new File(fileDir +
+	 * "/" + fileName); File old = new File(fileDir + "/" + oldPath);
+	 * if(old.exists()){ old.delete(); } file.transferTo(files); return fileName; }
+	 */
+	
 	
 
 }

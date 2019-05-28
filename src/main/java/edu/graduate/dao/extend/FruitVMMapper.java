@@ -46,5 +46,7 @@ public interface FruitVMMapper {
 	//根据名字查询水果及其营养成分和能吃不能吃的原因
 		
 		List<FruitVM> selectFruitVMByName(@Param("fruitName")String fruitName);
+		
+		List<FruitVM> selectFruitVMByNutritionName(@Param("nutritionName")String nutritionName);
 
 }

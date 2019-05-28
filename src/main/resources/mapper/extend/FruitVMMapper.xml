@@ -70,6 +70,16 @@
 		delete from graduate_fruit where id = #{id}
 	</delete>
 	
+	<!-- 通过营养的名字查询水果的相关信息 -->
+	<select id="selectFruitVMByNutritionName" parameterType="String" resultMap="fruitVM">
+		select * from graduate_fruit where id in (
+			select fruit_id 
+			from graduate_nutritionfruit where nutrition_id in(
+				select id from graduate_nutrition where name like '%${nutritionName}%'
+			)
+		)
+	</select>
+	
 </mapper>
 
 

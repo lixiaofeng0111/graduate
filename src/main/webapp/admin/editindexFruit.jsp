@@ -56,7 +56,7 @@
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
 				<tr><td><input id="id" name="id" type="hidden" value="${editFruitSelectById.id}"/></td></tr>
 				<tr>
-					<td class="ui_text_rt" width="80">图片路径</td>
+					<td class="ui_text_rt" width="80">图片</td>
 					<td class="ui_text_lt">
 						<input value="${editFruitSelectById.imgpath}" autocomplete="off" class="ui_input_txt01" id="fruitImgpath" type="text" name="fruitImgpath" >
 					</td>

@@ -8,6 +8,8 @@ public class NutritionVM {
 	private String description;
 	
 	private  List<FruitVM> fruits ;
+	
+	private List<PregnantDescriptionVM> pregnantDescriptionVMs;
 
 	public Long getId() {
 		return id;
@@ -39,6 +41,15 @@ public class NutritionVM {
 
 	public void setFruits(List<FruitVM> fruits) {
 		this.fruits = fruits;
+	}
+	
+
+	public List<PregnantDescriptionVM> getPregnantDescriptionVMs() {
+		return pregnantDescriptionVMs;
+	}
+
+	public void setPregnantDescriptionVMs(List<PregnantDescriptionVM> pregnantDescriptionVMs) {
+		this.pregnantDescriptionVMs = pregnantDescriptionVMs;
 	}
 
 	@Override

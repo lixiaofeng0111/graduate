@@ -145,7 +145,7 @@
 						<tr>
 							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
 							</th>
-							<th>图片路径</th>
+							<th>图片</th>
 							<th>水果功能简述</th>
 							<th>操作</th>
 						</tr>
@@ -154,7 +154,7 @@
 							<tr>
 								<td><input type="checkbox" name="fruitCheck" value="${fruit.id}" class="acb" /></td>
 								
-								<td>${fruit.imgpath}</td>
+								<td><img width="100px" height="80px" src="${fruit.imgpath}"></td>
 								<td>${fruit.content}</td>
 								<td>
 									<a href="/editFruitSelectById?id=${fruit.id}" class="edit">编辑</a> 

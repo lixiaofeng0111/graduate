@@ -18,6 +18,12 @@
 			javaType="ArrayList"
 			select="edu.graduate.dao.extend.FruitVMMapper.selectFruitByNutritionId" >
 		</collection>
+		<collection
+			property="pregnantDescriptionVMs"
+			column="id"
+			javaType="ArrayList"
+			select="edu.graduate.dao.extend.PregnantDescriptionVMMapper.selectDescriptionVMByNutritionId">
+		</collection>
 	</resultMap>
 	
 	<!-- 根据孕期的Id查询营养成分 -->
@@ -58,5 +64,10 @@
 	<delete id="deleteNutritionVMById" parameterType="long" >
 		delete from graduate_nutrition where id = #{id}
 	</delete>
+	
+	<!-- 根据营养的名字查询水果的信息 -->
+	<select id="selectNutritionVMByName" parameterType="String" resultMap="nutritionVM">
+		select * from graduate_nutrition where  name like '%${nutritionName}%'
+	</select>
 	
 </mapper>

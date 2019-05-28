@@ -132,6 +132,7 @@ public class LoginController {
 		map.put("selectMoreToptic", findAllMoreTopic);
 		return new ModelAndView("pageMoreIndexTopic",map);
 	}
+//根据id查询今日话题及往期话题
 	@GetMapping("/pageMoreIndexTopic1")
 	public ModelAndView pageMoreIndexTopic1(Map<String, Object> map,@RequestParam Long id) throws Exception{
 		Topic findAllMoreTopicById = iTopicService.selectById(id);
@@ -167,8 +168,5 @@ public class LoginController {
 		map.put("pageSearchTP", pageSearchList);
 		return new ModelAndView("searchIndex",map);
 	}
-	
-
-	
 	
 }

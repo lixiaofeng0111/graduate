@@ -139,7 +139,7 @@
 						<c:forEach items="${pregnantAnalysisYqbd}" var="yqbd">
 							<tr>
 								<td><input type="checkbox" name="yqbdCheck" value="${yqbd.id}" class="acb" /></td>
-								<td>${yqbd.showpicture}</td>
+								<td><img width="100px" height="80px" src="${yqbd.showpicture}"></td>
 								<td>${yqbd.name}</td>
 								<td>${yqbd.picture}</td>
 								<td><div class = "wrap">${yqbd.discription}</div></td>

@@ -29,6 +29,7 @@ public interface INutritionService {
 	
 	List<NutritionVM> selectNutritionByPregnantDescriptionId(Integer pregnantDescriptionId) throws Exception;
 	
+	List<NutritionVM> selectNutritionVMByName(String nutritionName) throws Exception;
 //删除操作
 	void deleteNutritionVMById(Long id) throws Exception;
 	

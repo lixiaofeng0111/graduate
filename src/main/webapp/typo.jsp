@@ -66,6 +66,9 @@ float:left;
 margin-left:12px;
 text-align:center;
 }
+li{
+line-height:2;
+}
 </style>
 </head>
 <body>
@@ -80,7 +83,7 @@ text-align:center;
 					<li><a href="/pregnant" style="color: #fff;" style=>孕期阶段分析</a></li>
 					<li><a href="/fruit" style="color: #fff;">水果分析</a></li>
 					<li><a href="/pregnantRecomment"
-						style="background-color: #fff;">孕期水果及营养推荐</a></li>
+						style="background-color: #fff;height:58px;">孕期水果及营养推荐</a></li>
 					<li><a href="login.jsp" style="color: #fff;">登录</a></li>
 				</ul>
 			</div>
@@ -96,10 +99,14 @@ text-align:center;
 
 			<div class="col-md-4 column" style="padding: 100px 0px 0px 60px;">
 				<div style="font-size: 40px; padding: 0px 0px 60px 0px;">水果&孕期&营养</div>
-				<input style="width: 230px; height: 35px; border-radius: 40px;"
+<!-- 以下是搜索的部分 -->
+			<form method="post" action="/searchRecommendByNutritionName" target="_blank">
+				<input name="nutritionName" style="width: 230px; height: 35px; border-radius: 40px;"
 					type="text" placeholder="输入搜索内容...">
-				<button type="button" class="btn btn-default"
+				<button type="submit" class="btn btn-default"
 					style="background: images/Magi.png">搜索</button>
+			</form>
+<!--以下是搜索的内容-->
 			</div>
 
 			<div class="col-md-4 column" style="padding: 210px 0px 0px 120px;">
@@ -118,29 +125,55 @@ text-align:center;
 				<div style="font-size: 20px; color: #EE6AA7;">
 					<img width="75px" height="75px" src="imgs/momlogo.png">孕期水果及营养
 				</div>
-				<div>（本页面主要用于搜索，通过下面内容的介绍孕妈根据自己的具体情况去查询自己所需要的信息）</div>
+				<br>
+			<!-- 以下是momlog之下的内容 -->
+				<div >
+				<h3>目录</h3>
+				<ul>
+				<c:forEach items="${PregnantDescriptionVM}" var="maodian">
+					<li style="line-height:20px;"><a href="#${maodian.id}">${maodian.time}</a></li>
+				</c:forEach>
+				</ul>
+				<br>
+				<h3>内容</h3>
 				<c:forEach items="${PregnantDescriptionVM}" var="recommend">
-				<hr>
-					<h4 style="color: #EE6AA7;">${recommend.time }</h4>
-					<pre style="font-size: 15px;"><li>主打营养素：<c:forEach items="${recommend.nutritionVMs}" var="nutritionVMName">${nutritionVMName.name} &nbsp;</c:forEach></li><br><li>作用：${recommend.effect}</li><br><li>描述：${recommend.description}</li>
-			<li>相关水果推荐</li></pre>
+				<!-- 锚点内容 -->
+				
+				<!-- 锚点内容 -->
+					<h4 style="color: #EE6AA7;"><a name="${recommend.id}">${recommend.time }</a></h4>
+					<li>主打营养素：
+						<c:forEach items="${recommend.nutritionVMs}" var="nutritionVMName">
+						${nutritionVMName.name} &nbsp;
+						</c:forEach></li>
+					<li>作用：${recommend.effect}</li>
+					<li>描述：${recommend.description}</li>
+					<li>相关水果推荐</li>
 					<!-- 以下是显示的表格部分1 -->
-					<div style="margin-top: 0px; width:950px;border:1px solid red;float:left;" class = "recomment" >
+					<div style="margin-top: 0px; width:950px;float:left;" class = "recomment" >
 						<c:forEach  items="${recommend.nutritionVMs}" var="nutritionVMList">
 							<c:forEach  items="${nutritionVMList.fruits}" var="fruitsList">
-								<div >
-								 	<img width="180px" height="150px" src="${fruitsList.picture}">
-								 	<p>${fruitsList.name}</p>
-								 		<p>营养元素：<c:forEach items = "${fruitsList.nutritions}" var = "nutritions">
-								 			${nutritions.name}
-								 		</c:forEach></p>
-								</div>
+							<!--这是一个水果的信息，可以循环 -->
+								<div style="padding:10px;">
+								 	<div style="float:left;width:180px;height:150px;"><img width="100%" height="100%" src="${fruitsList.picture}"></div>
+								 	<div style="float:left;width:700px;height:150px;line-height:20px;text-align:left;"><p>${fruitsList.name}</p>
+									 	<p>营养元素：
+									 		<c:forEach items = "${fruitsList.nutritions}" var = "nutritions">
+									 			${nutritions.name}
+									 		</c:forEach>
+									    </p>
+									    <p>水果描述：${fruitsList.description}</p>
+								    </div>
+								</div><br>
 							</c:forEach>
 						</c:forEach>
 					</div>
-					<hr>
+					<br><br>
 					<!-- 以上是显示的表格部分 -->
+					<br>
 				</c:forEach>
+				</div>
+				
+		<!-- 以上是momlog之下的内容 -->
 			</div>
 			<!-- 以上是搜索框下面的各部分内容 -->
 		</div>

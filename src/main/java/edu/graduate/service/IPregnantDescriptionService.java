@@ -17,6 +17,12 @@ public interface IPregnantDescriptionService {
 	
 	PregnantDescription selectByTime(String time) throws Exception;
 	
+	//根据营养Id查询孕月的信息
+	List<PregnantDescriptionVM> selectDescriptionVMByNutritionId(Long id) throws Exception;
+	
+	//根据营养名字查询孕月的相关信息
+	List<PregnantDescriptionVM> selectDescriptionVMByNutritionName(String nutritionName) throws Exception;
+	
 	void update(PregnantDescription pregnantDescription) throws Exception;
 	  
 	void savePregnantDescription(PregnantDescription pregnantDescription) throws Exception;

@@ -92,6 +92,12 @@ public class NutritionServiceImpl implements INutritionService{
 		nutritionMapper.deleteByPrimaryKey(id);
 	}
 
+	@Override
+	public List<NutritionVM> selectNutritionVMByName(String nutritionName) throws Exception {
+		// TODO Auto-generated method stub
+		return nutritionVMMapper.selectNutritionVMByName(nutritionName);
+	}
+
 	
 
 }
