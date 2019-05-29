@@ -48,9 +48,10 @@
 	/** 用户角色   **/
 	var userRole = '';
 
-	/** 模糊查询来电用户  **/
+	/** 模糊查询  **/
 	function search(){
-		$("#submitForm").attr("action", "house_list.jsp?page=" + 1).submit();
+		var page = $(this).attr("id");
+		$("#submitForm").attr("action", "/searchpregnantAnalysisDim?page=" + page).submit();
 	}
 
 	/** 新增   **/
@@ -115,8 +116,8 @@
 				<div class="ui_text_indent">
 					<div id="box_border">
 						<div id="box_bottom">
-						<input type = "text" class = "chaxun">
-							<input type="button" value="查询" class="ui_input_btn01" onclick="search();" /> 
+						<input name="name" type="text" class="chaxun"> 
+							<input type="submit" id="${currentPage}" value="查询" class="ui_input_btn01" onclick="search.call(this);" /> 
 							<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 
 							<input type="button" value="删除" class="ui_input_btn01" onclick="batchDel();" /> 
 						</div>
@@ -140,7 +141,7 @@
 								<td><input type="checkbox" name="analysisCheck" value="${Analysis.id}" class="acb" /></td>
 								<td>${Analysis.name}</td>
 								<td><div class = "wrap">${Analysis.description}</div></td>
-								<td>${Analysis.kindId}</td>
+								<td>${Analysis.kind.kind}</td>
 								<td>
 									<a href="/editSelectpregnantAnalysisById?id=${Analysis.id}" class="edit">编辑</a> 
 									<a href="/deletepregnantAnalysisById?id=${Analysis.id}&page=${currentPage}"

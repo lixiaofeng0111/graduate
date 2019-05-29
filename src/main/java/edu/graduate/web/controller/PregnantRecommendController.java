@@ -27,8 +27,6 @@ public class PregnantRecommendController {
 	@GetMapping("/pregnantRecomment")
 	public ModelAndView pagePregnantRecomment(Map<String, Object> map) throws Exception {
 		List<PregnantDescriptionVM> selectAllPregnantDescriptionVMs = ipregnantDescriptionService.selectAllPregnantDescriptionVM();
-		
-		System.out.println(selectAllPregnantDescriptionVMs);
 		map.put("PregnantDescriptionVM", selectAllPregnantDescriptionVMs);
 		return new ModelAndView("typo",map);
 	}

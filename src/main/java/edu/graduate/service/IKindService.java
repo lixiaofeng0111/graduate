@@ -12,6 +12,8 @@ public interface IKindService {
 	
 	Kind selectKindByKind(String kind) throws Exception;
 	
+	List<Kind>  selectByKindDim(String kindString) throws Exception;
+	
 	void update(Kind kind) throws Exception;
 	  
 	void saveKind(Kind kind) throws Exception;

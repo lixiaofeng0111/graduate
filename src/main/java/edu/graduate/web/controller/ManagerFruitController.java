@@ -22,6 +22,8 @@ import edu.graduate.bean.Fruit;
 import edu.graduate.bean.LoginRegister;
 import edu.graduate.bean.Nutrition;
 import edu.graduate.bean.Reason;
+import edu.graduate.bean.extend.FruitVM;
+import edu.graduate.bean.extend.NutritionVM;
 import edu.graduate.service.IFruitService;
 import edu.graduate.service.INutritionService;
 import edu.graduate.service.IReasonService;
@@ -39,9 +41,24 @@ public class ManagerFruitController {
 	public ModelAndView fruitInformation(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
 			Map<String, Object> map) throws Exception{
 		PageHelper.startPage(page, 8);
-		List<Fruit> selectAllFruitList = iFruitService.findAllFruit();
-		PageInfo<Fruit> pageInfofruitInformation = new PageInfo<>(selectAllFruitList);
-		List<Fruit> pageListfruitInformation = pageInfofruitInformation.getList();
+		List<FruitVM> selectAllFruitList = iFruitService.selectAllFruitVM();
+		PageInfo<FruitVM> pageInfofruitInformation = new PageInfo<>(selectAllFruitList);
+		List<FruitVM> pageListfruitInformation = pageInfofruitInformation.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfofruitInformation.getPages());   //获取总页面		
+		map.put("fruitInformation", pageListfruitInformation);
+		return new ModelAndView("admin/fruitInformation",map);
+		
+	}
+	
+	@PostMapping("/searchFruitByNameDim")
+	public ModelAndView searchFruitByNameDim(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map,@RequestParam String fruitName) throws Exception{
+		PageHelper.startPage(page, 8);
+		List<FruitVM> selectAllFruitList = iFruitService.selectFruitVMByName(fruitName);
+		PageInfo<FruitVM> pageInfofruitInformation = new PageInfo<>(selectAllFruitList);
+		List<FruitVM> pageListfruitInformation = pageInfofruitInformation.getList();
 		
 		map.put("currentPage",page);
 		map.put("totalPage", pageInfofruitInformation.getPages());   //获取总页面		
@@ -192,6 +209,20 @@ public class ManagerFruitController {
 		List<Nutrition> selectAllNutritionList = iNutritionService.findAllNutrition();
 		PageInfo<Nutrition> pageInfoNutrition = new PageInfo<>(selectAllNutritionList);
 		List<Nutrition> pageListNutrition = pageInfoNutrition.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfoNutrition.getPages()); 
+		map.put("fruitNutritionInformation", pageListNutrition);
+		return new ModelAndView("admin/fruitNutritionInformation",map);
+	}
+	@PostMapping("/searchNutritionDim")
+	public ModelAndView searchNutritionDim(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map,@RequestParam String nutritionName) throws Exception{
+		
+		PageHelper.startPage(page, 8);
+		List<NutritionVM> selectAllNutritionList = iNutritionService.selectNutritionVMByName(nutritionName);
+		PageInfo<NutritionVM> pageInfoNutrition = new PageInfo<>(selectAllNutritionList);
+		List<NutritionVM> pageListNutrition = pageInfoNutrition.getList();
 		
 		map.put("currentPage",page);
 		map.put("totalPage", pageInfoNutrition.getPages()); 

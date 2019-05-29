@@ -115,8 +115,6 @@
 				<div class="ui_text_indent">
 					<div id="box_border">
 						<div id="box_bottom">
-						<input type = "text" class = "chaxun">
-							<input type="button" value="查询" class="ui_input_btn01" onclick="search();" /> 
 							<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 
 							<input type="button" value="删除" class="ui_input_btn01" onclick="batchDel();" /> 
 						</div>

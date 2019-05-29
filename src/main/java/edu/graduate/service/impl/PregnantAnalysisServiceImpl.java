@@ -61,4 +61,16 @@ public class PregnantAnalysisServiceImpl implements IPregnantAnalysisService{
 		return pregnantAnalysisMapper.selectKindBykindId(kindId);
 	}
 
+	@Override
+	public List<PregnantAnalysis> selectByNameDim(String name) throws Exception {
+		// TODO Auto-generated method stub
+		return pregnantAnalysisMapper.selectByNameDim(name);
+	}
+
+	@Override
+	public List<PregnantAnalysis> finAll() throws Exception {
+		// TODO Auto-generated method stub
+		return pregnantAnalysisMapper.findAll();
+	}
+
 }

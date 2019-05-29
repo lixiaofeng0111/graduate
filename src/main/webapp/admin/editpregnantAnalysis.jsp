@@ -86,12 +86,9 @@
 				<tr>
 					<td class="ui_text_rt">分析类别</td>
 					<td><select style = "height:30px;" id="kind" name="kind" class="ui_input_txt01">
-							  <option value="1">孕期营养</option>
-							  <option value="2">孕期饮食</option>
-							  <option value="3">孕期保健</option>
-							  <option value="4">孕期心理</option>
-							  <option value="5">孕期疾病</option>
-							  <option value="6">孕期知识</option>
+							   <c:forEach items="${editKind}" var="kind">
+								  <option value="${kind.id}">${kind.kind}</option>
+							  </c:forEach>
 						</select>
 					</td>
 				</tr>

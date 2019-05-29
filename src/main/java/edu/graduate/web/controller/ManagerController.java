@@ -71,7 +71,7 @@ public class ManagerController {
 		
 	}
 	
-	
+//用户页面
 	@GetMapping("/managerLogin")
 	public ModelAndView managerLogin(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
 			Map<String, Object> map) throws Exception {
@@ -166,6 +166,21 @@ public class ManagerController {
 	    	iLoginService.deleteUserById(Long.parseLong(strs[i])); 
 	    }
 	    return managerLogin(1,request,map);
+	}
+	
+//实现用户的模糊查询
+	@PostMapping("/searchUser")
+	public ModelAndView searchUser(@RequestParam String userName,Map<String, Object> map,@RequestParam(value="page",defaultValue = "1") Integer page) throws Exception{
+		
+		PageHelper.startPage(page, 5);
+		List<LoginRegister> searchUserByName = iLoginService.findAllByName(userName);
+		PageInfo<LoginRegister> pageInfoUser = new PageInfo<>(searchUserByName);
+		List<LoginRegister> pageListUser = pageInfoUser.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfoUser.getPages());   //获取总页面		
+		map.put("managerUser", pageListUser);
+		return new ModelAndView("admin/managerUser",map);
 	}
 
 }

@@ -92,7 +92,7 @@
     -->
     id, pictrue, week, yqts, bbfy, yyts, bmxz, mmbh
   </sql>
-  <select id = "selectByWeek" parameterType="int" resultType="edu.graduate.bean.PregnantWeek">
+  <select id = "selectByWeek" parameterType="Integer"  resultMap="BaseResultMap">
   	select * from graduate_pregnantweek where week = #{week}
   </select>
   

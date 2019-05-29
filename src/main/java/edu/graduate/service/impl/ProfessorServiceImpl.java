@@ -67,4 +67,10 @@ public class ProfessorServiceImpl implements IProfessorService{
 		return professorMapper.selectProfessorByNameDim(ProfessorName);
 	}
 
+	@Override
+	public List<Professor> findAll() throws Exception {
+		// TODO Auto-generated method stub
+		return professorMapper.findAll();
+	}
+
 }

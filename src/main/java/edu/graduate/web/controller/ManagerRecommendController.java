@@ -19,6 +19,7 @@ import com.github.pagehelper.PageInfo;
 
 import edu.graduate.bean.LoginRegister;
 import edu.graduate.bean.PregnantDescription;
+import edu.graduate.bean.extend.PregnantDescriptionVM;
 import edu.graduate.service.IPregnantDescriptionService;
 
 @RestController
@@ -30,9 +31,22 @@ public class ManagerRecommendController {
 	public ModelAndView recommendPregnantDescription(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
 			Map<String, Object> map) throws Exception{
 		PageHelper.startPage(page, 5);
-		List<PregnantDescription> selectAllPregnantDescriptionList = ipregnantDescriptionService.selectAllPregnantDescriptions();
-		PageInfo<PregnantDescription> pageInfoPregnantDescription = new PageInfo<>(selectAllPregnantDescriptionList);
-		List<PregnantDescription> pageListPregnantDescription = pageInfoPregnantDescription.getList();
+		List<PregnantDescriptionVM> selectAllPregnantDescriptionList = ipregnantDescriptionService.selectAllPregnantDescriptionVM();
+		PageInfo<PregnantDescriptionVM> pageInfoPregnantDescription = new PageInfo<>(selectAllPregnantDescriptionList);
+		List<PregnantDescriptionVM> pageListPregnantDescription = pageInfoPregnantDescription.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfoPregnantDescription.getPages()); 
+		map.put("recommendPregnantDescription", pageListPregnantDescription);
+		return new ModelAndView("admin/recommendInformation",map);
+	}
+	@PostMapping("/searchRecommendDim")
+	public ModelAndView searchRecommendDim(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map,@RequestParam String descriptionName) throws Exception{
+		PageHelper.startPage(page, 5);
+		List<PregnantDescriptionVM> selectAllPregnantDescriptionList = ipregnantDescriptionService.selectByDName(descriptionName);
+		PageInfo<PregnantDescriptionVM> pageInfoPregnantDescription = new PageInfo<>(selectAllPregnantDescriptionList);
+		List<PregnantDescriptionVM> pageListPregnantDescription = pageInfoPregnantDescription.getList();
 		
 		map.put("currentPage",page);
 		map.put("totalPage", pageInfoPregnantDescription.getPages()); 

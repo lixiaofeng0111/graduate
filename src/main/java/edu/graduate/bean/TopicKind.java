@@ -66,4 +66,10 @@ public class TopicKind {
     public void setKind(String kind) {
         this.kind = kind == null ? null : kind.trim();
     }
+
+	@Override
+	public String toString() {
+		return "TopicKind [id=" + id + ", kind=" + kind + "]";
+	}
+    
 }

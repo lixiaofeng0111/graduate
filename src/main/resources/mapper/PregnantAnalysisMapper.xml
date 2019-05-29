@@ -103,16 +103,7 @@
     -->
     description
   </sql>
-  <select id = "selectByName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
-  	select * from graduate_pregnantanalysis where name = #{name}
-  </select>
-  <select id  = "selectPregnantAnalysisByKindId" parameterType="Long" resultType="edu.graduate.bean.PregnantAnalysis">
-  		select * from graduate_pregnantanalysis where kind_id in
-  		(select id from graduate_king 
-  			where kind  = ${kind}
-  		)
-  </select>
-  
+ 
   <select id="selectByExampleWithBLOBs" parameterType="edu.graduate.bean.PregnantAnalysisExample" resultMap="ResultMapWithBLOBs">
     <!--
       WARNING - @mbg.generated
@@ -358,4 +349,20 @@
 <select id="selectKindBykindId" resultMap="pregnantAnalysisone" parameterType="Long">
     select * from graduate_pregnantanalysis where id = #{id}
 </select>
+<select id="findAll" resultMap="pregnantAnalysisone" parameterType="Long">
+    select * from graduate_pregnantanalysis
+</select>
+
+ <select id = "selectByName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  	select * from graduate_pregnantanalysis where name = #{name}
+  </select>
+  <select id  = "selectPregnantAnalysisByKindId" parameterType="Long" resultType="edu.graduate.bean.PregnantAnalysis">
+  		select * from graduate_pregnantanalysis where kind_id in
+  		(select id from graduate_king 
+  			where kind  = ${kind}
+  		)
+  </select>
+   <select id = "selectByNameDim" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  	select * from graduate_pregnantanalysis where name like '%${name}%'
+  </select>
 </mapper>

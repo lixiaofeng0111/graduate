@@ -123,4 +123,10 @@ public interface PregnantAnalysisMapper {
     PregnantAnalysis selectByName(String name);
     
     PregnantAnalysis selectKindBykindId(Long id);
+    
+    List<PregnantAnalysis> selectByNameDim(@Param("name") String name);
+    
+    List<PregnantAnalysis> findAll();
+    
+    
 }

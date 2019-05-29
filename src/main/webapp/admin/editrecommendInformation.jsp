@@ -91,9 +91,7 @@
 			$("#update_btn").click(function() {
 				
 				var id1 = document.getElementById("id");
-				alert(id1);
 				var time1 = document.getElementById("time");
-				alert(time1);
 				var effect1 = document.getElementById("effect");
 				var description1 = document.getElementById("description");
 				id1_val = $.trim(id1.value);
@@ -102,6 +100,7 @@
 				description1_val = $.trim(description1.value);
 				if (time1_val == null || time1_val == "") {
 					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'孕月不能为空！', ok:true,});
+					return false;
 				} else if (effect1_val == null || effect1_val == "") {
 					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'作用不能为空！', ok:true,});
 				} else if (description1_val == null || description1_val == "") {

@@ -57,6 +57,19 @@ public class ManagerPregnantAnalysisController {
 		map.put("pregnantAnalysisPregantWeek", pageListPregnantWeek);
 		return new ModelAndView("admin/pregnantAnalysisWeek",map);
 	}
+	@PostMapping("/searchByWeekDim")
+	public ModelAndView searchByWeekDim(@RequestParam Integer week,@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map) throws Exception{
+		PageHelper.startPage(page, 7);
+		List<PregnantWeek> search = iPregnantWeekService.selectPregnantWeekByweek(week);
+		PageInfo<PregnantWeek> pageInfoPregnantWeek = new PageInfo<>(search);
+		List<PregnantWeek> pageListPregnantWeek = pageInfoPregnantWeek.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfoPregnantWeek.getPages());
+		map.put("pregnantAnalysisPregantWeek", pageListPregnantWeek);
+		return new ModelAndView("admin/pregnantAnalysisWeek",map);
+	}
 //以下是验证孕周的信息的阶段
 	@PostMapping("/checkPregnantAnalysisweek")
 	public void checkPregnantAnalysisweek(HttpServletRequest request , HttpServletResponse response) throws Exception {
@@ -64,7 +77,7 @@ public class ManagerPregnantAnalysisController {
 		String result = "";
 		String week1 = request.getParameter("week");
 		Integer week = Integer.parseInt(week1);
-		PregnantWeek selectByweek = iPregnantWeekService.selectPregnantWeekByweek(week);
+		List<PregnantWeek> selectByweek = iPregnantWeekService.selectPregnantWeekByweek(week);
 		if(selectByweek!=null) {
 			result = "该类名已经被添加，请重新输入！";
 			response.setContentType("text/html");
@@ -251,6 +264,19 @@ public class ManagerPregnantAnalysisController {
 		map.put("pregnantAnalysisKind", pageListKind);
 		return new ModelAndView("admin/pregnantAnalysisKind",map);
 	}
+	@PostMapping("/searchKindDim")
+	public ModelAndView searchKindDim(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map,@RequestParam String kindString) throws Exception{
+		PageHelper.startPage(page, 7);
+		List<Kind> selectAllKindList = iKindService.selectByKindDim(kindString);
+		PageInfo<Kind> pageInfoKind = new PageInfo<>(selectAllKindList);
+		List<Kind> pageListKind = pageInfoKind.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfoKind.getPages());
+		map.put("pregnantAnalysisKind", pageListKind);
+		return new ModelAndView("admin/pregnantAnalysisKind",map);
+	}
 //以下是验证孕期类别方法
 	@PostMapping("/checkPregnantAnalysisKind")
 	public void checkPregnantAnalysisKind(HttpServletRequest request , HttpServletResponse response) throws Exception {
@@ -332,7 +358,20 @@ public class ManagerPregnantAnalysisController {
 	public ModelAndView pregnantAnalysis(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
 			Map<String, Object> map) throws Exception{
 		PageHelper.startPage(page, 7);
-		List<PregnantAnalysis> selectAllPregnantAnalysisList = iPregnantAnalysisService.selectAllPregnantAnalysis();
+		List<PregnantAnalysis> selectAllPregnantAnalysisList = iPregnantAnalysisService.finAll();
+		PageInfo<PregnantAnalysis> pageInfoPregnantAnalysis = new PageInfo<>(selectAllPregnantAnalysisList);
+		List<PregnantAnalysis> pageListPregnantAnalysis = pageInfoPregnantAnalysis.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfoPregnantAnalysis.getPages());
+		map.put("pregnantAnalysis", pageListPregnantAnalysis);
+		return new ModelAndView("admin/pregnantAnalysis",map);
+	}
+	@PostMapping("/searchpregnantAnalysisDim")
+	public ModelAndView searchpregnantAnalysisDim(@RequestParam String name,@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map) throws Exception{
+		PageHelper.startPage(page, 7);
+		List<PregnantAnalysis> selectAllPregnantAnalysisList = iPregnantAnalysisService.selectByNameDim(name);
 		PageInfo<PregnantAnalysis> pageInfoPregnantAnalysis = new PageInfo<>(selectAllPregnantAnalysisList);
 		List<PregnantAnalysis> pageListPregnantAnalysis = pageInfoPregnantAnalysis.getList();
 		
@@ -378,6 +417,8 @@ public class ManagerPregnantAnalysisController {
 		@GetMapping("/editSelectpregnantAnalysisById")
 		public ModelAndView editSelectpregnantAnalysisById(Map<String, Object> map,@RequestParam Long id) throws Exception{
 			PregnantAnalysis pregnantAnalysis = iPregnantAnalysisService.selectKindByKindId(id);
+			List<Kind> kind = iKindService.selectAllKind();
+			map.put("editKind", kind);
 			map.put("editSelectpregnantAnalysisById",pregnantAnalysis);
 			return new ModelAndView("admin/editpregnantAnalysis",map);
 		}

@@ -56,15 +56,17 @@
 	/** 用户角色   **/
 	var userRole = '';
 
-	/** 模糊查询来电用户  **/
-	function search() {
-		$("#submitForm").attr("action", "house_list.jsp?page=" + 1).submit();
-	}
+	
 
 	/** 新增   **/
 	function add() {
 		$("#submitForm").attr("action", "/xngzf/archives/luruFangyuan.action")
 				.submit();
+	}
+	/** 模糊查询来电用户  **/
+	function search() {
+		var page = $(this).attr("id");
+		$("#submitForm").attr("action", "/searchUser?page=" + page).submit();
 	}
 
 	/** 批量删除 **/
@@ -126,7 +128,8 @@
 				<div class="ui_text_indent">
 					<div id="box_border">
 						<div id="box_bottom">
-							<input type="text" class="chaxun"> <input type="button" value="查询" class="ui_input_btn01" onclick="search();" /> 
+							<input name="userName" type="text" class="chaxun"> 
+							<input type="submit" id="${currentPage}" value="查询" class="ui_input_btn01" onclick="search.call(this);" /> 
 							<input type="button" value="新增" class="ui_input_btn01" id="addBtn" />
 							<input type="button" value="删除" class="ui_input_btn01" onclick="batchDel();" />
 						</div>
@@ -140,7 +143,6 @@
 						<tr>
 							<th width="30"><input type="checkbox" id="all"
 								onclick="selectOrClearAllCheckbox(this);" /></th>
-								
 							<th>用户名</th>
 							<th>密码</th>
 							<th>年龄</th>
@@ -158,9 +160,7 @@
 								<td>${user.sex}</td>
 								<td>${user.address}</td>
 								<td><a href="/editSelectById?id=${user.id}" class="edit">编辑</a>
-									<a id="delete_one"
-									href="/deleteUserById?id=${user.id}&page=${currentPage}"
-									 id="deleteid" onClick="delete_confirm">删除</a>
+	                                <a id="delete_one" href="/deleteUserById?id=${user.id}&page=${currentPage}" id="deleteid" onClick="delete_confirm">删除</a>
 								</td>
 							</tr>
 						</c:forEach>

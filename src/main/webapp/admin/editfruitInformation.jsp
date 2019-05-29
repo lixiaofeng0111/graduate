@@ -88,25 +88,19 @@
 				<tr>
 					<td class="ui_text_rt">孕妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" placeholder = "请输入话题内容">
-						${editSelectfruitinformationById.pregnanteat}
-						</textarea>
+						<input type="text" value="${editSelectfruitinformationById.pregnanteat}" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" />
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">产妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" >
-						${editSelectfruitinformationById.momeat}
-						</textarea>
+						<input type="text" value="${editSelectfruitinformationById.momeat}" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat">
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">宝宝能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat" >
-						${editSelectfruitinformationById.babyeat}
-						</textarea>
+						<input type="text" value="${editSelectfruitinformationById.babyeat}" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat">
 					</td>
 				</tr>
 				<tr>

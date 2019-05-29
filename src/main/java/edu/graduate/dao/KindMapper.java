@@ -95,4 +95,6 @@ public interface KindMapper {
     int updateByPrimaryKey(Kind record);
     
     Kind selectKindByKind(String name);
+    
+   List<Kind>  selectByKindDim(@Param("kindString")String kindString);
 }

@@ -47,6 +47,13 @@ public class ImgIndexButtomServiceImpl implements IImgIndexButtomService{
 
 
 	@Override
+	public List<ImgIndexButtom> selectByContent(String contentString) throws Exception {
+		// TODO Auto-generated method stub
+		return imgIndexButtomMapper.selectByContent(contentString);
+	}
+
+
+	@Override
 	public ImgIndexButtom selectByImgpath(String imgpath) throws Exception {
 		// TODO Auto-generated method stub
 		return imgIndexButtomMapper.selectByImgpath(imgpath);

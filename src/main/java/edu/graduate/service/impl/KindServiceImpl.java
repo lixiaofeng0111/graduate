@@ -48,4 +48,10 @@ public class KindServiceImpl implements IKindService{
 		kindMapper.deleteByPrimaryKey(id);
 	}
 
+	@Override
+	public List<Kind> selectByKindDim(String kindString) throws Exception {
+		// TODO Auto-generated method stub
+		return kindMapper.selectByKindDim(kindString);
+	}
+
 }

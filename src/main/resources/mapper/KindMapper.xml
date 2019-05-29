@@ -241,4 +241,8 @@
     set kind = #{kind,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <select id="selectByKindDim" parameterType="String" resultMap="BaseResultMap">
+  	select * from graduate_kind where kind like '%${kindString}%'
+  </select>
 </mapper>

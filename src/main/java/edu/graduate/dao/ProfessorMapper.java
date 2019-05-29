@@ -126,5 +126,7 @@ public interface ProfessorMapper {
     
     List<Professor> selectProfessorByNameDim(@Param("ProfessorName")String ProfessorName);
     
+    List<Professor> findAll();
+    
     
 }

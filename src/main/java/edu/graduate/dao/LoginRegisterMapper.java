@@ -95,4 +95,6 @@ public interface LoginRegisterMapper {
     int updateByPrimaryKey(LoginRegister record);
 
 	LoginRegister findLoginByName(String username);
+	
+	List<LoginRegister> findAllByName(@Param("userName")String userName);
 }

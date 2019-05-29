@@ -46,4 +46,10 @@ public class LoginServiceImpl implements ILoginService{
 	public void deleteUserById(Long id) throws Exception {
 		loginRegisterMapper.deleteByPrimaryKey(id);
 	}
+
+	@Override
+	public List<LoginRegister> findAllByName(String userName) throws Exception {
+		// TODO Auto-generated method stub
+		return loginRegisterMapper.findAllByName(userName);
+	}
 }

@@ -94,5 +94,5 @@ public interface PregnantWeekMapper {
      */
     int updateByPrimaryKey(PregnantWeek record);
     
-    PregnantWeek selectByWeek(Integer week);
+    List<PregnantWeek> selectByWeek(Integer week);
 }

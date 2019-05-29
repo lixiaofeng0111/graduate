@@ -2,6 +2,7 @@ package edu.graduate.service;
 
 import java.util.List;
 
+
 import edu.graduate.bean.PregnantDescription;
 import edu.graduate.bean.extend.PregnantDescriptionVM;
 
@@ -28,5 +29,7 @@ public interface IPregnantDescriptionService {
 	void savePregnantDescription(PregnantDescription pregnantDescription) throws Exception;
 	  
 	void delete(Integer id) throws Exception;
+	
+	List<PregnantDescriptionVM> selectByDName(String descriptionName) throws Exception;
 
 }

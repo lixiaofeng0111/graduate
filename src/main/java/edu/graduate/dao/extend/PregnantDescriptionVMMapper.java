@@ -24,4 +24,6 @@ public interface PregnantDescriptionVMMapper {
 	//通过营养的名字查询孕月信息和水果信息
 	List<PregnantDescriptionVM> selectDescriptionVMByNutritionName(@Param("nutritionName")String nutritionName);
 
+	
+	List<PregnantDescriptionVM> selectByDName(@Param("descriptionName")String descriptionName);
 }

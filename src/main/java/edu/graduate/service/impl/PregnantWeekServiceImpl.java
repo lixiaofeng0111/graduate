@@ -28,7 +28,7 @@ public class PregnantWeekServiceImpl implements IPregnantWeekService{
 	}
 
 	@Override
-	public PregnantWeek selectPregnantWeekByweek(Integer week) throws Exception {
+	public List<PregnantWeek> selectPregnantWeekByweek(Integer week) throws Exception {
 		return pregnantWeekMapper.selectByWeek(week);
 	}
 

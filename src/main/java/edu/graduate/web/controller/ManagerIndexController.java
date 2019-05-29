@@ -26,8 +26,10 @@ import com.github.pagehelper.PageInfo;
 import edu.graduate.bean.ImgIndexButtom;
 import edu.graduate.bean.Professor;
 import edu.graduate.bean.Topic;
+import edu.graduate.bean.TopicKind;
 import edu.graduate.service.IImgIndexButtomService;
 import edu.graduate.service.IProfessorService;
+import edu.graduate.service.ITopicKindService;
 import edu.graduate.service.ITopicService;
 
 @RestController
@@ -40,6 +42,8 @@ public class ManagerIndexController {
 	
 	@Autowired
 	private IImgIndexButtomService iImgIndexButtomService;
+	@Autowired
+	private ITopicKindService iTopicKindService;
 	
 	
 	//今日和昨日话题
@@ -50,6 +54,21 @@ public class ManagerIndexController {
 		PageHelper.startPage(page, 8);
 		List<Topic> selectAllTodayTopticList = iTopicService.findAllTopic();
 		PageInfo<Topic> pageInfoTodayToptic = new PageInfo<>(selectAllTodayTopticList);
+		List<Topic> pageListTodayToptic = pageInfoTodayToptic.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfoTodayToptic.getPages()); 
+		map.put("indexTodayTopic", pageListTodayToptic);
+		return new ModelAndView("admin/indexTodayTopic",map);
+	}
+//模糊查询今日或往期话题
+	@PostMapping("/searchIndexTopicDim")
+	public ModelAndView searchIndexTopicDim(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map,@RequestParam String topicString) throws Exception{
+		
+		PageHelper.startPage(page, 8);
+		List<Topic> searchTopics = iTopicService.findTopicByNameDim(topicString);
+		PageInfo<Topic> pageInfoTodayToptic = new PageInfo<>(searchTopics);
 		List<Topic> pageListTodayToptic = pageInfoTodayToptic.getList();
 		
 		map.put("currentPage",page);
@@ -150,7 +169,22 @@ public class ManagerIndexController {
 			Map<String, Object> map) throws Exception{
 		
 		PageHelper.startPage(page, 8);
-		List<Professor> selectAllProfessorList = iProfessorService.findAllProfessor();
+		List<Professor> selectAllProfessorList = iProfessorService.findAll();
+		PageInfo<Professor> pageInfoProfessor = new PageInfo<>(selectAllProfessorList);
+		List<Professor> pageListProfessor = pageInfoProfessor.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfoProfessor.getPages()); 
+		map.put("indexProfessorTopic", pageListProfessor);
+		return new ModelAndView("admin/indexProfessorTopic",map);
+	}
+	
+	@PostMapping("/searchProfessorTopicDim")
+	public ModelAndView searchProfessorTopicDim(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map,@RequestParam String ProfessorName) throws Exception{
+		
+		PageHelper.startPage(page, 8);
+		List<Professor> selectAllProfessorList = iProfessorService.selectProfessorByNameDim(ProfessorName);
 		PageInfo<Professor> pageInfoProfessor = new PageInfo<>(selectAllProfessorList);
 		List<Professor> pageListProfessor = pageInfoProfessor.getList();
 		
@@ -197,7 +231,9 @@ public class ManagerIndexController {
 		@GetMapping("/editprofessorSelectById")
 		public ModelAndView editprofessorSelectById(Map<String, Object> map,@RequestParam Integer topicKindId) throws Exception{
 			Professor editprofessorSelectById = iProfessorService.selectKindByKindId(topicKindId);
-			System.out.println(editprofessorSelectById);
+			List<TopicKind> findAll = iTopicKindService.findAll();
+			System.out.println(findAll);
+			map.put("searchKind", findAll);
 			map.put("editprofessorSelectBykindId",editprofessorSelectById);
 			return new ModelAndView("admin/editindexProfessorTopic",map);
 		}
@@ -257,6 +293,20 @@ public class ManagerIndexController {
 		PageHelper.startPage(page, 8);
 		List<ImgIndexButtom> selectAllImgIndexButtomList = iImgIndexButtomService.findAllImgIndexButtom();
 		PageInfo<ImgIndexButtom> pageInfoImgIndexButtom = new PageInfo<>(selectAllImgIndexButtomList);
+		List<ImgIndexButtom> pageListProfessor = pageInfoImgIndexButtom.getList();
+		
+		map.put("currentPage",page);
+		map.put("totalPage", pageInfoImgIndexButtom.getPages());
+		map.put("indexFruit",pageListProfessor);
+		return new ModelAndView("admin/indexFruit",map);
+	}
+//水果模糊查询
+	@PostMapping("/searchFruitDim")
+	public ModelAndView searchFruitDim(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
+			Map<String, Object> map,@RequestParam String contentString) throws Exception{
+		PageHelper.startPage(page, 8);
+		List<ImgIndexButtom> selectByContent = iImgIndexButtomService.selectByContent(contentString);
+		PageInfo<ImgIndexButtom> pageInfoImgIndexButtom = new PageInfo<>(selectByContent);
 		List<ImgIndexButtom> pageListProfessor = pageInfoImgIndexButtom.getList();
 		
 		map.put("currentPage",page);

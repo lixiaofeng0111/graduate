@@ -49,7 +49,8 @@
 
 	/** 模糊查询来电用户  **/
 	function search(){
-		$("#submitForm").attr("action", "house_list.jsp?page=" + 1).submit();
+		var page = $(this).attr("id");
+		$("#submitForm").attr("action", "/searchFruitByNameDim?page=" + page).submit();
 	}
 
 	/** 新增   **/
@@ -126,8 +127,8 @@
 				<div class="ui_text_indent">
 					<div id="box_border">
 						<div id="box_bottom">
-						<input type = "text" class = "chaxun">
-							<input type="button" value="查询" class="ui_input_btn01" onclick="search();" /> 
+						<input name="fruitName" type="text" class="chaxun"> 
+							<input type="submit" id="${currentPage}" value="查询" class="ui_input_btn01" onclick="search.call(this);" /> 
 							<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 
 							<input type="button" value="删除" class="ui_input_btn01" onclick="batchDel();" /> 
 						</div>
@@ -136,18 +137,19 @@
 			</div>
 			<div class="ui_content">
 				<div class="ui_tb">
-					<table class="table" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+					<table class="table" cellspacing="0" cellpadding="0"  align="center" border="0">
 						<tr>(备注：孕妇是否能吃、产妇是否能吃、宝宝是否能吃列只能填Y或N，填Y时为能吃，N时为慎吃)</tr>
 						<tr>
-							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+							<th><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
 							</th>
 							<th>水果名</th>
-							<th>水果图片路径</th>
+							<th>水果图片</th>
 							<th>水果简介</th>
 							<th>水果功能描述</th>
 							<th>孕妇是否能吃</th>
 							<th>产妇是否能吃</th>
 							<th>宝宝是否能吃</th>
+							<th>所含营养</th>
 							<th>操作</th>
 						</tr>
 						<tr></tr>
@@ -155,12 +157,13 @@
 							<tr>
 								<td><input type="checkbox" name="fruitInformationCheck" value="${information.id}" class="acb" /></td>
 								<td>${information.name}</td>
-								<td><img width="120px" height="100px" src="${information.picture}"></td>
+								<td><img width="100px" height="80px" src="${information.picture}"></td>
 								<td><div class = "wrap">${information.brief}</div></td>
 								<td><div class = "wrap">${information.description}</div></td>
-								<td>${information.pregnanteat}</td>
-								<td>${information.momeat}</td>
-								<td>${information.babyeat}</td>
+								<td>${information.pregnantEat}</td>
+								<td>${information.momEat}</td>
+								<td>${information.babyEat}</td>
+								<td><div class = "wrap">叶酸，维生素A，维生素B</div></td>
 								<td>
 									<a href="/editSelectfruitinformationById?id=${information.id}" class="edit">编辑</a> 
 									<a href="/deleteFruitinformationById?id=${information.id}&page=${currentPage}"

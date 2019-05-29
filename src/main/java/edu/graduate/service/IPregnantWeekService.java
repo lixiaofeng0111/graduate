@@ -10,7 +10,7 @@ public interface IPregnantWeekService {
 	
 	PregnantWeek selectPregnantWeekById(int id) throws Exception;
 	
-	PregnantWeek selectPregnantWeekByweek(Integer week) throws Exception;
+	List<PregnantWeek> selectPregnantWeekByweek(Integer week) throws Exception;
 	
 	void savePregnantWeek(PregnantWeek pregnantWeek) throws Exception;
 	

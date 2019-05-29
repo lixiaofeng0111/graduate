@@ -125,19 +125,26 @@
 				momeat1_val = $.trim(momeat1.value);
 				babyeat1_val = $.trim(babyeat1.value);
 				if (name1_val == null || name1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'水果名不能为空！', ok:true,});
+					alert("水果名不能为空！");
+					return false;
 				} else if (picture1_val == null || picture1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'水果图片不能为空！', ok:true,});
+					alert("水果图片不能为空！");
+					return false;
 				} else if (brief1_val == null || brief1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'水果简述不能为空！', ok:true,});
+					alert("水果简述不能为空！");
+					return false;
 				} else if (description1_val == null || description1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'水果详述不能为空！', ok:true,});
+					alert("水果详述不能为空！");
+					return false;
 				} else if (pregnanteat1_val == null || pregnanteat1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'孕妇能否吃不能为空！', ok:true,});
+					alert("孕妇能否吃不能为空！");
+					return false;
 				} else if (momeat1_val == null || momeat1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'产妇能否吃不能为空！', ok:true,});
+					alert("产妇能否吃不能为空！");
+					return false;
 				} else if (babyeat1_val == null || babyeat1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'宝宝能否吃不能为空！', ok:true,});
+					alert("宝宝能否吃不能为空！");
+					return false;
 				} 
 
 				var url = "/checkFruitInfrmation";

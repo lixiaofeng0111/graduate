@@ -308,11 +308,12 @@ button {
 									
 									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
 										<c:if test="${selectAllPregnantAnalysis.kindId==1}">
+										<br>
 
-										<h4>${selectAllPregnantAnalysis.name}</h4>
+										<h4>&nbsp;&nbsp;${selectAllPregnantAnalysis.name}</h4>
 										<br>
-										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
-										<br>
+										<pre style = "background-color:#fff;">&nbsp;&nbsp;${selectAllPregnantAnalysis.description}</pre>
+										<hr>
 										</c:if>
 										</c:forEach>
 
@@ -336,11 +337,11 @@ button {
 									
 									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
 										<c:if test="${selectAllPregnantAnalysis.kindId==2}">
-
-										<h4>${selectAllPregnantAnalysis.name}</h4>
 										<br>
-										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
+										<h4>&nbsp;&nbsp;${selectAllPregnantAnalysis.name}</h4>
 										<br>
+										<pre style = "background-color:#fff;">&nbsp;&nbsp;${selectAllPregnantAnalysis.description}</pre>
+										<hr>
 										</c:if>
 										</c:forEach>
 
@@ -361,15 +362,14 @@ button {
 								<!-- 这里是滚动条区域 -->
 							<div class="scroll_main">
 								<div class="scroll_wrap">
-									<div class="scroll_cont" style = "text-align:left;">
-									
+									<div class="scroll_cont" style = "text-align:left;">	
 									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
 										<c:if test="${selectAllPregnantAnalysis.kindId==3}">
-
-										<h4>${selectAllPregnantAnalysis.name}</h4>
 										<br>
-										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
+										<h4>&nbsp;&nbsp;${selectAllPregnantAnalysis.name}</h4>
 										<br>
+										<pre style = "background-color:#fff;">&nbsp;&nbsp;${selectAllPregnantAnalysis.description}</pre>
+										<hr>
 										</c:if>
 										</c:forEach>
 
@@ -394,11 +394,11 @@ button {
 									
 									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
 										<c:if test="${selectAllPregnantAnalysis.kindId==4}">
-
+										<br>
 										<h4>${selectAllPregnantAnalysis.name}</h4>
 										<br>
 										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
-										<br>
+										<hr>
 										</c:if>
 										</c:forEach>
 
@@ -423,11 +423,11 @@ button {
 									
 									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
 										<c:if test="${selectAllPregnantAnalysis.kindId==5}">
-
+										<br>
 										<h4>${selectAllPregnantAnalysis.name}</h4>
 										<br>
 										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
-										<br>
+										<hr>
 										</c:if>
 										</c:forEach>
 
@@ -452,11 +452,11 @@ button {
 									
 									<c:forEach items="${selectPregnantAnalysis}" var="selectAllPregnantAnalysis">
 										<c:if test="${selectAllPregnantAnalysis.kindId==6}">
-
-										<h4>${selectAllPregnantAnalysis.name}</h4>
 										<br>
-										<pre style = "background-color:#fff;">${selectAllPregnantAnalysis.description}</pre>
+										<h4>&nbsp;&nbsp;${selectAllPregnantAnalysis.name}</h4>
 										<br>
+										<pre style = "background-color:#fff;">&nbsp;&nbsp;${selectAllPregnantAnalysis.description}</pre>
+										<hr>
 										</c:if>
 										</c:forEach>
 

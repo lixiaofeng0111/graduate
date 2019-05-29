@@ -80,5 +80,11 @@ public class PregnantDescriptionServiceImpl implements IPregnantDescriptionServi
 		return pregnantDescriptionVMMapper.selectDescriptionVMByNutritionName(nutritionName);
 	}
 
+	@Override
+	public List<PregnantDescriptionVM> selectByDName(String descriptionName) throws Exception {
+		// TODO Auto-generated method stub
+		return pregnantDescriptionVMMapper.selectByDName(descriptionName);
+	}
+
 	
 }

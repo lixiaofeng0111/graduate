@@ -47,11 +47,7 @@
 	/** 用户角色   **/
 	var userRole = '';
 
-	/** 模糊查询来电用户  **/
-	function search(){
-		$("#submitForm").attr("action", "house_list.jsp?page=" + 1).submit();
-	}
-
+	
 	/** 新增   **/
 	function add(){
 		$("#submitForm").attr("action", "/xngzf/archives/luruFangyuan.action").submit();	
@@ -131,8 +127,6 @@
 				<div class="ui_text_indent">
 					<div id="box_border">
 						<div id="box_bottom">
-						<input type = "text" class = "chaxun">
-							<input type="button" value="查询" class="ui_input_btn01" onclick="search();" /> 
 							<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 
 							<input type="button" value="删除" class="ui_input_btn01" onclick="batchDel();" /> 
 						</div>

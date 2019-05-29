@@ -17,5 +17,7 @@ public interface ILoginService {
 	void update(LoginRegister loginRegister) throws Exception;
 	
 	void deleteUserById(Long id) throws Exception;
+	
+	List<LoginRegister> findAllByName(String userName) throws Exception;
 
 }

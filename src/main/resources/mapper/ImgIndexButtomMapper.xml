@@ -102,9 +102,7 @@
     -->
     content
   </sql>
-  <select id="selectByImgpath" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
-  	select * from  graduate_imgindex_buttom where imgpath = #{imgpath}
-  </select>
+  
   <select id="selectByExampleWithBLOBs" parameterType="edu.graduate.bean.ImgIndexButtomExample" resultMap="ResultMapWithBLOBs">
     <!--
       WARNING - @mbg.generated
@@ -317,4 +315,12 @@
     set imgPath = #{imgpath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectByImgpath" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  	select * from  graduate_imgindex_buttom where imgpath = #{imgpath}
+  </select>
+  
+  <select id="selectByContent" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  	select * from  graduate_imgindex_buttom where content like '%${contentString}%'
+  </select>
 </mapper>

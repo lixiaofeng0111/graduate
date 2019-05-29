@@ -119,4 +119,6 @@ public interface ImgIndexButtomMapper {
     int updateByPrimaryKey(ImgIndexButtom record);
     
     ImgIndexButtom selectByImgpath(String imgpath);
+    
+    List<ImgIndexButtom> selectByContent(@Param("contentString")String contentString);
 }

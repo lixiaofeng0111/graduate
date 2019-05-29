@@ -21,6 +21,10 @@
 	<select id = "selectAllPregnantDescriptionVM" resultMap="PregnantDescriptionVM">
 		select * from graduate_pregnantdescription
 	</select>
+<!-- 通过孕月的名字查询水果的信息 -->
+	<select id = "selectByDName" resultMap="PregnantDescriptionVM">
+		select * from graduate_pregnantdescription where time like '%${descriptionName}%'
+	</select>
 	
 <!-- 根据Id查询 -->
 	<select id = "selectDescriptionVMById" resultMap="PregnantDescriptionVM">

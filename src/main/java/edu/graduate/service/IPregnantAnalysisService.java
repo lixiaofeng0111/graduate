@@ -6,6 +6,8 @@ import edu.graduate.bean.PregnantAnalysis;
 
 public interface IPregnantAnalysisService {
 	
+	List<PregnantAnalysis> finAll() throws Exception;
+	
 	List<PregnantAnalysis> selectAllPregnantAnalysis() throws Exception;
 	
 	PregnantAnalysis selectPregnantAnalysisById(Integer id) throws Exception;
@@ -21,6 +23,8 @@ public interface IPregnantAnalysisService {
 	void savePregnantAnalysis(PregnantAnalysis pregnantAnalysis) throws Exception;
 	
 	void delete(Integer id) throws Exception;
+	
+	List<PregnantAnalysis> selectByNameDim(String name) throws Exception;
 	
 
 }

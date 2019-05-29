@@ -40,6 +40,18 @@
 		}
 	});
 </script>
+<style type="text/css">
+#submit_btn{   
+         width:200px;   
+         height:200px;   
+         background:url(../imgs/add.png) no-repeat center;   
+         cursor:pointer;   
+          display:block;   
+          font-size:0;   
+          line-height:0;   
+          text-indent:-9999px;   
+}  
+</style>
 </head>
 <body>
 <div>
@@ -58,7 +70,9 @@
 				<tr>
 					<td class="ui_text_rt" width="80">图片</td>
 					<td class="ui_text_lt">
-						<input value="${editFruitSelectById.imgpath}" autocomplete="off" class="ui_input_txt01" id="fruitImgpath" type="text" name="fruitImgpath" >
+						<input  value="${editFruitSelectById.imgpath}" autocomplete="off" class="ui_input_txt01" id="fruitImgpath" type="hidden" name="fruitImgpath" >
+						<input  type="file" id="submit_btn">
+					
 					</td>
 				</tr>
 				<tr>

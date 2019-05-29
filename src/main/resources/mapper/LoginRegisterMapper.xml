@@ -120,9 +120,7 @@
     from graduate_loginregister
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <select id = "findLoginByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-  select username,password from graduate_loginregister where username = #{username}
-  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
@@ -301,4 +299,15 @@
       address = #{address,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  
+  <select id = "findLoginByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select username,password from graduate_loginregister where username = #{username}
+  </select>
+  
+  <select id = "findAllByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from graduate_loginregister where username like '%${userName}%'
+  </select>
+  
+  
 </mapper>
