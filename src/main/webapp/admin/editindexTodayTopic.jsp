@@ -45,7 +45,7 @@
 <div>
 	<div id="container">
 		<div id="nav_links">
-			当前位置：用户管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">用户信息修改</span>
+			当前位置：用户管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">今日及往期话题修改</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="../images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -99,11 +99,14 @@
 				topicContent1_val = $.trim(topicContent1.value);
 				datetime1_val = $.trim(datetime0.value);
 				if (topicname1_val == null || topicname1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("话题名不能为空");
+					return false;
 				} else if (topicContent1_val == null || topicContent1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("话题内容不能为空");
+					return false;
 				} else if (datetime1_val == null || datetime1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题时间不能为空！', ok:true,});
+					alert("话题时间不能为空");
+					return false;
 				}
 
 				var url = "/checkUpdateTodayTopic";

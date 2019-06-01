@@ -56,7 +56,7 @@
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
 				<tr><td><input id="id" name="id" type="hidden" value="${editSelectMeituById.id}"/></td></tr>
 				<tr>
-					<td class="ui_text_rt" width="80">美图路径</td>
+					<td class="ui_text_rt" width="80">美图</td>
 					<td class="ui_text_lt">
 						<input value="${editSelectMeituById.imgpath}"  autocomplete="off" class="ui_input_txt01" id="imgpath" type="text" name="imgpath" placeholder="请输入话题名">
 					</td>
@@ -81,7 +81,8 @@
 				id1_val = $.trim(id1.value);
 				imgpath1_val = $.trim(imgpath1.value);
 				if (imgpath1_val == null || imgpath1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("美图不能为空");
+					return false;
 				}
 
 				var url = "/checkUpdateMeitu";
@@ -96,7 +97,6 @@
 						alert("修改成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("修改失败");
 					}
 				});

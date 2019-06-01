@@ -93,11 +93,14 @@
 				topicContent1_val = $.trim(topicContent1.value);
 				datetime1_val = $.trim(datetime1.value);
 				if (topicname1_val == null || topicname1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("话题名不能为空");
+					return false;
 				} else if (topicContent1_val == null || topicContent1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("话题内容不能为空");
+					return false;
 				} else if (datetime1_val == null || datetime1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题时间不能为空！', ok:true,});
+					alert("话题时间不能为空");
+					return false;
 				}
 
 				var url = "/checkIndexTodayTopic";

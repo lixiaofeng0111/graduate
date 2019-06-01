@@ -45,7 +45,7 @@
 <div>
 	<div id="container">
 		<div id="nav_links">
-			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加今日或往期话题</span>
+			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加美图展示</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="../images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -77,7 +77,8 @@
 				var imgpath1 = document.getElementById("imgpath");
 				imgpath1_val = $.trim(imgpath1.value);
 				if (imgpath1_val == null || imgpath1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("图片不能为空");
+					return false;
 				}
 
 				var url = "/checkPregnantAnalysisMeitu";
@@ -91,7 +92,6 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("保存失败");
 					}
 				});

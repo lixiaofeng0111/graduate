@@ -107,13 +107,17 @@
 				picture1_val = $.trim(picture1.value);
 				description1_val = $.trim(description1.value);
 				if (showpicture1_val == null || showpicture1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'页面图片不能为空！', ok:true,});
+					alert("页面图片不能为空");
+					return false;
 				} else if (name1_val == null || name1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'文章名不能为空！', ok:true,});
+					alert("名字不能为空");
+					return false;
 				} else if (picture1_val == null || picture1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'文章图片不能为空！', ok:true,});
+					alert("文章图片不能为空");
+					return false;
 				} else if (description1_val == null || description1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'文章描述不能为空！', ok:true,});
+					alert("文章描述不能为空");
+					return false;
 				} 
 
 				var url = "/checkUpdateYqbd";
@@ -131,7 +135,6 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("保存失败");
 					}
 				});

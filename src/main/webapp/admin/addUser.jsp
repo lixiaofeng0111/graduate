@@ -145,7 +145,6 @@
 						alert("保存成功！");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("保存失败！")
 					}
 				});

@@ -128,20 +128,27 @@
 				yyts1_val = $.trim(yyts1.value);
 				bmxz1_val = $.trim(bmxz1.value);
 				mmbh1_val = $.trim(mmbh1.value);
-				if (pictrue1_val == null || pictrue1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'图片路径不能为空！', ok:true,});
+				if (picture1_val == null || picture1_val == "") {
+					alert("图片不能为空");
+					return false;
 				} else if (week1_val == null || week1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'孕周不能为空！', ok:true,});
+					alert("孕周不能为空");
+					return false;
 				} else if (yqts1_val == null || yqts1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'孕期提示不能为空！', ok:true,});
+					alert("孕期提示不能为空");
+					return false;
 				} else if (bbfy1_val == null || bbfy1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'宝宝发育不能为空！', ok:true,});
+					alert("宝宝发育不能为空");
+					return false;
 				} else if (yyts1_val == null || yyts1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'营养提示不能为空！', ok:true,});
+					alert("营养提示不能为空");
+					return false;
 				} else if (bmxz1_val == null || bmxz1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'爸妈须知不能为空！', ok:true,});
+					alert("爸妈须知不能为空");
+					return false;
 				} else if (mmbh1_val == null || mmbh1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'妈妈变化不能为空！', ok:true,});
+					alert("妈妈变化不能为空");
+					return false;
 				} 
 
 				var url = "/checkUpdateweek";
@@ -162,7 +169,6 @@
 						alert("修改成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("修改失败");
 					}
 				});

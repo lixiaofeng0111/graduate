@@ -45,7 +45,7 @@
 <div>
 	<div id="container">
 		<div id="nav_links">
-			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加今日或往期话题</span>
+			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加孕期分析内容</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="../images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -99,11 +99,14 @@
 				description1_val = $.trim(description1.value);
 				kind1_val = $.trim(kind1.value);
 				if (name1_val == null || name1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("名字不能为空");
+					return false;
 				} else if (description1_val == null || description1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("分析描述不能为空");
+					return false;
 				} else if (kind1_val == null || kind1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("分析类别不能为空");
+					return false;
 				} 
 
 				var url = "/checkPregnantAnalysis";
@@ -119,7 +122,6 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("保存失败");
 					}
 				});

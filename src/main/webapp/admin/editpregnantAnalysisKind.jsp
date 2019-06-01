@@ -81,7 +81,8 @@
 				id1_val = $.trim(id1.value);
 				kind1_val = $.trim(kind1.value);
 				if (kind1_val == null || kind1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("类别不能为空");
+					return false;
 				}
 
 				var url = "/checkUpdatepregnantKind";
@@ -96,7 +97,6 @@
 						alert("修改成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("修改失败");
 					}
 				});

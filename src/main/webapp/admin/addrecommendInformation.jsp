@@ -45,7 +45,7 @@
 <div>
 	<div id="container">
 		<div id="nav_links">
-			当前位置：水果及营养推荐信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加孕月相关内容</span>
+			当前位置：水果及营养推荐信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加孕月推荐相关内容</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="../images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -93,11 +93,14 @@
 				effect1_val = $.trim(effect1.value);
 				description1_val = $.trim(description1.value);
 				if (time1_val == null || time1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'孕月不能为空！', ok:true,});
+					alert("孕月不能为空");
+					return false;
 				} else if (effect1_val == null || effect1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'作用不能为空！', ok:true,});
+					alert("作用不能为空");
+					return false;
 				} else if (description1_val == null || description1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'描述不能为空！', ok:true,});
+					alert("描述不能为空");
+					return false;
 				}
 
 				var url = "/checkRecomment";
@@ -113,7 +116,6 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("保存失败");
 					}
 				});

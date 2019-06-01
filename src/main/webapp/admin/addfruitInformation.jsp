@@ -45,7 +45,7 @@
 <div>
 	<div id="container">
 		<div id="nav_links">
-			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加今日或往期话题</span>
+			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加水果信息</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="../images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -57,37 +57,37 @@
 				<tr>
 					<td class="ui_text_rt" width="80">名字</td>
 					<td class="ui_text_lt">
-						<input  autocomplete="off" class="ui_input_txt01" id="name" type="text" name="name" placeholder="请输入话题名">
+						<input  autocomplete="off" class="ui_input_txt01" id="name" type="text" name="name" >
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">水果图片</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="picture"  name="picture" placeholder = "请输入话题内容"></textarea>
+						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="picture"  name="picture" ></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">水果简述</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="brief"  name="brief" placeholder = "请输入话题内容"></textarea>
+						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="brief"  name="brief"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">水果详述</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="description"  name="description" placeholder = "请输入话题内容"></textarea>
+						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="description"  name="description" >填写Y/N</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">孕妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" placeholder = "请输入话题内容"></textarea>
+						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" >填写Y/N</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">产妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" placeholder = "请输入话题内容"></textarea>
+						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" >填写Y/N</textarea>
 					</td>
 				</tr>
 				<tr>

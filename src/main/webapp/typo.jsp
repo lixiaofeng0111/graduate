@@ -129,11 +129,11 @@ line-height:2;
 			<!-- 以下是momlog之下的内容 -->
 				<div >
 				<h3>目录</h3>
-				<ul>
+			<!-- 目录内容 -->
 				<c:forEach items="${PregnantDescriptionVM}" var="maodian">
 					<li style="line-height:20px;"><a href="#${maodian.id}">${maodian.time}</a></li>
 				</c:forEach>
-				</ul>
+			<!-- 目录内容 -->
 				<br>
 				<h3>内容</h3>
 				<c:forEach items="${PregnantDescriptionVM}" var="recommend">

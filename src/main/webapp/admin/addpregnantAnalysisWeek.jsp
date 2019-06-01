@@ -45,7 +45,7 @@
 <div>
 	<div id="container">
 		<div id="nav_links">
-			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加今日或往期话题</span>
+			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加孕周信息</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="../images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -125,19 +125,26 @@
 				bmxz1_val = $.trim(bmxz1.value);
 				mmbh1_val = $.trim(mmbh1.value);
 				if (picture1_val == null || picture1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'图片路径不能为空！', ok:true,});
+					alert("图片不能为空");
+					return false;
 				} else if (week1_val == null || week1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'孕周不能为空！', ok:true,});
+					alert("孕周不能为空");
+					return false;
 				} else if (yqts1_val == null || yqts1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'孕期提示不能为空！', ok:true,});
+					alert("孕期提示不能为空");
+					return false;
 				} else if (bbfy1_val == null || bbfy1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'宝宝发育不能为空！', ok:true,});
+					alert("宝宝发育不能为空");
+					return false;
 				} else if (yyts1_val == null || yyts1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'营养提示不能为空！', ok:true,});
+					alert("营养提示不能为空");
+					return false;
 				} else if (bmxz1_val == null || bmxz1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'爸妈须知不能为空！', ok:true,});
+					alert("爸妈须知不能为空");
+					return false;
 				} else if (mmbh1_val == null || mmbh1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'妈妈变化不能为空！', ok:true,});
+					alert("妈妈变化不能为空");
+					return false;
 				} 
 
 				var url = "/checkPregnantAnalysisweek";
@@ -157,7 +164,6 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("保存失败");
 					}
 				});

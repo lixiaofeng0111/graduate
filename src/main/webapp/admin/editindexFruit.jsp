@@ -57,7 +57,7 @@
 <div>
 	<div id="container">
 		<div id="nav_links">
-			当前位置：用户管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">用户信息修改</span>
+			当前位置：用户管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">水果相关信息修改</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="../images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -103,9 +103,11 @@
 				fruitImgpath1_val = $.trim(fruitImgpath1.value);
 				fruitContent1_val = $.trim(fruitContent1.value);
 				if (fruitImgpath1_val == null || fruitImgpath1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("水果名不能为空！");
+					return false;
 				} else if (fruitContent1_val == null || fruitContent1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("水果简述不能为空！");
+					return false;
 				} 
 
 				var url = "/checkUpdateFruit";
@@ -121,7 +123,6 @@
 						alert("修改成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("修改失败");
 					}
 				});

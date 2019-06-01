@@ -228,11 +228,18 @@ public class ManagerIndexController {
 		}
 	}
 	//以下是专家话题及其他话题的编辑内容
+	@GetMapping("/addProfessorTopic")
+	public ModelAndView addProfessorTopic(Map<String, Object> map) throws Exception{
+		List<TopicKind> findAll = iTopicKindService.findAll();
+		System.out.println(findAll);
+		map.put("searchKind", findAll);
+		return new ModelAndView("admin/addindexProfessorTopic",map);
+	}
 		@GetMapping("/editprofessorSelectById")
 		public ModelAndView editprofessorSelectById(Map<String, Object> map,@RequestParam Integer topicKindId) throws Exception{
 			Professor editprofessorSelectById = iProfessorService.selectKindByKindId(topicKindId);
 			List<TopicKind> findAll = iTopicKindService.findAll();
-			System.out.println(findAll);
+			
 			map.put("searchKind", findAll);
 			map.put("editprofessorSelectBykindId",editprofessorSelectById);
 			return new ModelAndView("admin/editindexProfessorTopic",map);

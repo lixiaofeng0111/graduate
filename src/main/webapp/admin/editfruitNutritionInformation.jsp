@@ -45,7 +45,7 @@
 <div>
 	<div id="container">
 		<div id="nav_links">
-			当前位置：用户管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">用户信息修改</span>
+			当前位置：用户管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">营养信息修改</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="../images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -90,10 +90,12 @@
 				name1_val = $.trim(name1.value);
 				description1_val = $.trim(description1.value);
 				if (name1_val == null || name1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'水果名不能为空！', ok:true,});
+					alert("营养名不能为空");
+					return false;
 				} else if (description1_val == null || description1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'水果详述不能为空！', ok:true,});
-				} 
+					alert("营养描述不能为空");
+					return false;
+				}
 
 				var url = "/checkUpdateFruitNutrition";
 				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
@@ -108,7 +110,6 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("保存失败");
 					}
 				});

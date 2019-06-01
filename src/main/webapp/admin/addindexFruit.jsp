@@ -45,7 +45,7 @@
 <div>
 	<div id="container">
 		<div id="nav_links">
-			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加今日或往期话题</span>
+			当前位置：主页信息管理&nbsp;>&nbsp;<span style="color: #1A5CC6;">添加今水果相关信息</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="../images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -85,9 +85,11 @@
 				fruitImgpath1_val = $.trim(fruitImgpath1.value);
 				fruitContent1_val = $.trim(fruitContent1.value);
 				if (fruitImgpath1_val == null || fruitImgpath1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("水果名不能为空！");
+					return false;
 				} else if (fruitContent1_val == null || fruitContent1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("水果简述不能为空！");
+					return false;
 				} 
 
 				var url = "/checkIndexFruit";
@@ -102,7 +104,6 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("保存失败");
 					}
 				});

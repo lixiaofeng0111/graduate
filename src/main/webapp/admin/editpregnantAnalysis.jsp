@@ -116,12 +116,15 @@
 				description1_val = $.trim(description1.value);
 				kind1_val = $.trim(kind1.value);
 				if (name1_val == null || name1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("名字不能为空");
+					return false;
 				} else if (description1_val == null || description1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("分析描述不能为空");
+					return false;
 				} else if (kind1_val == null || kind1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
-				} 
+					alert("分析类别不能为空");
+					return false;
+				}  
 
 				var url = "/checkUpdatepregnantAnalysis";
 				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
@@ -137,7 +140,6 @@
 						alert("修改成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("修改失败");
 					}
 				});

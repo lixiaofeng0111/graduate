@@ -79,9 +79,6 @@
 					<td class="ui_text_rt" width="80">所属类别</td>
 					<td class="ui_text_lt">
 						<select style = "height:30px;" id="topickind" name="topickind" class="ui_input_txt01">
-							  <c:forEach items="">
-							  
-							  </c:forEach>
 							  <option value="1">专家栏目</option>
 							  <option value="2">重点关注</option>
 							  <option value="3">水果营养</option>
@@ -112,13 +109,17 @@
 				datetime1_val = $.trim(datetime1.value);
 				topickind1_val = $.trim(topickind1.value);
 				if (topicname1_val == null || topicname1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("话题名不能为空");
+					return false;
 				} else if (topicContent1_val == null || topicContent1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("话题内容不能为空");
+					return false;
 				} else if (datetime1_val == null || datetime1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题时间不能为空！', ok:true,});
+					alert("话题日期为空");
+					return false;
 				} else if (topickind1_val == null || topickind1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题类别不能为空！', ok:true,});
+					alert("话题类别为空");
+					return false;
 				}
 
 				var url = "/checkIndexProfessorTopic";
@@ -135,8 +136,7 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'保存失败', ok:true,});
+						alert("保存失败");
 					}
 				});
 			});

@@ -57,24 +57,25 @@
 				<tr>
 					<td class="ui_text_rt">孕妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" placeholder = "请输入话题内容"></textarea>
+						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" ></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">产妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" placeholder = "请输入话题内容"></textarea>
+						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" ></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">宝宝能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat" placeholder = "请输入话题内容"></textarea>
+						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat" ></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td class="ui_text_rt">分析类别</td>
+					<td class="ui_text_rt">对应水果</td>
 					<td><select style = "height:30px;" id="kind" name="kind" class="ui_input_txt01">
+							 
 							  <option value="1">孕期营养</option>
 							  <option value="2">孕期饮食</option>
 							  <option value="3">孕期保健</option>
@@ -107,13 +108,17 @@
 				babyeat1_val = $.trim(babyeat1.value);
 				kind1_val = $.trim(kind1.value);
 				if (pregnanteat1_val == null || pregnanteat1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
+					alert("孕妇能不能吃原因不能为空！");
+					return false;
 				} else if (momeat1_val == null || momeat1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("产妇能不能吃原因不能为空！");
+					return false;
 				} else if (babyeat1_val == null || babyeat1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("宝宝能不能吃原因不能为空！");
+					return false;
 				} else if (kind1_val == null || kind1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+					alert("水果名不能为空！");
+					return false;
 				} 
 
 				var url = "/checkFruitReason";
@@ -130,7 +135,6 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
 					alert("保存失败");
 					}
 				});
