@@ -148,11 +148,20 @@
 				} else if (pregnanteat1_val == null || pregnanteat1_val == "") {
 					alert("孕妇能否吃不能为空！");
 					return false;
+				} else if (pregnanteat1_val != 'Y' && pregnanteat1_val != 'N') {
+					alert("必须输入Y/N！");
+					return false;
 				} else if (momeat1_val == null || momeat1_val == "") {
 					alert("产妇能否吃不能为空！");
 					return false;
+				} else if (momeat1_val != 'Y' && momeat1_val != 'N') {
+					alert("必须输入Y/N！");
+					return false;
 				} else if (babyeat1_val == null || babyeat1_val == "") {
 					alert("宝宝能否吃不能为空！");
+					return false;
+				} else if (babyeat1_val != 'Y'  && babyeat1_val != 'N') {
+					alert("必须输入Y/N！");
 					return false;
 				} 
 
@@ -171,11 +180,10 @@
 				};
 				$.post(url, args, function(data) {
 					if(data == "ok"){
-						alert("保存成功");
+						alert("修改成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
-					alert("保存失败");
+					alert("修改失败");
 					}
 				});
 			});

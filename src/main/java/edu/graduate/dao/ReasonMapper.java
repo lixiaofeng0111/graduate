@@ -93,4 +93,10 @@ public interface ReasonMapper {
      * @mbg.generated Sat May 18 10:47:29 CST 2019
      */
     int updateByPrimaryKey(Reason record);
+    
+	List<Reason> findAll();
+	
+	Reason selectByFruitId(Long fruitId);
+	
+	Reason selectAllVMById(Integer id);
 }

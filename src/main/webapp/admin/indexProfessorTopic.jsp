@@ -21,7 +21,7 @@
 	$(document).ready(function(){
 		/** 新增   **/
 	    $("#addBtn").fancybox({
-	    	'href'  : 'admin/addindexProfessorTopic.jsp',
+	    	'href'  : '/addProfessorTopic',
 	    	'width' : 733,
 	        'height' : 530,
 	        'type' : 'iframe',

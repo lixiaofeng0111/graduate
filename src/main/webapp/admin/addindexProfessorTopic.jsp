@@ -79,10 +79,9 @@
 					<td class="ui_text_rt" width="80">所属类别</td>
 					<td class="ui_text_lt">
 						<select style = "height:30px;" id="topickind" name="topickind" class="ui_input_txt01">
-							  <option value="1">专家栏目</option>
-							  <option value="2">重点关注</option>
-							  <option value="3">水果营养</option>
-							  <option value="4">胎儿发育</option>
+							 <c:forEach items="${searchKind}" var="topic">
+							  <option value="${topic.id}">${topic.kind}</option>
+							  </c:forEach>
 						</select>
 					</td>
 				</tr>

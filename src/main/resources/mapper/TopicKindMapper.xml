@@ -86,6 +86,10 @@
     -->
     id, kind
   </sql>
+ <select id="findAll" parameterType="Integer" resultMap="BaseResultMap">
+ select * from  graduate_topickind
+ </select>
+  
   <select id="selectByExample" parameterType="edu.graduate.bean.TopicKindExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated

@@ -89,7 +89,6 @@
 						<select style = "height:30px;" id="topickind" name="topickind" class="ui_input_txt01">
 							  <c:forEach items="${searchKind}" var="kind">
 								  <option value="${kind.id}">${kind.kind}</option>
-								  
 							  </c:forEach>
 						</select>
 					</td>
@@ -106,6 +105,7 @@
 	</div>
 </div>
 <script type="text/javascript">
+//select  option遍历部分
 $(function(){
 	var topicKind_id = document.getElementById("kindId");
 	var options = document.getElementsByTagName("option");
@@ -115,6 +115,7 @@ $(function(){
 		}
 	}
 })
+///////////////////////////select  option遍历部分
 		$(function() {
 			$("#update_btn").click(function() {
 				var id1 = document.getElementById("id");

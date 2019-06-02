@@ -283,4 +283,24 @@
       fruit_id = #{fruitId,jdbcType=BIGINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+<!-- 自己写的 -->
+  <resultMap id="reasonOne" type="edu.graduate.bean.Reason">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pregnantEat" jdbcType="VARCHAR" property="pregnanteat" />
+    <result column="momEat" jdbcType="VARCHAR" property="momeat" />
+    <result column="babyEat" jdbcType="VARCHAR" property="babyeat" />
+    <result column="fruit_id" jdbcType="BIGINT" property="fruitId" />
+    <association property="fruits" column="fruit_id" select="edu.graduate.dao.FruitMapper.selectByPrimaryKey"></association>
+  </resultMap>
+  
+  <select id="findAll" resultMap="reasonOne">
+  	select * from graduate_reason
+  </select>
+  <select id="selectByFruitId" resultMap="reasonOne">
+  	select * from graduate_reason where fruit_id = #{fruitId}
+  </select>
+  <select id="selectAllVMById" resultMap="reasonOne">
+  	select * from graduate_reason where id = #{id}
+  </select>
+
 </mapper>

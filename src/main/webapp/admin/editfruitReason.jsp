@@ -66,19 +66,33 @@
 		</div>
 		<div class="ui_content">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
-				<tr><td><input id="id" name="id" type="hidden" value="${editFruitSelectById.id}"/></td></tr>
+				<tr><td><input id="id" name="id" type="hidden" value="${editFruitReasonById.id}"/></td></tr>
+				<tr><td><input id="fruitId" name="fruitId" type="hidden" value="${editFruitReasonById.fruits.id}"/></td></tr>
 				<tr>
-					<td class="ui_text_rt" width="80">图片</td>
+					<td class="ui_text_rt">孕妇能否吃</td>
 					<td class="ui_text_lt">
-						<input  value="${editFruitSelectById.imgpath}" autocomplete="off" class="ui_input_txt01" id="fruitImgpath" type="hidden" name="fruitImgpath" >
-						<input  type="file" id="submit_btn">
-					
+						<textarea style = "height:100px" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" >${editFruitReasonById.pregnanteat}</textarea>
 					</td>
 				</tr>
 				<tr>
-					<td class="ui_text_rt">水果描述</td>
+					<td class="ui_text_rt">产妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px"  autocomplete="off" class="ui_input_txt01" id="fruitContent"  name="fruitContent" >${editFruitSelectById.content}</textarea>
+						<textarea style = "height:100px" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" >${editFruitReasonById.momeat}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">宝宝能否吃</td>
+					<td class="ui_text_lt">
+						<textarea style = "height:100px" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat" >${editFruitReasonById.babyeat}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">对应水果</td>
+					<td><select style = "height:30px;" id="fruit" name="fruit" class="ui_input_txt01">
+							<c:forEach items="${searchFruit}" var="fruits">
+								  <option value="${fruits.id}">${fruits.name}</option>
+							</c:forEach>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -93,27 +107,50 @@
 	</div>
 </div>
 <script type="text/javascript">
+//select  option遍历部分
+$(function(){
+	var fruit_id = document.getElementById("fruitId");
+	var options = document.getElementsByTagName("option");
+	for(i=0;i<options.length;i++){
+		if(options[i].value==fruit_id.value){
+			options[i].selected = true;
+		}
+	}
+})
+///////////////////////////select  option遍历部分
+
 		$(function() {
 			$("#update_btn").click(function() {
 				
-				var id1 = document.getElementById("id");
-				var fruitImgpath1 = document.getElementById("fruitImgpath");
-				var fruitContent1 = document.getElementById("fruitContent");
-				id1_val = $.trim(id1.value);
-				fruitImgpath1_val = $.trim(fruitImgpath1.value);
-				fruitContent1_val = $.trim(fruitContent1.value);
-				if (fruitImgpath1_val == null || fruitImgpath1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题名不能为空！', ok:true,});
-				} else if (fruitContent1_val == null || fruitContent1_val == "") {
-					art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'话题内容不能为空！', ok:true,});
+				var pregnanteat1 = document.getElementById("pregnanteat");
+				var momeat1 = document.getElementById("momeat");
+				var babyeat1 = document.getElementById("babyeat");
+				var fruit1 = document.getElementById("fruit");
+				pregnanteat1_val = $.trim(pregnanteat1.value);
+				momeat1_val = $.trim(momeat1.value);
+				babyeat1_val = $.trim(babyeat1.value);
+				fruit1_val = $.trim(fruit1.value);
+				if (pregnanteat1_val == null || pregnanteat1_val == "") {
+					alert("孕妇能不能吃原因不能为空！");
+					return false;
+				} else if (momeat1_val == null || momeat1_val == "") {
+					alert("产妇能不能吃原因不能为空！");
+					return false;
+				} else if (babyeat1_val == null || babyeat1_val == "") {
+					alert("宝宝能不能吃原因不能为空！");
+					return false;
+				} else if (fruit1_val == null || fruit1_val == "") {
+					alert("水果名不能为空！");
+					return false;
 				} 
 
-				var url = "/checkUpdateFruit";
+				var url = "/checkUpdateFruitReason";
 				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
 				var args = {
-					"id" : id1_val,
-					"imgpath" : fruitImgpath1_val,
-					"content" : fruitContent1_val,
+					"pregnanteat" : pregnanteat1_val,
+					"momeat" : momeat1_val,
+					"babyeat" : babyeat1_val,
+					"fruit" : fruit1_val,
 					"time" : new Date()
 				};
 				$.post(url, args, function(data) {
@@ -121,7 +158,7 @@
 						alert("修改成功");
 						window.parent.$.fancybox.close();
 					}else{
-					alert(data);
+						alert(data);
 					alert("修改失败");
 					}
 				});

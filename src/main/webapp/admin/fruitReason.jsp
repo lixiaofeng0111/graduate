@@ -22,7 +22,7 @@
 	$(document).ready(function() {
 		/** 新增   **/
 		$("#addBtn").fancybox({
-			'href' : 'admin/addfruitReason.jsp',
+			'href' : '/addFruit',
 			'width' : 733,
 			'height' : 530,
 			'type' : 'iframe',
@@ -167,12 +167,10 @@
 								<td><div class="wrap">${reason.pregnanteat}</div></td>
 								<td ><div class="wrap">${reason.momeat}</div></td>
 								<td ><div class="wrap">${reason.babyeat}</div></td>
-								<td>${reason.fruitId}</td>
+								<td>${reason.fruits.name}</td>
 								<td>
-								<a href="house_edit.jsp?fyID=14458579642011"
-									class="edit">编辑</a>
-								<a href="/deleteFruitReasonById?id=${reason.id}&page=${currentPage}"
-									 id="deleteid" onClick="delete_confirm">删除</a>
+								<a href="/editFruitReasonById?id=${reason.id}" class="edit">编辑</a>
+								<a href="/deleteFruitReasonById?id=${reason.id}&page=${currentPage}" id="deleteid" onClick="delete_confirm">删除</a>
 								</td>
 							</tr>
 						</c:forEach>

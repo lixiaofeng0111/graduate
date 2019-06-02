@@ -42,6 +42,7 @@ public class ManagerIndexController {
 	
 	@Autowired
 	private IImgIndexButtomService iImgIndexButtomService;
+	
 	@Autowired
 	private ITopicKindService iTopicKindService;
 	
@@ -231,19 +232,19 @@ public class ManagerIndexController {
 	@GetMapping("/addProfessorTopic")
 	public ModelAndView addProfessorTopic(Map<String, Object> map) throws Exception{
 		List<TopicKind> findAll = iTopicKindService.findAll();
-		System.out.println(findAll);
 		map.put("searchKind", findAll);
 		return new ModelAndView("admin/addindexProfessorTopic",map);
 	}
-		@GetMapping("/editprofessorSelectById")
-		public ModelAndView editprofessorSelectById(Map<String, Object> map,@RequestParam Integer topicKindId) throws Exception{
-			Professor editprofessorSelectById = iProfessorService.selectKindByKindId(topicKindId);
-			List<TopicKind> findAll = iTopicKindService.findAll();
-			
-			map.put("searchKind", findAll);
-			map.put("editprofessorSelectBykindId",editprofessorSelectById);
-			return new ModelAndView("admin/editindexProfessorTopic",map);
-		}
+
+	//根据Id编辑查询专家及其他话题的内容
+	@GetMapping("/editprofessorSelectById")
+	public ModelAndView editprofessorSelectById(Map<String, Object> map,@RequestParam Integer topicKindId) throws Exception{
+		Professor editprofessorSelectById = iProfessorService.selectKindByKindId(topicKindId);
+		List<TopicKind> findAll = iTopicKindService.findAll();
+		map.put("searchKind", findAll);
+		map.put("editprofessorSelectBykindId",editprofessorSelectById);
+		return new ModelAndView("admin/editindexProfessorTopic",map);
+	}
 		
 	//以下使专家话题及其他话题修改验证内容	
 		@PostMapping("/checkUpdateProfessor")

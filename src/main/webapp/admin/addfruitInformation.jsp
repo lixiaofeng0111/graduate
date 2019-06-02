@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.Date"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>信息管理系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../css/fSelect.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../js/lhgcore.js"></script>
 <script type="text/javascript" src="../js/lhgcalendar.js"></script>
 <script type="text/javascript" src="../scripts/jquery/jquery-1.7.1.js"></script>
@@ -39,6 +43,34 @@
 			window.parent.$.fancybox.close();
 		}
 	});
+	
+	/** 批量增加 **/
+	function batchAdd(){
+    //判断至少选择了一项
+    var checkedNum = $("option[name='addNutrition']:checked").length;
+    if (checkedNum == 0) {
+    	alert("至少选择一项")
+        return;
+    }
+    if (confirm("确定增加选中信息？")) {
+        var nutritionList = new Array();
+        $("option[name='addNutrition']:checked").each(function(){
+            nutritionList.push($(this).val());
+        });
+    $.ajax({
+            type : "post",
+            url : "/batchdeleteFruitinformationById",
+            data : {nutritionList : nutritionList.toString()},
+            success : function(){
+            	alert("提交成功！");
+                location.reload();
+            },
+            error : function(){
+            	alert("提交失败！");
+            }
+        });
+    }
+}
 </script>
 </head>
 <body>
@@ -63,7 +95,8 @@
 				<tr>
 					<td class="ui_text_rt">水果图片</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="picture"  name="picture" ></textarea>
+					<div>此处的div是为了存放图片的</div>
+						<input type="file" autocomplete="off" class="ui_input_txt01" id="picture"  name="picture" ></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -75,25 +108,42 @@
 				<tr>
 					<td class="ui_text_rt">水果详述</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="description"  name="description" >填写Y/N</textarea>
+						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="description"  name="description" ></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">孕妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" >填写Y/N</textarea>
+						<input type="text" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" placeholder = "请填写Y/N">
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">产妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" >填写Y/N</textarea>
+						<input type="text" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" placeholder = "请填写Y/N">
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">宝宝能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat" placeholder = "请输入话题内容"></textarea>
+						<input type="text" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat" placeholder = "请填写Y/N"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">营养成分</td>
+					<td class="ui_text_lt">
+						
+			<!-- 以下是多选下拉框的部分 -->
+			<select class="demo" multiple="multiple">
+			    <c:forEach items="${addNutrition}" var="nutritions">
+					<%-- <input type="checkbox" name="addNutrition" value="" class="acb" />
+					${nutritions.name} --%>
+			        <option name="addNutrition" value="${nutritions.id}">${nutritions.name}</option>
+				</c:forEach> 
+			</select>
+				
+			<!-- 以上是多选下拉框的部分 -->	
+						
 					</td>
 				</tr>
 				<tr>
@@ -139,11 +189,20 @@
 				} else if (pregnanteat1_val == null || pregnanteat1_val == "") {
 					alert("孕妇能否吃不能为空！");
 					return false;
+				} else if (pregnanteat1_val != 'Y' && pregnanteat1_val != 'N') {
+					alert("必须输入Y/N！");
+					return false;
 				} else if (momeat1_val == null || momeat1_val == "") {
 					alert("产妇能否吃不能为空！");
 					return false;
+				} else if (momeat1_val != 'Y' && momeat1_val != 'N') {
+					alert("必须输入Y/N！");
+					return false;
 				} else if (babyeat1_val == null || babyeat1_val == "") {
 					alert("宝宝能否吃不能为空！");
+					return false;
+				} else if (babyeat1_val != 'Y'  && babyeat1_val != 'N') {
+					alert("必须输入Y/N！");
 					return false;
 				} 
 
@@ -171,8 +230,14 @@
 			});
 		})
 	</script>
-
-
+<!-- 以下是下拉复选框的内容 -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/fSelect.js"></script>
+<script>
+$(function() {
+        $('.demo').fSelect();
+    });
+</script>
 
 </body>
 </html>

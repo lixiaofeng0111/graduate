@@ -378,7 +378,7 @@
     <result column="cotent" jdbcType="LONGVARCHAR" property="cotent" />
     <result column="datetime" jdbcType="TIMESTAMP" property="datetime" />
     <result column="topicKind_id" jdbcType="INTEGER" property="topickindId" />
-    <association property="kind" column="id" select="edu.graduate.dao.TopicKindMapper.selectByPrimaryKey"></association>
+    <association property="kind" column="topicKind_id" select="edu.graduate.dao.TopicKindMapper.selectByPrimaryKey"></association>
   </resultMap>
   <select id = "selectProfessorByName" resultMap="professor">
   select * from graduate_professor where name = #{name}

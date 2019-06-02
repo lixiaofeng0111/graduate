@@ -41,8 +41,26 @@ public class ReasonServiceImpl implements IReasonService{
 	public void delete(Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		reasonMapper.deleteByPrimaryKey(id);
-	};
-	
-	
+	}
+
+	@Override
+	public List<Reason> findAll() throws Exception {
+		// TODO Auto-generated method stub
+		return reasonMapper.findAll();
+	}
+
+	@Override
+	public Reason selectByFruitId(Long fruitId) throws Exception {
+		// TODO Auto-generated method stub
+		return reasonMapper.selectByFruitId(fruitId);
+	}
+
+	@Override
+	public Reason selectAllVMById(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		return reasonMapper.selectAllVMById(id);
+	}
+
+
 
 }

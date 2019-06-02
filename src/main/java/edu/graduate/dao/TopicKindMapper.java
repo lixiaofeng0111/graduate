@@ -93,4 +93,6 @@ public interface TopicKindMapper {
      * @mbg.generated Tue May 21 10:16:40 CST 2019
      */
     int updateByPrimaryKey(TopicKind record);
+    
+    List<TopicKind> findAll();
 }

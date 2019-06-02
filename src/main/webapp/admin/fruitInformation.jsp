@@ -21,7 +21,7 @@
 	$(document).ready(function(){
 		/** 新增   **/
 	    $("#addBtn").fancybox({
-	    	'href'  : 'admin/addfruitInformation.jsp',
+	    	'href'  : '/addNutrition',
 	    	'width' : 733,
 	        'height' : 530,
 	        'type' : 'iframe',
@@ -163,7 +163,11 @@
 								<td>${information.pregnantEat}</td>
 								<td>${information.momEat}</td>
 								<td>${information.babyEat}</td>
-								<td><div class = "wrap">叶酸，维生素A，维生素B</div></td>
+								<td>
+									<c:forEach items="${information.nutritions}" var="nutritions">
+									<div>${nutritions.name}</div>
+									</c:forEach>
+								</td>
 								<td>
 									<a href="/editSelectfruitinformationById?id=${information.id}" class="edit">编辑</a> 
 									<a href="/deleteFruitinformationById?id=${information.id}&page=${currentPage}"

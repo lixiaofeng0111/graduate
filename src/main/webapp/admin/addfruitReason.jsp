@@ -1,5 +1,8 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,38 +60,34 @@
 				<tr>
 					<td class="ui_text_rt">孕妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" ></textarea>
+						<textarea style = "height:100px" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" ></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">产妇能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" ></textarea>
+						<textarea style = "height:100px" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat" ></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">宝宝能否吃</td>
 					<td class="ui_text_lt">
-						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat" ></textarea>
+						<textarea style = "height:100px" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat" ></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">对应水果</td>
-					<td><select style = "height:30px;" id="kind" name="kind" class="ui_input_txt01">
-							 
-							  <option value="1">孕期营养</option>
-							  <option value="2">孕期饮食</option>
-							  <option value="3">孕期保健</option>
-							  <option value="4">孕期心理</option>
-							  <option value="5">孕期疾病</option>
-							  <option value="6">孕期知识</option>
+					<td><select style = "height:30px;" id="fruit" name="fruit" class="ui_input_txt01">
+							<c:forEach items="${searchFruit}" var="fruit">
+								  <option value="${fruit.id}">${fruit.name}</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
 					<td class="ui_text_lt">
-						&nbsp;<input style = "margin-top:30px;" id="addAnalysiskind_btn" type="submit" value="提交" class="ui_input_btn01"/>
+						&nbsp;<input style = "margin-top:30px;" id="addReason_btn" type="submit" value="提交" class="ui_input_btn01"/>
 						&nbsp;<input style = "margin-top:30px;" id="cancel_btn" type="reset" value="取消" class="ui_input_btn01"/>
 					</td>
 				</tr>
@@ -98,15 +97,15 @@
 </div>
 <script type="text/javascript">
 		$(function() {
-			$("#addAnalysiskind_btn").click(function() {
+			$("#addReason_btn").click(function() {
 				var pregnanteat1 = document.getElementById("pregnanteat");
 				var momeat1 = document.getElementById("momeat");
 				var babyeat1 = document.getElementById("babyeat");
-				var kind1 = document.getElementById("kind");
+				var fruit1 = document.getElementById("fruit");
 				pregnanteat1_val = $.trim(pregnanteat1.value);
 				momeat1_val = $.trim(momeat1.value);
 				babyeat1_val = $.trim(babyeat1.value);
-				kind1_val = $.trim(kind1.value);
+				fruit1_val = $.trim(fruit1.value);
 				if (pregnanteat1_val == null || pregnanteat1_val == "") {
 					alert("孕妇能不能吃原因不能为空！");
 					return false;
@@ -116,18 +115,18 @@
 				} else if (babyeat1_val == null || babyeat1_val == "") {
 					alert("宝宝能不能吃原因不能为空！");
 					return false;
-				} else if (kind1_val == null || kind1_val == "") {
+				} else if (fruit1_val == null || fruit1_val == "") {
 					alert("水果名不能为空！");
 					return false;
 				} 
 
-				var url = "/checkFruitReason";
+				var url = "/checkfruitReason";
 				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
 				var args = {
 					"pregnanteat" : pregnanteat1_val,
 					"momeat" : momeat1_val,
 					"babyeat" : babyeat1_val,
-					"fruitId" : babyeat1_val,
+					"fruit" : fruit1_val,
 					"time" : new Date()
 				};
 				$.post(url, args, function(data) {
@@ -135,6 +134,7 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
+						alert(data);
 					alert("保存失败");
 					}
 				});
