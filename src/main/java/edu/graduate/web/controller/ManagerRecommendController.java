@@ -18,14 +18,18 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import edu.graduate.bean.Nutrition;
 import edu.graduate.bean.PregnantDescription;
 import edu.graduate.bean.extend.PregnantDescriptionVM;
+import edu.graduate.service.INutritionService;
 import edu.graduate.service.IPregnantDescriptionService;
 
 @RestController
 public class ManagerRecommendController {
 	@Autowired
 	private IPregnantDescriptionService ipregnantDescriptionService;
+	@Autowired
+	private INutritionService iNutritionService;
 	
 	@GetMapping("/recommendPregnantDescription")
 	public ModelAndView recommendPregnantDescription(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
@@ -40,6 +44,13 @@ public class ManagerRecommendController {
 		map.put("recommendPregnantDescription", pageListPregnantDescription);
 		return new ModelAndView("admin/recommendInformation",map);
 	}
+	@GetMapping("/checkNutrition")
+	public ModelAndView checkNutrition( Map<String, Object> map) throws Exception{
+		List<Nutrition> selectNutrition = iNutritionService.findAllNutrition();
+		map.put("checkNutrition", selectNutrition);
+		return new ModelAndView("admin/addrecommendInformation",map);
+	}
+	
 	@PostMapping("/searchRecommendDim")
 	public ModelAndView searchRecommendDim(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
 			Map<String, Object> map,@RequestParam String descriptionName) throws Exception{

@@ -31,8 +31,12 @@
 
 	</resultMap>
 	
-	
-	
+	<insert id="insertQiao" parameterType="edu.graduate.bean.extend.FruitVM" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into graduate_fruit(name,picture,brief,description,pregnantEat,momEat,babyEat)
+		values(#{name},#{picture},#{brief},#{description},#{pregnantEat},#{momEat},#{babyEat})
+	</insert>
+
 	<!-- 根据营养成分Id查询水果信息 -->
 	<select id="selectFruitByNutritionId" parameterType="long" resultMap="fruitVM">
 		select * from graduate_fruit where id in (

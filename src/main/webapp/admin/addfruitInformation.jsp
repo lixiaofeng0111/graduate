@@ -134,11 +134,9 @@
 					<td class="ui_text_lt">
 						
 			<!-- 以下是多选下拉框的部分 -->
-			<select class="demo" multiple="multiple">
+			<select class="demo" multiple="multiple" id="nutritions">
 			    <c:forEach items="${addNutrition}" var="nutritions">
-					<%-- <input type="checkbox" name="addNutrition" value="" class="acb" />
-					${nutritions.name} --%>
-			        <option name="addNutrition" value="${nutritions.id}">${nutritions.name}</option>
+			        <option value="${nutritions.id}">${nutritions.name}</option>
 				</c:forEach> 
 			</select>
 				
@@ -167,6 +165,8 @@
 				var pregnanteat1 = document.getElementById("pregnanteat");
 				var momeat1 = document.getElementById("momeat");
 				var babyeat1 = document.getElementById("babyeat");
+				var nutritions1 = document.getElementById("nutritions");
+				alert(nutritions1);
 				name1_val = $.trim(name1.value);
 				picture1_val = $.trim(picture1.value);
 				brief1_val = $.trim(brief1.value);
@@ -174,6 +174,8 @@
 				pregnanteat1_val = $.trim(pregnanteat1.value);
 				momeat1_val = $.trim(momeat1.value);
 				babyeat1_val = $.trim(babyeat1.value);
+				nutritions1_val = $.trim(nutritions1.value);
+				alert(nutritions1_val);
 				if (name1_val == null || name1_val == "") {
 					alert("水果名不能为空！");
 					return false;

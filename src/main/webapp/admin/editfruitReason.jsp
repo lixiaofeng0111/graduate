@@ -121,11 +121,15 @@ $(function(){
 
 		$(function() {
 			$("#update_btn").click(function() {
-				
+				var id1 = document.getElementById("id");
+				var fruitId1 = document.getElementById("fruitId");
 				var pregnanteat1 = document.getElementById("pregnanteat");
 				var momeat1 = document.getElementById("momeat");
 				var babyeat1 = document.getElementById("babyeat");
 				var fruit1 = document.getElementById("fruit");
+				
+				id1_val = $.trim(id1.value);
+				fruitId1_val = $.trim(fruitId1.value);
 				pregnanteat1_val = $.trim(pregnanteat1.value);
 				momeat1_val = $.trim(momeat1.value);
 				babyeat1_val = $.trim(babyeat1.value);
@@ -147,10 +151,11 @@ $(function(){
 				var url = "/checkUpdateFruitReason";
 				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
 				var args = {
+					"id" : id1_val,
+					"fruitId" : fruit1_val,
 					"pregnanteat" : pregnanteat1_val,
 					"momeat" : momeat1_val,
 					"babyeat" : babyeat1_val,
-					"fruit" : fruit1_val,
 					"time" : new Date()
 				};
 				$.post(url, args, function(data) {

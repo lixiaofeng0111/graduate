@@ -103,6 +103,12 @@ public class FruitServiceImpl implements IFruitService{
 		return fruitVMMapper.selectFruitVMByNutritionName(nutritionName);
 	}
 
+	@Override
+	public void insertQiao(FruitVM fruitVM) throws Exception {
+		// TODO Auto-generated method stub
+		fruitVMMapper.insertQiao(fruitVM);
+	}
+
 
 //查询操作
 	

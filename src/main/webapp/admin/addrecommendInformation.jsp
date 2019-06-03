@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.Date"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>信息管理系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../css/fSelect.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../js/lhgcore.js"></script>
 <script type="text/javascript" src="../js/lhgcalendar.js"></script>
 <script type="text/javascript" src="../scripts/jquery/jquery-1.7.1.js"></script>
@@ -58,6 +62,19 @@
 					<td class="ui_text_rt" width="80">孕月</td>
 					<td class="ui_text_lt">
 						<input  autocomplete="off" class="ui_input_txt01" id="time" type="text" name="time" placeholder="请输入话题名">
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt" width="80">所含营养</td>
+					<td class="ui_text_lt">
+						<!-- 以下是多选下拉框的部分 -->
+							<select class="demo" multiple="multiple">
+							    <c:forEach items="${checkNutrition}" var="nutritions">
+							        <option name="addNutrition" value="${nutritions.id}">${nutritions.name}</option>
+								</c:forEach> 
+							</select>
+				
+			<!-- 以上是多选下拉框的部分 -->	
 					</td>
 				</tr>
 				<tr>
@@ -116,12 +133,21 @@
 						alert("保存成功");
 						window.parent.$.fancybox.close();
 					}else{
+					alert(data);
 					alert("保存失败");
 					}
 				});
 			});
 		})
 	</script>
+	<!-- 以下是下拉复选框的内容 -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/fSelect.js"></script>
+<script>
+$(function() {
+        $('.demo').fSelect();
+    });
+</script>
 
 
 

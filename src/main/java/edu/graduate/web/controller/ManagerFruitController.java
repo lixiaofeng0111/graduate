@@ -210,7 +210,6 @@ public class ManagerFruitController {
 		@GetMapping("/editFruitReasonById")
 		public ModelAndView editFruitReason(Map<String, Object> map,@RequestParam Integer id) throws Exception{
 			Reason selectById = iReasonService.selectAllVMById(id);
-			System.out.println(selectById);
 			List<Fruit> findAll = iFruitService.findAllFruit();
 			map.put("searchFruit", findAll);
 			map.put("editFruitReasonById", selectById);
@@ -219,13 +218,36 @@ public class ManagerFruitController {
 		
 	//修改水果原因验证内容
 		@PostMapping("/checkUpdateFruitReason")
-		public void checkUpdateProfessor(Reason reason,HttpServletResponse response) throws Exception  {
+		public void checkUpdateProfessor(Reason reason,HttpServletResponse response,HttpServletRequest request) throws Exception{
 			String result = "";
-			iReasonService.update(reason);
+			String fruitId = request.getParameter("fruitId");
+			Long fruit1 = Long.parseLong(fruitId);
+			System.out.println(fruit1);
+			Reason selectByFruitId = iReasonService.selectByFruitId(fruit1);
+			if (selectByFruitId != null) {
+				result = "该水果原因已经被添加，请重新输入！";
+				response.setContentType("text/html");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(result);
+			} else {
+			System.out.println(reason);
+			try {
+				
+				iReasonService.update(reason);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			result = "ok";
 			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(result);
+			try {
+				response.getWriter().write(result);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
 		}
 
 //删除和批量删除的功能

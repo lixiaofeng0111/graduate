@@ -2,6 +2,7 @@ package edu.graduate.service.impl;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,9 +33,9 @@ public class ReasonServiceImpl implements IReasonService{
 	}
 
 	@Override
-	public void update(Reason Reason) throws Exception {
+	public void update(Reason reason) throws Exception {
 		// TODO Auto-generated method stub
-		reasonMapper.updateByPrimaryKey(Reason);
+		reasonMapper.updateByPrimaryKey(reason);
 	}
 
 	@Override

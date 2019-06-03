@@ -15,7 +15,7 @@ public interface IReasonService {
 	
 	void saveReason(Reason Reason) throws Exception;
 	
-	void update(Reason Reason) throws Exception;
+	void update(Reason reason) throws Exception;
 	
 	void delete(Integer id) throws Exception;
 	

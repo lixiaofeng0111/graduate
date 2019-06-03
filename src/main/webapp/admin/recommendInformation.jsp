@@ -22,7 +22,7 @@
 	$(document).ready(function(){
 		/** 新增   **/
 	    $("#addBtn").fancybox({
-	    	'href'  : 'admin/addrecommendInformation.jsp',
+	    	'href'  : '/checkNutrition',
 	    	'width' : 733,
 	        'height' : 530,
 	        'type' : 'iframe',
@@ -141,6 +141,7 @@
 							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
 							</th>
 							<th>孕期时间</th>
+							<th>孕期所需营养</th>
 							<th>营养作用</th>
 							<th>营养描述</th>
 							<th>操作</th>
@@ -150,6 +151,14 @@
 							<tr>
 								<td><input type="checkbox" name="recommendCheck" value="${recommendInformation.id}" class="acb" /></td>
 								<td>${recommendInformation.time}</td>
+								
+								<td>
+								<c:forEach items="${recommendInformation.nutritionVMs}" var="nutrition">
+									<div>${nutrition.name}</div>
+								</c:forEach>
+								
+								</td>
+								
 								<td><div class = "wrap">${recommendInformation.effect}</div></td>
 								<td><div class = "wrap">${recommendInformation.description}</div></td>
 								<td>

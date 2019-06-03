@@ -39,6 +39,8 @@ public interface IFruitService {
 	  void deleteFruitVMById(Long id) throws Exception;
 	  
 	  void batchDeleteFruitVMById(Long[] ids) throws Exception;
+	  
+	  void insertQiao(FruitVM fruitVM) throws Exception;
 	 
 
 

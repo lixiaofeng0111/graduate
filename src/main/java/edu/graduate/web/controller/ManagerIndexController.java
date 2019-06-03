@@ -253,6 +253,7 @@ public class ManagerIndexController {
 			Date datetime = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 			professor.setDatetime(datetime);
 			
+			System.out.println(professor);
 			try {
 				iProfessorService.update(professor);
 			} catch (Exception e) {
