@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
@@ -326,8 +327,8 @@ public class ManagerIndexController {
 //以下是水果相关信息的添加验证内容
 	
 	@PostMapping("/checkIndexFruit")
-	public void checkIndexFruit(HttpServletRequest request , HttpServletResponse response) throws Exception {
-		
+	public void checkIndexFruit(@RequestParam("file") MultipartFile file,HttpServletRequest request , HttpServletResponse response) throws Exception {
+		System.out.println(file.getSize());
 		String result = "";
 		String fruitImgpath = request.getParameter("fruitImgpath");
 		ImgIndexButtom selectByImgpath = iImgIndexButtomService.selectByImgpath(fruitImgpath);

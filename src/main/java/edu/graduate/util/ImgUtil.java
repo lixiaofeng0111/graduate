@@ -15,9 +15,7 @@ public class ImgUtil {
 		String dir = null;
 		if (".PNG".equals(suffix) || ".JPG".equals(suffix) || ".JPEG".equals(suffix)) {
 			dir = request.getServletContext().getRealPath("/upload");
-		} else {
-			dir = request.getServletContext().getRealPath("/videos");
-		}
+		} 
 		File fileDir = new File(dir);
 		if (!fileDir.exists()) {
 			fileDir.mkdirs();

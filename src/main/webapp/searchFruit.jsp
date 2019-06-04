@@ -123,27 +123,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="row clearfix">
-					<div class="col-md-4 column">
-						<img src="imgs/mom.png">
-					</div>
-
-					<div class="col-md-4 column" style="padding: 100px 0px 0px 60px;">
-						<div style="font-size: 40px; padding: 10px 0px 60px 0px;">水果
-							& 妊娠女性</div>
-						<input style="width: 230px; height: 35px; border-radius: 40px;"
-							type="text" placeholder="输入搜索内容...">
-						<button type="button" class="btn btn-default"
-							style="background: images/Magi.png">搜索</button>
-					</div>
-
-					<div class="col-md-4 column" style="padding: 210px 0px 0px 100px;">
-						<img src="imgs/son.png; ">
-					</div>
-
-				</div>
-			</div>
+			
 		</div>
 
 

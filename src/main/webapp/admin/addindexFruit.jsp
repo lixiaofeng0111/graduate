@@ -54,12 +54,12 @@
 		</div>
 		<div class="ui_content">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
-				<tr>
-					<td class="ui_text_rt" width="80">图片路径</td>
+				<td class="ui_text_rt" width="80">图片</td>
 					<td class="ui_text_lt">
-						<input  autocomplete="off" class="ui_input_txt01" id="fruitImgpath" type="text" name="fruitImgpath" placeholder="请输入话题名">
+						<input  value="${editFruitSelectById.imgpath}" autocomplete="off" class="ui_input_txt01" id="fruitImgpath" type="hidden" name="fruitImgpath" >
+						<input  type="file" id="submit_btn">
+					
 					</td>
-				</tr>
 				<tr>
 					<td class="ui_text_rt">水果描述</td>
 					<td class="ui_text_lt">
@@ -77,6 +77,10 @@
 		</div>
 	</div>
 </div>
+<!-- <form id="formdata" enctype="multipart/form-data">
+	<input type="file" name="file">
+	<button id="add">添加</button>
+</form> -->
 <script type="text/javascript">
 		$(function() {
 			$("#addindexfruit_btn").click(function() {
@@ -109,6 +113,22 @@
 				});
 			});
 		})
+		/* $("#add").click(function(){
+		var formData = new FormData($('#formdata')[0]);
+		$.ajax({
+			type: 'post',
+			url: "/checkIndexFruit",
+			data: formData,
+			cache: false,
+			processData: false,
+			contentType: false,
+		}).success(function (data) {
+			$.messager.alert('提示信息',data,'info');
+			openURL('添加信息', '/EmpGuid/manager/addBanner');
+		}).error(function () {
+			$.messager.alert('错误信息',data,'error');
+		});
+		}); */
 	</script>
 
 
