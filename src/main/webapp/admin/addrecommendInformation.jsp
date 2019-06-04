@@ -64,19 +64,7 @@
 						<input  autocomplete="off" class="ui_input_txt01" id="time" type="text" name="time" placeholder="请输入话题名">
 					</td>
 				</tr>
-				<tr>
-					<td class="ui_text_rt" width="80">所含营养</td>
-					<td class="ui_text_lt">
-						<!-- 以下是多选下拉框的部分 -->
-							<select class="demo" multiple="multiple">
-							    <c:forEach items="${checkNutrition}" var="nutritions">
-							        <option name="addNutrition" value="${nutritions.id}">${nutritions.name}</option>
-								</c:forEach> 
-							</select>
 				
-			<!-- 以上是多选下拉框的部分 -->	
-					</td>
-				</tr>
 				<tr>
 					<td class="ui_text_rt" width="80">作用</td>
 					<td class="ui_text_lt">
@@ -87,6 +75,19 @@
 					<td class="ui_text_rt">描述</td>
 					<td class="ui_text_lt">
 						<textarea style = "height:150px" autocomplete="off" class="ui_input_txt01" id="description"  name=""description"" placeholder = "请输入话题内容"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt" width="80">所含营养</td>
+					<td class="ui_text_lt">
+						<!-- 以下是多选下拉框的部分 -->
+							<select class="demo" multiple="multiple" id="nutritions" name="nutritions">
+							    <c:forEach items="${checkNutrition}" var="nutritions">
+							        <option  value="${nutritions.id}">${nutritions.name}</option>
+								</c:forEach> 
+							</select>
+				
+			<!-- 以上是多选下拉框的部分 -->	
 					</td>
 				</tr>
 				<tr>
@@ -106,9 +107,20 @@
 				var time1 = document.getElementById("time");
 				var effect1 = document.getElementById("effect");
 				var description1 = document.getElementById("description");
+				var nutritions1 = document.getElementById("nutritions");
+				
 				time1_val = $.trim(time1.value);
 				effect1_val = $.trim(effect1.value);
 				description1_val = $.trim(description1.value);
+				nutritions1_val = $.trim(nutritions1.value);
+				var str = [];
+				for(i=0;i<nutritions1.length;i++){
+					if(nutritions1.options[i].selected)
+					{
+						str.push(nutritions1[i].value);
+					}
+				}
+				alert(str);
 				if (time1_val == null || time1_val == "") {
 					alert("孕月不能为空");
 					return false;
@@ -126,7 +138,7 @@
 					"time" : time1_val,
 					"effect" : effect1_val,
 					"description" : description1_val,
-					"time" : new Date()
+					"str" : str,
 				};
 				$.post(url, args, function(data) {
 					if(data == "ok"){

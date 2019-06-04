@@ -8,7 +8,7 @@
         else {
             var settings = $.extend({
                 placeholder: '请选择',
-                numDisplayed: 4,
+                numDisplayed: 5,
                 overflowText: '{n} selected',
                 searchText: 'Search',
                 showSearch: true

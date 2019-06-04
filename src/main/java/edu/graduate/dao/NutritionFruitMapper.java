@@ -93,4 +93,8 @@ public interface NutritionFruitMapper {
      * @mbg.generated Thu Apr 18 09:50:43 CST 2019
      */
     int updateByPrimaryKey(NutritionFruit record);
+    
+    List<NutritionFruit> selectQiaoId(Long id);
+    
+    void deleteByFruitId(Long fruitId);
 }

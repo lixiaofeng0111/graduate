@@ -7,6 +7,7 @@
 <head>
 <title>信息管理系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../css/fSelect.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../scripts/jquery/jquery-1.7.1.js"></script>
 <link href="../style/authority/basic_layout.css" rel="stylesheet" type="text/css">
 <link href="../style/authority/common_style.css" rel="stylesheet" type="text/css">
@@ -61,6 +62,7 @@
 						<input value="${editSelectRecommentById.time}" autocomplete="off" class="ui_input_txt01" id="time" type="text" name="time" placeholder="请输入话题名">
 					</td>
 				</tr>
+				
 				<tr>
 					<td class="ui_text_rt" width="80">作用</td>
 					<td class="ui_text_lt">
@@ -76,6 +78,26 @@
 					</td>
 				</tr>
 				<tr>
+					<td class="ui_text_rt" width="80">所需营养&nbsp;</td>
+					<td class="ui_text_lt">&nbsp;
+						<!-- 原本水果中所含成分 -->
+						<br>
+						<c:forEach items="${show}" var="showNutritions">
+			       			 ${showNutritions.name}&nbsp;
+						</c:forEach> 
+						<br>
+						
+						<!-- 以下是多选下拉框的部分 -->
+						<select class="demo" multiple="multiple" id="nutritions" name="nutritions">
+						    <c:forEach items="${searchNutrition}" var="snutritions">
+						        <option value="${snutritions.id}">${snutritions.name}</option>
+							</c:forEach> 
+						</select>
+				
+			<!-- 以上是多选下拉框的部分 -->	
+					</td>
+				</tr>
+				<tr>
 					<td>&nbsp;</td>
 					<td class="ui_text_lt">
 						&nbsp;<input style = "margin-top:30px;" id="update_btn" type="submit" value="提交" class="ui_input_btn01"/>
@@ -87,6 +109,9 @@
 	</div>
 </div>
 <script type="text/javascript">
+
+
+
 		$(function() {
 			$("#update_btn").click(function() {
 				
@@ -94,10 +119,19 @@
 				var time1 = document.getElementById("time");
 				var effect1 = document.getElementById("effect");
 				var description1 = document.getElementById("description");
+				var nutritions1 = document.getElementById("nutritions");
 				id1_val = $.trim(id1.value);
 				time1_val = $.trim(time1.value);
 				effect1_val = $.trim(effect1.value);
 				description1_val = $.trim(description1.value);
+				nutritions1_val = $.trim(nutritions1.value);
+				var str = [];
+				for(i=0;i<nutritions1.length;i++){
+					if(nutritions1.options[i].selected)
+					{
+						str.push(nutritions1[i].value);
+					}
+				}
 				if (time1_val == null || time1_val == "") {
 					alert("孕月不能为空");
 					return false;
@@ -116,6 +150,7 @@
 					"time" : time1_val,
 					"effect" : effect1_val,
 					"description" : description1_val,
+					"str" : str,
 					"time1" : new Date()
 				};
 				$.post(url, args, function(data) {
@@ -129,6 +164,14 @@
 			});
 		})
 	</script>
+	<!-- 以下是下拉复选框的内容 -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/fSelect.js"></script>
+<script>
+$(function() {
+        $('.demo').fSelect();
+    });
+</script>
 
 </body>
 </html>

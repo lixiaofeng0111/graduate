@@ -1,7 +1,9 @@
 package edu.graduate.dao;
 
 import edu.graduate.bean.Npd;
+
 import edu.graduate.bean.NpdExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -93,4 +95,6 @@ public interface NpdMapper {
      * @mbg.generated Sun May 19 22:37:24 CST 2019
      */
     int updateByPrimaryKey(Npd record);
+    
+    void deleteBypregnantDescriptionId(Integer id);
 }

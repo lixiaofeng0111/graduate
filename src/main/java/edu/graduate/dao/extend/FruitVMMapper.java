@@ -50,4 +50,7 @@ public interface FruitVMMapper {
 		List<FruitVM> selectFruitVMByNutritionName(@Param("nutritionName")String nutritionName);
 
 		void insertQiao(FruitVM fruitVM);
+		
+		void updateById(FruitVM fruitVM);
+		
 }

@@ -16,6 +16,8 @@ public interface IFruitService {
 	  
 	  void update(Fruit fruit) throws Exception;
 	  
+	  void updateById(FruitVM fruitVM) throws Exception;
+	  
 	  void saveFruit(Fruit fruit) throws Exception;
 	  
 	  void delete(Long id) throws Exception;

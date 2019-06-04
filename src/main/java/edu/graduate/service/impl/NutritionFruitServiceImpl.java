@@ -1,5 +1,7 @@
 package edu.graduate.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,24 @@ public class NutritionFruitServiceImpl implements INutritionFruitService{
 	public int insert(NutritionFruit nutritionFruit) {
 		// TODO Auto-generated method stub
 		return nutritionFruitMapper.insert(nutritionFruit);
+	}
+
+	@Override
+	public int updateByPrimaryKey(NutritionFruit nutritionFruit) {
+		// TODO Auto-generated method stub
+		return nutritionFruitMapper.updateByPrimaryKey(nutritionFruit);
+	}
+
+	@Override
+	public List<NutritionFruit> selectQiaoId(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return nutritionFruitMapper.selectQiaoId(id);
+	}
+
+	@Override
+	public void deleteByFruitId(Long fruitId) throws Exception {
+		// TODO Auto-generated method stub
+		nutritionFruitMapper.deleteByFruitId(fruitId);
 	}
 
 }

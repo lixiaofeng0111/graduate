@@ -36,7 +36,7 @@
 	</select>
 	
 	<!-- 根据水果Id查询营养成分 -->
-	<select id="selectNutritionByFruitId" parameterType="long" resultType="edu.graduate.bean.Nutrition">
+	<select id="selectNutritionByFruitId" parameterType="long" resultType="edu.graduate.bean.extend.NutritionVM">
 		select * from graduate_nutrition where id in (
 			select nutrition_id 
 			from graduate_nutritionfruit

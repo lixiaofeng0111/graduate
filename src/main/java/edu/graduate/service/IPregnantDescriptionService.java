@@ -31,5 +31,8 @@ public interface IPregnantDescriptionService {
 	void delete(Integer id) throws Exception;
 	
 	List<PregnantDescriptionVM> selectByDName(String descriptionName) throws Exception;
+	
+	//插入孕月的数据和相关桥表中的数据
+	void insertQiao(PregnantDescriptionVM pregnantDescriptionVM) throws Exception;
 
 }

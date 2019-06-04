@@ -1,6 +1,5 @@
 package edu.graduate.web.controller;
 
-import java.io.IOException;
 
 import java.util.List;
 import java.util.Map;
@@ -18,9 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import edu.graduate.bean.Npd;
 import edu.graduate.bean.Nutrition;
 import edu.graduate.bean.PregnantDescription;
+import edu.graduate.bean.extend.NutritionVM;
 import edu.graduate.bean.extend.PregnantDescriptionVM;
+import edu.graduate.service.INpdService;
 import edu.graduate.service.INutritionService;
 import edu.graduate.service.IPregnantDescriptionService;
 
@@ -28,8 +30,12 @@ import edu.graduate.service.IPregnantDescriptionService;
 public class ManagerRecommendController {
 	@Autowired
 	private IPregnantDescriptionService ipregnantDescriptionService;
+	
 	@Autowired
 	private INutritionService iNutritionService;
+	
+	@Autowired
+	private INpdService iNpdService;
 	
 	@GetMapping("/recommendPregnantDescription")
 	public ModelAndView recommendPregnantDescription(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
@@ -65,16 +71,13 @@ public class ManagerRecommendController {
 		return new ModelAndView("admin/recommendInformation",map);
 	}
 	
-	//以下是验证内容
+	//以下是添加推荐信息验证内容
 		@PostMapping("/checkRecomment")
 		public void saveRegister(HttpServletRequest request , HttpServletResponse response) throws Exception {
-			
-		/*
-		 * "time" : time1_val, "effect" : effect1_val, "description" : description1_val,
-		 */
 			String result = "";
 			String time = request.getParameter("time");
 			PregnantDescription selectByTime = ipregnantDescriptionService.selectByTime(time);
+			Npd qiaoNpd = new Npd();
 			if(selectByTime!=null) {
 				result = "该孕月已经被添加，请重新输入话题名！";
 				response.setContentType("text/html");
@@ -84,13 +87,23 @@ public class ManagerRecommendController {
 			else {
 			String effect = request.getParameter("effect");
 			String description = request.getParameter("description");
+			String[] str = request.getParameterValues("str[]");
+			for (int i = 0; i < str.length; i++) {
+				System.out.println(str[i]);
+			}
 			
-			PregnantDescription pregnantDescription = new PregnantDescription();
-			pregnantDescription.setTime(time);
-			pregnantDescription.setEffect(effect);
-			pregnantDescription.setDescription(description);
-			
-			ipregnantDescriptionService.savePregnantDescription(pregnantDescription);
+			PregnantDescriptionVM pregnantDescriptionVM = new PregnantDescriptionVM();
+			pregnantDescriptionVM.setTime(time);
+			pregnantDescriptionVM.setEffect(effect);
+			pregnantDescriptionVM.setDescription(description);
+			//插入孕月数据
+			ipregnantDescriptionService.insertQiao(pregnantDescriptionVM);
+			Integer pregnantDescriptionId = pregnantDescriptionVM.getId();
+			for (int i = 0; i < str.length; i++) {
+				qiaoNpd.setNutritionId(Long.parseLong(str[i]));
+				qiaoNpd.setPregnantdescriptionId(pregnantDescriptionId);
+				iNpdService.insert(qiaoNpd);
+			}
 
 			result = "ok";
 			response.setContentType("text/html");
@@ -101,31 +114,37 @@ public class ManagerRecommendController {
 		//以下是推荐的编辑内容
 		@GetMapping("/editSelectRecommentById")
 		public ModelAndView editSelectById(Map<String, Object> map,@RequestParam Integer id) throws Exception{
-			PregnantDescription selectRecommendById = ipregnantDescriptionService.selectById(id);
+			//根据Id查询孕月的所有信息
+			PregnantDescriptionVM selectRecommendById = ipregnantDescriptionService.selectDescriptionVMById(id);
+			List<NutritionVM> showNutrition = iNutritionService.selectNutritionByPregnantDescriptionId(id);
+		
+			List<NutritionVM> seleAllNutritionList = iNutritionService.selectAllNutritionVM();
+			map.put("searchNutrition", seleAllNutritionList);
+			map.put("show", showNutrition);
 			map.put("editSelectRecommentById",selectRecommendById);
 			return new ModelAndView("admin/editrecommendInformation",map);
 		}
 		
 	//以下使推荐修改验证内容	
 		@PostMapping("/checkUpdateRecommend")
-		public void checkUpdateRecommend(PregnantDescription pregnantDescription ,HttpServletResponse response)  {
+		public void checkUpdateRecommend(PregnantDescription pregnantDescription ,HttpServletResponse response,HttpServletRequest request)  throws Exception{
 			String result = "";
-			System.out.println(pregnantDescription);
-			try {
-				ipregnantDescriptionService.update(pregnantDescription);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String[] str = request.getParameterValues("str[]");
+			ipregnantDescriptionService.update(pregnantDescription);
+			Integer pregnantDescriptionId = pregnantDescription.getId();
+			iNpdService.deleteBypregnantDescriptionId(pregnantDescriptionId);
+			Npd qiaoNpd = new Npd();
+			for(int i=0;i<str.length;i++) 
+	    	{
+				qiaoNpd.setPregnantdescriptionId(pregnantDescriptionId);
+				qiaoNpd.setNutritionId(Long.parseLong(str[i]));
+		    	iNpdService.insert(qiaoNpd);
+	    	}
 			result = "ok";
 			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
-			try {
-				response.getWriter().write(result);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			response.getWriter().write(result);
+			
 		}
 	//以下是推荐删除内容	
 		@GetMapping("/deleteRecommendById")

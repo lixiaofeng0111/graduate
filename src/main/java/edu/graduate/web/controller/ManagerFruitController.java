@@ -20,10 +20,12 @@ import com.github.pagehelper.PageInfo;
 
 import edu.graduate.bean.Fruit;
 import edu.graduate.bean.Nutrition;
+import edu.graduate.bean.NutritionFruit;
 import edu.graduate.bean.Reason;
 import edu.graduate.bean.extend.FruitVM;
 import edu.graduate.bean.extend.NutritionVM;
 import edu.graduate.service.IFruitService;
+import edu.graduate.service.INutritionFruitService;
 import edu.graduate.service.INutritionService;
 import edu.graduate.service.IReasonService;
 
@@ -35,6 +37,9 @@ public class ManagerFruitController {
 	private IReasonService iReasonService;
 	@Autowired
 	private INutritionService iNutritionService;
+	
+	@Autowired
+	private INutritionFruitService iNutritionFruitService;
 
 //水果信息总	
 	@GetMapping("/fruitInformation")
@@ -51,15 +56,13 @@ public class ManagerFruitController {
 		return new ModelAndView("admin/fruitInformation", map);
 
 	}
-
+//在全部水果信息中添加营养信息
 	@GetMapping("/addNutrition")
 	public ModelAndView addCheckNutrition(Map<String, Object> map) throws Exception {
 		List<NutritionVM> seleAllNutritionList = iNutritionService.selectAllNutritionVM();
 		map.put("addNutrition", seleAllNutritionList);
 		return new ModelAndView("admin/addfruitInformation", map);
-
 	}
-
 	@PostMapping("/searchFruitByNameDim")
 	public ModelAndView searchFruitByNameDim(@RequestParam(value = "page", defaultValue = "1") Integer page,
 			HttpServletRequest request, Map<String, Object> map, @RequestParam String fruitName) throws Exception {
@@ -75,13 +78,14 @@ public class ManagerFruitController {
 
 	}
 
-//水果信息验证
+//水果add信息验证
 	@PostMapping("/checkFruitInfrmation")
 	public void checkFruitInfrmation(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		String result = "";
 		String name = request.getParameter("name");
 		Fruit selectByName = iFruitService.selectByName(name);
+		NutritionFruit qiao = new NutritionFruit();
 		if (selectByName != null) {
 			result = "该水果已经被添加，请重新输入！";
 			response.setContentType("text/html");
@@ -94,16 +98,23 @@ public class ManagerFruitController {
 			String pregnanteat = request.getParameter("pregnanteat");
 			String momeat = request.getParameter("momeat");
 			String babyeat = request.getParameter("babyeat");
-			Fruit fruit = new Fruit();
-			fruit.setName(name);
-			fruit.setPicture(picture);
-			fruit.setBrief(brief);
-			fruit.setDescription(description);
-			fruit.setPregnanteat(pregnanteat);
-			fruit.setMomeat(momeat);
-			fruit.setBabyeat(babyeat);
-			iFruitService.saveFruit(fruit);
-
+			String[] str = request.getParameterValues("str[]");
+			FruitVM fruitVM = new FruitVM();
+			fruitVM.setName(name);
+			fruitVM.setPicture(picture);
+			fruitVM.setBrief(brief);
+			fruitVM.setDescription(description);
+			fruitVM.setPregnantEat(pregnanteat);
+			fruitVM.setMomEat(momeat);
+			fruitVM.setBabyEat(babyeat);
+			iFruitService.insertQiao(fruitVM);
+			Long fruitId = fruitVM.getId();
+		    for(int i=0;i<str.length;i++) 
+		    	{
+			    	qiao.setFruitId(fruitId);
+			    	qiao.setNutritionId(Long.parseLong(str[i]));
+			    	iNutritionFruitService.insert(qiao);
+		    	}
 			result = "ok";
 			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
@@ -113,19 +124,33 @@ public class ManagerFruitController {
 
 	// 以下是水果全部的编辑内容
 	@GetMapping("/editSelectfruitinformationById")
-	public ModelAndView editSelectfruitinformationById(Map<String, Object> map, @RequestParam Long id)
+	public ModelAndView editSelectfruitinformationById(Map<String, Object> map, @RequestParam String id)
 			throws Exception {
-		Fruit selectFruitinformationById = iFruitService.selectById(id);
+		Long ids = Long.parseLong(id);
+		FruitVM selectFruitinformationById = iFruitService.selectFruitVMById(ids);
+		List<NutritionVM> addNutrition = iNutritionService.selectNutritionByFruitId(ids);
+		List<NutritionVM> seleAllNutritionList = iNutritionService.selectAllNutritionVM();
+		map.put("searchNutrition", seleAllNutritionList);
+		map.put("addNutrition", addNutrition);
 		map.put("editSelectfruitinformationById", selectFruitinformationById);
 		return new ModelAndView("admin/editfruitInformation", map);
 	}
 
 	// 以下使水果全部修改验证内容
 	@PostMapping("/checkUpdateFruitinformation")
-	public void checkUpdateFruitinformation(Fruit fruit, HttpServletResponse response) throws Exception {
+	public void checkUpdateFruitinformation(Fruit fruit, HttpServletResponse response,HttpServletRequest request) throws Exception {
 		String result = "";
-		System.out.println(fruit);
+		String[] str = request.getParameterValues("str[]");
 		iFruitService.update(fruit);
+		Long fruitId = fruit.getId();
+		iNutritionFruitService.deleteByFruitId(fruitId);
+		NutritionFruit qiao = new NutritionFruit();
+	    for(int i=0;i<str.length;i++) 
+	    	{
+		    	qiao.setFruitId(fruitId);
+		    	qiao.setNutritionId(Long.parseLong(str[i]));
+		    	iNutritionFruitService.insert(qiao);
+	    	}
 		result = "ok";
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");

@@ -86,5 +86,11 @@ public class PregnantDescriptionServiceImpl implements IPregnantDescriptionServi
 		return pregnantDescriptionVMMapper.selectByDName(descriptionName);
 	}
 
+	@Override
+	public void insertQiao(PregnantDescriptionVM pregnantDescriptionVM) throws Exception {
+		// TODO Auto-generated method stub
+		pregnantDescriptionVMMapper.insertQiao(pregnantDescriptionVM);
+	}
+
 	
 }

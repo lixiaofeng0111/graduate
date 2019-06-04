@@ -16,6 +16,12 @@
 			select="edu.graduate.dao.extend.NutritionVMMapper.selectNutritionByPregnantDescriptionId" >
 		</collection>
 	</resultMap>
+<!-- 将数据插入桥表和孕月表中 -->
+	<insert id="insertQiao" parameterType="edu.graduate.bean.extend.PregnantDescriptionVM" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into graduate_pregnantdescription(time,effect,description)
+		values(#{time},#{effect},#{description})
+	</insert>
 	
 <!-- 查询所有 -->	
 	<select id = "selectAllPregnantDescriptionVM" resultMap="PregnantDescriptionVM">

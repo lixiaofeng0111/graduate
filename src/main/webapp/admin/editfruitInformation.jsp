@@ -7,6 +7,7 @@
 <head>
 <title>信息管理系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../css/fSelect.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../scripts/jquery/jquery-1.7.1.js"></script>
 <link href="../style/authority/basic_layout.css" rel="stylesheet" type="text/css">
 <link href="../style/authority/common_style.css" rel="stylesheet" type="text/css">
@@ -88,19 +89,39 @@
 				<tr>
 					<td class="ui_text_rt">孕妇能否吃</td>
 					<td class="ui_text_lt">
-						<input type="text" value="${editSelectfruitinformationById.pregnanteat}" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" />
+						<input type="text" value="${editSelectfruitinformationById.pregnantEat}" autocomplete="off" class="ui_input_txt01" id="pregnanteat"  name="pregnanteat" />
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">产妇能否吃</td>
 					<td class="ui_text_lt">
-						<input type="text" value="${editSelectfruitinformationById.momeat}" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat">
+						<input type="text" value="${editSelectfruitinformationById.momEat}" autocomplete="off" class="ui_input_txt01" id="momeat"  name="momeat">
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">宝宝能否吃</td>
 					<td class="ui_text_lt">
-						<input type="text" value="${editSelectfruitinformationById.babyeat}" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat">
+						<input type="text" value="${editSelectfruitinformationById.babyEat}" autocomplete="off" class="ui_input_txt01" id="babyeat"  name="babyeat">
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">营养成分&nbsp;</td>
+					<td class="ui_text_lt">&nbsp;
+					<!-- 原本水果中所含成分 -->
+					<br>
+						<c:forEach items="${addNutrition}" var="nutritions">
+			       			 ${nutritions.name}&nbsp;
+						</c:forEach> 
+						<br>
+			<!-- 以下是多选下拉框的部分 -->
+			<select class="demo" multiple="multiple" id="nutritions" name="nutritions">
+			    <c:forEach items="${searchNutrition}" var="snutritions">
+			        <option value="${snutritions.id}">${snutritions.name}</option>
+				</c:forEach> 
+			</select>
+				
+			<!-- 以上是多选下拉框的部分 -->	
+						
 					</td>
 				</tr>
 				<tr>
@@ -115,6 +136,19 @@
 	</div>
 </div>
 <script type="text/javascript">
+$(function(){
+	var nutritions_id = document.getElementById("nutritions");
+	var options = document.getElementsByTagName("option");
+	for(i=0;i<options.length;i++){
+		if(options[i].value==nutritions_id.value){
+			options[i].value = true;
+		}
+	}
+})
+
+
+
+
 		$(function() {
 			$("#update_btn").click(function() {
 				var id1 = document.getElementById("id");
@@ -125,6 +159,7 @@
 				var pregnanteat1 = document.getElementById("pregnanteat");
 				var momeat1 = document.getElementById("momeat");
 				var babyeat1 = document.getElementById("babyeat");
+				var nutritions1 = document.getElementById("nutritions");
 				id1_val = $.trim(id1.value);
 				name1_val = $.trim(name1.value);
 				picture1_val = $.trim(picture1.value);
@@ -133,6 +168,14 @@
 				pregnanteat1_val = $.trim(pregnanteat1.value);
 				momeat1_val = $.trim(momeat1.value);
 				babyeat1_val = $.trim(babyeat1.value);
+				nutritions1_val = $.trim(nutritions1.value);
+				var str = [];
+				for(i=0;i<nutritions1.length;i++){
+					if(nutritions1.options[i].selected)
+					{
+						str.push(nutritions1[i].value);
+					}
+				}
 				if (name1_val == null || name1_val == "") {
 					alert("水果名不能为空！");
 					return false;
@@ -168,7 +211,7 @@
 				var url = "/checkUpdateFruitinformation";
 				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
 				var args = {
-						"id" : id1_val,
+					"id" : id1_val,
 					"name" : name1_val,
 					"picture" : picture1_val,
 					"brief" : brief1_val,
@@ -176,6 +219,7 @@
 					"pregnanteat" : pregnanteat1_val,
 					"momeat" : momeat1_val,
 					"babyeat" : babyeat1_val,
+					"str" : str,
 					"time" : new Date()
 				};
 				$.post(url, args, function(data) {
@@ -189,6 +233,14 @@
 			});
 		})
 	</script>
+<!-- 以下是下拉复选框的内容 -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/fSelect.js"></script>
+<script>
+$(function() {
+        $('.demo').fSelect();
+    });
+</script>
 
 
 

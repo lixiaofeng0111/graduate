@@ -134,7 +134,7 @@
 					<td class="ui_text_lt">
 						
 			<!-- 以下是多选下拉框的部分 -->
-			<select class="demo" multiple="multiple" id="nutritions">
+			<select class="demo" multiple="multiple" id="nutritions" name="nutritions">
 			    <c:forEach items="${addNutrition}" var="nutritions">
 			        <option value="${nutritions.id}">${nutritions.name}</option>
 				</c:forEach> 
@@ -166,7 +166,6 @@
 				var momeat1 = document.getElementById("momeat");
 				var babyeat1 = document.getElementById("babyeat");
 				var nutritions1 = document.getElementById("nutritions");
-				alert(nutritions1);
 				name1_val = $.trim(name1.value);
 				picture1_val = $.trim(picture1.value);
 				brief1_val = $.trim(brief1.value);
@@ -175,7 +174,14 @@
 				momeat1_val = $.trim(momeat1.value);
 				babyeat1_val = $.trim(babyeat1.value);
 				nutritions1_val = $.trim(nutritions1.value);
-				alert(nutritions1_val);
+				var str = [];
+				for(i=0;i<nutritions1.length;i++){
+					if(nutritions1.options[i].selected)
+					{
+						str.push(nutritions1[i].value);
+					}
+				}
+					alert(str);
 				if (name1_val == null || name1_val == "") {
 					alert("水果名不能为空！");
 					return false;
@@ -206,6 +212,9 @@
 				} else if (babyeat1_val != 'Y'  && babyeat1_val != 'N') {
 					alert("必须输入Y/N！");
 					return false;
+				} else if (str == null) {
+					alert("请至少选中一个营养元素！");
+					return false;
 				} 
 
 				var url = "/checkFruitInfrmation";
@@ -218,8 +227,10 @@
 					"pregnanteat" : pregnanteat1_val,
 					"momeat" : momeat1_val,
 					"babyeat" : babyeat1_val,
+					"str" : str,
 					"time" : new Date()
 				};
+				alert(str);
 				$.post(url, args, function(data) {
 					if(data == "ok"){
 						alert("保存成功");
