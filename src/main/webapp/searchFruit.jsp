@@ -143,7 +143,7 @@
 				
 					<div style = "padding:0px 0px 0px 50px;"><h3  style="color:#008B00">${searchFruitVM.name }</h3></div>
 					<hr>
-					<div style = "float:left;"><img width="200px" height="150px" src="${searchFruitVM.picture }"></div>
+					<div style = "float:left;"><img width="200px" height="150px" src="upload/${searchFruitVM.picture }"></div>
 					<div style = "height:150px;padding:0px 0px 0px 220px;">
 						<table text-align = "center"  width="730px">
 						<tr>

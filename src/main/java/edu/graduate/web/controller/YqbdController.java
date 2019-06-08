@@ -70,7 +70,8 @@ public class YqbdController {
 	
 	@GetMapping("/selectByWeek")
 	public ModelAndView pageSelectByWeek(Map<String, Object> map,@RequestParam Integer week) throws Exception{
-		List<PregnantWeek> findAllPregnantWeek = pregnantWeekService.selectPregnantWeekByweek(week);
+		PregnantWeek findAllPregnantWeek = pregnantWeekService.selectPregnantWeekByweek(week);
+		
 		map.put("pregnantWeek", findAllPregnantWeek);
 		return new ModelAndView("pagePregnantWeek",map);
 		

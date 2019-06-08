@@ -15,7 +15,7 @@
 <link href="../style/authority/basic_layout.css" rel="stylesheet" type="text/css">
 <link href="../style/authority/common_style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../scripts/authority/commonAll.js"></script>
-<script type="text/javascript" src="../scripts/jquery/jquery-1.4.4.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../scripts/My97DatePicker/WdatePicker.js" type="text/javascript" defer="defer"></script>
 <script type="text/javascript" src="../scripts/artDialog/artDialog.js?skin=default"></script>
 <script type="text/javascript">
@@ -85,6 +85,7 @@
 			</div>
 		</div>
 		<div class="ui_content">
+		<form id="formdata" enctype="multipart/form-data">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
 				<tr>
 					<td class="ui_text_rt" width="80">名字</td>
@@ -95,8 +96,7 @@
 				<tr>
 					<td class="ui_text_rt">水果图片</td>
 					<td class="ui_text_lt">
-					<div>此处的div是为了存放图片的</div>
-						<input type="file" autocomplete="off" class="ui_input_txt01" id="picture"  name="picture" ></textarea>
+					<input  type="file" name="file" id="submit_btn">
 					</td>
 				</tr>
 				<tr>
@@ -152,6 +152,7 @@
 					</td>
 				</tr>
 			</table>
+			</form>
 		</div>
 	</div>
 </div>
@@ -159,7 +160,6 @@
 		$(function() {
 			$("#addAnalysis_btn").click(function() {
 				var name1 = document.getElementById("name");
-				var picture1 = document.getElementById("picture");
 				var brief1 = document.getElementById("brief");
 				var description1 = document.getElementById("description");
 				var pregnanteat1 = document.getElementById("pregnanteat");
@@ -167,7 +167,6 @@
 				var babyeat1 = document.getElementById("babyeat");
 				var nutritions1 = document.getElementById("nutritions");
 				name1_val = $.trim(name1.value);
-				picture1_val = $.trim(picture1.value);
 				brief1_val = $.trim(brief1.value);
 				description1_val = $.trim(description1.value);
 				pregnanteat1_val = $.trim(pregnanteat1.value);
@@ -184,9 +183,6 @@
 					alert(str);
 				if (name1_val == null || name1_val == "") {
 					alert("水果名不能为空！");
-					return false;
-				} else if (picture1_val == null || picture1_val == "") {
-					alert("水果图片不能为空！");
 					return false;
 				} else if (brief1_val == null || brief1_val == "") {
 					alert("水果简述不能为空！");
@@ -216,29 +212,19 @@
 					alert("请至少选中一个营养元素！");
 					return false;
 				} 
-
-				var url = "/checkFruitInfrmation";
-				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
-				var args = {
-					"name" : name1_val,
-					"picture" : picture1_val,
-					"brief" : brief1_val,
-					"description" : description1_val,
-					"pregnanteat" : pregnanteat1_val,
-					"momeat" : momeat1_val,
-					"babyeat" : babyeat1_val,
-					"str" : str,
-					"time" : new Date()
-				};
-				alert(str);
-				$.post(url, args, function(data) {
-					if(data == "ok"){
-						alert("保存成功");
-						window.parent.$.fancybox.close();
-					}else{
+				
+				var formData = new FormData($('#formdata')[0]);
+				$.ajax({
+					type: 'post',
+					url: "/checkFruitInfrmation",
+					data: formData,
+					cache: false,         //不开缓存
+					processData: false,
+					contentType: false,
+				}).success(function (data) {
 					alert(data);
-					alert("保存失败");
-					}
+				}).error(function () {
+					alert("保存失败")
 				});
 			});
 		})

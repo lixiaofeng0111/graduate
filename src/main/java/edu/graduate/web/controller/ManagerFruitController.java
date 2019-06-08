@@ -1,5 +1,6 @@
 package edu.graduate.web.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import java.util.List;
@@ -13,12 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import edu.graduate.bean.Fruit;
+import edu.graduate.bean.ImgIndexButtom;
 import edu.graduate.bean.Nutrition;
 import edu.graduate.bean.NutritionFruit;
 import edu.graduate.bean.Reason;
@@ -28,6 +31,7 @@ import edu.graduate.service.IFruitService;
 import edu.graduate.service.INutritionFruitService;
 import edu.graduate.service.INutritionService;
 import edu.graduate.service.IReasonService;
+import edu.graduate.util.ImgUtil;
 
 @RestController
 public class ManagerFruitController {
@@ -80,7 +84,7 @@ public class ManagerFruitController {
 
 //水果add信息验证
 	@PostMapping("/checkFruitInfrmation")
-	public void checkFruitInfrmation(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void checkFruitInfrmation(@RequestParam("file") MultipartFile file,HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		String result = "";
 		String name = request.getParameter("name");
@@ -92,7 +96,10 @@ public class ManagerFruitController {
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(result);
 		} else {
-			String picture = request.getParameter("picture");
+			if(file.isEmpty()) {
+				result = "请选择图片";
+			}
+			String upload = ImgUtil.upload(null, file, request);
 			String brief = request.getParameter("brief");
 			String description = request.getParameter("description");
 			String pregnanteat = request.getParameter("pregnanteat");
@@ -101,7 +108,7 @@ public class ManagerFruitController {
 			String[] str = request.getParameterValues("str[]");
 			FruitVM fruitVM = new FruitVM();
 			fruitVM.setName(name);
-			fruitVM.setPicture(picture);
+			fruitVM.setPicture(upload);
 			fruitVM.setBrief(brief);
 			fruitVM.setDescription(description);
 			fruitVM.setPregnantEat(pregnanteat);
@@ -161,6 +168,14 @@ public class ManagerFruitController {
 	@GetMapping("/deleteFruitinformationById")
 	public ModelAndView deleteFruitinformationById(@RequestParam(value = "page", defaultValue = "1") Integer page,
 			HttpServletRequest request, @RequestParam Long id, Map<String, Object> map) throws Exception {
+		FruitVM  selectOne = iFruitService.selectFruitVMById(id);
+		String picture = selectOne.getPicture();
+		String dir = request.getServletContext().getRealPath("/upload");
+		File old = new File(dir + "/" + picture);
+		if(old.exists()) {
+			old.delete();
+		}
+		
 		iFruitService.delete(id);
 		return fruitInformation(page, request, map);
 	}
@@ -172,6 +187,13 @@ public class ManagerFruitController {
 		System.out.println(fruitInformationList);
 		String[] strs = fruitInformationList.split(",");
 		for (int i = 0; i < strs.length; i++) {
+			FruitVM  selectOne = iFruitService.selectFruitVMById(Long.parseLong(strs[i]));
+			String picture = selectOne.getPicture();
+			String dir = request.getServletContext().getRealPath("/upload");
+			File old = new File(dir + "/" + picture);
+			if(old.exists()) {
+				old.delete();
+			}
 			iFruitService.delete(Long.parseLong(strs[i]));
 		}
 		return fruitInformation(1, request, map);

@@ -168,7 +168,15 @@ button {
 						style="background-color: #fff;">孕期阶段分析</a></li>
 					<li><a href="/fruit" style="color: #fff;">水果分析</a></li>
 					<li><a href="/pregnantRecomment" style="color: #fff;">孕期水果及营养推荐</a></li>
-					<li><a href="login.jsp" style="color: #fff;">登录</a></li>
+					<c:choose>
+						<c:when test="${empty username}">
+							<li><a href="login.jsp" style="color: #fff;">登录</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="/loginOut" style="color: #fff;">退出登录</a></li>
+						</c:otherwise>
+					
+					</c:choose>	
 				</ul>
 
 			</div>
@@ -276,7 +284,7 @@ button {
 				<div style = "padding:30px 0px 10px 30px;"><img src="imgs/action.png">孕期必读</div>
 				<c:forEach items="${selectEarly}" var="selectPregnant">
 					<div class="col-md-4 column">
-							<a href = "/selectYqbdById?id=${selectPregnant.id}"><img width="300px;" height = "200px;" src = "${selectPregnant.showpicture }"></a>
+							<a href = "/selectYqbdById?id=${selectPregnant.id}"><img width="300px;" height = "200px;" src = "upload/${selectPregnant.showpicture }"></a>
 					</div>
 				</c:forEach>
 				</div>
@@ -495,7 +503,7 @@ button {
 				<div style = "padding:0px 0px 10px 30px;"><img src="imgs/show.png">美图展示</div>
 				<c:forEach items="${selectMeituShows}" var="meitushow">
 				<div class="col-md-3 team-grids wow bounceIn" data-wow-delay="0.4s">
-					<img width = "150px" height = "200px" src="${meitushow.imgpath}" />
+					<img width = "150px" height = "200px" src="upload/${meitushow.imgpath}" />
 				</div>
 				</c:forEach>
 				

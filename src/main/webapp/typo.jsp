@@ -84,7 +84,15 @@ line-height:2;
 					<li><a href="/fruit" style="color: #fff;">水果分析</a></li>
 					<li><a href="/pregnantRecomment"
 						style="background-color: #fff;height:58px;">孕期水果及营养推荐</a></li>
-					<li><a href="login.jsp" style="color: #fff;">登录</a></li>
+					<c:choose>
+						<c:when test="${empty username}">
+							<li><a href="login.jsp" style="color: #fff;">登录</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="/loginOut" style="color: #fff;"> 退出登录</a></li>
+						</c:otherwise>
+					
+					</c:choose>	
 				</ul>
 			</div>
 		</div>
@@ -154,7 +162,7 @@ line-height:2;
 							<c:forEach  items="${nutritionVMList.fruits}" var="fruitsList">
 							<!--这是一个水果的信息，可以循环 -->
 								<div style="padding:10px;">
-								 	<div style="float:left;width:180px;height:150px;"><img width="100%" height="100%" src="${fruitsList.picture}"></div>
+								 	<div style="float:left;width:180px;height:150px;"><img width="100%" height="100%" src="upload/${fruitsList.picture}"></div>
 								 	<div style="float:left;width:700px;height:150px;line-height:20px;text-align:left;"><p>${fruitsList.name}</p>
 									 	<p>营养元素：
 									 		<c:forEach items = "${fruitsList.nutritions}" var = "nutritions">

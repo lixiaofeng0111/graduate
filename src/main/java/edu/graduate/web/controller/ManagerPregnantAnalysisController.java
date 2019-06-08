@@ -1,5 +1,7 @@
 package edu.graduate.web.controller;
 
+import java.io.File;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
@@ -29,6 +32,7 @@ import edu.graduate.service.IMeituShowService;
 import edu.graduate.service.IPregnantAnalysisService;
 import edu.graduate.service.IPregnantWeekService;
 import edu.graduate.service.IYqbdService;
+import edu.graduate.util.ImgUtil;
 
 @RestController
 public class ManagerPregnantAnalysisController {
@@ -61,7 +65,7 @@ public class ManagerPregnantAnalysisController {
 	public ModelAndView searchByWeekDim(@RequestParam Integer week,@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
 			Map<String, Object> map) throws Exception{
 		PageHelper.startPage(page, 7);
-		List<PregnantWeek> search = iPregnantWeekService.selectPregnantWeekByweek(week);
+		List<PregnantWeek> search = iPregnantWeekService.selectAllPregnantWeek();
 		PageInfo<PregnantWeek> pageInfoPregnantWeek = new PageInfo<>(search);
 		List<PregnantWeek> pageListPregnantWeek = pageInfoPregnantWeek.getList();
 		
@@ -77,7 +81,7 @@ public class ManagerPregnantAnalysisController {
 		String result = "";
 		String week1 = request.getParameter("week");
 		Integer week = Integer.parseInt(week1);
-		List<PregnantWeek> selectByweek = iPregnantWeekService.selectPregnantWeekByweek(week);
+		PregnantWeek selectByweek = iPregnantWeekService.selectPregnantWeekByweek(week);
 		if(selectByweek!=null) {
 			result = "该类名已经被添加，请重新输入！";
 			response.setContentType("text/html");
@@ -174,7 +178,7 @@ public class ManagerPregnantAnalysisController {
 	
 //以下是验证孕期必读部分
 	@PostMapping("/checkPregnantAnalysisYqbd")
-	public void checkPregnantAnalysisYqbd(HttpServletRequest request , HttpServletResponse response) throws Exception {
+	public void checkPregnantAnalysisYqbd(@RequestParam("file") MultipartFile file,HttpServletRequest request , HttpServletResponse response) throws Exception {
 		String result = "";
 		String name = request.getParameter("name");
 		Yqbd selectByname = iYqbdService.selectByName(name);
@@ -185,19 +189,25 @@ public class ManagerPregnantAnalysisController {
 			response.getWriter().write(result);
 		}
 		else {
-		String showpicture = request.getParameter("showpicture");
-		String picture = request.getParameter("picture");
+			if(file.isEmpty()) {
+				result = "请选择图片";
+				response.setContentType("text/html");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(result);
+				return;
+			}
 		String description = request.getParameter("description");
 		
 		Yqbd yqbd = new Yqbd();
-		yqbd.setShowpicture(showpicture);
+		String upload = ImgUtil.upload(null, file, request); 
+		yqbd.setShowpicture(upload);
 		yqbd.setName(name);
-		yqbd.setPicture(picture);
+		yqbd.setPicture("imgs/early3.png");
 		yqbd.setDiscription(description);
 		
 		iYqbdService.saveYqbd(yqbd);
 
-		result = "ok";
+		result = "保存成功";
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(result);
@@ -234,6 +244,13 @@ public class ManagerPregnantAnalysisController {
 	//以下是孕期必读删除内容	
 		@GetMapping("/deleteYqbdById")
 		public ModelAndView deleteYqbdById(@RequestParam(value = "page", defaultValue = "1") Integer page,HttpServletRequest request,@RequestParam Integer id,Map<String, Object> map) throws Exception{
+			Yqbd selectOne = iYqbdService.selectById(id);
+			String showpicture = selectOne.getShowpicture();
+			String dir = request.getServletContext().getRealPath("/upload");
+			File old = new File(dir + "/" + showpicture);
+			if(old.exists()) {
+				old.delete();
+			}
 			iYqbdService.delete(id);
 			return pregnantAnalysisYqbd(page,request,map);
 		}
@@ -244,6 +261,13 @@ public class ManagerPregnantAnalysisController {
 		    System.out.println(yqbdList);
 			String[] strs = yqbdList.split(",");
 		    for (int i = 0; i < strs.length; i++) {
+		    	Yqbd selectOne = iYqbdService.selectById(Integer.parseInt(strs[i]));
+				String showpicture = selectOne.getShowpicture();
+				String dir = request.getServletContext().getRealPath("/upload");
+				File old = new File(dir + "/" + showpicture);
+				if(old.exists()) {
+					old.delete();
+				}
 		    	iYqbdService.delete(Integer.parseInt(strs[i]));
 		    }
 		    return pregnantAnalysisYqbd(1,request,map);
@@ -479,29 +503,17 @@ public class ManagerPregnantAnalysisController {
 
 	//以下是验证美图路径方法
 		@PostMapping("/checkPregnantAnalysisMeitu")
-		public void checkPregnantAnalysisMeitu(HttpServletRequest request , HttpServletResponse response) throws Exception {
-			
-			String result = "";
-			String imgpath = request.getParameter("imgpath");
-			MeituShow selectimgpath = iMeituShowService.selectByName(imgpath);
-			if(selectimgpath!=null) {
-				result = "该路径名已经被添加，请重新输入！";
-				response.setContentType("text/html");
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write(result);
+		public String checkPregnantAnalysisMeitu(@RequestParam("file") MultipartFile file,HttpServletRequest request , HttpServletResponse response) throws Exception {
+			if(file.isEmpty()) {
+				return "请选择图片";
 			}
-			else {
-			
 			MeituShow meituShow = new MeituShow();
-			meituShow.setImgpath(imgpath);
+			String upload = ImgUtil.upload(null, file, request);    //文件名
+			meituShow.setImgpath(upload);
 			
 			iMeituShowService.saveMeituShow(meituShow);
 
-			result = "ok";
-			response.setContentType("text/html");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(result);
-			}
+			return "修改成功";
 		}
 		//以下是美图展示的编辑内容
 		@GetMapping("/editSelectMeituById")
@@ -534,6 +546,13 @@ public class ManagerPregnantAnalysisController {
 	//以下是美图展示删除内容	
 		@GetMapping("/deleteMeituById")
 		public ModelAndView deleteMeituById(@RequestParam(value = "page", defaultValue = "1") Integer page,HttpServletRequest request,@RequestParam Integer id,Map<String, Object> map) throws Exception{
+			MeituShow selectOne = iMeituShowService.selectById(id);
+			String imgpath = selectOne.getImgpath();
+			String dir = request.getServletContext().getRealPath("/upload");
+			File old = new File(dir + "/" + imgpath);
+			if(old.exists()) {
+				old.delete();
+			}
 			iMeituShowService.delete(id);
 			return pregnantAnalysisMeitushow(page,request,map);
 		}
@@ -544,6 +563,13 @@ public class ManagerPregnantAnalysisController {
 		    System.out.println(meituList);
 			String[] strs = meituList.split(",");
 		    for (int i = 0; i < strs.length; i++) {
+		    	MeituShow selectOne = iMeituShowService.selectById(Integer.parseInt(strs[i]));
+				String imgpath = selectOne.getImgpath();
+				String dir = request.getServletContext().getRealPath("/upload");
+				File old = new File(dir + "/" + imgpath);
+				if(old.exists()) {
+					old.delete();
+				}
 		    	iMeituShowService.delete(Integer.parseInt(strs[i]));
 		    }
 		    return pregnantAnalysisMeitushow(page,request,map);

@@ -8,6 +8,13 @@ spring:
     view:
       prefix: /
       suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size:
+        100MB
+      max-request-size:
+        100MB
+  
 mybatis:
   mapper-locations:
   - classpath:mapper/**/*Mapper.xml
@@ -16,5 +23,4 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
-
   

@@ -219,7 +219,17 @@ button {
 						<li><a href="/pregnant">孕期阶段分析</a></li>
 						<li><a href="/fruit">水果分析</a></li>
 						<li><a href="/pregnantRecomment">孕期水果及营养推荐</a></li>
-						<li><a href="login.jsp">登录</a></li>
+					<c:choose>
+						<c:when test="${empty username}">
+							<li><a href="login.jsp">登录</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="/loginOut">退出登录</a></li>
+						</c:otherwise>
+					
+					</c:choose>	
+						
+						
 					</ul>
 					<!-- script-for-menu -->
 					<script>
@@ -383,7 +393,7 @@ button {
 						<c:if test="${professor.topickindId == 2}">
 							<table>
 								<tr width="150px">
-									<td><a href="/pageProfessor?id=${professor.id}">${datetime}
+									<td><a href="/pageProfessor?id=${professor.id}" target="_Blank">${datetime}
 											| ${professor.name }</a></td>
 								</tr>
 							</table>
@@ -415,7 +425,7 @@ button {
 						<c:if test="${professor.topickindId == 3}">
 							<table>
 								<tr width="150px">
-									<td><a href="/pageProfessor?id = ${professor.id}">${datetime}
+									<td><a href="/pageProfessor?id=${professor.id}" target="_Blank">${datetime}
 											| ${professor.name }</a></td>
 								</tr>
 							</table>
@@ -447,7 +457,7 @@ button {
 						<c:if test="${professor.topickindId == 4}">
 							<table>
 								<tr width="150px">
-									<td><a href="/pageProfessor?id = ${professor.id}">${datetime}
+									<td><a href="/pageProfessor?id=${professor.id}" target="_Blank">${datetime}
 											| ${professor.name }</a></td>
 								</tr>
 							</table>
@@ -496,7 +506,7 @@ button {
 						<c:forEach items="${imgPathButtom}" var="imagepathbuttom">
 							<div class="col-md-3 latest-grid"
 								style="width: 280px; height: 240px;">
-								<img src="${imagepathbuttom.imgpath}" alt=""
+								<img src="upload/${imagepathbuttom.imgpath}" alt=""
 									class="img-responsive">
 								<p>${imagepathbuttom.content}<a href="/fruit">|更多</a>
 								</p>

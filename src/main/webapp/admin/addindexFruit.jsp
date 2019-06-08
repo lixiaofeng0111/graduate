@@ -11,7 +11,8 @@
 <link href="../style/authority/basic_layout.css" rel="stylesheet" type="text/css">
 <link href="../style/authority/common_style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../scripts/authority/commonAll.js"></script>
-<script type="text/javascript" src="../scripts/jquery/jquery-1.4.4.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="../scripts/jquery/jquery-1.4.4.min.js"></script> -->
 <script src="../scripts/My97DatePicker/WdatePicker.js" type="text/javascript" defer="defer"></script>
 <script type="text/javascript" src="../scripts/artDialog/artDialog.js?skin=default"></script>
 <script type="text/javascript">
@@ -53,13 +54,14 @@
 			</div>
 		</div>
 		<div class="ui_content">
+		<form id="formdata" enctype="multipart/form-data">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
-				<td class="ui_text_rt" width="80">图片</td>
+				<tr>
+					<td class="ui_text_rt" width="80">图片</td>
 					<td class="ui_text_lt">
-						<input  value="${editFruitSelectById.imgpath}" autocomplete="off" class="ui_input_txt01" id="fruitImgpath" type="hidden" name="fruitImgpath" >
-						<input  type="file" id="submit_btn">
-					
+						<input  type="file" name="file" id="submit_btn">
 					</td>
+				</tr>
 				<tr>
 					<td class="ui_text_rt">水果描述</td>
 					<td class="ui_text_lt">
@@ -74,61 +76,35 @@
 					</td>
 				</tr>
 			</table>
+			</form>
 		</div>
 	</div>
 </div>
-<!-- <form id="formdata" enctype="multipart/form-data">
-	<input type="file" name="file">
-	<button id="add">添加</button>
-</form> -->
 <script type="text/javascript">
 		$(function() {
 			$("#addindexfruit_btn").click(function() {
-				var fruitImgpath1 = document.getElementById("fruitImgpath");
 				var fruitContent1 = document.getElementById("fruitContent");
-				fruitImgpath1_val = $.trim(fruitImgpath1.value);
 				fruitContent1_val = $.trim(fruitContent1.value);
-				if (fruitImgpath1_val == null || fruitImgpath1_val == "") {
-					alert("水果名不能为空！");
-					return false;
-				} else if (fruitContent1_val == null || fruitContent1_val == "") {
+				if (fruitContent1_val == null || fruitContent1_val == "") {
 					alert("水果简述不能为空！");
 					return false;
 				} 
-
-				var url = "/checkIndexFruit";
-				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
-				var args = {
-					"fruitImgpath" : fruitImgpath1_val,
-					"fruitContent" : fruitContent1_val,
-					"time" : new Date()
-				};
-				$.post(url, args, function(data) {
-					if(data == "ok"){
-						alert("保存成功");
-						window.parent.$.fancybox.close();
-					}else{
-					alert("保存失败");
-					}
+				var formData = new FormData($('#formdata')[0]);
+				$.ajax({
+					type: 'post',
+					url: "/checkIndexFruit",
+					data: formData,
+					cache: false,         //不开缓存
+					processData: false,
+					contentType: false,
+				}).success(function (data) {
+					alert(data);
+				}).error(function () {
+					alert("保存失败")
 				});
 			});
 		})
-		/* $("#add").click(function(){
-		var formData = new FormData($('#formdata')[0]);
-		$.ajax({
-			type: 'post',
-			url: "/checkIndexFruit",
-			data: formData,
-			cache: false,
-			processData: false,
-			contentType: false,
-		}).success(function (data) {
-			$.messager.alert('提示信息',data,'info');
-			openURL('添加信息', '/EmpGuid/manager/addBanner');
-		}).error(function () {
-			$.messager.alert('错误信息',data,'error');
-		});
-		}); */
+
 	</script>
 
 

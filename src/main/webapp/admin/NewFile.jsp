@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
-<form  id="formdata" method="post" enctype="multipart/form-data">
+<form  id="formdata" enctype="multipart/form-data">
 <input type="file" name="file">
 <button id="add">添加</button>
 </form>

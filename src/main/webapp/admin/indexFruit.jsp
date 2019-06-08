@@ -148,7 +148,7 @@
 							<tr>
 								<td><input type="checkbox" name="fruitCheck" value="${fruit.id}" class="acb" /></td>
 								
-								<td><img width="100px" height="80px" src="${fruit.imgpath}"></td>
+								<td><img width="100px" height="80px" src="upload/${fruit.imgpath}"></td>
 								<td>${fruit.content}</td>
 								<td>
 									<a href="/editFruitSelectById?id=${fruit.id}" class="edit">编辑</a> 

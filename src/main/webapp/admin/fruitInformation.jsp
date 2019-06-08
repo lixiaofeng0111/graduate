@@ -157,7 +157,7 @@
 							<tr>
 								<td><input type="checkbox" name="fruitInformationCheck" value="${information.id}" class="acb" /></td>
 								<td>${information.name}</td>
-								<td><img width="100px" height="80px" src="${information.picture}"></td>
+								<td><img width="100px" height="80px" src="/upload/${information.picture}"></td>
 								<td><div class = "wrap">${information.brief}</div></td>
 								<td><div class = "wrap">${information.description}</div></td>
 								<td>${information.pregnantEat}</td>

@@ -11,7 +11,7 @@
 <link href="../style/authority/basic_layout.css" rel="stylesheet" type="text/css">
 <link href="../style/authority/common_style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../scripts/authority/commonAll.js"></script>
-<script type="text/javascript" src="../scripts/jquery/jquery-1.4.4.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../scripts/My97DatePicker/WdatePicker.js" type="text/javascript" defer="defer"></script>
 <script type="text/javascript" src="../scripts/artDialog/artDialog.js?skin=default"></script>
 <script type="text/javascript">
@@ -53,11 +53,12 @@
 			</div>
 		</div>
 		<div class="ui_content">
+		<form id="formdata" enctype="multipart/form-data">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
 				<tr>
 					<td class="ui_text_rt" width="80">美图路径</td>
 					<td class="ui_text_lt">
-						<input  autocomplete="off" class="ui_input_txt01" id="imgpath" type="text" name="imgpath" placeholder="请输入话题名">
+					<input  type="file" name="file" id="submit_btn">
 					</td>
 				</tr>
 				<tr>
@@ -68,35 +69,33 @@
 					</td>
 				</tr>
 			</table>
+			</form>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
 		$(function() {
 			$("#imgpath_btn").click(function() {
-				var imgpath1 = document.getElementById("imgpath");
-				imgpath1_val = $.trim(imgpath1.value);
-				if (imgpath1_val == null || imgpath1_val == "") {
-					alert("图片不能为空");
-					return false;
-				}
-
-				var url = "/checkPregnantAnalysisMeitu";
-				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
-				var args = {
-					"imgpath" : imgpath1_val,
-					"time" : new Date()
-				};
-				$.post(url, args, function(data) {
-					if(data == "ok"){
-						alert("保存成功");
-						window.parent.$.fancybox.close();
-					}else{
-					alert("保存失败");
-					}
+				
+				var formData = new FormData($('#formdata')[0]);
+				$.ajax({
+					type: 'post',
+					url: "/checkPregnantAnalysisMeitu",
+					data: formData,
+					cache: false,         //不开缓存
+					processData: false,
+					contentType: false,
+				}).success(function (data) {
+					alert(data);
+				}).error(function () {
+					alert("保存失败")
 				});
 			});
-		})
+		});
+				
+				
+
+				
 	</script>
 
 

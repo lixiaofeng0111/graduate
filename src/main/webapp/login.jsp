@@ -106,7 +106,7 @@
 				};
 				$.post(url, args, function(data) {
 					if(data == "ok"){
-						window.location.href="/pageIndex";
+						window.location.href="/doLogin";
 					}else{
 					alert(data);
 					}

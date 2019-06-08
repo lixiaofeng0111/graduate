@@ -1,5 +1,6 @@
 package edu.graduate.web.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,6 +33,7 @@ import edu.graduate.service.IImgIndexButtomService;
 import edu.graduate.service.IProfessorService;
 import edu.graduate.service.ITopicKindService;
 import edu.graduate.service.ITopicService;
+import edu.graduate.util.ImgUtil;
 
 @RestController
 public class ManagerIndexController {
@@ -328,30 +330,23 @@ public class ManagerIndexController {
 	
 	@PostMapping("/checkIndexFruit")
 	public void checkIndexFruit(@RequestParam("file") MultipartFile file,HttpServletRequest request , HttpServletResponse response) throws Exception {
-		System.out.println(file.getSize());
-		String result = "";
-		String fruitImgpath = request.getParameter("fruitImgpath");
-		ImgIndexButtom selectByImgpath = iImgIndexButtomService.selectByImgpath(fruitImgpath);
-		if(selectByImgpath!=null) {
-			result = "该话题名已经被添加，请重新输入话题名！";
+		String result = " ";
+		if(file.isEmpty()) {
+			result =  "请选择图片";
 			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(result);
+			return;
 		}
-		else {
-		String fruitContent = request.getParameter("fruitContent");
-	
-		
-		ImgIndexButtom imgIndexButtom = new ImgIndexButtom();
-		imgIndexButtom.setImgpath(fruitImgpath);
-		imgIndexButtom.setContent(fruitContent);
-		iImgIndexButtomService.saveImgIndexButtom(imgIndexButtom);
-
-		result = "ok";
+		ImgIndexButtom img = new ImgIndexButtom();
+		String upload = ImgUtil.upload(null, file, request);    //文件名
+		img.setImgpath(upload);
+		img.setContent(request.getParameter("fruitContent"));
+		iImgIndexButtomService.saveImgIndexButtom(img);
+		result = "保存成功";
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(result);
-		}
 	}
 	//以下是水果相关信息的编辑内容
 		@GetMapping("/editFruitSelectById")
@@ -386,6 +381,13 @@ public class ManagerIndexController {
 	//以下是水果相关信息删除内容	
 		@GetMapping("/deleteFruitById")
 		public ModelAndView deleteFruitById(@RequestParam(value = "page", defaultValue = "1") Integer page,HttpServletRequest request,@RequestParam Integer id,Map<String, Object> map) throws Exception{
+			ImgIndexButtom selectOne = iImgIndexButtomService.selectById(id);
+			String imgpath = selectOne.getImgpath();
+			String dir = request.getServletContext().getRealPath("/upload");
+			File old = new File(dir + "/" + imgpath);
+			if(old.exists()) {
+				old.delete();
+			}
 			iImgIndexButtomService.delete(id);
 			return indexFruit(page,request,map);
 		}
@@ -395,6 +397,13 @@ public class ManagerIndexController {
 		public ModelAndView batchdeleteFruitById(@RequestParam String fruitList,HttpServletRequest request,Map<String, Object> map) throws Exception{
 			String[] strs = fruitList.split(",");
 		    for (int i = 0; i < strs.length; i++) {
+		    	ImgIndexButtom selectOne = iImgIndexButtomService.selectById(Integer.parseInt(strs[i]));
+				String imgpath = selectOne.getImgpath();
+				String dir = request.getServletContext().getRealPath("/upload");
+				File old = new File(dir + "/" + imgpath);
+				if(old.exists()) {
+					old.delete();
+				}
 		    	iImgIndexButtomService.delete(Integer.parseInt(strs[i]));
 		    }
 		    return indexFruit(1,request,map);

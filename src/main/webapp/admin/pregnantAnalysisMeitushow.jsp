@@ -130,7 +130,7 @@
 						<c:forEach items="${pregnantAnalysisMeituShow}" var="meitushow">
 							<tr>
 								<td><input type="checkbox" name="MeituCheck" value="${meitushow.id}" class="acb" /></td>
-								<td><img width="120px" height="100px" src="${meitushow.imgpath}"></td>
+								<td><img width="120px" height="100px" src="upload/${meitushow.imgpath}"></td>
 								<td>
 									<a href="/editSelectMeituById?id=${meitushow.id}" class="edit">编辑</a> 
 									<a href="/deleteMeituById?id=${meitushow.id}&page=${currentPage}"

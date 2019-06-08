@@ -114,7 +114,15 @@
 							<li><a  href="/pregnant" style = "color:#fff;">孕期阶段分析</a></li>
 							<li><a  href="/fruit" style = "background-color:#fff;" >水果分析</a></li>
 							<li><a  href="/pregnantRecomment" style = "color:#fff;">孕期水果及营养推荐</a></li>
-							<li><a  href="login.jsp" style = "color:#fff;">登录</a></li>
+							<c:choose>
+						<c:when test="${empty username}">
+							<li><a href="login.jsp" style="color: #fff;">登录</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="/loginOut" style="color: #fff;">退出登录</a></li>
+						</c:otherwise>
+					
+					</c:choose>	
 						</ul>
 
 					</div>
@@ -149,11 +157,11 @@
 			<div style="padding: 0px 0px 0px 150px; height: 200px; width: 1200px;">
 				<c:forEach items="${fruit}" var="fruits">
 					<div class="col-md-4 column">
-						<a href="/selectById?id=${fruits.id}"> <img height="200px" width="260px"
-							src=${fruits.picture }></a>
+						<a href="/selectById?id=${fruits.id}" target="_Blank"> <img height="200px" width="260px"
+							src="upload/${fruits.picture }"></a>
 						<h3>${fruits.name}</h3>
 						<p>${fruits.brief}
-							<a href="/selectById">详情>></a>
+							<a href="/selectById?id=${fruits.id}" target="_Blank">详情>></a>
 						</p>
 					</div>
 				</c:forEach>
