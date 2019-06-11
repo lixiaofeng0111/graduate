@@ -59,6 +59,7 @@
 				<div class="form-group" style = "text-align:center;">
 						<input id="login_btn" type="submit" value="登录"
 							class="btn btn-primary">
+						
 				</div>
 			</div>
 		</div>

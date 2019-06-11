@@ -21,6 +21,9 @@ public class RegisterServiceImpl implements IRegisterService{
 		public LoginRegister findByName(String username) {
 			return loginRegisterMapper.findLoginByName(username);
 		}
-
-
+		@Override
+		public void updateById(Long id) throws Exception {
+			// TODO Auto-generated method stub
+			loginRegisterMapper.updateById(id);
+		}
 }

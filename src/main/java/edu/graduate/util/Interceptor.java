@@ -18,6 +18,11 @@ public class Interceptor {
 	@Pointcut("execution(* edu.graduate.web.controller.*.*(..))"
 			+ "&& !execution(* edu.graduate.web.controller.LoginController.*(..))"
 			+ "&& !execution(* edu.graduate.web.controller.IndexController.*(..))"
+			+ "&& !execution(* edu.graduate.web.controller.ManagerController.*(..))"
+			+ "&& !execution(* edu.graduate.web.controller.ManagerFruitController.*(..))"
+			+ "&& !execution(* edu.graduate.web.controller.ManagerIndexController.*(..))"
+			+ "&& !execution(* edu.graduate.web.controller.ManagerPregnantAnalysisController.*(..))"
+			+ "&& !execution(* edu.graduate.web.controller.ManagerRecommendController.*(..))"
 	        + "&& !execution(* edu.graduate.web.controller.RegisterController.*(..))")
 	public void verify() {}
 	

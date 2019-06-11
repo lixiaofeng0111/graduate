@@ -97,4 +97,8 @@ public interface LoginRegisterMapper {
 	LoginRegister findLoginByName(String username);
 	
 	List<LoginRegister> findAllByName(@Param("userName")String userName);
+	
+	void updateById(Long id);
+	
+	
 }

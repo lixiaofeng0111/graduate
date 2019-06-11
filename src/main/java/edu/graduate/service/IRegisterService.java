@@ -9,5 +9,8 @@ public interface IRegisterService {
 	void saveRegister(LoginRegister loginRegister) throws Exception;
 
 	LoginRegister findByName(String name);
+	
+	void updateById(Long id) throws Exception;
+	
 
 }

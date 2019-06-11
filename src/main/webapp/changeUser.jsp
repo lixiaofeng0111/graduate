@@ -25,33 +25,31 @@
 			<div class="row">
 				<div class="col-md-4 col-md-push-13">
 					<div  class="fh5co-form animate-box" data-animate-effect="fadeInRight">
-						<div style = "text-align:center;"><h2>注册页面</h2></div>
+						<div style = "text-align:center;"><h2>修改用户信息页面</h2></div>
+						<input type="hidden" id="id" name="id" value="${selectUserByName.id}">
 						<div class="form-group">
-							用户名<input name = "username" type="text" class="form-control" id="username" placeholder="请输入你的用户名" autocomplete="off">
+							用户名<input value="${selectUserByName.username}" name = "username" type="text" class="form-control" id="username" placeholder="请输入你的用户名" autocomplete="off">
 						</div>
 						<div class="form-group">
 							密码
-							<input name = "password" type="password" class="form-control" id="password" placeholder="请输入您的密码" autocomplete="off">
+							<input value="${selectUserByName.password}" name = "password" type="password" class="form-control" id="password" placeholder="请输入您的密码" autocomplete="off">
 						</div>
 						
 						<div class="form-group">
 							年龄
-							<input name = "age" type="age" class="form-control" id="age" placeholder="请输入你的年龄" autocomplete="off">
+							<input value="${selectUserByName.age}" name = "age" type="age" class="form-control" id="age" placeholder="请输入你的年龄" autocomplete="off">
 						</div>
 						<div class="form-group">
 							性别
-							<input name = "sex" type="sex" class="form-control" id="sex" placeholder="请输入你的性别" autocomplete="off">
+							<input value="${selectUserByName.sex}" name = "sex" type="sex" class="form-control" id="sex" placeholder="请输入你的性别" autocomplete="off">
 						</div>
 						<div class="form-group">
 							家庭住址
-							<input name = "address" type="address" class="form-control" id="address" placeholder="请输入你的家庭住址" autocomplete="off">
+							<input value="${selectUserByName.address}" name = "address" type="address" class="form-control" id="address" placeholder="请输入你的家庭住址" autocomplete="off">
 						</div>
 						
-						<div class="form-group">
-							<p>已经注册了？ <a href="login.jsp"><font color = "#33CCCC">登录</font></a></p>
-						</div>
 						<div class="form-group" style = "text-align:center;">
-							<input id = "register_btn" type="submit" value="注册" class="btn btn-primary">
+							<input id = "register_btn" type="submit" value="修改" class="btn btn-primary">
 						</div>
 					</div>
 				</div>
@@ -79,11 +77,13 @@
 	<script type="text/javascript">
 		$(function() {
 			$("#register_btn").click(function() {
+				var id1 = document.getElementById("id");
 				var username1 = document.getElementById("username");
 				var password1 = document.getElementById("password");
 				var age1 = document.getElementById("age");
 				var sex1 = document.getElementById("sex");
 				var address1 = document.getElementById("address");
+				id1_val = $.trim(id1.value);
 				username1_val = $.trim(username1.value);
 				password1_val = $.trim(password1.value);
 				sex1_val = $.trim(sex1.value);
@@ -104,8 +104,8 @@
 				} else if (sex1_val == null || sex1_val == "") {
 					alert("性别不能为空！");
 					return false;
-				} else if (sex1_val != '男' || sex1_val != '女') {
-					alert("性别只能输入‘男’或‘女’！");
+				} else if (sex1_val != '男' && sex1_val != '女') {
+					alert("性别只能输入‘男’或‘女’");
 					return false;
 				} else if (address1_val == null || address1_val == "") {
 					alert("家庭住址不能为空！");
@@ -113,9 +113,10 @@
 				}
 
 
-				var url = "/register";
+				var url = "/changeUser";
 				//向后端传递参数，time：当前时间，防止重复提交，防止浏览器缓存
 				var args = {
+					"id" : id1_val,
 					"username" : username1_val,
 					"password" : password1_val,
 					"age" : age1_val,
@@ -125,8 +126,8 @@
 				};
 				$.post(url, args, function(data) {
 					if(data == "ok"){
-						alert("注册成功！");
-						window.location.href="/login.jsp";
+						alert("修改成功！");
+						window.location.href="login.jsp";
 					}else{
 					alert(data);
 					}

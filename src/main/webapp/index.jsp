@@ -47,6 +47,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
+.dropbtn {
+    color: #000000;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    z-index:999;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 135px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
 a:hover {
 	color: red;
 }
@@ -224,7 +260,15 @@ button {
 							<li><a href="login.jsp">登录</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="/loginOut">退出登录</a></li>
+							<!-- 下面是一个下拉菜单 -->
+						<div class="dropdown">
+						  <div class="dropbtn">欢迎：${requestScope.username}</div>
+						  <div class="dropdown-content">
+						    <a href="/selectUserByName?username=${requestScope.username}">修改个人资料</a>
+						    <a href="/loginOut">退出登录</a>
+						  </div>
+						</div>
+		<!-- 上面是一个下拉菜单 -->
 						</c:otherwise>
 					
 					</c:choose>	
@@ -245,7 +289,7 @@ button {
 		</div>
 
 		<!--banner start here-->
-		<div class="banner">
+		<div class="banner" style="z-index:-100;position: relative;">
 			<div class="container">
 				<div class="row clearfix">
 					<div class="col-md-12 column">
@@ -288,7 +332,7 @@ button {
 				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
 
 					<div class="active">
-						<a style="color: #956295; font-size: 25px; padding: 0px 35px;">
+						<a target="_blank" style="color: #956295; font-size: 25px; padding: 0px 35px;">
 							<img width="50px" height="50px" src="imgs/topic1.png">今日话题
 						</a>
 					</div>
@@ -299,7 +343,7 @@ button {
 								pattern="yyyy-MM-dd" />
 							<table>
 								<tr>
-									<td><a href="/selectIndexTopicById?id=${today.id}">${datetime}
+									<td><a target="_blank" href="/selectIndexTopicById?id=${today.id}">${datetime}
 											| ${today.name }</a></td>
 								</tr>
 							</table>
@@ -308,7 +352,7 @@ button {
 					</div>
 
 
-					<a href="/pageMoreIndexTopic"
+					<a target="_blank" href="/pageMoreIndexTopic"
 						style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 						class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 					</span></a>
@@ -318,7 +362,7 @@ button {
 				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
 
 					<div class="active">
-						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
+						<a target="_blank" style="color: #956295; font-size: 25px; padding: 0px 45px;"
 							data-toggle="tab"><img width="50px" height="50px"
 							src="imgs/topic2.png"> 往期话题 </a>
 					</div>
@@ -331,14 +375,14 @@ button {
 						<c:if test="${datetime != nowDate}">
 							<table>
 								<tr>
-									<td><a href="/selectIndexTopicById?id=${yesterday.id}">${datetime}
+									<td><a target="_blank" href="/selectIndexTopicById?id=${yesterday.id}">${datetime}
 											| ${yesterday.name }</a></td>
 								</tr>
 							</table>
 						</c:if>
 					</c:forEach>
 
-					<a href="/pageMoreIndexTopic"
+					<a target="_blank" href="/pageMoreIndexTopic"
 						style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 						class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 					</span></a>
@@ -346,7 +390,7 @@ button {
 				<!-- 专家栏目 -->
 				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
 					<div>
-						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
+						<a target="_blank" style="color: #956295; font-size: 25px; padding: 0px 45px;"
 							href="#home" data-toggle="tab"> <img width="50px"
 							height="50px" src="imgs/topic3.png">专家栏目
 						</a>
@@ -360,14 +404,14 @@ button {
 						<c:if test="${professor.topickindId == 1}">
 							<table>
 								<tr width="150px">
-									<td><a href="/pageProfessor?id=${professor.id}">${datetime}
+									<td><a target="_blank" href="/pageProfessor?id=${professor.id}">${datetime}
 											| ${professor.name }</a></td>
 								</tr>
 							</table>
 						</c:if>
 					</c:forEach>
 					<div>
-						<a href="/pageProfessorTopic"
+						<a target="_blank" href="/pageProfessorTopic"
 							style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 							class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 						</span></a>
@@ -379,7 +423,7 @@ button {
 				<!-- 重点关注 -->
 				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
 					<div>
-						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
+						<a  style="color: #956295; font-size: 25px; padding: 0px 45px;"
 							href="#home" data-toggle="tab"> <img width="50px"
 							height="50px" src="imgs/topic4.png">重点关注
 						</a>
@@ -393,14 +437,14 @@ button {
 						<c:if test="${professor.topickindId == 2}">
 							<table>
 								<tr width="150px">
-									<td><a href="/pageProfessor?id=${professor.id}" target="_Blank">${datetime}
+									<td><a target="_blank" href="/pageProfessor?id=${professor.id}" target="_Blank">${datetime}
 											| ${professor.name }</a></td>
 								</tr>
 							</table>
 						</c:if>
 					</c:forEach>
 					<div>
-						<a href="/pageMoreIndexTopic"
+						<a target="_blank" href="/pageMoreIndexTopic"
 							style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 							class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 						</span></a>
@@ -425,14 +469,14 @@ button {
 						<c:if test="${professor.topickindId == 3}">
 							<table>
 								<tr width="150px">
-									<td><a href="/pageProfessor?id=${professor.id}" target="_Blank">${datetime}
+									<td><a target="_blank" href="/pageProfessor?id=${professor.id}" target="_Blank">${datetime}
 											| ${professor.name }</a></td>
 								</tr>
 							</table>
 						</c:if>
 					</c:forEach>
 					<div>
-						<a href="/pageMoreIndexTopic"
+						<a target="_blank" href="/pageMoreIndexTopic"
 							style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 							class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 						</span></a>
@@ -443,7 +487,7 @@ button {
 				<!--胎儿发育  -->
 				<div class="col-md-4 wedo-grid" style="width: 370px; height: 300px;">
 					<div>
-						<a style="color: #956295; font-size: 25px; padding: 0px 45px;"
+						<a  style="color: #956295; font-size: 25px; padding: 0px 45px;"
 							href="#home" data-toggle="tab"> <img width="50px"
 							height="50px" src="imgs/topic6.png">胎儿发育
 						</a>
@@ -457,14 +501,14 @@ button {
 						<c:if test="${professor.topickindId == 4}">
 							<table>
 								<tr width="150px">
-									<td><a href="/pageProfessor?id=${professor.id}" target="_Blank">${datetime}
+									<td><a target="_blank" href="/pageProfessor?id=${professor.id}" target="_Blank">${datetime}
 											| ${professor.name }</a></td>
 								</tr>
 							</table>
 						</c:if>
 					</c:forEach>
 					<div>
-						<a href="/pageMoreIndexTopic"
+						<a target="_blank" href="/pageMoreIndexTopic"
 							style="font-family: 'Viga', sans-serif; color: #956295">More...<span
 							class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 						</span></a>
@@ -488,7 +532,7 @@ button {
 					<p style="font-size: 15px;">水果营养丰富，口味酸甜，怀孕后的准妈妈要适量吃水果孕期应势应该遵循：
 						全面原则，均衡原则，自然原则，植物性食物功效非凡。水果中许多成分均是水溶性的，
 						饭前吃有利于身体必需营养素的吸收孕妈妈的营养牵动着妈咪和宝宝的身体发育在这个特殊 的时期水果就是最好的补品</p>
-					<a href="/pregnantRecomment" class="hvr-wobble-bottom">更多...</a>
+					<a  href="/pregnantRecomment" class="hvr-wobble-bottom">更多...</a>
 					<div class="clearfix"></div>
 				</div>
 			</div>
@@ -523,12 +567,12 @@ button {
 				<div class="container" style="text-align: center;">
 					<div
 						style="color: #FFFFFF; font-size: 18px; padding: 0px 0px 0px 30px;">
-						友情链接: <a href="http://baby.39.net/">39育儿网|</a> <a
-							href="http://www.baby-trees.cn/">宝宝树亲子网|</a> <a
-							href="http://www.ci123.com/">育儿网|</a> <a
-							href="http://yuer.ibabyzone.cn/">宝宝地带|</a> <a
-							href="http://www.yaolan.com/">摇篮网|</a> <a
-							href="https://www.mmbang.com/">妈妈帮</a>
+						友情链接: <a href="http://baby.39.net/" target="_blank">39育儿网|</a> <a
+							href="http://www.baby-trees.cn/" target="_blank">宝宝树亲子网|</a> <a
+							href="http://www.ci123.com/" target="_blank">育儿网|</a> <a
+							href="http://yuer.ibabyzone.cn/" target="_blank">宝宝地带|</a> <a
+							href="http://www.yaolan.com/" target="_blank">摇篮网|</a> <a
+							href="https://www.mmbang.com/" target="_blank">妈妈帮</a>
 					</div>
 					<div style="color: #FFFFFF;">@CopyRight Lxf 郑州轻工业大学2015届毕业设计</div>
 					<div class="clearfix"></div>

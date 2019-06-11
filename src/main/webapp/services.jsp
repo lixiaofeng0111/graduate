@@ -77,6 +77,45 @@
 	});
 </script>
 <style type="text/css">
+.dropbtn {
+    color: #fff;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    z-index:999;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 135px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+a:hover {
+	color: red;
+}
 .content {
 	margin: 0px auto;
 	width: 1000px;
@@ -114,15 +153,7 @@
 							<li><a  href="/pregnant" style = "color:#fff;">孕期阶段分析</a></li>
 							<li><a  href="/fruit" style = "background-color:#fff;" >水果分析</a></li>
 							<li><a  href="/pregnantRecomment" style = "color:#fff;">孕期水果及营养推荐</a></li>
-							<c:choose>
-						<c:when test="${empty username}">
-							<li><a href="login.jsp" style="color: #fff;">登录</a></li>
-						</c:when>
-						<c:otherwise>
 							<li><a href="/loginOut" style="color: #fff;">退出登录</a></li>
-						</c:otherwise>
-					
-					</c:choose>	
 						</ul>
 
 					</div>
