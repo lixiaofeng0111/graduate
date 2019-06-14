@@ -96,7 +96,7 @@ public class LoginController {
 		try {
 			LoginRegister loginUsername = loginService.findLoginByName(username);
 			if(loginUsername == null) {
-				result = "用户名错误，请重新输入！";
+				result = "该用户尚未注册！";
 			}else if(password.equals(loginUsername.getPassword())) {
 				result = "ok";
 				CookieUtil.setCookie(response, "username", username, 7200);
